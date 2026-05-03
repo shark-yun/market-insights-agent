@@ -35,6 +35,10 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
+const sparkTooltip = document.createElement('div');
+sparkTooltip.style.cssText = 'position:fixed;pointer-events:none;display:none;background:rgba(15,23,42,.85);border:1px solid rgba(255,255,255,.1);padding:4px 8px;border-radius:4px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.5);font-size:0.75rem;z-index:9999;color:#fff;backdrop-filter:blur(8px);font-weight:600;white-space:nowrap;';
+document.body.appendChild(sparkTooltip);
+
 // ── Mini Sparkline Drawing ──
 function drawSparkline(canvas, data, color) {
   const ctx = canvas.getContext('2d');
@@ -68,6 +72,53 @@ function drawSparkline(canvas, data, color) {
   ctx.strokeStyle = color;
   ctx.lineWidth = 1.5;
   ctx.stroke();
+
+  // Save base image for hover restoration
+  const baseImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  
+  canvas.style.cursor = 'crosshair';
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const hoverStep = rect.width / (data.length - 1);
+    let index = Math.round(x / hoverStep);
+    if (index < 0) index = 0;
+    if (index >= data.length) index = data.length - 1;
+    
+    // Restore base image
+    ctx.putImageData(baseImage, 0, 0);
+    
+    const snapX = index * (w / (data.length - 1));
+    const snapY = h - ((data[index] - min) / range) * h * 0.8 - h * 0.1;
+    
+    // Draw crosshair
+    ctx.beginPath();
+    ctx.moveTo(snapX, 0);
+    ctx.lineTo(snapX, h);
+    ctx.strokeStyle = 'rgba(148,163,184,.4)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    
+    // Draw dot
+    ctx.beginPath();
+    ctx.arc(snapX, snapY, 3, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    
+    // Show tooltip
+    sparkTooltip.style.display = 'block';
+    sparkTooltip.textContent = data[index].toFixed(2);
+    sparkTooltip.style.left = (e.clientX + 15) + 'px';
+    sparkTooltip.style.top = (e.clientY - 25) + 'px';
+  });
+  
+  canvas.addEventListener('mouseleave', () => {
+    ctx.putImageData(baseImage, 0, 0);
+    sparkTooltip.style.display = 'none';
+  });
 }
 
 // ── TW Index Chart ──
