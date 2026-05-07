@@ -121,27 +121,82 @@ function drawSparkline(canvas, data, color) {
   });
 }
 
-// ── TW Index Chart ──
-function drawTWChart() {
-  const canvas = document.getElementById('tw-index-chart');
-  const data = [];
-  let v = 23300;
-  for (let i = 0; i < 60; i++) { v += (Math.random() - 0.45) * 30; data.push(v); }
-  drawSparkline(canvas, data, '#60a5fa');
-}
-drawTWChart();
+// ── Market Indices Rendering ──
+function renderMarketIndices(indices) {
+  if (!indices) return;
 
-// ── US Sparklines ──
-document.querySelectorAll('.index-card').forEach(card => {
-  const canvas = card.querySelector('.idx-spark');
-  if (!canvas) return;
-  const isNeg = card.querySelector('.idx-change')?.classList.contains('negative');
-  const color = isNeg ? '#f87171' : '#34d399';
-  const data = [];
-  let v = 100;
-  for (let i = 0; i < 40; i++) { v += (Math.random() - (isNeg ? 0.55 : 0.45)) * 3; data.push(v); }
-  drawSparkline(canvas, data, color);
-});
+  // 1. Taiwan TAIEX (Main Banner)
+  const tw = indices.TWII;
+  if (tw) {
+    const priceEl = document.getElementById('tw-index-price');
+    const changeEl = document.getElementById('tw-index-change');
+    if (priceEl) priceEl.textContent = tw.price.toLocaleString();
+    if (changeEl) {
+      const isPos = tw.change >= 0;
+      changeEl.className = `index-change ${isPos ? 'positive' : 'negative'}`;
+      changeEl.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="${isPos ? 'M12 4l-8 8h5v8h6v-8h5z' : 'M12 20l8-8h-5v-8h-6v8h-5z'}"/>
+        </svg>
+        <span>${isPos ? '+' : ''}${tw.change.toFixed(2)} (${isPos ? '+' : ''}${tw.pct.toFixed(2)}%)</span>
+      `;
+    }
+    const canvas = document.getElementById('tw-index-chart');
+    if (canvas && tw.sparkline) drawSparkline(canvas, tw.sparkline, '#60a5fa');
+  }
+
+  // 2. US Indices Cards
+  const usMap = {
+    'GSPC': 'us-sp500',
+    'IXIC': 'us-nasdaq',
+    'DJI':  'us-dow',
+    'VIX':  'us-vix'
+  };
+
+  for (const [sym, id] of Object.entries(usMap)) {
+    const data = indices[sym];
+    const card = document.getElementById(id);
+    if (!data || !card) continue;
+
+    const pEl = card.querySelector('.idx-price');
+    const cEl = card.querySelector('.idx-change');
+    const canvas = card.querySelector('.idx-spark');
+
+    if (pEl) pEl.textContent = data.price.toLocaleString();
+    if (cEl) {
+      const isPos = data.change >= 0;
+      // VIX usually uses inverted colors (green for down, red for up) but let's stick to standard for now
+      cEl.className = `idx-change ${isPos ? 'positive' : 'negative'}`;
+      cEl.textContent = `${isPos ? '+' : ''}${data.pct.toFixed(2)}%`;
+    }
+    if (canvas && data.sparkline) {
+      const color = data.change >= 0 ? '#34d399' : '#f87171';
+      drawSparkline(canvas, data.sparkline, color);
+    }
+  }
+}
+
+// ── Initial Demo Charts (Will be overwritten if report.json loads) ──
+function drawDemoCharts() {
+  // TW
+  const twCanvas = document.getElementById('tw-index-chart');
+  if (twCanvas) {
+    const data = []; let v = 23300;
+    for (let i = 0; i < 60; i++) { v += (Math.random() - 0.45) * 30; data.push(v); }
+    drawSparkline(twCanvas, data, '#60a5fa');
+  }
+  // US
+  document.querySelectorAll('.index-card').forEach(card => {
+    const canvas = card.querySelector('.idx-spark');
+    if (!canvas) return;
+    const isNeg = card.querySelector('.idx-change')?.classList.contains('negative');
+    const color = isNeg ? '#f87171' : '#34d399';
+    const data = []; let v = 100;
+    for (let i = 0; i < 40; i++) { v += (Math.random() - (isNeg ? 0.55 : 0.45)) * 3; data.push(v); }
+    drawSparkline(canvas, data, color);
+  });
+}
+drawDemoCharts();
 
 // ═══ Demo Data Rendering ═══
 
@@ -271,6 +326,11 @@ let twChannels = twChannelsFallback;
 fetch('data/report.json')
   .then(r => { if (!r.ok) throw new Error('no report'); return r.json(); })
   .then(data => {
+    // Market Indices
+    if (data.indices) {
+      renderMarketIndices(data.indices);
+    }
+    
     twChannels = data.channels.filter(c => c.market === 'tw');
     if (twChannels.length > 0) {
       renderChannelList(twChannels, 'tw-channels');

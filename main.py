@@ -6,6 +6,7 @@ import google.generativeai as genai
 from youtube_transcript_api import YouTubeTranscriptApi
 from dotenv import load_dotenv
 import yt_dlp
+import yfinance as yf
 
 # 1. 環境變數載入與檢查
 load_dotenv()
@@ -51,6 +52,46 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 
 import yt_dlp
 
+
+def fetch_market_indices():
+    """
+    用 yfinance 抓取大盤指數最新資料
+    回傳格式供 report.json 與 Dashboard 使用
+    """
+    symbols = {
+        'TWII':  { 'label': '台灣加權指數', 'market': 'tw' },
+        'GSPC':  { 'label': 'S&P 500',      'market': 'us' },
+        'IXIC':  { 'label': 'NASDAQ',       'market': 'us' },
+        'DJI':   { 'label': 'DOW JONES',    'market': 'us' },
+        'VIX':   { 'label': 'VIX',          'market': 'us' },
+    }
+    indices = {}
+    for sym, meta in symbols.items():
+        try:
+            ticker = yf.Ticker(f'^{sym}')
+            hist = ticker.history(period='5d', interval='1d')
+            if hist.empty:
+                continue
+            latest = hist.iloc[-1]
+            prev   = hist.iloc[-2] if len(hist) >= 2 else hist.iloc[-1]
+            price  = round(float(latest['Close']), 2)
+            change = round(float(latest['Close'] - prev['Close']), 2)
+            pct    = round(float((latest['Close'] - prev['Close']) / prev['Close'] * 100), 2)
+            # 抓 30 天日線資料當走勢圖使用
+            hist30 = ticker.history(period='30d', interval='1d')
+            sparkline = [round(float(v), 2) for v in hist30['Close'].tolist()]
+            indices[sym] = {
+                'label':     meta['label'],
+                'market':    meta['market'],
+                'price':     price,
+                'change':    change,
+                'pct':       pct,
+                'sparkline': sparkline,
+            }
+            print(f"📈 {meta['label']}: {price} ({'+' if pct >= 0 else ''}{pct}%)")
+        except Exception as e:
+            print(f"⚠️  無法取得 {sym} 資料: {e}")
+    return indices
 
 def get_latest_video_id(channel_id):
     """
@@ -295,10 +336,15 @@ def main():
     
     final_channels = list(channel_map.values())
 
+    # 抓取大盤指數
+    print("\n📊 正在抓取大盤指數...")
+    market_indices = fetch_market_indices()
+
     # 輸出 Dashboard JSON
     report_data = {
         "generatedAt": datetime.now(tw_tz).isoformat(),
         "date": today,
+        "indices": market_indices,
         "channels": final_channels
     }
 
