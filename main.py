@@ -130,30 +130,6 @@ def get_latest_video_id(channel_id):
 
 def get_transcript(video_id):
     try:
-        ytt = YouTubeTranscriptApi()
-
-        # 先列出可用字幕
-        transcript_list = ytt.list(video_id)
-        print("available transcripts:")
-        for t in transcript_list:
-            print(
-                t.language,
-                t.language_code,
-                "generated=",
-                t.is_generated
-            )
-
-        # 優先繁中，再英文
-        transcript = transcript_list.find_transcript(['zh-TW', 'zh-HK', 'zh-Hans', 'en'])
-        data = transcript.fetch()
-
-        return " ".join([x.text for x in data])
-
-    except Exception as e:
-        return f"(系統提示: 無法取得此影片字幕 - {repr(e)})"
-
-def get_transcript(video_id):
-    try:
         # 優先嘗試繁體中文，其次簡體與英文
         srt = YouTubeTranscriptApi.get_transcript(video_id, languages=['zh-TW', 'zh-HK', 'zh-Hans', 'en'])
         return " ".join([i['text'] for i in srt])
