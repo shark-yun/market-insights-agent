@@ -1,4 +1,41 @@
 {
+  "newsletter": {
+    "timezone": "America/Los_Angeles",
+    "sendHour": 9,
+    "subjectPrefix": "Daily Market Brief"
+  },
+  "watchlist": [
+    { "ticker": "AAPL", "company": "Apple", "market": "us" },
+    { "ticker": "MSFT", "company": "Microsoft", "market": "us" },
+    { "ticker": "NVDA", "company": "Nvidia", "market": "us" },
+    { "ticker": "GOOGL", "company": "Alphabet", "market": "us" },
+    { "ticker": "AMZN", "company": "Amazon", "market": "us" },
+    { "ticker": "META", "company": "Meta", "market": "us" },
+    { "ticker": "TSLA", "company": "Tesla", "market": "us" },
+    { "ticker": "TSM", "company": "Taiwan Semiconductor Manufacturing", "market": "us" },
+    { "ticker": "2330.TW", "company": "台積電", "market": "tw" },
+    { "ticker": "2317.TW", "company": "鴻海", "market": "tw" }
+  ],
+  "newsFeeds": [
+    {
+      "name": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/rssindex",
+      "market": "us",
+      "limit": 6
+    },
+    {
+      "name": "CNBC Markets",
+      "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+      "market": "us",
+      "limit": 6
+    },
+    {
+      "name": "MarketWatch Top Stories",
+      "url": "https://feeds.content.dowjones.io/public/rss/mw_topstories",
+      "market": "us",
+      "limit": 6
+    }
+  ],
   "channels": [
     { "name": "財女珍妮", "id": "@jennymarket", "market": "tw" },
     { "name": "柴鼠兄弟", "id": "@chiratbros", "market": "tw" },

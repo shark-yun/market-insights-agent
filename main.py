@@ -1,313 +1,684 @@
-import os
+import argparse
+import hashlib
+import html
 import json
-import requests
-import xml.etree.ElementTree as ET
+import os
+import smtplib
+from datetime import datetime
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from typing import Any
+from zoneinfo import ZoneInfo
+
+import feedparser
 import google.generativeai as genai
-from youtube_transcript_api import YouTubeTranscriptApi
+import requests
+import yt_dlp
 from dotenv import load_dotenv
-import yt_dlp
-
-# 1. 環境變數載入與檢查
-load_dotenv()
-GEMINI_KEY = os.getenv("GEMINI_API_KEY")
-TG_TOKEN = os.getenv("TELEGRAM_TOKEN")
-TG_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-
-if not GEMINI_KEY:
-    raise ValueError("錯誤: 請設定 GEMINI_API_KEY 環境變數")
-
-# 2. 設定 Gemini
-genai.configure(api_key=GEMINI_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+from youtube_transcript_api import YouTubeTranscriptApi
 
 
+BASE_DIR = os.path.dirname(__file__)
+CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
+HISTORY_PATH = os.path.join(BASE_DIR, "history.json")
+REPORT_PATH = os.path.join(BASE_DIR, "dashboard", "data", "report.json")
+
+DEFAULT_TIMEZONE = "America/Los_Angeles"
+DEFAULT_MODEL = "gemini-2.5-flash"
+MAX_ITEMS_FOR_ANALYSIS = 20
 
 
-# import yt_dlp
-# import whisper # 或使用 OpenAI API
+def load_json_file(path: str, fallback: Any) -> Any:
+    if not os.path.exists(path):
+        return fallback
 
-# # 1. 下載音訊
-# def download_audio(url):
-#     ydl_opts = {
-#         'format': 'm4a/bestaudio/best',
-#         'postprocessors': [{
-#             'key': 'FFmpegExtractAudio',
-#             'preferredcodec': 'm4a',
-#         }],
-#         'outtmpl': 'temp_audio.m4a'
-#     }
-#     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-#         ydl.download([url])
-
-# # 2. 轉錄 (這裡以本地 Whisper 為例)
-# def transcribe():
-#     model = whisper.load_model("base") # 可選 base, small, medium, large
-#     result = model.transcribe("temp_audio.m4a", initial_prompt="台股投資、個股分析、盤後直播")
-#     return result["text"]
-
-# # 3. 接下來將 text 丟給 Gemini 或 GPT-4 進行摘要
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
+    except (OSError, json.JSONDecodeError):
+        return fallback
 
 
+def write_json_file(path: str, payload: Any) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as file:
+        json.dump(payload, file, ensure_ascii=False, indent=2)
 
-import yt_dlp
+
+def stable_id(*parts: str) -> str:
+    raw = "|".join(part.strip() for part in parts if part)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
 
 
-def get_latest_video_id(channel_id):
-    """
-    精準版：直接從頻道首頁抓取最新影片，不使用搜尋以避免抓錯頻道
-    """
-    # 如果 channel_id 沒有 @，加上 @ (預設 YouTube handle)
-    handle = channel_id if channel_id.startswith('@') else f"@{channel_id}"
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Generate the daily market insights newsletter.")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Render the newsletter and print it instead of sending email or Telegram.",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Ignore the local-hour schedule gate when ENFORCE_LOCAL_HOUR is enabled.",
+    )
+    return parser.parse_args()
+
+
+def load_config() -> dict[str, Any]:
+    config = load_json_file(CONFIG_PATH, {})
+    config.setdefault("newsletter", {})
+    config.setdefault("channels", [])
+    config.setdefault("newsFeeds", [])
+    config.setdefault("watchlist", [])
+    return config
+
+
+def should_skip_for_schedule(config: dict[str, Any], force: bool) -> bool:
+    if force:
+        return False
+
+    enforce = os.getenv("ENFORCE_LOCAL_HOUR", "").lower() in {"1", "true", "yes"}
+    if not enforce:
+        return False
+
+    newsletter = config.get("newsletter", {})
+    timezone_name = newsletter.get("timezone", DEFAULT_TIMEZONE)
+    target_hour = int(newsletter.get("sendHour", 9))
+    now = datetime.now(ZoneInfo(timezone_name))
+    if now.hour == target_hour:
+        return False
+
+    print(f"Skipping send: local time is {now:%Y-%m-%d %H:%M %Z}, target hour is {target_hour}:00.")
+    return True
+
+
+def get_latest_video(channel_id: str) -> tuple[str | None, str | None]:
+    handle = channel_id if channel_id.startswith("@") else f"@{channel_id}"
     url = f"https://www.youtube.com/{handle}/videos"
-    
     ydl_opts = {
-        'extract_flat': True,
-        'quiet': True,
-        'no_warnings': True,
-        'playlist_items': '1', # 只拿第一部影片
+        "extract_flat": True,
+        "quiet": True,
+        "no_warnings": True,
+        "playlist_items": "1",
     }
 
     try:
-        print(f"🔍 正在獲取 {handle} 的最新內容...")
+        print(f"Fetching latest YouTube video for {handle}...")
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             result = ydl.extract_info(url, download=False)
-            
-            if 'entries' in result and len(result['entries']) > 0:
-                latest = result['entries'][0]
-                v_id = latest.get('id')
-                v_title = latest.get('title')
-                
-                if v_id:
-                    print(f"🎯 搜尋成功！找到最新影片: {v_title} (ID: {v_id})")
-                    return v_id, v_title
-                    
-    except Exception as e:
-        print(f"❌ 搜尋抓取失敗: {str(e)}")
-        
-    print("❌ 找不到任何影片項目")
-    return None, None
+        entries = result.get("entries", []) if isinstance(result, dict) else []
+        if not entries:
+            return None, None
 
-def get_transcript(video_id):
+        latest = entries[0]
+        return latest.get("id"), latest.get("title")
+    except Exception as exc:
+        print(f"YouTube fetch failed for {handle}: {exc}")
+        return None, None
+
+
+def get_transcript(video_id: str) -> str:
     try:
-        ytt = YouTubeTranscriptApi()
+        transcript = YouTubeTranscriptApi.get_transcript(
+            video_id,
+            languages=["zh-TW", "zh-HK", "zh-Hans", "en"],
+        )
+        return " ".join(item["text"] for item in transcript)
+    except Exception as exc:
+        return f"Transcript unavailable: {exc}"
 
-        # 先列出可用字幕
-        transcript_list = ytt.list(video_id)
-        print("available transcripts:")
-        for t in transcript_list:
-            print(
-                t.language,
-                t.language_code,
-                "generated=",
-                t.is_generated
-            )
 
-        # 優先繁中，再英文
-        transcript = transcript_list.find_transcript(['zh-TW', 'zh-HK', 'zh-Hans', 'en'])
-        data = transcript.fetch()
+def fetch_youtube_items(channels: list[dict[str, Any]], history: dict[str, Any]) -> list[dict[str, Any]]:
+    processed_videos = set(history.get("youtubeVideos", []))
+    items: list[dict[str, Any]] = []
 
-        return " ".join([x.text for x in data])
-
-    except Exception as e:
-        return f"(系統提示: 無法取得此影片字幕 - {repr(e)})"
-
-def get_transcript(video_id):
-    try:
-        # 優先嘗試繁體中文，其次簡體與英文
-        srt = YouTubeTranscriptApi.get_transcript(video_id, languages=['zh-TW', 'zh-HK', 'zh-Hans', 'en'])
-        return " ".join([i['text'] for i in srt])
-    except Exception as e:
-        return f"(系統提示: 無法取得此影片字幕 - {str(e)})"
-
-def analyze_finance(title, transcript):
-    """分析影片內容，回傳結構化 JSON"""
-    # 如果沒字幕，就只針對標題分析，或者回報資訊不足
-    if "無法取得字幕" in transcript:
-        return {
-            "stance": "neutral",
-            "stanceText": "無法判斷",
-            "summary": "此影片未提供字幕，無法進行深度分析。",
-            "keyPoints": [],
-            "mentionedStocks": []
-        }
-
-    prompt = f"""你是一位專業的資深財經分析師。請針對以下影片內容進行深度總結。
-影片標題：{title}
-逐字稿內容：{transcript[:20000]}
-
-請嚴格以下列 JSON 格式回傳（不要加任何其他文字或 markdown）：
-{{
-  "stance": "bull 或 bear 或 neutral",
-  "stanceText": "看多/看空/中立/偏多/偏空",
-  "summary": "100字以內的核心觀點摘要",
-  "keyPoints": ["重點1", "重點2", "重點3"],
-  "mentionedStocks": ["提到的股票代號或名稱1", "提到的股票代號或名稱2"],
-  "riskWarnings": ["風險提示1", "風險提示2"]
-}}"""
-    try:
-        response = model.generate_content(prompt)
-        text = response.text.strip()
-        # 清理可能的 markdown code block 包裹
-        if text.startswith("```"):
-            text = text.split("\n", 1)[1] if "\n" in text else text[3:]
-        if text.endswith("```"):
-            text = text[:-3]
-        text = text.strip()
-        return json.loads(text)
-    except json.JSONDecodeError as e:
-        print(f"⚠️ JSON 解析失敗，使用原始文字: {e}")
-        return {
-            "stance": "neutral",
-            "stanceText": "待分析",
-            "summary": response.text[:200] if response else "分析失敗",
-            "keyPoints": [],
-            "mentionedStocks": []
-        }
-    except Exception as e:
-        return {
-            "stance": "neutral",
-            "stanceText": "分析失敗",
-            "summary": f"Gemini 分析失敗: {str(e)}",
-            "keyPoints": [],
-            "mentionedStocks": []
-        }
-
-def send_telegram_msg(text):
-    if not TG_TOKEN or not TG_CHAT_ID:
-        print("\n--- 報告內容 (未設定 Telegram) ---\n")
-        print(text)
-        return
-
-    url = f"https://api.telegram.org/bot{TG_TOKEN}/sendMessage"
-    # Telegram 限制單則 4096 字元，簡單做個切片防爆
-    payload = {
-        "chat_id": TG_CHAT_ID,
-        "text": text[:4000],
-        "parse_mode": "Markdown" # 讓報告變漂亮
-    }
-    requests.post(url, data=payload, timeout=10)
-
-def main():
-    from datetime import datetime, timezone, timedelta
-
-    # 讀取路徑相對於執行路徑，GitHub Actions 執行時會在根目錄
-    base_dir = os.path.dirname(__file__)
-    config_path = os.path.join(base_dir, 'config.json')
-    with open(config_path, 'r', encoding='utf-8') as f:
-        config = json.load(f)
-
-    # 台灣時間
-    tw_tz = timezone(timedelta(hours=8))
-    today = datetime.now(tw_tz).strftime('%Y-%m-%d')
-
-    # 載入歷史紀錄 (避免重複發送相同的影片)
-    history_path = os.path.join(base_dir, 'history.json')
-    history = []
-    if os.path.exists(history_path):
-        try:
-            with open(history_path, 'r', encoding='utf-8') as f:
-                history = json.load(f)
-        except:
-            history = []
-
-    full_report = "📊 *今日財經影片深度重點整理*\n\n"
-    dashboard_channels = []  # 給 Dashboard 用的結構化資料
-    new_videos_found = False
-
-    for channel in config['channels']:
-        print(f"正在檢查頻道: {channel['name']}")
-        video_id, title = get_latest_video_id(channel['id'])
-
-        if not video_id:
+    for channel in channels:
+        video_id, title = get_latest_video(channel.get("id", ""))
+        if not video_id or not title:
             continue
-            
-        # 檢查是否已經處理過這部影片
-        if video_id in history:
-            print(f"⏩ 影片已分析過，跳過: {title}")
+
+        if video_id in processed_videos:
+            print(f"Skipping previously analyzed video: {title}")
             continue
-            
-        new_videos_found = True
-        print(f"✨ 發現新影片: {title}")
 
         transcript = get_transcript(video_id)
-        analysis = analyze_finance(title, transcript)
+        items.append(
+            {
+                "id": f"youtube:{video_id}",
+                "type": "youtube",
+                "source": channel.get("name", "YouTube"),
+                "market": channel.get("market", "global"),
+                "title": title,
+                "url": f"https://www.youtube.com/watch?v={video_id}",
+                "published": "",
+                "summary": transcript[:4000],
+                "videoId": video_id,
+            }
+        )
 
-        video_url = f"https://www.youtube.com/watch?v={video_id}"
+    return items
 
-        # 建構 Dashboard 用的頻道資料
-        channel_data = {
-            "name": channel['name'],
-            "avatar": channel['name'][0],  # 取第一個字作為頭像文字
-            "date": today,
-            "videoTitle": title,
-            "videoUrl": video_url,
-            "videoId": video_id,
-            "stance": analysis.get('stance', 'neutral'),
-            "stanceText": analysis.get('stanceText', '待分析'),
-            "summary": analysis.get('summary', ''),
-            "keyPoints": analysis.get('keyPoints', []),
-            "mentionedStocks": analysis.get('mentionedStocks', []),
-            "riskWarnings": analysis.get('riskWarnings', []),
-            "market": channel.get('market', 'tw')
-        }
-        dashboard_channels.append(channel_data)
 
-        # Telegram 報告文字
-        stance_emoji = '📈' if analysis.get('stance') == 'bull' else '📉' if analysis.get('stance') == 'bear' else '⚖️'
-        full_report += f"📍 **【{channel['name']}】** {stance_emoji} {analysis.get('stanceText', '')}\n"
-        full_report += f"🎥 {title}\n"
-        full_report += f"📝 {analysis.get('summary', '')}\n"
-        if analysis.get('keyPoints'):
-            for kp in analysis['keyPoints']:
-                full_report += f"  • {kp}\n"
-        full_report += "\n━━━━━━━━━━━━━━━━\n\n"
-        
-        # 加入歷史紀錄
-        history.append(video_id)
+def fetch_rss_items(feeds: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    items: list[dict[str, Any]] = []
 
-    # 如果沒有新影片，就結束執行
-    if not new_videos_found:
-        print("沒有新影片上傳，結束執行。")
-        return
+    for feed in feeds:
+        url = feed.get("url")
+        if not url:
+            continue
 
-    # 保存新的歷史紀錄 (只保留最近 100 筆避免檔案過大)
-    with open(history_path, 'w', encoding='utf-8') as f:
-        json.dump(history[-100:], f, ensure_ascii=False)
+        limit = int(feed.get("limit", 5))
+        source_name = feed.get("name", url)
+        print(f"Fetching RSS feed: {source_name}")
 
-    # 如果舊的 report.json 存在，我們要把這次的新頻道加進去，並覆蓋掉舊的同頻道紀錄
-    data_dir = os.path.join(base_dir, 'dashboard', 'data')
-    os.makedirs(data_dir, exist_ok=True)
-    report_path = os.path.join(data_dir, 'report.json')
-    
-    existing_channels = []
-    if os.path.exists(report_path):
         try:
-            with open(report_path, 'r', encoding='utf-8') as f:
-                old_data = json.load(f)
-                existing_channels = old_data.get('channels', [])
-        except:
-            pass
-            
-    # 合併頻道：用頻道名稱作為 key，保留最新的一筆
-    channel_map = {c['name']: c for c in existing_channels}
-    for c in dashboard_channels:
-        channel_map[c['name']] = c
-    
-    final_channels = list(channel_map.values())
+            parsed = feedparser.parse(url)
+        except Exception as exc:
+            print(f"RSS fetch failed for {source_name}: {exc}")
+            continue
 
-    # 輸出 Dashboard JSON
-    report_data = {
-        "generatedAt": datetime.now(tw_tz).isoformat(),
-        "date": today,
-        "channels": final_channels
+        for entry in parsed.entries[:limit]:
+            title = getattr(entry, "title", "").strip()
+            link = getattr(entry, "link", "").strip()
+            if not title and not link:
+                continue
+
+            summary = getattr(entry, "summary", "") or getattr(entry, "description", "")
+            published = getattr(entry, "published", "") or getattr(entry, "updated", "")
+            items.append(
+                {
+                    "id": f"rss:{stable_id(source_name, title, link)}",
+                    "type": "rss",
+                    "source": source_name,
+                    "market": feed.get("market", "global"),
+                    "title": title,
+                    "url": link,
+                    "published": published,
+                    "summary": html.unescape(summary)[:1500],
+                }
+            )
+
+    return items
+
+
+def dedupe_items(items: list[dict[str, Any]], max_items: int = MAX_ITEMS_FOR_ANALYSIS) -> list[dict[str, Any]]:
+    seen: set[str] = set()
+    unique: list[dict[str, Any]] = []
+
+    for item in items:
+        key = item.get("url") or item.get("id") or item.get("title", "")
+        normalized_key = key.strip().lower()
+        if not normalized_key or normalized_key in seen:
+            continue
+
+        seen.add(normalized_key)
+        unique.append(item)
+
+    return unique[:max_items]
+
+
+def configure_model() -> genai.GenerativeModel:
+    gemini_key = os.getenv("GEMINI_API_KEY")
+    if not gemini_key:
+        raise ValueError("GEMINI_API_KEY is required to generate market analysis.")
+
+    genai.configure(api_key=gemini_key)
+    return genai.GenerativeModel(os.getenv("GEMINI_MODEL", DEFAULT_MODEL))
+
+
+def strip_json_markdown(text: str) -> str:
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.split("\n", 1)[1] if "\n" in cleaned else cleaned[3:]
+    if cleaned.endswith("```"):
+        cleaned = cleaned[:-3]
+    if cleaned.startswith("json"):
+        cleaned = cleaned[4:]
+    return cleaned.strip()
+
+
+def parse_json_object(text: str) -> dict[str, Any]:
+    cleaned = strip_json_markdown(text)
+    decoder = json.JSONDecoder()
+
+    try:
+        payload, _ = decoder.raw_decode(cleaned)
+        if isinstance(payload, dict):
+            return payload
+    except json.JSONDecodeError:
+        pass
+
+    start = cleaned.find("{")
+    if start == -1:
+        raise json.JSONDecodeError("No JSON object found", cleaned, 0)
+
+    payload, _ = decoder.raw_decode(cleaned[start:])
+    if not isinstance(payload, dict):
+        raise json.JSONDecodeError("Top-level JSON value is not an object", cleaned, start)
+    return payload
+
+
+def fallback_analysis(items: list[dict[str, Any]], generated_at: datetime) -> dict[str, Any]:
+    return {
+        "marketPulse": {
+            "tone": "neutral",
+            "summary": "No confident AI market pulse was generated. Review the source links directly before acting.",
+            "keyDrivers": [],
+        },
+        "topCatalysts": [
+            {
+                "headline": item.get("title", "Untitled"),
+                "source": item.get("source", "Unknown"),
+                "url": item.get("url", ""),
+                "tickers": [],
+                "sectors": [],
+                "impactDirection": "neutral",
+                "impactScore": 0,
+                "timeHorizon": "unknown",
+                "confidence": "low",
+                "recommendation": "watch",
+                "rationale": "Captured as a relevant market source, but the model did not produce a detailed impact view.",
+                "risks": ["Verify the original source before making any investment decision."],
+                "sourceEvidence": item.get("summary", "")[:280],
+            }
+            for item in items[:5]
+        ],
+        "actionList": [],
+        "riskWatch": ["AI output may be incomplete or incorrect.", "This is not personalized financial advice."],
+        "generatedAt": generated_at.isoformat(),
     }
 
-    with open(report_path, 'w', encoding='utf-8') as f:
-        json.dump(report_data, f, ensure_ascii=False, indent=2)
-    print(f"✅ Dashboard 報告已更新: {report_path}")
 
-    # 推送 Telegram
-    send_telegram_msg(full_report)
+def analyze_market_news(
+    model: genai.GenerativeModel,
+    items: list[dict[str, Any]],
+    config: dict[str, Any],
+    generated_at: datetime,
+) -> dict[str, Any]:
+    if not items:
+        return fallback_analysis([], generated_at)
+
+    compact_items = [
+        {
+            "id": item.get("id"),
+            "type": item.get("type"),
+            "source": item.get("source"),
+            "market": item.get("market"),
+            "title": item.get("title"),
+            "url": item.get("url"),
+            "published": item.get("published"),
+            "summary": item.get("summary", "")[:1800],
+        }
+        for item in items
+    ]
+
+    prompt = f"""
+You are an institutional-quality market brief writer for an individual investor.
+Analyze the source items below and produce one concise daily market newsletter plan.
+
+Rules:
+- Be evidence-based. Tie every catalyst to sourceEvidence from the provided items.
+- Recommendations are educational signals only, not personalized financial advice.
+- Prefer practical labels: buy_candidate, watch, hold, avoid_wait.
+- Use impactScore from -3 to +3 where positive is bullish and negative is bearish.
+- Include confidence as low, medium, or high.
+- Mention tickers only when supported by the item or obvious from the company name.
+- Return strict JSON only. No markdown.
+
+Watchlist and markets of interest:
+{json.dumps(config.get("watchlist", []), ensure_ascii=False)}
+
+Return this JSON shape:
+{{
+  "marketPulse": {{
+    "tone": "bullish | bearish | mixed | neutral",
+    "summary": "2-3 sentence pre-market overview",
+    "keyDrivers": ["driver 1", "driver 2", "driver 3"]
+  }},
+  "topCatalysts": [
+    {{
+      "headline": "short headline",
+      "source": "source name",
+      "url": "source url",
+      "tickers": ["AAPL"],
+      "sectors": ["Technology"],
+      "impactDirection": "bullish | bearish | mixed | neutral",
+      "impactScore": 2,
+      "timeHorizon": "today | this_week | multi_week | long_term",
+      "confidence": "low | medium | high",
+      "recommendation": "buy_candidate | watch | hold | avoid_wait",
+      "rationale": "why this matters to the stock or sector",
+      "risks": ["risk 1", "risk 2"],
+      "sourceEvidence": "brief quote or paraphrase from the source"
+    }}
+  ],
+  "actionList": [
+    {{
+      "label": "buy_candidate | watch | hold | avoid_wait",
+      "ticker": "AAPL",
+      "company": "Apple",
+      "reason": "plain-English reason",
+      "confidence": "low | medium | high",
+      "risk": "main reason this could be wrong"
+    }}
+  ],
+  "riskWatch": ["risk 1", "risk 2"],
+  "generatedAt": "{generated_at.isoformat()}"
+}}
+
+Source items:
+{json.dumps(compact_items, ensure_ascii=False)}
+"""
+
+    try:
+        response = model.generate_content(prompt)
+        analysis = parse_json_object(response.text)
+        analysis.setdefault("generatedAt", generated_at.isoformat())
+        return analysis
+    except Exception as exc:
+        print(f"Gemini analysis failed, using fallback analysis: {exc}")
+        return fallback_analysis(items, generated_at)
+
+
+def recommendation_label(value: str) -> str:
+    labels = {
+        "buy_candidate": "Buy candidate",
+        "watch": "Watch",
+        "hold": "Hold",
+        "avoid_wait": "Avoid / wait",
+    }
+    return labels.get(value, value.replace("_", " ").title())
+
+
+def render_text_newsletter(analysis: dict[str, Any], generated_at: datetime) -> str:
+    pulse = analysis.get("marketPulse", {})
+    lines = [
+        f"Daily Market Brief - {generated_at:%b %d, %Y}",
+        "",
+        f"Market pulse: {pulse.get('tone', 'neutral')}",
+        pulse.get("summary", ""),
+        "",
+        "Key drivers:",
+    ]
+
+    for driver in pulse.get("keyDrivers", [])[:5]:
+        lines.append(f"- {driver}")
+
+    lines.extend(["", "Top catalysts:"])
+    for catalyst in analysis.get("topCatalysts", [])[:8]:
+        tickers = ", ".join(catalyst.get("tickers", [])) or "No direct ticker"
+        lines.extend(
+            [
+                f"- {catalyst.get('headline', 'Untitled')} ({catalyst.get('source', 'Unknown')})",
+                f"  Tickers/sectors: {tickers}; {', '.join(catalyst.get('sectors', []))}",
+                f"  Impact: {catalyst.get('impactDirection', 'neutral')} ({catalyst.get('impactScore', 0)}/3), confidence {catalyst.get('confidence', 'low')}",
+                f"  Signal: {recommendation_label(catalyst.get('recommendation', 'watch'))}",
+                f"  Why: {catalyst.get('rationale', '')}",
+                f"  Source: {catalyst.get('url', '')}",
+            ]
+        )
+
+    lines.extend(["", "Action list:"])
+    action_list = analysis.get("actionList", [])
+    if action_list:
+        for action in action_list[:8]:
+            lines.append(
+                f"- {recommendation_label(action.get('label', 'watch'))}: "
+                f"{action.get('ticker', '')} {action.get('company', '')} - {action.get('reason', '')} "
+                f"(confidence: {action.get('confidence', 'low')}; risk: {action.get('risk', '')})"
+            )
+    else:
+        lines.append("- No high-confidence action candidates today.")
+
+    lines.extend(["", "Risk watch:"])
+    for risk in analysis.get("riskWatch", [])[:6]:
+        lines.append(f"- {risk}")
+
+    lines.extend(
+        [
+            "",
+            "Disclaimer: This AI-assisted newsletter is for informational and educational purposes only. "
+            "It is not personalized financial advice, and it may contain errors. Do your own research before investing.",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def render_html_newsletter(analysis: dict[str, Any], generated_at: datetime) -> str:
+    pulse = analysis.get("marketPulse", {})
+
+    def esc(value: Any) -> str:
+        return html.escape(str(value or ""))
+
+    catalyst_cards = []
+    for catalyst in analysis.get("topCatalysts", [])[:8]:
+        tickers = ", ".join(catalyst.get("tickers", [])) or "No direct ticker"
+        sectors = ", ".join(catalyst.get("sectors", [])) or "No sector"
+        risks = "".join(f"<li>{esc(risk)}</li>" for risk in catalyst.get("risks", [])[:3])
+        catalyst_cards.append(
+            f"""
+            <tr>
+              <td style="padding:16px;border:1px solid #e5e7eb;border-radius:12px;display:block;margin-bottom:12px;">
+                <div style="font-size:12px;color:#6b7280;text-transform:uppercase;">{esc(catalyst.get('source'))}</div>
+                <h3 style="margin:6px 0 8px;font-size:18px;color:#111827;">{esc(catalyst.get('headline'))}</h3>
+                <p style="margin:0 0 8px;color:#374151;">{esc(catalyst.get('rationale'))}</p>
+                <p style="margin:0 0 8px;color:#111827;"><strong>Signal:</strong> {esc(recommendation_label(catalyst.get('recommendation', 'watch')))} | <strong>Impact:</strong> {esc(catalyst.get('impactDirection'))} ({esc(catalyst.get('impactScore', 0))}/3) | <strong>Confidence:</strong> {esc(catalyst.get('confidence'))}</p>
+                <p style="margin:0 0 8px;color:#374151;"><strong>Tickers:</strong> {esc(tickers)} | <strong>Sectors:</strong> {esc(sectors)}</p>
+                <p style="margin:0 0 8px;color:#4b5563;"><strong>Evidence:</strong> {esc(catalyst.get('sourceEvidence'))}</p>
+                <ul style="margin:0 0 8px 18px;color:#6b7280;">{risks}</ul>
+                <a href="{esc(catalyst.get('url'))}" style="color:#2563eb;">Read source</a>
+              </td>
+            </tr>
+            """
+        )
+
+    action_items = []
+    for action in analysis.get("actionList", [])[:8]:
+        action_items.append(
+            f"""
+            <li style="margin-bottom:10px;">
+              <strong>{esc(recommendation_label(action.get('label', 'watch')))}: {esc(action.get('ticker'))} {esc(action.get('company'))}</strong><br>
+              {esc(action.get('reason'))}<br>
+              <span style="color:#6b7280;">Confidence: {esc(action.get('confidence'))}. Risk: {esc(action.get('risk'))}</span>
+            </li>
+            """
+        )
+
+    if not action_items:
+        action_items.append("<li>No high-confidence action candidates today.</li>")
+
+    drivers = "".join(f"<li>{esc(driver)}</li>" for driver in pulse.get("keyDrivers", [])[:5])
+    risks = "".join(f"<li>{esc(risk)}</li>" for risk in analysis.get("riskWatch", [])[:6])
+
+    return f"""<!doctype html>
+<html>
+  <body style="margin:0;background:#f3f4f6;font-family:Arial,Helvetica,sans-serif;color:#111827;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f3f4f6;padding:24px 0;">
+      <tr>
+        <td align="center">
+          <table role="presentation" width="720" cellspacing="0" cellpadding="0" style="max-width:720px;background:#ffffff;border-radius:16px;padding:28px;">
+            <tr>
+              <td>
+                <div style="font-size:13px;color:#6b7280;">Generated {generated_at:%b %d, %Y %I:%M %p %Z}</div>
+                <h1 style="margin:8px 0 16px;font-size:28px;">Daily Market Brief</h1>
+                <div style="padding:16px;background:#eff6ff;border-radius:12px;margin-bottom:20px;">
+                  <div style="font-size:12px;color:#1d4ed8;text-transform:uppercase;">Market pulse: {esc(pulse.get('tone', 'neutral'))}</div>
+                  <p style="margin:8px 0;color:#1f2937;">{esc(pulse.get('summary'))}</p>
+                  <ul style="margin:8px 0 0 18px;color:#374151;">{drivers}</ul>
+                </div>
+                <h2 style="font-size:20px;margin:0 0 12px;">Top Catalysts</h2>
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0">{''.join(catalyst_cards)}</table>
+                <h2 style="font-size:20px;margin:20px 0 12px;">Stock Action List</h2>
+                <ul style="margin:0 0 20px 18px;color:#374151;">{''.join(action_items)}</ul>
+                <h2 style="font-size:20px;margin:20px 0 12px;">Risk Watch</h2>
+                <ul style="margin:0 0 20px 18px;color:#374151;">{risks}</ul>
+                <p style="font-size:12px;line-height:1.5;color:#6b7280;border-top:1px solid #e5e7eb;padding-top:16px;">
+                  Disclaimer: This AI-assisted newsletter is for informational and educational purposes only.
+                  It is not personalized financial advice, it is not a recommendation from a registered investment advisor,
+                  and it may contain errors or outdated data. Do your own research before investing.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>"""
+
+
+def send_email(subject: str, text_body: str, html_body: str, dry_run: bool) -> None:
+    sender = os.getenv("EMAIL_SENDER")
+    password = os.getenv("GMAIL_APP_PASSWORD") or os.getenv("gmail_app_password")
+    if password:
+        password = password.replace(" ", "")
+    recipient = os.getenv("NEWSLETTER_RECIPIENT_EMAIL")
+
+    if dry_run:
+        print("\n--- EMAIL DRY RUN ---")
+        print(f"To: {recipient or '(missing NEWSLETTER_RECIPIENT_EMAIL)'}")
+        print(f"Subject: {subject}")
+        print(text_body)
+        return
+
+    missing = [
+        name
+        for name, value in {
+            "EMAIL_SENDER": sender,
+            "GMAIL_APP_PASSWORD": password,
+            "NEWSLETTER_RECIPIENT_EMAIL": recipient,
+        }.items()
+        if not value
+    ]
+    if missing:
+        raise ValueError(f"Missing email environment variables: {', '.join(missing)}")
+
+    message = MIMEMultipart("alternative")
+    message["Subject"] = subject
+    message["From"] = sender
+    message["To"] = recipient
+    message.attach(MIMEText(text_body, "plain", "utf-8"))
+    message.attach(MIMEText(html_body, "html", "utf-8"))
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login(sender, password)
+        smtp.sendmail(sender, [recipient], message.as_string())
+
+    print(f"Newsletter email sent to {recipient}.")
+
+
+def send_telegram_summary(text: str, dry_run: bool) -> None:
+    token = os.getenv("TELEGRAM_TOKEN")
+    chat_id = os.getenv("TELEGRAM_CHAT_ID")
+    if dry_run or not token or not chat_id:
+        return
+
+    requests.post(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        data={"chat_id": chat_id, "text": text[:4000]},
+        timeout=10,
+    )
+
+
+def write_report(
+    analysis: dict[str, Any],
+    source_items: list[dict[str, Any]],
+    generated_at: datetime,
+    config: dict[str, Any],
+) -> None:
+    existing_report = load_json_file(REPORT_PATH, {})
+    existing_channels = existing_report.get("channels", [])
+    latest_youtube_channels = [
+        {
+            "name": item.get("source"),
+            "avatar": (item.get("source") or "?")[:1],
+            "date": generated_at.strftime("%Y-%m-%d"),
+            "videoTitle": item.get("title"),
+            "videoUrl": item.get("url"),
+            "videoId": item.get("videoId"),
+            "stance": "neutral",
+            "stanceText": "Included in daily newsletter",
+            "summary": item.get("summary", "")[:240],
+            "keyPoints": [],
+            "mentionedStocks": [],
+            "riskWarnings": [],
+            "market": item.get("market", "global"),
+        }
+        for item in source_items
+        if item.get("type") == "youtube"
+    ]
+    channel_map = {channel.get("name"): channel for channel in existing_channels if channel.get("name")}
+    for channel in latest_youtube_channels:
+        channel_map[channel["name"]] = channel
+
+    report_data = {
+        "generatedAt": generated_at.isoformat(),
+        "date": generated_at.strftime("%Y-%m-%d"),
+        "newsletter": analysis,
+        "sources": [
+            {
+                "id": item.get("id"),
+                "type": item.get("type"),
+                "source": item.get("source"),
+                "title": item.get("title"),
+                "url": item.get("url"),
+                "market": item.get("market"),
+                "published": item.get("published"),
+            }
+            for item in source_items
+        ],
+        # Preserve the shape the existing dashboard expects for YouTube cards.
+        "channels": list(channel_map.values()),
+        "watchlist": config.get("watchlist", []),
+    }
+    write_json_file(REPORT_PATH, report_data)
+    print(f"Dashboard report updated: {REPORT_PATH}")
+
+
+def update_history(history: dict[str, Any], source_items: list[dict[str, Any]]) -> None:
+    video_ids = [item["videoId"] for item in source_items if item.get("videoId")]
+    existing_videos = history.get("youtubeVideos", [])
+    combined_videos = list(dict.fromkeys([*existing_videos, *video_ids]))
+    history["youtubeVideos"] = combined_videos[-200:]
+    write_json_file(HISTORY_PATH, history)
+
+
+def main() -> None:
+    load_dotenv()
+    args = parse_args()
+    dry_run = args.dry_run or os.getenv("NEWSLETTER_DRY_RUN", "").lower() in {"1", "true", "yes"}
+
+    config = load_config()
+    if should_skip_for_schedule(config, args.force):
+        return
+
+    timezone_name = config.get("newsletter", {}).get("timezone", DEFAULT_TIMEZONE)
+    generated_at = datetime.now(ZoneInfo(timezone_name))
+    history = load_json_file(HISTORY_PATH, {"youtubeVideos": []})
+
+    rss_items = fetch_rss_items(config.get("newsFeeds", []))
+    youtube_items = fetch_youtube_items(config.get("channels", []), history)
+    source_items = dedupe_items([*rss_items, *youtube_items])
+    print(f"Collected {len(source_items)} unique source items.")
+
+    model = configure_model()
+    analysis = analyze_market_news(model, source_items, config, generated_at)
+    subject_prefix = config.get("newsletter", {}).get("subjectPrefix", "Daily Market Brief")
+    subject = f"{subject_prefix} - {generated_at:%b %d, %Y}"
+    text_body = render_text_newsletter(analysis, generated_at)
+    html_body = render_html_newsletter(analysis, generated_at)
+
+    send_email(subject, text_body, html_body, dry_run)
+    send_telegram_summary(text_body, dry_run)
+
+    if dry_run:
+        print("Dry run complete. Skipped report/history writes.")
+        return
+
+    write_report(analysis, source_items, generated_at, config)
+    update_history(history, source_items)
+
 
 if __name__ == "__main__":
     main()
