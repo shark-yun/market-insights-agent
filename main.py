@@ -19,7 +19,7 @@ if not GEMINI_KEY:
 
 # 2. 設定 Gemini
 genai.configure(api_key=GEMINI_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-2.0-flash')
 
 
 
@@ -58,29 +58,45 @@ def fetch_market_indices():
     用 yfinance 抓取大盤指數最新資料
     回傳格式供 report.json 與 Dashboard 使用
     """
-    symbols = {
-        'TWII':  { 'label': '台灣加權指數', 'market': 'tw' },
-        'GSPC':  { 'label': 'S&P 500',      'market': 'us' },
-        'IXIC':  { 'label': 'NASDAQ',       'market': 'us' },
-        'DJI':   { 'label': 'DOW JONES',    'market': 'us' },
-        'VIX':   { 'label': 'VIX',          'market': 'us' },
+    symbols_meta = {
+        '^TWII': { 'key': 'TWII', 'label': '台灣加權指數', 'market': 'tw' },
+        '^GSPC': { 'key': 'GSPC', 'label': 'S&P 500',      'market': 'us' },
+        '^IXIC': { 'key': 'IXIC', 'label': 'NASDAQ',       'market': 'us' },
+        '^DJI':  { 'key': 'DJI',  'label': 'DOW JONES',    'market': 'us' },
+        '^VIX':  { 'key': 'VIX',  'label': 'VIX',          'market': 'us' },
     }
     indices = {}
-    for sym, meta in symbols.items():
+
+    for symbol, meta in symbols_meta.items():
         try:
-            ticker = yf.Ticker(f'^{sym}')
-            hist = ticker.history(period='5d', interval='1d')
-            if hist.empty:
+            print(f"🔄 正在抓取 {meta['label']} ({symbol})...")
+            # 用 yf.download 比 Ticker.history 更穩定
+            hist5 = yf.download(symbol, period='5d', interval='1d', progress=False)
+            print(f"   5d 資料筆數: {len(hist5)}")
+            if hist5.empty or len(hist5) < 1:
+                print(f"   ⚠️ 無資料，跳過")
                 continue
-            latest = hist.iloc[-1]
-            prev   = hist.iloc[-2] if len(hist) >= 2 else hist.iloc[-1]
-            price  = round(float(latest['Close']), 2)
-            change = round(float(latest['Close'] - prev['Close']), 2)
-            pct    = round(float((latest['Close'] - prev['Close']) / prev['Close'] * 100), 2)
-            # 抓 30 天日線資料當走勢圖使用
-            hist30 = ticker.history(period='30d', interval='1d')
-            sparkline = [round(float(v), 2) for v in hist30['Close'].tolist()]
-            indices[sym] = {
+
+            # 取最新與前一日收盤價
+            close_col = hist5['Close']
+            # yf.download 可能回傳 MultiIndex columns，處理一下
+            if hasattr(close_col, 'columns'):
+                close_col = close_col.iloc[:, 0]
+            
+            latest_price = float(close_col.iloc[-1])
+            prev_price = float(close_col.iloc[-2]) if len(close_col) >= 2 else latest_price
+            price  = round(latest_price, 2)
+            change = round(latest_price - prev_price, 2)
+            pct    = round((latest_price - prev_price) / prev_price * 100, 2) if prev_price != 0 else 0.0
+
+            # 抓 1 個月日線資料當走勢圖使用
+            hist30 = yf.download(symbol, period='1mo', interval='1d', progress=False)
+            spark_col = hist30['Close']
+            if hasattr(spark_col, 'columns'):
+                spark_col = spark_col.iloc[:, 0]
+            sparkline = [round(float(v), 2) for v in spark_col.tolist()]
+
+            indices[meta['key']] = {
                 'label':     meta['label'],
                 'market':    meta['market'],
                 'price':     price,
@@ -88,9 +104,13 @@ def fetch_market_indices():
                 'pct':       pct,
                 'sparkline': sparkline,
             }
-            print(f"📈 {meta['label']}: {price} ({'+' if pct >= 0 else ''}{pct}%)")
+            print(f"   📈 {meta['label']}: {price} ({'+' if pct >= 0 else ''}{pct}%)")
         except Exception as e:
-            print(f"⚠️  無法取得 {sym} 資料: {e}")
+            import traceback
+            print(f"   ⚠️ 無法取得 {symbol} 資料: {e}")
+            traceback.print_exc()
+    
+    print(f"\n📊 共成功抓取 {len(indices)} 個指數")
     return indices
 
 def get_latest_video_id(channel_id):
