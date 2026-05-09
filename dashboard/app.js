@@ -321,6 +321,56 @@ function renderChannelList(channels, containerId) {
   });
 }
 
+// ── Technical Indicators Rendering ──
+function renderTechnicals(technicals) {
+  const grid = document.getElementById('tech-indicators-grid');
+  if (!grid || !technicals || technicals.length === 0) return;
+  grid.innerHTML = technicals.map(t => {
+    const sigColor = t.signal === 'bull' ? 'var(--green)' : t.signal === 'bear' ? 'var(--red)' : 'var(--amber)';
+    const sigBg = t.signal === 'bull' ? 'rgba(52,211,153,.1)' : t.signal === 'bear' ? 'rgba(248,113,113,.1)' : 'rgba(251,191,36,.1)';
+    const rsiColor = t.rsi > 70 ? 'var(--red)' : t.rsi < 30 ? 'var(--green)' : 'var(--text)';
+    const rsiLabel = t.rsi > 70 ? '過熱' : t.rsi < 30 ? '過冷' : '正常';
+    return `<div style="background:var(--bg3);border-radius:12px;padding:16px;border:1px solid var(--glass-border);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div>
+          <span style="font-weight:700;font-size:0.95rem;">${t.name}</span>
+          <span style="color:var(--text3);font-size:0.75rem;margin-left:6px;">${t.symbol}</span>
+        </div>
+        <span style="background:${sigBg};color:${sigColor};padding:3px 10px;border-radius:20px;font-size:0.72rem;font-weight:600;">${t.signalText}</span>
+      </div>
+      <div style="font-size:1.3rem;font-weight:800;margin-bottom:8px;">${t.price.toLocaleString()}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;font-size:0.72rem;color:var(--text2);">
+        <div>MA5<div style="font-weight:600;color:var(--text);">${t.ma5.toLocaleString()}</div></div>
+        <div>MA20<div style="font-weight:600;color:var(--text);">${t.ma20.toLocaleString()}</div></div>
+        <div>MA60<div style="font-weight:600;color:var(--text);">${t.ma60.toLocaleString()}</div></div>
+      </div>
+      <div style="margin-top:8px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:0.72rem;color:var(--text2);">RSI(14)</span>
+        <div style="flex:1;height:6px;background:var(--bg2);border-radius:3px;overflow:hidden;">
+          <div style="width:${t.rsi}%;height:100%;background:${rsiColor};border-radius:3px;transition:width .3s;"></div>
+        </div>
+        <span style="font-size:0.75rem;font-weight:600;color:${rsiColor};">${t.rsi} ${rsiLabel}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Risk Dashboard Rendering ──
+function renderRisks(risks) {
+  const grid = document.getElementById('risk-dashboard');
+  if (!grid || !risks || risks.length === 0) return;
+  grid.innerHTML = risks.map(r => {
+    const isPos = r.change >= 0;
+    const color = isPos ? 'var(--green)' : 'var(--red)';
+    return `<div style="background:var(--bg3);border-radius:12px;padding:14px;border:1px solid var(--glass-border);text-align:center;">
+      <div style="font-size:1.4rem;margin-bottom:4px;">${r.icon}</div>
+      <div style="font-size:0.72rem;color:var(--text3);margin-bottom:4px;">${r.name}</div>
+      <div style="font-size:1.2rem;font-weight:800;">${r.price.toLocaleString()}</div>
+      <div style="font-size:0.78rem;font-weight:600;color:${color};margin-top:2px;">${isPos ? '+' : ''}${r.pct.toFixed(2)}%</div>
+    </div>`;
+  }).join('');
+}
+
 // 嘗試載入 main.py 產生的 report.json (加上時間戳防止快取)
 let twChannels = twChannelsFallback;
 fetch('data/report.json?t=' + Date.now())
@@ -342,6 +392,14 @@ fetch('data/report.json?t=' + Date.now())
     const usFromReport = data.channels.filter(c => c.market === 'us');
     if (usFromReport.length > 0) {
       renderChannelList(usFromReport, 'us-channels');
+    }
+    // Technical Indicators
+    if (data.technicals) {
+      renderTechnicals(data.technicals);
+    }
+    // Risk Indicators
+    if (data.risks) {
+      renderRisks(data.risks);
     }
     // Update last update time
     if (data.generatedAt) {

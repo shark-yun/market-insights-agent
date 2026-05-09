@@ -113,6 +113,103 @@ def fetch_market_indices():
     print(f"\n📊 共成功抓取 {len(indices)} 個指數")
     return indices
 
+
+def fetch_technical_indicators():
+    """
+    抓取關鍵股票的技術指標（MA 均線、RSI）
+    """
+    tickers = {
+        '^TWII':  '台股加權',
+        '2330.TW': '台積電',
+        '2317.TW': '鴻海',
+        'AAPL':   'Apple',
+        'NVDA':   'NVIDIA',
+        'TSLA':   'Tesla',
+    }
+    results = []
+    for symbol, name in tickers.items():
+        try:
+            hist = yf.download(symbol, period='3mo', interval='1d', progress=False)
+            if hist.empty or len(hist) < 20:
+                continue
+            close = hist['Close']
+            if hasattr(close, 'columns'):
+                close = close.iloc[:, 0]
+            
+            price = round(float(close.iloc[-1]), 2)
+            ma5  = round(float(close.rolling(5).mean().iloc[-1]), 2)
+            ma20 = round(float(close.rolling(20).mean().iloc[-1]), 2)
+            ma60 = round(float(close.rolling(min(60, len(close))).mean().iloc[-1]), 2)
+            
+            # RSI 14
+            delta = close.diff()
+            gain = delta.where(delta > 0, 0).rolling(14).mean()
+            loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
+            rs = gain / loss
+            rsi = round(float((100 - (100 / (1 + rs))).iloc[-1]), 1)
+            
+            # 判斷信號
+            if ma5 > ma20 > ma60:
+                signal = 'bull'
+                signal_text = '多頭排列 ↑'
+            elif ma5 < ma20 < ma60:
+                signal = 'bear'
+                signal_text = '空頭排列 ↓'
+            else:
+                signal = 'neutral'
+                signal_text = '整理中 ↔'
+
+            results.append({
+                'symbol': symbol.replace('.TW', '').replace('^', ''),
+                'name': name,
+                'price': price,
+                'ma5': ma5, 'ma20': ma20, 'ma60': ma60,
+                'rsi': rsi,
+                'signal': signal,
+                'signalText': signal_text,
+            })
+            print(f"   📉 {name}: RSI={rsi}, MA信號={signal_text}")
+        except Exception as e:
+            print(f"   ⚠️ 無法取得 {symbol} 技術指標: {e}")
+    return results
+
+
+def fetch_risk_indicators():
+    """
+    抓取風險監控指標（美元指數、公債殖利率、黃金、原油）
+    """
+    risk_tickers = {
+        'DX-Y.NYB': { 'name': '美元指數 DXY',     'icon': '💵' },
+        '^TNX':     { 'name': '美國10年期公債',   'icon': '🏦' },
+        'GC=F':     { 'name': '黃金 Gold',       'icon': '🥇' },
+        'CL=F':     { 'name': '原油 WTI',        'icon': '🛢️' },
+    }
+    results = []
+    for symbol, meta in risk_tickers.items():
+        try:
+            hist = yf.download(symbol, period='5d', interval='1d', progress=False)
+            if hist.empty:
+                continue
+            close = hist['Close']
+            if hasattr(close, 'columns'):
+                close = close.iloc[:, 0]
+            price = round(float(close.iloc[-1]), 2)
+            prev = float(close.iloc[-2]) if len(close) >= 2 else price
+            change = round(price - prev, 2)
+            pct = round((price - prev) / prev * 100, 2) if prev != 0 else 0.0
+            results.append({
+                'symbol': symbol,
+                'name': meta['name'],
+                'icon': meta['icon'],
+                'price': price,
+                'change': change,
+                'pct': pct,
+            })
+            print(f"   {meta['icon']} {meta['name']}: {price} ({'+' if pct >= 0 else ''}{pct}%)")
+        except Exception as e:
+            print(f"   ⚠️ 無法取得 {symbol}: {e}")
+    return results
+
 def get_latest_video_id(channel_id):
     """
     精準版：直接從頻道首頁抓取最新影片，不使用搜尋以避免抓錯頻道
@@ -336,11 +433,21 @@ def main():
     print("\n📊 正在抓取大盤指數...")
     market_indices = fetch_market_indices()
 
+    # 抓取技術指標
+    print("\n📉 正在計算技術指標...")
+    tech_indicators = fetch_technical_indicators()
+
+    # 抓取風險指標
+    print("\n⚠️ 正在抓取風險指標...")
+    risk_indicators = fetch_risk_indicators()
+
     # 輸出 Dashboard JSON
     report_data = {
         "generatedAt": datetime.now(tw_tz).isoformat(),
         "date": today,
         "indices": market_indices,
+        "technicals": tech_indicators,
+        "risks": risk_indicators,
         "channels": final_channels
     }
 
