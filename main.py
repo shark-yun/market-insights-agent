@@ -92,9 +92,14 @@ def fetch_market_indices():
             # 抓 1 個月日線資料當走勢圖使用
             hist30 = yf.download(symbol, period='1mo', interval='1d', progress=False)
             spark_col = hist30['Close']
+            vol_col = hist30['Volume']
             if hasattr(spark_col, 'columns'):
                 spark_col = spark_col.iloc[:, 0]
+                vol_col = vol_col.iloc[:, 0]
+            
             sparkline = [round(float(v), 2) for v in spark_col.tolist()]
+            volume_sparkline = [int(v) for v in vol_col.tolist()]
+            dates = [d.strftime('%m-%d') for d in hist30.index.tolist()]
 
             indices[meta['key']] = {
                 'label':     meta['label'],
@@ -103,6 +108,8 @@ def fetch_market_indices():
                 'change':    change,
                 'pct':       pct,
                 'sparkline': sparkline,
+                'volume_sparkline': volume_sparkline,
+                'dates': dates,
             }
             print(f"   📈 {meta['label']}: {price} ({'+' if pct >= 0 else ''}{pct}%)")
         except Exception as e:

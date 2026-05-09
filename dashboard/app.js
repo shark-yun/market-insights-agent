@@ -143,6 +143,38 @@ function renderMarketIndices(indices) {
     }
     const canvas = document.getElementById('tw-index-chart');
     if (canvas && tw.sparkline) drawSparkline(canvas, tw.sparkline, '#60a5fa');
+    
+    // Update volume and bind click event for volume modal
+    const volEl = document.getElementById('tw-volume');
+    if (volEl && tw.volume_sparkline && tw.volume_sparkline.length > 0) {
+      const latestVol = tw.volume_sparkline[tw.volume_sparkline.length - 1];
+      // Convert to billions (億) for TW market if appropriate, or just format
+      volEl.textContent = (latestVol / 100000000).toFixed(2) + ' 億';
+    }
+
+    const btnVolume = document.getElementById('btn-show-volume');
+    if (btnVolume && tw.dates && tw.volume_sparkline) {
+      btnVolume.onclick = () => {
+        const tbody = document.getElementById('volume-table-body');
+        let html = '';
+        // show last 30 days reversed (latest first)
+        for (let i = tw.dates.length - 1; i >= Math.max(0, tw.dates.length - 30); i--) {
+          const d = tw.dates[i];
+          const v = tw.volume_sparkline[i];
+          const p = tw.sparkline[i];
+          const vStr = (v / 100000000).toFixed(2) + ' 億';
+          html += `
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:8px; text-align:left;">${d}</td>
+              <td style="padding:8px; font-weight:600;">${p.toLocaleString()}</td>
+              <td style="padding:8px;">${vStr}</td>
+            </tr>
+          `;
+        }
+        tbody.innerHTML = html;
+        document.getElementById('volume-modal-overlay').style.display = 'flex';
+      };
+    }
   }
 
   // 2. US Indices Cards
@@ -551,4 +583,14 @@ document.getElementById('btn-refresh')?.addEventListener('click', () => {
   const btn = document.getElementById('btn-refresh');
   btn.style.transform = 'rotate(360deg)';
   setTimeout(() => btn.style.transform = '', 500);
+});
+
+// ── Volume Modal Close ──
+document.getElementById('volume-modal-close')?.addEventListener('click', () => {
+  document.getElementById('volume-modal-overlay').style.display = 'none';
+});
+document.getElementById('volume-modal-overlay')?.addEventListener('click', (e) => {
+  if (e.target.id === 'volume-modal-overlay') {
+    e.target.style.display = 'none';
+  }
 });
