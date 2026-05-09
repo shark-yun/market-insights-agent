@@ -321,9 +321,9 @@ function renderChannelList(channels, containerId) {
   });
 }
 
-// 嘗試載入 main.py 產生的 report.json
+// 嘗試載入 main.py 產生的 report.json (加上時間戳防止快取)
 let twChannels = twChannelsFallback;
-fetch('data/report.json')
+fetch('data/report.json?t=' + Date.now())
   .then(r => { if (!r.ok) throw new Error('no report'); return r.json(); })
   .then(data => {
     // Market Indices
