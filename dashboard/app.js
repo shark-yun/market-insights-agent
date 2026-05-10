@@ -146,10 +146,17 @@ function renderMarketIndices(indices) {
     
     // Update volume and bind click event for volume modal
     const volEl = document.getElementById('tw-volume');
+    
+    // 單位換算工具：將 Yahoo Finance 的成交量數字轉為 萬 / 億
+    const formatVol = (v) => {
+      if (v >= 100000000) return (v / 100000000).toFixed(2) + ' 億';
+      if (v >= 10000) return (v / 10000).toFixed(2) + ' 萬';
+      return v.toLocaleString();
+    };
+
     if (volEl && tw.volume_sparkline && tw.volume_sparkline.length > 0) {
       const latestVol = tw.volume_sparkline[tw.volume_sparkline.length - 1];
-      // Convert to billions (億) for TW market if appropriate, or just format
-      volEl.textContent = (latestVol / 100000000).toFixed(2) + ' 億';
+      volEl.textContent = formatVol(latestVol);
     }
 
     const btnVolume = document.getElementById('btn-show-volume');
@@ -162,12 +169,11 @@ function renderMarketIndices(indices) {
           const d = tw.dates[i];
           const v = tw.volume_sparkline[i];
           const p = tw.sparkline[i];
-          const vStr = (v / 100000000).toFixed(2) + ' 億';
           html += `
             <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
               <td style="padding:8px; text-align:left;">${d}</td>
               <td style="padding:8px; font-weight:600;">${p.toLocaleString()}</td>
-              <td style="padding:8px;">${vStr}</td>
+              <td style="padding:8px;">${formatVol(v)}</td>
             </tr>
           `;
         }
