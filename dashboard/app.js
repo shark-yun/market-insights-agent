@@ -146,11 +146,13 @@ function renderMarketIndices(indices) {
     
     // Update volume and bind click event for volume modal
     const volEl = document.getElementById('tw-volume');
+    const highEl = document.getElementById('tw-high');
+    const lowEl = document.getElementById('tw-low');
     
-    // 單位換算工具：將 Yahoo Finance 的成交量數字轉為 萬 / 億
+    // 單位換算工具：將 Yahoo Finance 的成交量數字轉為 萬張 / 億
     const formatVol = (v) => {
       if (v >= 100000000) return (v / 100000000).toFixed(2) + ' 億';
-      if (v >= 10000) return (v / 10000).toFixed(2) + ' 萬';
+      if (v >= 10000) return (v / 10000).toFixed(2) + ' 萬張';
       return v.toLocaleString();
     };
 
@@ -158,6 +160,8 @@ function renderMarketIndices(indices) {
       const latestVol = tw.volume_sparkline[tw.volume_sparkline.length - 1];
       volEl.textContent = formatVol(latestVol);
     }
+    if (highEl && tw.high) highEl.textContent = tw.high.toLocaleString();
+    if (lowEl && tw.low) lowEl.textContent = tw.low.toLocaleString();
 
     const btnVolume = document.getElementById('btn-show-volume');
     if (btnVolume && tw.dates && tw.volume_sparkline) {

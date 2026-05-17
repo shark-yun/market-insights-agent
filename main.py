@@ -89,6 +89,15 @@ def fetch_market_indices():
             change = round(latest_price - prev_price, 2)
             pct    = round((latest_price - prev_price) / prev_price * 100, 2) if prev_price != 0 else 0.0
 
+            # 抓取今日最高/最低
+            high_col = hist5['High']
+            low_col  = hist5['Low']
+            if hasattr(high_col, 'columns'):
+                high_col = high_col.iloc[:, 0]
+                low_col  = low_col.iloc[:, 0]
+            high = round(float(high_col.iloc[-1]), 2)
+            low  = round(float(low_col.iloc[-1]), 2)
+
             # 抓 1 個月日線資料當走勢圖使用
             hist30 = yf.download(symbol, period='1mo', interval='1d', progress=False)
             spark_col = hist30['Close']
@@ -107,6 +116,8 @@ def fetch_market_indices():
                 'price':     price,
                 'change':    change,
                 'pct':       pct,
+                'high':      high,
+                'low':       low,
                 'sparkline': sparkline,
                 'volume_sparkline': volume_sparkline,
                 'dates': dates,
