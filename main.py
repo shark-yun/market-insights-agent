@@ -228,6 +228,134 @@ def fetch_risk_indicators():
             print(f"   ⚠️ 無法取得 {symbol}: {e}")
     return results
 
+
+def fetch_twse_sectors():
+    """
+    從 TWSE Open API 抓取各板塊指數漲跨幅度
+    """
+    SECTOR_NAMES = [
+        '半導體類指數', '電子工業類指數', '金融保險類指數',
+        '舐運業類指數', '生技醫療類指數', '鮮食類指數',
+        '钟電題類指數', '化學工業類指數', '貢料工業類指數',
+        '録屠薩進類指數', '決錠奮成類指數', '油電燃氣類指數',
+        '玻璃陶瓷類指數', '造紙類指數', '畫時錄類指數',
+        '資訊服務業類指數', '決錠提鑽類指數',
+    ]
+    SECTOR_SHORT = {
+        '半導體類指數': '半導體',    '電子工業類指數': '電子',
+        '金融保險類指數': '金融',    '舐運業類指數': '舐運',
+        '生技醫療類指數': '生技醫',  '鮮食類指數': '鮮食',
+        '钟電題類指數': '钟電題',   '化學工業類指數': '化學',
+        '貢料工業類指斘': '貢料',   '録屠薩進類指數': '録屠薩進',
+        '決錠奮成類指數': '營造',   '油電燃氣類指數': '油電',
+        '玻璃陶瓷類指數': '玻陶',   '造紙類指數': '造紙',
+        '畫時錄類指數': '畫時錄',   '資訊服務業類指數': '資訊服務',
+        '決錠提鑽類指數': '決錠提鑽',
+    }
+    try:
+        resp = requests.get(
+            'https://openapi.twse.com.tw/v1/exchangeReport/MI_INDEX',
+            headers={'User-Agent': 'Mozilla/5.0'},
+            timeout=10
+        )
+        data = resp.json()
+        sectors = []
+        for item in data:
+            name = item.get('指數', '')
+            if name in SECTOR_NAMES:
+                try:
+                    pct_raw = item.get('漲跨百分比', '0').replace(',', '')
+                    pct = float(pct_raw)
+                    if item.get('漲跨', '-') == '-':
+                        pct = -abs(pct)
+                    else:
+                        pct = abs(pct)
+                    sectors.append({
+                        'name': SECTOR_SHORT.get(name, name[:3]),
+                        'fullName': name,
+                        'pct': round(pct, 2),
+                        'close': item.get('收盤指數', '--'),
+                    })
+                except:
+                    pass
+        print(f"   🎯 抓到 {len(sectors)} 個板塊指數")
+        return sectors
+    except Exception as e:
+        print(f"   ⚠️ 抓取板塊失敗: {e}")
+        return []
+
+
+def fetch_twse_institutional():
+    """
+    從 TWSE API 抓取三大法人買賣超 Top 10
+    單位：股
+    """
+    try:
+        resp = requests.get(
+            'https://www.twse.com.tw/rwd/zh/fund/T86?response=json&selectType=ALL',
+            headers={'User-Agent': 'Mozilla/5.0'},
+            timeout=15
+        )
+        result = resp.json()
+        if result.get('stat') != 'OK':
+            return {'date': '', 'topBuy': [], 'topSell': []}
+
+        date_str = result.get('date', '')
+        rows = result.get('data', [])
+
+        def parse_num(s):
+            try:
+                return int(str(s).replace(',', '').replace(' ', ''))
+            except:
+                return 0
+
+        parsed = []
+        for row in rows:
+            code = row[0].strip()
+            name = row[1].strip()
+            # 過濾 ETF（代碼以 0 開頭）
+            if code.startswith('0'):
+                continue
+            net_all = parse_num(row[17])  # 三大法人買賣超股數
+            foreign = parse_num(row[4])   # 外陆資買賣超
+            trust   = parse_num(row[10])  # 投信買賣超
+            dealer  = parse_num(row[11])  # 自營商買賣超
+            parsed.append({
+                'code': code, 'name': name,
+                'net': net_all,
+                'foreign': foreign,
+                'trust': trust,
+                'dealer': dealer,
+            })
+
+        parsed.sort(key=lambda x: x['net'], reverse=True)
+        top_buy  = parsed[:10]
+        top_sell = parsed[-10:][::-1]
+
+        # 儲存時將股轉為張（除以 1000）方便顯示
+        def to_display(items):
+            out = []
+            for r in items:
+                out.append({
+                    'code': r['code'],
+                    'name': r['name'],
+                    'net_lots': round(r['net'] / 1000),
+                    'foreign_lots': round(r['foreign'] / 1000),
+                    'trust_lots': round(r['trust'] / 1000),
+                    'dealer_lots': round(r['dealer'] / 1000),
+                })
+            return out
+
+        print(f"   🏦 三大法人資料日期: {date_str}")
+        return {
+            'date': date_str,
+            'topBuy': to_display(top_buy),
+            'topSell': to_display(top_sell),
+        }
+    except Exception as e:
+        print(f"   ⚠️ 抓取三大法人失敗: {e}")
+        return {'date': '', 'topBuy': [], 'topSell': []}
+
 def get_latest_video_id(channel_id):
     """
     精準版：直接從頻道首頁抓取最新影片，不使用搜尋以避免抓錯頻道
@@ -459,6 +587,14 @@ def main():
     print("\n⚠️ 正在抓取風險指標...")
     risk_indicators = fetch_risk_indicators()
 
+    # 抓取板塊漲跨
+    print("\n🌡️ 正在抓取板塊輪動...")
+    sectors = fetch_twse_sectors()
+
+    # 抓取三大法人買賣超
+    print("\n🏦 正在抓取三大法人資料...")
+    institutional = fetch_twse_institutional()
+
     # 輸出 Dashboard JSON
     report_data = {
         "generatedAt": datetime.now(tw_tz).isoformat(),
@@ -466,6 +602,8 @@ def main():
         "indices": market_indices,
         "technicals": tech_indicators,
         "risks": risk_indicators,
+        "sectors": sectors,
+        "institutional": institutional,
         "channels": final_channels
     }
 
