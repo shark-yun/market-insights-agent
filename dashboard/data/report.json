@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-05-18T23:31:30.985200+08:00",
-  "date": "2026-05-18",
+  "generatedAt": "2026-05-19T14:08:07.236657+08:00",
+  "date": "2026-05-19",
   "indices": {
     "TWII": {
       "label": "台灣加權指數",
       "market": "tw",
-      "price": 40891.82,
-      "change": -280.54,
-      "pct": -0.68,
-      "high": 41095.82,
-      "low": 40170.17,
+      "price": 40175.56,
+      "change": -716.26,
+      "pct": -1.75,
+      "high": 40951.56,
+      "low": 40168.51,
       "sparkline": [
         36958.8,
         37605.11,
@@ -30,7 +30,8 @@
         41374.5,
         41751.75,
         41172.36,
-        40891.82
+        40891.82,
+        40175.56
       ],
       "volume_sparkline": [
         6458900,
@@ -52,6 +53,7 @@
         8129100,
         7982100,
         8185700,
+        6319000,
         0
       ],
       "dates": [
@@ -74,17 +76,18 @@
         "05-13",
         "05-14",
         "05-15",
-        "05-18"
+        "05-18",
+        "05-19"
       ]
     },
     "GSPC": {
       "label": "S&P 500",
       "market": "us",
-      "price": 7375.55,
-      "change": -32.95,
-      "pct": -0.44,
+      "price": 7403.05,
+      "change": -5.45,
+      "pct": -0.07,
       "high": 7434.06,
-      "low": 7371.75,
+      "low": 7353.17,
       "sparkline": [
         7109.14,
         7064.01,
@@ -106,7 +109,7 @@
         7444.25,
         7501.24,
         7408.5,
-        7375.37
+        7403.05
       ],
       "volume_sparkline": [
         4661130000,
@@ -129,7 +132,7 @@
         5716600000,
         5267050000,
         5582070000,
-        1043192000
+        5489500000
       ],
       "dates": [
         "04-20",
@@ -158,11 +161,11 @@
     "IXIC": {
       "label": "NASDAQ",
       "market": "us",
-      "price": 26006.49,
-      "change": -218.65,
-      "pct": -0.83,
+      "price": 26090.73,
+      "change": -134.41,
+      "pct": -0.51,
       "high": 26310.84,
-      "low": 25989.54,
+      "low": 25867.3,
       "sparkline": [
         24404.39,
         24259.96,
@@ -184,7 +187,7 @@
         26402.34,
         26635.22,
         26225.14,
-        26006.49
+        26090.73
       ],
       "volume_sparkline": [
         8379940000,
@@ -207,7 +210,7 @@
         9734720000,
         9860060000,
         9584430000,
-        4371036000
+        10327940000
       ],
       "dates": [
         "04-20",
@@ -236,11 +239,11 @@
     "DJI": {
       "label": "DOW JONES",
       "market": "us",
-      "price": 49439.61,
-      "change": -86.56,
-      "pct": -0.17,
+      "price": 49686.12,
+      "change": 159.95,
+      "pct": 0.32,
       "high": 49761.16,
-      "low": 49417.38,
+      "low": 49352.56,
       "sparkline": [
         49442.56,
         49149.38,
@@ -262,7 +265,7 @@
         49693.2,
         50063.46,
         49526.17,
-        49440.19
+        49686.12
       ],
       "volume_sparkline": [
         411270000,
@@ -285,7 +288,7 @@
         485990000,
         504090000,
         587920000,
-        173261686
+        461520000
       ],
       "dates": [
         "04-20",
@@ -314,11 +317,11 @@
     "VIX": {
       "label": "VIX",
       "market": "us",
-      "price": 18.55,
-      "change": 0.12,
-      "pct": 0.65,
+      "price": 17.82,
+      "change": -0.61,
+      "pct": -3.31,
       "high": 19.44,
-      "low": 18.27,
+      "low": 17.7,
       "sparkline": [
         18.87,
         19.5,
@@ -340,7 +343,7 @@
         17.87,
         17.26,
         18.43,
-        18.55
+        17.82
       ],
       "volume_sparkline": [
         0,
@@ -394,66 +397,66 @@
     {
       "symbol": "TWII",
       "name": "台股加權",
-      "price": 40891.82,
-      "ma5": 41417.75,
-      "ma20": 40074.36,
-      "ma60": 36156.9,
-      "rsi": 60.5,
+      "price": 40175.56,
+      "ma5": 41073.2,
+      "ma20": 40235.2,
+      "ma60": 36226.19,
+      "rsi": 54.9,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "2330",
       "name": "台積電",
-      "price": 2240.0,
-      "ma5": 2250.0,
-      "ma20": 2202.25,
-      "ma60": 2006.79,
-      "rsi": 47.8,
+      "price": 2205.0,
+      "ma5": 2240.0,
+      "ma20": 2211.25,
+      "ma60": 2010.2,
+      "rsi": 49.1,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "2317",
       "name": "鴻海",
-      "price": 248.5,
-      "ma5": 248.5,
-      "ma20": 235.05,
-      "ma60": 218.98,
-      "rsi": 66.7,
+      "price": 245.0,
+      "ma5": 247.5,
+      "ma20": 236.93,
+      "ma60": 219.43,
+      "rsi": 65.6,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "AAPL",
       "name": "Apple",
-      "price": 295.41,
-      "ma5": 297.5,
-      "ma20": 282.49,
-      "ma60": 266.55,
-      "rsi": 78.0,
+      "price": 297.84,
+      "ma5": 297.99,
+      "ma20": 282.61,
+      "ma60": 266.59,
+      "rsi": 82.6,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "NVDA",
       "name": "NVIDIA",
-      "price": 221.85,
-      "ma5": 225.9,
-      "ma20": 211.29,
-      "ma60": 192.44,
-      "rsi": 56.2,
+      "price": 222.32,
+      "ma5": 226.0,
+      "ma20": 211.31,
+      "ma60": 192.45,
+      "rsi": 56.6,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "TSLA",
       "name": "Tesla",
-      "price": 408.3,
-      "ma5": 430.51,
-      "ma20": 402.11,
-      "ma60": 389.87,
-      "rsi": 61.4,
+      "price": 409.99,
+      "ma5": 430.85,
+      "ma20": 402.19,
+      "ma60": 389.9,
+      "rsi": 62.1,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     }
@@ -463,46 +466,46 @@
       "symbol": "DX-Y.NYB",
       "name": "美元指數 DXY",
       "icon": "💵",
-      "price": 99.13,
-      "change": -0.14,
-      "pct": -0.14
+      "price": 99.1,
+      "change": 0.13,
+      "pct": 0.13
     },
     {
       "symbol": "^TNX",
       "name": "美國10年期公債",
       "icon": "🏦",
-      "price": 4.6,
-      "change": 0.01,
-      "pct": 0.11
+      "price": 4.62,
+      "change": 0.03,
+      "pct": 0.54
     },
     {
       "symbol": "GC=F",
       "name": "黃金 Gold",
       "icon": "🥇",
-      "price": 4541.5,
-      "change": -14.3,
-      "pct": -0.31
+      "price": 4544.6,
+      "change": -7.9,
+      "pct": -0.17
     },
     {
       "symbol": "CL=F",
       "name": "原油 WTI",
       "icon": "🛢️",
-      "price": 102.8,
-      "change": -2.62,
-      "pct": -2.49
+      "price": 103.23,
+      "change": -5.43,
+      "pct": -5.0
     }
   ],
   "channels": [
     {
       "name": "股癌",
       "avatar": "股",
-      "date": "2026-05-18",
+      "date": "2026-05-19",
       "videoTitle": "EP662 | ⛑️",
       "videoUrl": "https://www.youtube.com/watch?v=lllOBl96vzk",
       "videoId": "lllOBl96vzk",
       "stance": "neutral",
       "stanceText": "分析失敗",
-      "summary": "Gemini 分析失敗: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 35.152790257s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 35\n}\n]",
+      "summary": "Gemini 分析失敗: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 58.79578681s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 58\n}\n]",
       "keyPoints": [],
       "mentionedStocks": [],
       "riskWarnings": [],
