@@ -231,26 +231,23 @@ def fetch_risk_indicators():
 
 def fetch_twse_sectors():
     """
-    從 TWSE Open API 抓取各板塊指數漲跨幅度
+    從 TWSE Open API 抓取各板塊指數漲跌幅度
+    策略：動態抓所有名稱含「類指數」的項目，不寫死清單避免編碼問題
     """
-    SECTOR_NAMES = [
-        '半導體類指數', '電子工業類指數', '金融保險類指數',
-        '舐運業類指數', '生技醫療類指數', '鮮食類指數',
-        '钟電題類指數', '化學工業類指數', '貢料工業類指數',
-        '録屠薩進類指數', '決錠奮成類指數', '油電燃氣類指數',
-        '玻璃陶瓷類指數', '造紙類指數', '畫時錄類指數',
-        '資訊服務業類指數', '決錠提鑽類指數',
-    ]
-    SECTOR_SHORT = {
-        '半導體類指數': '半導體',    '電子工業類指數': '電子',
-        '金融保險類指數': '金融',    '舐運業類指數': '舐運',
-        '生技醫療類指數': '生技醫',  '鮮食類指數': '鮮食',
-        '钟電題類指數': '钟電題',   '化學工業類指數': '化學',
-        '貢料工業類指斘': '貢料',   '録屠薩進類指數': '録屠薩進',
-        '決錠奮成類指數': '營造',   '油電燃氣類指數': '油電',
-        '玻璃陶瓷類指數': '玻陶',   '造紙類指數': '造紙',
-        '畫時錄類指數': '畫時錄',   '資訊服務業類指數': '資訊服務',
-        '決錠提鑽類指數': '決錠提鑽',
+    # 顯示名稱縮寫對照
+    NAME_MAP = {
+        '半導體類指數': '半導體', '電子工業類指數': '電子工業',
+        '金融保險類指數': '金融保險', '航運業類指數': '航運',
+        '生技醫療類指數': '生技醫療', '食品工業類指數': '食品',
+        '化學工業類指數': '化學', '鋼鐵工業類指數': '鋼鐵',
+        '電機機械類指數': '電機', '油電燃氣類指數': '油電燃氣',
+        '玻璃陶瓷類指數': '玻璃陶瓷', '造紙類指數': '造紙',
+        '電器電纜類指數': '電器電纜', '建材營造類指數': '建材營造',
+        '觀光餐旅類指數': '觀光餐旅', '資訊服務業類指數': '資訊服務',
+        '汽車工業類指數': '汽車', '其他電子業類指數': '其他電子',
+        '光電業類指數': '光電', '通信網路類指數': '通信網路',
+        '電子零組件業類指數': '電子零組件', '電腦及周邊設備業類指數': '電腦周邊',
+        '半導體業類指數': '半導體業',
     }
     try:
         resp = requests.get(
@@ -262,22 +259,25 @@ def fetch_twse_sectors():
         sectors = []
         for item in data:
             name = item.get('指數', '')
-            if name in SECTOR_NAMES:
-                try:
-                    pct_raw = item.get('漲跨百分比', '0').replace(',', '')
-                    pct = float(pct_raw)
-                    if item.get('漲跨', '-') == '-':
-                        pct = -abs(pct)
-                    else:
-                        pct = abs(pct)
-                    sectors.append({
-                        'name': SECTOR_SHORT.get(name, name[:3]),
-                        'fullName': name,
-                        'pct': round(pct, 2),
-                        'close': item.get('收盤指數', '--'),
-                    })
-                except:
-                    pass
+            # 動態過濾：只要名稱含「類指數」
+            if '類指數' not in name:
+                continue
+            try:
+                pct_raw = item.get('漲跌百分比', '0').replace(',', '')
+                pct = float(pct_raw)
+                direction = item.get('漲跌', '-')
+                if direction == '-':
+                    pct = -abs(pct)
+                else:
+                    pct = abs(pct)
+                sectors.append({
+                    'name': NAME_MAP.get(name, name.replace('類指數', '')),
+                    'fullName': name,
+                    'pct': round(pct, 2),
+                    'close': item.get('收盤指數', '--'),
+                })
+            except:
+                pass
         print(f"   🎯 抓到 {len(sectors)} 個板塊指數")
         return sectors
     except Exception as e:
