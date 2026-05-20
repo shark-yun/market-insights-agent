@@ -349,15 +349,112 @@ def fetch_twse_institutional():
                 })
             return out
 
+        # 抓取並運算個股板塊分類籌碼
+        sector_details = fetch_sector_details(parsed)
+
         print(f"   🏦 三大法人資料日期: {date_str}")
         return {
             'date': date_str,
             'topBuy': to_display(top_buy),
             'topSell': to_display(top_sell),
+            'sectorDetails': sector_details
         }
     except Exception as e:
         print(f"   ⚠️ 抓取三大法人失敗: {e}")
-        return {'date': '', 'topBuy': [], 'topSell': []}
+        return {'date': '', 'topBuy': [], 'topSell': [], 'sectorDetails': {}}
+
+
+def fetch_sector_details(parsed_stocks):
+    """
+    結合 TWSE 產業別與自定義概念股，計算各板塊的個股籌碼 Top Buy / Top Sell 排行
+    """
+    try:
+        print("   🔍 正在抓取 TWSE 個股產業別資料...")
+        # 1. 抓取上市個股基本資料
+        url = 'https://openapi.twse.com.tw/v1/opendata/t187ap03_L'
+        resp = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
+        profile_data = resp.json()
+        
+        # 建立 股票代號 -> 產業名稱 的映射
+        code_to_sector = {}
+        sector_code_map = {
+            '01': '水泥', '02': '食品', '03': '塑膠', '04': '紡織纖維',
+            '05': '電機機械', '06': '電器電纜', '08': '玻璃陶瓷', '09': '造紙',
+            '10': '鋼鐵', '11': '橡膠', '12': '汽車', '14': '建材營造',
+            '15': '航運', '16': '觀光餐旅', '17': '金融', '18': '貿易百貨',
+            '20': '其他', '21': '化學', '22': '生技醫療', '23': '油電燃氣',
+            '24': '半導體', '25': '電腦及週邊設備', '26': '光電', '27': '通信網路',
+            '28': '電子零組件', '29': '電子通路', '30': '資訊服務', '31': '其他電子',
+            '35': '綠能環保', '36': '數位雲端', '37': '運動休閒', '38': '居家生活'
+        }
+        for item in profile_data:
+            c_code = item.get('公司代號', '').strip()
+            ind_code = item.get('產業別', '').strip()
+            if c_code and ind_code in sector_code_map:
+                code_to_sector[c_code] = sector_code_map[ind_code]
+                
+        # 2. 定義自定義題材
+        THEME_STOCKS = {
+            "太空股": ["2313", "3491", "2314", "6274", "3289", "3037", "2368"], # 華通、升達科、台燿、金像電...
+            "重電概念": ["1503", "1513", "1514", "1519", "1504", "1608", "1609"], # 士電、中興電、華城、亞力...
+            "AI概念股": ["2330", "2317", "2382", "3231", "2376", "6669", "2356", "3515"], # 台積電、鴻海、廣達、緯創、技嘉...
+            "綠能環保": ["9941", "6806", "1513", "3708", "6443", "6477"] # 綠能/儲能
+        }
+        
+        # 3. 建立板塊/題材 -> 股票清單的群組
+        sector_groups = {}
+        
+        for r in parsed_stocks:
+            code = r['code']
+            # A. 檢查是否屬於自定義題材
+            for theme, stock_list in THEME_STOCKS.items():
+                if code in stock_list:
+                    if theme not in sector_groups:
+                        sector_groups[theme] = []
+                    sector_groups[theme].append(r)
+            
+            # B. 檢查是否屬於官方產業別
+            if code in code_to_sector:
+                sec_name = code_to_sector[code]
+                if sec_name not in sector_groups:
+                    sector_groups[sec_name] = []
+                sector_groups[sec_name].append(r)
+                
+        # 4. 對每個群組進行排序，抓出買超 Top 5 和賣超 Top 5
+        sector_details = {}
+        for sector, stocks in sector_groups.items():
+            # 依淨買賣超排序
+            sorted_stocks = sorted(stocks, key=lambda x: x['net'], reverse=True)
+            
+            # 買超排行（過濾掉 <= 0 的）
+            buys = [s for s in sorted_stocks if s['net'] > 0]
+            # 賣超排行（過濾掉 >= 0 的，並反轉排序）
+            sells = [s for s in sorted_stocks if s['net'] < 0][::-1]
+            
+            def to_display_lots(items):
+                out = []
+                for s in items:
+                    out.append({
+                        'code': s['code'],
+                        'name': s['name'],
+                        'net_lots': round(s['net'] / 1000),
+                        'foreign_lots': round(s['foreign'] / 1000),
+                        'trust_lots': round(s['trust'] / 1000),
+                        'dealer_lots': round(s['dealer'] / 1000)
+                    })
+                return out
+                
+            sector_details[sector] = {
+                'topBuy': to_display_lots(buys[:5]),
+                'topSell': to_display_lots(sells[:5])
+            }
+            
+        print(f"   🌡️ 已完成 {len(sector_details)} 個板塊/自定義題材的個股籌碼分類")
+        return sector_details
+    except Exception as e:
+        print(f"   ⚠️ 抓取板塊個股籌碼分類失敗: {e}")
+        return {}
+
 
 
 def fetch_twse_institutional_flow():
