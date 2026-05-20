@@ -242,26 +242,7 @@ drawDemoCharts();
 
 // ═══ Demo Data Rendering ═══
 
-// ── TW Heatmap ──
-const twSectors = [
-  { name: '半導體', pct: 2.15, weight: 3 },
-  { name: '金融保險', pct: -0.42, weight: 2 },
-  { name: '電子零件', pct: 1.87, weight: 2 },
-  { name: '光電業', pct: 0.63, weight: 1 },
-  { name: '航運業', pct: -1.23, weight: 1.5 },
-  { name: '生技醫療', pct: 3.21, weight: 1.2 },
-  { name: '鋼鐵工業', pct: -0.18, weight: 1 },
-  { name: '通信網路', pct: 0.92, weight: 1.3 },
-  { name: '電機機械', pct: 1.45, weight: 1 },
-  { name: '食品工業', pct: -0.67, weight: 0.8 },
-  { name: '塑膠工業', pct: 0.33, weight: 0.8 },
-  { name: '紡織纖維', pct: -2.10, weight: 0.7 },
-  { name: '汽車工業', pct: 1.05, weight: 0.9 },
-  { name: '建材營造', pct: 0.15, weight: 0.8 },
-  { name: '觀光餐旅', pct: -0.55, weight: 0.6 },
-  { name: '電器電纜', pct: 0.78, weight: 0.7 },
-];
-
+// ── TW Heatmap Rendering ──
 function getHeatColor(pct) {
   if (pct >= 3) return '#16a34a';
   if (pct >= 1.5) return '#22c55e';
@@ -273,69 +254,206 @@ function getHeatColor(pct) {
   return '#dc2626';
 }
 
-const hmContainer = document.getElementById('tw-heatmap');
-twSectors.forEach(s => {
-  const cell = document.createElement('div');
-  cell.className = 'hm-cell';
-  cell.style.background = getHeatColor(s.pct);
-  cell.style.gridColumn = `span ${Math.round(s.weight)}`;
-  cell.style.color = Math.abs(s.pct) > 1.5 ? '#fff' : '#1e293b';
-  cell.innerHTML = `<div class="hm-name">${s.name}</div><div class="hm-val">${s.pct > 0 ? '+' : ''}${s.pct.toFixed(2)}%</div>`;
-  hmContainer.appendChild(cell);
-});
+function renderSectors(sectors) {
+  const hmContainer = document.getElementById('tw-heatmap');
+  if (!hmContainer) return;
+  hmContainer.innerHTML = '';
 
-// ── Capital Flow ──
-const flows = [
-  { label: '外資', amount: 182.5, buy: true },
-  { label: '投信', amount: 45.3, buy: true },
-  { label: '自營商', amount: -23.8, buy: false },
-];
-const flowBars = document.getElementById('tw-flow-bars');
-const maxFlow = Math.max(...flows.map(f => Math.abs(f.amount)));
-flows.forEach(f => {
-  const isBuy = f.amount > 0;
-  const pct = (Math.abs(f.amount) / maxFlow) * 100;
-  const row = document.createElement('div');
-  row.className = 'flow-row';
-  row.innerHTML = `
-    <div class="flow-label">${f.label}</div>
-    <div class="flow-bar-track">
-      <div class="flow-bar-fill ${isBuy ? 'buy' : 'sell'}" style="width:${pct}%">
-        ${isBuy ? '買超' : '賣超'} ${Math.abs(f.amount).toFixed(1)} 億
-      </div>
-    </div>`;
-  flowBars.appendChild(row);
-});
+  if (!sectors || sectors.length === 0) {
+    hmContainer.innerHTML = '<div style="grid-column: span 12; text-align: center; padding: 20px; color: var(--text3);">暫無板塊數據</div>';
+    return;
+  }
 
-const flowSummary = document.getElementById('tw-flow-summary');
-flowSummary.innerHTML = `
-  <div class="flow-tag">合計三大法人：<span class="val pos">+${(182.5 + 45.3 - 23.8).toFixed(1)} 億</span></div>
-  <div class="flow-tag">外資連續買超：<span class="val pos">5 日</span></div>
-  <div class="flow-tag">融資餘額：<span class="val">2,341 億</span></div>`;
+  // 漲跌幅由大到小排序
+  const sorted = [...sectors].sort((a, b) => b.pct - a.pct);
 
-// ── Hot Topics ──
-const topics = [
-  { icon: '🤖', name: 'AI 概念股', sentiment: 'positive', strength: 85, detail: '台積電、鴻海領軍' },
-  { icon: '🔋', name: '綠能 / 儲能', sentiment: 'positive', strength: 72, detail: '政策利多加持' },
-  { icon: '🚗', name: '電動車', sentiment: 'neutral', strength: 55, detail: '等待新訂單消息' },
-  { icon: '🏠', name: '重電概念', sentiment: 'positive', strength: 78, detail: '電網升級商機' },
-  { icon: '💊', name: '生技新藥', sentiment: 'positive', strength: 68, detail: '臨床數據正面' },
-  { icon: '🛳️', name: '航運復甦', sentiment: 'negative', strength: 35, detail: '運價持續下滑' },
-];
-const topicsGrid = document.getElementById('tw-topics');
-topics.forEach(t => {
-  const sentimentColor = t.sentiment === 'positive' ? 'var(--green)' : t.sentiment === 'negative' ? 'var(--red)' : 'var(--amber)';
-  const sentimentText = t.sentiment === 'positive' ? '🔥 看多' : t.sentiment === 'negative' ? '❄️ 看空' : '⚖️ 中立';
-  const card = document.createElement('div');
-  card.className = 'topic-card';
-  card.innerHTML = `
-    <div class="topic-icon">${t.icon}</div>
-    <div class="topic-name">${t.name}</div>
-    <div class="topic-sentiment ${t.sentiment}">${sentimentText}</div>
-    <div class="topic-bar" style="margin-top:6px"><div class="topic-bar-fill" style="width:${t.strength}%;background:${sentimentColor}"></div></div>
-    <div style="font-size:.7rem;color:var(--text3);margin-top:4px">${t.detail}</div>`;
-  topicsGrid.appendChild(card);
-});
+  sorted.forEach(s => {
+    const cell = document.createElement('div');
+    cell.className = 'hm-cell';
+    cell.style.background = getHeatColor(s.pct);
+    
+    // 重量分配：電子、半導體最重要給 span 3，其餘常見板塊給 span 2
+    let weight = 1;
+    const n = s.name;
+    if (n.includes('半導體') || n.includes('電子')) weight = 3;
+    else if (n.includes('金融') || n.includes('航運') || n.includes('電腦') || n.includes('生技')) weight = 2;
+
+    cell.style.gridColumn = `span ${weight}`;
+    cell.style.color = Math.abs(s.pct) > 1.5 ? '#fff' : '#1e293b';
+    cell.innerHTML = `<div class="hm-name">${s.name}</div><div class="hm-val">${s.pct > 0 ? '+' : ''}${s.pct.toFixed(2)}%</div>`;
+    hmContainer.appendChild(cell);
+  });
+}
+
+// ── Capital Flow Rendering ──
+function renderCapitalFlow(flow) {
+  const flowBars = document.getElementById('tw-flow-bars');
+  const flowSummary = document.getElementById('tw-flow-summary');
+  if (!flowBars || !flowSummary) return;
+
+  flowBars.innerHTML = '';
+  flowSummary.innerHTML = '';
+
+  if (!flow) {
+    flowBars.innerHTML = '<div style="text-align:center; padding:20px; color:var(--text3);">暫無三大法人買賣超數據</div>';
+    return;
+  }
+
+  const flows = [
+    { label: '外資', amount: flow.foreign },
+    { label: '投信', amount: flow.trust },
+    { label: '自營商', amount: flow.dealer },
+  ];
+
+  const maxFlow = Math.max(...flows.map(f => Math.abs(f.amount)), 10.0);
+
+  flows.forEach(f => {
+    const isBuy = f.amount >= 0;
+    const pct = (Math.abs(f.amount) / maxFlow) * 100;
+    const row = document.createElement('div');
+    row.className = 'flow-row';
+    row.innerHTML = `
+      <div class="flow-label">${f.label}</div>
+      <div class="flow-bar-track">
+        <div class="flow-bar-fill ${isBuy ? 'buy' : 'sell'}" style="width:${pct}%">
+          ${isBuy ? '買超' : '賣超'} ${Math.abs(f.amount).toFixed(2)} 億
+        </div>
+      </div>`;
+    flowBars.appendChild(row);
+  });
+
+  const isTotalBuy = flow.total >= 0;
+  const formattedDate = flow.date ? `${flow.date.slice(0, 4)}/${flow.date.slice(4, 6)}/${flow.date.slice(6, 8)}` : '';
+
+  flowSummary.innerHTML = `
+    <div class="flow-tag">合計三大法人：<span class="val ${isTotalBuy ? 'pos' : 'neg'}">${isTotalBuy ? '+' : ''}${flow.total.toFixed(2)} 億</span></div>
+    <div class="flow-tag">外資本日動向：<span class="val ${flow.foreign >= 0 ? 'pos' : 'neg'}">${flow.foreign >= 0 ? '買超' : '賣超'}</span></div>
+    <div class="flow-tag">資料日期：<span class="val">${formattedDate}</span></div>`;
+}
+
+// ── Three Big Players Top 10 Buy/Sell Stocks ──
+let currentInstData = null;
+function renderInstitutional(inst) {
+  if (!inst) return;
+  currentInstData = inst;
+  
+  const dateEl = document.getElementById('institutional-date');
+  if (dateEl && inst.date) {
+    dateEl.textContent = `${inst.date.slice(0,4)}/${inst.date.slice(4,6)}/${inst.date.slice(6,8)}`;
+  }
+  showInstTab('buy');
+}
+
+window.showInstTab = function(type) {
+  const tbody = document.getElementById('inst-table-body');
+  const btnBuy = document.getElementById('btn-inst-buy');
+  const btnSell = document.getElementById('btn-inst-sell');
+  if (!tbody || !currentInstData) return;
+
+  if (type === 'buy') {
+    btnBuy.style.background = 'rgba(52,211,153,0.15)';
+    btnBuy.style.color = '#34d399';
+    btnSell.style.background = 'var(--bg3)';
+    btnSell.style.color = 'var(--text2)';
+  } else {
+    btnSell.style.background = 'rgba(239,68,68,0.15)';
+    btnSell.style.color = '#f87171';
+    btnBuy.style.background = 'var(--bg3)';
+    btnBuy.style.color = 'var(--text2)';
+  }
+
+  const list = type === 'buy' ? currentInstData.topBuy : currentInstData.topSell;
+  if (!list || list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="padding:16px; text-align:center; color:var(--text3);">暫無個股明細</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = list.map((item, idx) => {
+    const isNetPos = item.net_lots >= 0;
+    const rankColor = type === 'buy' ? '#34d399' : '#f87171';
+    return `
+      <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+        <td style="padding:8px 6px; text-align:left; font-weight:600;">
+          <span style="color:${rankColor}; margin-right:4px;">${idx + 1}.</span>
+          ${item.name} <span style="font-size:0.7rem; color:var(--text3); font-weight:normal;">(${item.code})</span>
+        </td>
+        <td style="padding:8px 6px; text-align:right; font-weight:700; color:${isNetPos ? 'var(--green)' : 'var(--red)'};">
+          ${isNetPos ? '+' : ''}${item.net_lots.toLocaleString()}
+        </td>
+        <td style="padding:8px 6px; text-align:right; color:${item.foreign_lots >= 0 ? 'var(--green)' : 'var(--red)'};">
+          ${item.foreign_lots >= 0 ? '+' : ''}${item.foreign_lots.toLocaleString()}
+        </td>
+        <td style="padding:8px 6px; text-align:right; color:${item.trust_lots >= 0 ? 'var(--green)' : 'var(--red)'};">
+          ${item.trust_lots >= 0 ? '+' : ''}${item.trust_lots.toLocaleString()}
+        </td>
+        <td style="padding:8px 6px; text-align:right; color:${item.dealer_lots >= 0 ? 'var(--green)' : 'var(--red)'};">
+          ${item.dealer_lots >= 0 ? '+' : ''}${item.dealer_lots.toLocaleString()}
+        </td>
+      </tr>
+    `;
+  }).join('');
+};
+
+// ── Hot Topics Rendering (Derived 100% Dynamically from Stock Buys) ──
+function renderHotTopics(inst) {
+  const topicsGrid = document.getElementById('tw-topics');
+  if (!topicsGrid) return;
+  topicsGrid.innerHTML = '';
+
+  if (!inst || !inst.topBuy || inst.topBuy.length === 0) {
+    topicsGrid.innerHTML = '<div style="grid-column: span 12; text-align: center; padding: 20px; color: var(--text3);">暫無題材數據</div>';
+    return;
+  }
+
+  const top1 = inst.topBuy[0];
+  const topForeign = [...inst.topBuy].sort((a,b) => b.foreign_lots - a.foreign_lots)[0];
+  const topTrust = [...inst.topBuy].sort((a,b) => b.trust_lots - a.trust_lots)[0];
+  const consensusList = inst.topBuy.filter(x => x.foreign_lots > 0 && x.trust_lots > 0).slice(0, 2);
+
+  const topics = [
+    {
+      icon: '🔥',
+      name: '雙法人聯手買超',
+      sentiment: 'positive',
+      strength: 95,
+      detail: consensusList.length > 0 ? consensusList.map(x => x.name).join('、') + ' 獲外資投信共識敲進' : '今日無明顯共識股'
+    },
+    {
+      icon: '🔼',
+      name: '三大法人買超冠軍',
+      sentiment: 'positive',
+      strength: 90,
+      detail: `${top1.name} (${top1.code}) 單日大買 ${top1.net_lots.toLocaleString()} 張`
+    },
+    {
+      icon: '🏦',
+      name: '外資重倉佈局',
+      sentiment: 'positive',
+      strength: 85,
+      detail: `${topForeign.name} 外資單日加碼 ${topForeign.foreign_lots.toLocaleString()} 張`
+    },
+    {
+      icon: '🎯',
+      name: '投信鎖碼飆股',
+      sentiment: 'positive',
+      strength: 88,
+      detail: `${topTrust.name} 投信積極買超 ${topTrust.trust_lots.toLocaleString()} 張`
+    }
+  ];
+
+  topics.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'topic-card';
+    card.innerHTML = `
+      <div class="topic-icon">${t.icon}</div>
+      <div class="topic-name">${t.name}</div>
+      <div class="topic-sentiment positive">🔥 看多</div>
+      <div class="topic-bar" style="margin-top:6px"><div class="topic-bar-fill" style="width:${t.strength}%;background:var(--green)"></div></div>
+      <div style="font-size:.7rem;color:var(--text3);margin-top:4px">${t.detail}</div>`;
+    topicsGrid.appendChild(card);
+  });
+}
+
 
 // ── TW Channel Summaries (loaded from main.py output) ──
 // Fallback demo data in case report.json doesn't exist yet
@@ -442,6 +560,19 @@ fetch('data/report.json?t=' + Date.now())
     // Risk Indicators
     if (data.risks) {
       renderRisks(data.risks);
+    }
+    // TW Dynamic Sectors Heatmap
+    if (data.sectors) {
+      renderSectors(data.sectors);
+    }
+    // TW Dynamic Capital Flows Bar Chart
+    if (data.institutional_flow) {
+      renderCapitalFlow(data.institutional_flow);
+    }
+    // TW Dynamic Institutional Top 10 Buy/Sell List
+    if (data.institutional) {
+      renderInstitutional(data.institutional);
+      renderHotTopics(data.institutional);
     }
     // Update last update time
     if (data.generatedAt) {

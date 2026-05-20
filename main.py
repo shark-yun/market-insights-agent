@@ -311,13 +311,15 @@ def fetch_twse_institutional():
 
         parsed = []
         for row in rows:
+            if len(row) < 19:
+                continue
             code = row[0].strip()
             name = row[1].strip()
             # 過濾 ETF（代碼以 0 開頭）
             if code.startswith('0'):
                 continue
-            net_all = parse_num(row[17])  # 三大法人買賣超股數
-            foreign = parse_num(row[4])   # 外陆資買賣超
+            net_all = parse_num(row[18])  # 三大法人買賣超股數 (Index 18)
+            foreign = parse_num(row[4])   # 外陸資買賣超
             trust   = parse_num(row[10])  # 投信買賣超
             dealer  = parse_num(row[11])  # 自營商買賣超
             parsed.append({
@@ -327,6 +329,7 @@ def fetch_twse_institutional():
                 'trust': trust,
                 'dealer': dealer,
             })
+
 
         parsed.sort(key=lambda x: x['net'], reverse=True)
         top_buy  = parsed[:10]
@@ -355,6 +358,60 @@ def fetch_twse_institutional():
     except Exception as e:
         print(f"   ⚠️ 抓取三大法人失敗: {e}")
         return {'date': '', 'topBuy': [], 'topSell': []}
+
+
+def fetch_twse_institutional_flow():
+    """
+    從 TWSE 官網抓取每日三大法人買賣差額 (億元)
+    """
+    try:
+        resp = requests.get(
+            'https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json',
+            headers={'User-Agent': 'Mozilla/5.0'},
+            timeout=10
+        )
+        result = resp.json()
+        if result.get('stat') != 'OK':
+            return None
+        
+        rows = result.get('data', [])
+        
+        def parse_to_billion(s):
+            try:
+                # 原始資料單位為元，除以 100,000,000 得到億，保留小數點二位
+                val = float(str(s).replace(',', '').replace(' ', ''))
+                return round(val / 100000000, 2)
+            except:
+                return 0.0
+
+        # 初始化各法人金額
+        foreign = 0.0
+        trust = 0.0
+        dealer = 0.0
+
+        for row in rows:
+            name = row[0].strip()
+            diff_val = parse_to_billion(row[3])
+            if '外資及陸資' in name and '外資自營商' not in name:
+                foreign = diff_val
+            elif '投信' in name:
+                trust = diff_val
+            elif '自營商' in name:
+                dealer += diff_val
+
+        total = round(foreign + trust + dealer, 2)
+
+        return {
+            'date': result.get('date', ''),
+            'foreign': foreign,
+            'trust': trust,
+            'dealer': dealer,
+            'total': total
+        }
+    except Exception as e:
+        print(f"   ⚠️ 抓取三大法人買賣超金額失敗: {e}")
+        return None
+
 
 def get_latest_video_id(channel_id):
     """
@@ -545,16 +602,15 @@ def main():
         # 加入歷史紀錄
         history.append(video_id)
 
-    # 如果沒有新影片，就結束執行
-    if not new_videos_found:
-        print("沒有新影片上傳，結束執行。")
-        return
+    # 如果有新影片，保存歷史紀錄
+    if new_videos_found:
+        print(f"✨ 發現 {len(dashboard_channels)} 部新影片，保存歷史紀錄並準備發送 Telegram 通知。")
+        with open(history_path, 'w', encoding='utf-8') as f:
+            json.dump(history[-100:], f, ensure_ascii=False)
+    else:
+        print("ℹ️ 沒有發現新影片上傳，但將繼續更新每日大盤與三大法人數據。")
 
-    # 保存新的歷史紀錄 (只保留最近 100 筆避免檔案過大)
-    with open(history_path, 'w', encoding='utf-8') as f:
-        json.dump(history[-100:], f, ensure_ascii=False)
-
-    # 如果舊的 report.json 存在，我們要把這次的新頻道加進去，並覆蓋掉舊的同頻道紀錄
+    # 確保 dashboard 目錄結構存在
     data_dir = os.path.join(base_dir, 'dashboard', 'data')
     os.makedirs(data_dir, exist_ok=True)
     report_path = os.path.join(data_dir, 'report.json')
@@ -587,13 +643,17 @@ def main():
     print("\n⚠️ 正在抓取風險指標...")
     risk_indicators = fetch_risk_indicators()
 
-    # 抓取板塊漲跨
+    # 抓取板塊漲跌
     print("\n🌡️ 正在抓取板塊輪動...")
     sectors = fetch_twse_sectors()
 
     # 抓取三大法人買賣超
     print("\n🏦 正在抓取三大法人資料...")
     institutional = fetch_twse_institutional()
+
+    # 抓取三大法人買賣超金額
+    print("\n💰 正在抓取三大法人買賣超金額...")
+    institutional_flow = fetch_twse_institutional_flow()
 
     # 輸出 Dashboard JSON
     report_data = {
@@ -604,6 +664,7 @@ def main():
         "risks": risk_indicators,
         "sectors": sectors,
         "institutional": institutional,
+        "institutional_flow": institutional_flow,
         "channels": final_channels
     }
 
@@ -611,8 +672,10 @@ def main():
         json.dump(report_data, f, ensure_ascii=False, indent=2)
     print(f"✅ Dashboard 報告已更新: {report_path}")
 
-    # 推送 Telegram
-    send_telegram_msg(full_report)
+    # 如果有新影片，才推送 Telegram
+    if new_videos_found:
+        send_telegram_msg(full_report)
+
 
 if __name__ == "__main__":
     main()
