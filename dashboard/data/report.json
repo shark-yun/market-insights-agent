@@ -1,19 +1,16 @@
 {
-  "generatedAt": "2026-05-24T21:24:50.783389+08:00",
-  "date": "2026-05-24",
+  "generatedAt": "2026-05-25T14:28:00.656967+08:00",
+  "date": "2026-05-25",
   "indices": {
     "TWII": {
       "label": "台灣加權指數",
       "market": "tw",
-      "price": 42267.97,
-      "change": 899.76,
-      "pct": 2.17,
-      "high": 42357.6,
-      "low": 41447.92,
+      "price": 43644.4,
+      "change": 1376.43,
+      "pct": 3.26,
+      "high": 43645.78,
+      "low": 42667.87,
       "sparkline": [
-        37878.47,
-        37714.15,
-        38932.4,
         39616.63,
         39521.73,
         39303.5,
@@ -32,12 +29,10 @@
         40175.56,
         40020.82,
         41368.21,
-        42267.97
+        42267.97,
+        43644.4
       ],
       "volume_sparkline": [
-        6248000,
-        8516700,
-        5653800,
         5805300,
         5020400,
         5009300,
@@ -56,12 +51,10 @@
         6548000,
         6049500,
         6705300,
-        7704200
+        7704200,
+        0
       ],
       "dates": [
-        "04-22",
-        "04-23",
-        "04-24",
         "04-27",
         "04-28",
         "04-29",
@@ -80,7 +73,8 @@
         "05-19",
         "05-20",
         "05-21",
-        "05-22"
+        "05-22",
+        "05-25"
       ]
     },
     "GSPC": {
@@ -415,33 +409,33 @@
     {
       "symbol": "TWII",
       "name": "台股加權",
-      "price": 42267.97,
-      "ma5": 40944.88,
-      "ma20": 40758.16,
-      "ma60": 36516.71,
-      "rsi": 61.6,
+      "price": 43644.4,
+      "ma5": 41495.39,
+      "ma20": 40993.76,
+      "ma60": 36665.77,
+      "rsi": 67.9,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "2330",
       "name": "台積電",
-      "price": 2255.0,
-      "ma5": 2223.0,
-      "ma20": 2235.75,
-      "ma60": 2022.8,
-      "rsi": 47.6,
+      "price": 2310.0,
+      "ma5": 2237.0,
+      "ma20": 2242.0,
+      "ma60": 2028.66,
+      "rsi": 56.7,
       "signal": "neutral",
       "signalText": "整理中 ↔"
     },
     {
       "symbol": "2317",
       "name": "鴻海",
-      "price": 250.0,
-      "ma5": 246.2,
-      "ma20": 240.95,
-      "ma60": 220.6,
-      "rsi": 67.7,
+      "price": 261.0,
+      "ma5": 248.7,
+      "ma20": 242.93,
+      "ma60": 221.08,
+      "rsi": 67.2,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
@@ -484,9 +478,9 @@
       "symbol": "DX-Y.NYB",
       "name": "美元指數 DXY",
       "icon": "💵",
-      "price": 99.32,
-      "change": 0.13,
-      "pct": 0.13
+      "price": 99.03,
+      "change": -0.29,
+      "pct": -0.29
     },
     {
       "symbol": "^TNX",
@@ -501,16 +495,16 @@
       "name": "黃金 Gold",
       "icon": "🥇",
       "price": 4523.2,
-      "change": -16.6,
-      "pct": -0.37
+      "change": 2.2,
+      "pct": 0.05
     },
     {
       "symbol": "CL=F",
       "name": "原油 WTI",
       "icon": "🛢️",
       "price": 96.6,
-      "change": 0.25,
-      "pct": 0.26
+      "change": 0.0,
+      "pct": 0.0
     }
   ],
   "sectors": [
@@ -2387,15 +2381,15 @@
             "pct": 1.41
           },
           {
-            "code": "1514",
-            "name": "亞力",
-            "net_lots": 1418,
-            "foreign_lots": 1358,
-            "trust_lots": 0,
-            "dealer_lots": 60,
-            "price": 122.5,
-            "change": 4.5,
-            "pct": 3.81
+            "code": "1513",
+            "name": "中興電",
+            "net_lots": 2447,
+            "foreign_lots": 2101,
+            "trust_lots": 265,
+            "dealer_lots": 82,
+            "price": 156.5,
+            "change": 2.0,
+            "pct": 1.29
           }
         ],
         "topSell": [
@@ -2575,6 +2569,17 @@
             "pct": 1.41
           },
           {
+            "code": "1513",
+            "name": "中興電",
+            "net_lots": 2447,
+            "foreign_lots": 2101,
+            "trust_lots": 265,
+            "dealer_lots": 82,
+            "price": 156.5,
+            "change": 2.0,
+            "pct": 1.29
+          },
+          {
             "code": "1514",
             "name": "亞力",
             "net_lots": 1418,
@@ -2606,17 +2611,6 @@
             "price": 197.0,
             "change": 8.5,
             "pct": 4.51
-          },
-          {
-            "code": "1608",
-            "name": "華榮",
-            "net_lots": 928,
-            "foreign_lots": 903,
-            "trust_lots": -16,
-            "dealer_lots": 41,
-            "price": 33.3,
-            "change": 0.5,
-            "pct": 1.52
           }
         ],
         "topSell": [
@@ -2630,6 +2624,122 @@
             "price": 826.0,
             "change": 26.0,
             "pct": 3.25
+          }
+        ]
+      },
+      "綠能環保": {
+        "topBuy": [
+          {
+            "code": "1513",
+            "name": "中興電",
+            "net_lots": 2447,
+            "foreign_lots": 2101,
+            "trust_lots": 265,
+            "dealer_lots": 82,
+            "price": 156.5,
+            "change": 2.0,
+            "pct": 1.29
+          },
+          {
+            "code": "8422",
+            "name": "可寧衛*",
+            "net_lots": 229,
+            "foreign_lots": 345,
+            "trust_lots": -138,
+            "dealer_lots": 22,
+            "price": 26.8,
+            "change": 0.5,
+            "pct": 1.9
+          },
+          {
+            "code": "7610",
+            "name": "聯友金屬-創",
+            "net_lots": 142,
+            "foreign_lots": 166,
+            "trust_lots": 0,
+            "dealer_lots": -24,
+            "price": 1250.0,
+            "change": 20.0,
+            "pct": 1.63
+          },
+          {
+            "code": "3708",
+            "name": "上緯投控",
+            "net_lots": 141,
+            "foreign_lots": 123,
+            "trust_lots": -1,
+            "dealer_lots": 19,
+            "price": 126.0,
+            "change": -0.5,
+            "pct": -0.4
+          },
+          {
+            "code": "3708",
+            "name": "上緯投控",
+            "net_lots": 141,
+            "foreign_lots": 123,
+            "trust_lots": -1,
+            "dealer_lots": 19,
+            "price": 126.0,
+            "change": -0.5,
+            "pct": -0.4
+          }
+        ],
+        "topSell": [
+          {
+            "code": "6443",
+            "name": "元晶",
+            "net_lots": -964,
+            "foreign_lots": -932,
+            "trust_lots": 0,
+            "dealer_lots": -32,
+            "price": 40.05,
+            "change": -0.05,
+            "pct": -0.12
+          },
+          {
+            "code": "9941",
+            "name": "裕融",
+            "net_lots": -855,
+            "foreign_lots": -850,
+            "trust_lots": -5,
+            "dealer_lots": 0,
+            "price": 73.5,
+            "change": -0.2,
+            "pct": -0.27
+          },
+          {
+            "code": "2072",
+            "name": "世紀風電",
+            "net_lots": -197,
+            "foreign_lots": -197,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 169.0,
+            "change": -3.5,
+            "pct": -2.03
+          },
+          {
+            "code": "8438",
+            "name": "昶昕",
+            "net_lots": -164,
+            "foreign_lots": -164,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 92.5,
+            "change": 4.4,
+            "pct": 4.99
+          },
+          {
+            "code": "9955",
+            "name": "佳龍",
+            "net_lots": -154,
+            "foreign_lots": -154,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 28.15,
+            "change": -0.05,
+            "pct": -0.18
           }
         ]
       },
@@ -3310,6 +3420,17 @@
             "pct": 1.07
           },
           {
+            "code": "5284",
+            "name": "jpp-KY",
+            "net_lots": 50,
+            "foreign_lots": 17,
+            "trust_lots": 26,
+            "dealer_lots": 7,
+            "price": 410.0,
+            "change": 19.0,
+            "pct": 4.86
+          },
+          {
             "code": "9905",
             "name": "大華",
             "net_lots": 40,
@@ -3330,17 +3451,6 @@
             "price": 28.5,
             "change": 0.0,
             "pct": 0.0
-          },
-          {
-            "code": "1416",
-            "name": "廣豐",
-            "net_lots": 17,
-            "foreign_lots": 17,
-            "trust_lots": 0,
-            "dealer_lots": 0,
-            "price": 11.15,
-            "change": 0.05,
-            "pct": 0.45
           }
         ],
         "topSell": [
@@ -3514,122 +3624,6 @@
             "price": 10.9,
             "change": -0.1,
             "pct": -0.91
-          }
-        ]
-      },
-      "綠能環保": {
-        "topBuy": [
-          {
-            "code": "8422",
-            "name": "可寧衛*",
-            "net_lots": 229,
-            "foreign_lots": 345,
-            "trust_lots": -138,
-            "dealer_lots": 22,
-            "price": 26.8,
-            "change": 0.5,
-            "pct": 1.9
-          },
-          {
-            "code": "7610",
-            "name": "聯友金屬-創",
-            "net_lots": 142,
-            "foreign_lots": 166,
-            "trust_lots": 0,
-            "dealer_lots": -24,
-            "price": 1250.0,
-            "change": 20.0,
-            "pct": 1.63
-          },
-          {
-            "code": "3708",
-            "name": "上緯投控",
-            "net_lots": 141,
-            "foreign_lots": 123,
-            "trust_lots": -1,
-            "dealer_lots": 19,
-            "price": 126.0,
-            "change": -0.5,
-            "pct": -0.4
-          },
-          {
-            "code": "3708",
-            "name": "上緯投控",
-            "net_lots": 141,
-            "foreign_lots": 123,
-            "trust_lots": -1,
-            "dealer_lots": 19,
-            "price": 126.0,
-            "change": -0.5,
-            "pct": -0.4
-          },
-          {
-            "code": "8473",
-            "name": "山林水",
-            "net_lots": 68,
-            "foreign_lots": 73,
-            "trust_lots": 0,
-            "dealer_lots": -5,
-            "price": 39.8,
-            "change": -0.9,
-            "pct": -2.21
-          }
-        ],
-        "topSell": [
-          {
-            "code": "6443",
-            "name": "元晶",
-            "net_lots": -964,
-            "foreign_lots": -932,
-            "trust_lots": 0,
-            "dealer_lots": -32,
-            "price": 40.05,
-            "change": -0.05,
-            "pct": -0.12
-          },
-          {
-            "code": "9941",
-            "name": "裕融",
-            "net_lots": -855,
-            "foreign_lots": -850,
-            "trust_lots": -5,
-            "dealer_lots": 0,
-            "price": 73.5,
-            "change": -0.2,
-            "pct": -0.27
-          },
-          {
-            "code": "2072",
-            "name": "世紀風電",
-            "net_lots": -197,
-            "foreign_lots": -197,
-            "trust_lots": 0,
-            "dealer_lots": 0,
-            "price": 169.0,
-            "change": -3.5,
-            "pct": -2.03
-          },
-          {
-            "code": "8438",
-            "name": "昶昕",
-            "net_lots": -164,
-            "foreign_lots": -164,
-            "trust_lots": 0,
-            "dealer_lots": 0,
-            "price": 92.5,
-            "change": 4.4,
-            "pct": 4.99
-          },
-          {
-            "code": "9955",
-            "name": "佳龍",
-            "net_lots": -154,
-            "foreign_lots": -154,
-            "trust_lots": 0,
-            "dealer_lots": 0,
-            "price": 28.15,
-            "change": -0.05,
-            "pct": -0.18
           }
         ]
       },
@@ -3971,6 +3965,17 @@
             "price": 63.2,
             "change": -0.1,
             "pct": -0.16
+          },
+          {
+            "code": "1236",
+            "name": "宏亞",
+            "net_lots": 3,
+            "foreign_lots": 3,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 24.0,
+            "change": 0.3,
+            "pct": 1.27
           }
         ],
         "topSell": [
@@ -4126,6 +4131,17 @@
             "price": 66.9,
             "change": 0.1,
             "pct": 0.15
+          },
+          {
+            "code": "6165",
+            "name": "浪凡",
+            "net_lots": 56,
+            "foreign_lots": 58,
+            "trust_lots": 0,
+            "dealer_lots": -2,
+            "price": 49.45,
+            "change": 1.15,
+            "pct": 2.38
           },
           {
             "code": "7722",
@@ -4355,6 +4371,17 @@
       "居家生活": {
         "topBuy": [
           {
+            "code": "3557",
+            "name": "嘉威",
+            "net_lots": 10,
+            "foreign_lots": 11,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 25.9,
+            "change": 1.4,
+            "pct": 5.71
+          },
+          {
             "code": "6754",
             "name": "匯僑設計",
             "net_lots": 3,
@@ -4412,6 +4439,17 @@
             "pct": -0.59
           },
           {
+            "code": "2062",
+            "name": "橋椿",
+            "net_lots": -20,
+            "foreign_lots": 257,
+            "trust_lots": -277,
+            "dealer_lots": 0,
+            "price": 18.5,
+            "change": -0.1,
+            "pct": -0.54
+          },
+          {
             "code": "9935",
             "name": "慶豐富",
             "net_lots": -16,
@@ -4421,17 +4459,6 @@
             "price": 18.6,
             "change": 0.05,
             "pct": 0.27
-          },
-          {
-            "code": "9911",
-            "name": "櫻花",
-            "net_lots": -14,
-            "foreign_lots": -15,
-            "trust_lots": 0,
-            "dealer_lots": 1,
-            "price": 82.7,
-            "change": -0.2,
-            "pct": -0.24
           }
         ]
       }
@@ -4448,13 +4475,13 @@
     {
       "name": "股癌",
       "avatar": "股",
-      "date": "2026-05-24",
+      "date": "2026-05-25",
       "videoTitle": "EP664 | 🐟",
       "videoUrl": "https://www.youtube.com/watch?v=ag-5hqHbqZo",
       "videoId": "ag-5hqHbqZo",
       "stance": "neutral",
       "stanceText": "分析失敗",
-      "summary": "Gemini 分析失敗: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\nPlease retry in 21.044883342s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 21\n}\n]",
+      "summary": "Gemini 分析失敗: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 23.400919114s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 23\n}\n]",
       "keyPoints": [],
       "mentionedStocks": [],
       "riskWarnings": [],
