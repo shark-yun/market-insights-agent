@@ -675,18 +675,20 @@ def main():
     dashboard_channels = []  # 給 Dashboard 用的結構化資料
     new_videos_found = False
 
+    # YouTube channel analysis (optional)
+if config.get('enable_youtube_analysis', True):
     for channel in config['channels']:
         print(f"正在檢查頻道: {channel['name']}")
         video_id, title = get_latest_video_id(channel['id'])
 
         if not video_id:
             continue
-            
+
         # 檢查是否已經處理過這部影片
         if video_id in history:
             print(f"⏩ 影片已分析過，跳過: {title}")
             continue
-            
+
         new_videos_found = True
         print(f"✨ 發現新影片: {title}")
 
@@ -722,9 +724,12 @@ def main():
             for kp in analysis['keyPoints']:
                 full_report += f"  • {kp}\n"
         full_report += "\n━━━━━━━━━━━━━━━━\n\n"
-        
+
         # 加入歷史紀錄
         history.append(video_id)
+else:
+    # YouTube analysis disabled; keep report empty
+    new_videos_found = False
 
     # 如果有新影片，保存歷史紀錄
     if new_videos_found:
