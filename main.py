@@ -676,60 +676,60 @@ def main():
     new_videos_found = False
 
     # YouTube channel analysis (optional)
-if config.get('enable_youtube_analysis', True):
-    for channel in config['channels']:
-        print(f"正在檢查頻道: {channel['name']}")
-        video_id, title = get_latest_video_id(channel['id'])
+    if config.get('enable_youtube_analysis', True):
+        for channel in config['channels']:
+            print(f"正在檢查頻道: {channel['name']}")
+            video_id, title = get_latest_video_id(channel['id'])
 
-        if not video_id:
-            continue
+            if not video_id:
+                continue
 
-        # 檢查是否已經處理過這部影片
-        if video_id in history:
-            print(f"⏩ 影片已分析過，跳過: {title}")
-            continue
+            # 檢查是否已經處理過這部影片
+            if video_id in history:
+                print(f"⏩ 影片已分析過，跳過: {title}")
+                continue
 
-        new_videos_found = True
-        print(f"✨ 發現新影片: {title}")
+            new_videos_found = True
+            print(f"✨ 發現新影片: {title}")
 
-        transcript = get_transcript(video_id)
-        analysis = analyze_finance(title, transcript)
+            transcript = get_transcript(video_id)
+            analysis = analyze_finance(title, transcript)
 
-        video_url = f"https://www.youtube.com/watch?v={video_id}"
+            video_url = f"https://www.youtube.com/watch?v={video_id}"
 
-        # 建構 Dashboard 用的頻道資料
-        channel_data = {
-            "name": channel['name'],
-            "avatar": channel['name'][0],  # 取第一個字作為頭像文字
-            "date": today,
-            "videoTitle": title,
-            "videoUrl": video_url,
-            "videoId": video_id,
-            "stance": analysis.get('stance', 'neutral'),
-            "stanceText": analysis.get('stanceText', '待分析'),
-            "summary": analysis.get('summary', ''),
-            "keyPoints": analysis.get('keyPoints', []),
-            "mentionedStocks": analysis.get('mentionedStocks', []),
-            "riskWarnings": analysis.get('riskWarnings', []),
-            "market": channel.get('market', 'tw')
-        }
-        dashboard_channels.append(channel_data)
+            # 建構 Dashboard 用的頻道資料
+            channel_data = {
+                "name": channel['name'],
+                "avatar": channel['name'][0],  # 取第一個字作為頭像文字
+                "date": today,
+                "videoTitle": title,
+                "videoUrl": video_url,
+                "videoId": video_id,
+                "stance": analysis.get('stance', 'neutral'),
+                "stanceText": analysis.get('stanceText', '待分析'),
+                "summary": analysis.get('summary', ''),
+                "keyPoints": analysis.get('keyPoints', []),
+                "mentionedStocks": analysis.get('mentionedStocks', []),
+                "riskWarnings": analysis.get('riskWarnings', []),
+                "market": channel.get('market', 'tw')
+            }
+            dashboard_channels.append(channel_data)
 
-        # Telegram 報告文字
-        stance_emoji = '📈' if analysis.get('stance') == 'bull' else '📉' if analysis.get('stance') == 'bear' else '⚖️'
-        full_report += f"📍 **【{channel['name']}】** {stance_emoji} {analysis.get('stanceText', '')}\n"
-        full_report += f"🎥 {title}\n"
-        full_report += f"📝 {analysis.get('summary', '')}\n"
-        if analysis.get('keyPoints'):
-            for kp in analysis['keyPoints']:
-                full_report += f"  • {kp}\n"
-        full_report += "\n━━━━━━━━━━━━━━━━\n\n"
+            # Telegram 報告文字
+            stance_emoji = '📈' if analysis.get('stance') == 'bull' else '📉' if analysis.get('stance') == 'bear' else '⚖️'
+            full_report += f"📍 **【{channel['name']}】** {stance_emoji} {analysis.get('stanceText', '')}\n"
+            full_report += f"🎥 {title}\n"
+            full_report += f"📝 {analysis.get('summary', '')}\n"
+            if analysis.get('keyPoints'):
+                for kp in analysis['keyPoints']:
+                    full_report += f"  • {kp}\n"
+            full_report += "\n━━━━━━━━━━━━━━━━\n\n"
 
-        # 加入歷史紀錄
-        history.append(video_id)
-else:
-    # YouTube analysis disabled; keep report empty
-    new_videos_found = False
+            # 加入歷史紀錄
+            history.append(video_id)
+    else:
+        # YouTube analysis disabled; keep report empty
+        new_videos_found = False
 
     # 如果有新影片，保存歷史紀錄
     if new_videos_found:
