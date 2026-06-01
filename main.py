@@ -516,7 +516,7 @@ def fetch_twse_institutional_flow():
         for row in rows:
             name = row[0].strip()
             diff_val = parse_to_billion(row[3])
-            if '外資及陸資' in name and '外資自營商' not in name:
+            if '外資及陸資' in name and name != '外資自營商':
                 foreign = diff_val
             elif '投信' in name:
                 trust = diff_val
