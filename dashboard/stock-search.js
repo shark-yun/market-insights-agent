@@ -110,10 +110,13 @@ setupSearch('us-stock-search', 'us-search-suggestions');
 const overlay = document.getElementById('stock-modal-overlay');
 const modalClose = document.getElementById('modal-close');
 
+const getLang = () => localStorage.getItem('lang') || 'zh';
+
 function openStockModal(ticker, market) {
   const stock = stockDB[market].find(s => s.ticker === ticker);
   if (!stock) return;
 
+  const isEn = getLang() === 'en';
   document.getElementById('modal-ticker').textContent = stock.ticker;
   document.getElementById('modal-name').textContent = stock.name;
   const marketLabels = { tw: 'TWSE', us: 'US', hk: 'HKEX' };
@@ -141,12 +144,12 @@ function openStockModal(ticker, market) {
   // Metrics
   const metricsEl = document.getElementById('modal-metrics');
   const metrics = [
-    { label: '開盤', value: stock.open },
-    { label: '最高', value: stock.high },
-    { label: '最低', value: stock.low },
-    { label: '成交量', value: stock.vol },
-    { label: '本益比', value: stock.pe },
-    { label: '漲跌', value: (isPos ? '+' : '') + stock.change.toFixed(2), cls: isPos ? 'pos' : 'neg' },
+    { label: isEn ? 'Open' : '開盤', value: stock.open },
+    { label: isEn ? 'High' : '最高', value: stock.high },
+    { label: isEn ? 'Low' : '最低', value: stock.low },
+    { label: isEn ? 'Volume' : '成交量', value: stock.vol },
+    { label: isEn ? 'P/E Ratio' : '本益比', value: stock.pe },
+    { label: isEn ? 'Change' : '漲跌', value: (isPos ? '+' : '') + stock.change.toFixed(2), cls: isPos ? 'pos' : 'neg' },
   ];
   metricsEl.innerHTML = metrics.map(m =>
     `<div class="metric-item"><div class="metric-label">${m.label}</div><div class="metric-value ${m.cls || ''}">${m.value}</div></div>`
@@ -156,9 +159,9 @@ function openStockModal(ticker, market) {
   const flowEl = document.getElementById('modal-flow');
   if (market === 'tw' && stock.foreign != null) {
     const flowData = [
-      { label: '外資', amount: stock.foreign },
-      { label: '投信', amount: stock.trust },
-      { label: '自營', amount: stock.dealer },
+      { label: isEn ? 'Foreign' : '外資', amount: stock.foreign },
+      { label: isEn ? 'Mutual Fund' : '投信', amount: stock.trust },
+      { label: isEn ? 'Dealer' : '自營', amount: stock.dealer },
     ];
     const maxAmt = Math.max(...flowData.map(f => Math.abs(f.amount)));
     flowEl.innerHTML = flowData.map(f => {
@@ -168,13 +171,13 @@ function openStockModal(ticker, market) {
         <div class="stock-flow-label">${f.label}</div>
         <div class="stock-flow-bar-track">
           <div class="stock-flow-bar ${isBuy ? 'buy' : 'sell'}" style="width:${pct}%">
-            ${isBuy ? '+' : ''}${f.amount.toLocaleString()} 張
+            ${isBuy ? '+' : ''}${f.amount.toLocaleString()} ${isEn ? 'Lots' : '張'}
           </div>
         </div>
       </div>`;
     }).join('');
   } else {
-    flowEl.innerHTML = '<div style="color:var(--text3);font-size:.8rem;padding:12px 0;">美股不提供三大法人資料</div>';
+    flowEl.innerHTML = `<div style="color:var(--text3);font-size:.8rem;padding:12px 0;">${isEn ? 'US stocks do not provide institutional flows' : '美股不提供三大法人資料'}</div>`;
   }
 
   // Discussions
@@ -184,10 +187,11 @@ function openStockModal(ticker, market) {
   if (stock.discussions.length > 0) {
     discEl.style.display = '';
     noDiscEl.style.display = 'none';
-    countEl.textContent = `${stock.discussions.length} 則相關`;
+    countEl.textContent = isEn ? `${stock.discussions.length} Discussions` : `${stock.discussions.length} 則相關`;
     discEl.innerHTML = stock.discussions.map(d => {
       const stColor = d.stance === 'bull' ? 'background:rgba(52,211,153,.12);color:#34d399' :
         d.stance === 'bear' ? 'background:rgba(248,113,113,.12);color:#f87171' : 'background:rgba(251,191,36,.12);color:#fbbf24';
+      const displayStanceText = isEn ? (d.stance === 'bull' ? 'Bullish' : d.stance === 'bear' ? 'Bearish' : 'Neutral') : d.stanceText;
       return `<div class="disc-item">
         <div class="disc-header">
           <div class="disc-avatar">${d.avatar}</div>
@@ -196,13 +200,18 @@ function openStockModal(ticker, market) {
         </div>
         <a class="disc-video" href="${d.videoUrl}" target="_blank" rel="noopener">🎥 ${d.video}</a>
         <div class="disc-quote">${d.quote}</div>
-        <div class="disc-stance" style="${stColor}">${d.stance === 'bull' ? '📈' : d.stance === 'bear' ? '📉' : '⚖️'} ${d.stanceText}</div>
+        <div class="disc-stance" style="${stColor}">${d.stance === 'bull' ? '📈' : d.stance === 'bear' ? '📉' : '⚖️'} ${displayStanceText}</div>
       </div>`;
     }).join('');
   } else {
     discEl.style.display = 'none';
     noDiscEl.style.display = '';
-    countEl.textContent = '0 則';
+    countEl.textContent = isEn ? '0 discussions' : '0 則';
+    
+    const noDiscTextEl = noDiscEl.querySelector('.no-disc-text');
+    if (noDiscTextEl) {
+      noDiscTextEl.textContent = isEn ? 'No discussion found for this stock in tracked channels' : '目前追蹤的頻道尚無討論此個股';
+    }
   }
 
   // Show compare and watchlist buttons
@@ -212,6 +221,7 @@ function openStockModal(ticker, market) {
   overlay.classList.add('show');
   document.body.style.overflow = 'hidden';
 }
+
 
 function closeModal() {
   overlay.classList.remove('show');
@@ -234,8 +244,9 @@ function updateCompareBtn(stock, market) {
     btn.style.cssText = 'background:var(--blue);color:#fff;border:none;padding:6px 16px;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;margin-left:12px;transition:all .2s;';
     document.querySelector('.stock-id-wrap')?.appendChild(btn);
   }
+  const isEn = getLang() === 'en';
   const already = compareList.find(c => c.ticker === stock.ticker);
-  btn.textContent = already ? '✓ 已加入比較' : '+ 加入比較';
+  btn.textContent = already ? (isEn ? '✓ Compared' : '✓ 已加入比較') : (isEn ? '+ Compare' : '+ 加入比較');
   btn.style.background = already ? 'var(--green)' : 'var(--blue)';
   btn.onclick = () => {
     if (already) {
@@ -278,11 +289,12 @@ function renderComparePanel() {
     return;
   }
 
+  const isEn = getLang() === 'en';
   panel.style.display = 'block';
   panel.innerHTML = `
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
       <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-weight:700;font-size:.9rem;">📊 股票比較</span>
+        <span style="font-weight:700;font-size:.9rem;">${isEn ? '📊 Stock Comparison' : '📊 股票比較'}</span>
         <div style="display:flex;gap:4px;margin-left:8px;" id="compare-period-tabs">
           ${['1M', '3M', 'YTD', '1Y'].map(p => `
             <button onclick="setComparePeriod('${p}')" style="background:${comparePeriod === p ? 'rgba(96,165,250,.15)' : 'var(--bg)'};color:${comparePeriod === p ? 'var(--blue)' : 'var(--text3)'};border:1px solid ${comparePeriod === p ? 'var(--blue)' : 'var(--glass-border)'};border-radius:4px;font-size:.7rem;padding:2px 8px;cursor:pointer;">${p}</button>
@@ -293,7 +305,7 @@ function renderComparePanel() {
         ${compareList.map(c => `
           <span style="display:inline-flex;align-items:center;gap:4px;font-size:.75rem;padding:3px 10px;border-radius:12px;background:${c.color}20;color:${c.color};font-weight:600;cursor:pointer;" onclick="removeCompare('${c.ticker}')">${c.ticker} ✕</span>
         `).join('')}
-        <button onclick="clearCompare()" style="background:var(--bg3);border:1px solid var(--glass-border);color:var(--text3);font-size:.7rem;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit;">清除全部</button>
+        <button onclick="clearCompare()" style="background:var(--bg3);border:1px solid var(--glass-border);color:var(--text3);font-size:.7rem;padding:4px 10px;border-radius:6px;cursor:pointer;font-family:inherit;">${isEn ? 'Clear All' : '清除全部'}</button>
       </div>
     </div>
     <div style="position:relative;width:100%;height:200px;">
@@ -371,6 +383,7 @@ function drawCompareChart() {
   // Hover Interaction
   const tooltip = document.getElementById('compare-tooltip');
   const crosshair = document.getElementById('compare-crosshair');
+  const isEn = getLang() === 'en';
   
   canvas.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
@@ -394,7 +407,7 @@ function drawCompareChart() {
     tooltip.style.left = tooltipX + 'px';
     tooltip.style.top = Math.max(10, y - 40) + 'px';
     
-    let html = `<div style="margin-bottom:6px;color:rgba(255,255,255,.5);font-weight:600;font-size:0.65rem;text-transform:uppercase;">相對基準 (100)</div>`;
+    let html = `<div style="margin-bottom:6px;color:rgba(255,255,255,.5);font-weight:600;font-size:0.65rem;text-transform:uppercase;">${isEn ? 'Relative Baseline (100)' : '相對基準 (100)'}</div>`;
     compareList.forEach(c => {
       const val = c.data[index];
       const chg = ((val - 100) / 100 * 100).toFixed(2);
@@ -430,6 +443,7 @@ function drawCompareChart() {
   }
 }
 
+
 // Global functions for inline onclick
 window.removeCompare = function(ticker) {
   compareList = compareList.filter(c => c.ticker !== ticker);
@@ -458,8 +472,9 @@ function updateWatchlistBtn(stock) {
     btn.style.cssText = 'background:transparent;border:1px solid var(--glass-border);color:var(--text);padding:6px 12px;border-radius:8px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;margin-left:8px;transition:all .2s;display:inline-flex;align-items:center;gap:4px;';
     document.querySelector('.stock-id-wrap')?.appendChild(btn);
   }
+  const isEn = getLang() === 'en';
   const isFav = watchlist.includes(stock.ticker);
-  btn.innerHTML = isFav ? '<span style="color:#fbbf24">★</span> 已追蹤' : '<span style="color:var(--text3)">☆</span> 加入自選';
+  btn.innerHTML = isFav ? `<span style="color:#fbbf24">★</span> ${isEn ? 'Tracked' : '已追蹤'}` : `<span style="color:var(--text3)">☆</span> ${isEn ? 'Watch' : '加入自選'}`;
   btn.style.borderColor = isFav ? '#fbbf24' : 'var(--glass-border)';
   btn.onclick = () => {
     if (isFav) {
@@ -472,6 +487,7 @@ function updateWatchlistBtn(stock) {
     renderWatchlist();
   };
 }
+
 
 window.renderWatchlist = function() {
   const section = document.getElementById('watchlist-section');

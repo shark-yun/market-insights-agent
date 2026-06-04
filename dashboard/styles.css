@@ -315,3 +315,26 @@ a.disc-video:hover{color:var(--blue);text-decoration:underline}
   .stock-detail-grid{grid-template-columns:1fr}
   .metrics-grid{grid-template-columns:repeat(2,1fr)}
 }
+
+/* 🌐 Language Toggle Button */
+.btn-lang {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--text2);
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin-right: 8px;
+}
+.btn-lang:hover {
+  color: var(--blue);
+  border-color: var(--blue);
+  background: rgba(255, 255, 255, 0.12);
+}
+
