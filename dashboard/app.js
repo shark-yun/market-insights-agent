@@ -576,7 +576,24 @@ function renderMarketIndices(indices) {
     }
     if (canvas && data.sparkline) {
       const color = data.change >= 0 ? '#34d399' : '#f87171';
-      drfunction renderSectors(sectors) {
+      drawSparkline(canvas, data.sparkline, color);
+    }
+  }
+}
+
+// ── TW Heatmap Rendering ──
+function getHeatColor(pct) {
+  if (pct >= 3) return '#16a34a';
+  if (pct >= 1.5) return '#22c55e';
+  if (pct >= 0.5) return '#4ade80';
+  if (pct >= 0) return '#86efac';
+  if (pct >= -0.5) return '#fca5a5';
+  if (pct >= -1.5) return '#f87171';
+  if (pct >= -3) return '#ef4444';
+  return '#dc2626';
+}
+
+function renderSectors(sectors) {
   const hmContainer = document.getElementById('tw-heatmap');
   if (!hmContainer) return;
   hmContainer.innerHTML = '';
