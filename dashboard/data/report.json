@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-25T06:58:19.122680+08:00",
+  "generatedAt": "2026-07-25T19:10:16.138749+08:00",
   "date": "2026-07-25",
   "indices": {
     "TWII": {
@@ -83,11 +83,11 @@
     "GSPC": {
       "label": "S&P 500",
       "market": "us",
-      "price": 7411.98,
-      "change": 3.68,
-      "pct": 0.05,
-      "high": 7460.98,
-      "low": 7396.53,
+      "price": NaN,
+      "change": NaN,
+      "pct": NaN,
+      "high": NaN,
+      "low": NaN,
       "sparkline": [
         7357.49,
         7354.02,
@@ -109,7 +109,7 @@
         7509.2,
         7498.96,
         7408.3,
-        7411.98
+        NaN
       ],
       "volume_sparkline": [
         5565760000,
@@ -161,11 +161,11 @@
     "IXIC": {
       "label": "NASDAQ",
       "market": "us",
-      "price": 24975.82,
-      "change": -161.87,
-      "pct": -0.64,
-      "high": 25222.14,
-      "low": 24918.09,
+      "price": NaN,
+      "change": NaN,
+      "pct": NaN,
+      "high": NaN,
+      "low": NaN,
       "sparkline": [
         25358.6,
         25297.62,
@@ -187,7 +187,7 @@
         25837.21,
         25690.9,
         25137.69,
-        24975.82
+        NaN
       ],
       "volume_sparkline": [
         9870860000,
@@ -239,11 +239,11 @@
     "DJI": {
       "label": "DOW JONES",
       "market": "us",
-      "price": 51947.25,
-      "change": 235.6,
-      "pct": 0.46,
-      "high": 52118.19,
-      "low": 51682.36,
+      "price": NaN,
+      "change": NaN,
+      "pct": NaN,
+      "high": NaN,
+      "low": NaN,
       "sparkline": [
         51920.62,
         51876.11,
@@ -265,7 +265,7 @@
         52224.64,
         52218.58,
         51711.65,
-        51947.25
+        NaN
       ],
       "volume_sparkline": [
         639230000,
@@ -317,11 +317,11 @@
     "VIX": {
       "label": "VIX",
       "market": "us",
-      "price": 18.58,
-      "change": -0.12,
-      "pct": -0.64,
-      "high": 19.05,
-      "low": 17.41,
+      "price": 18.7,
+      "change": 2.06,
+      "pct": 12.38,
+      "high": 20.31,
+      "low": 17.32,
       "sparkline": [
         18.63,
         18.89,
@@ -343,11 +343,9 @@
         18.65,
         17.05,
         16.64,
-        18.7,
-        18.58
+        18.7
       ],
       "volume_sparkline": [
-        0,
         0,
         0,
         0,
@@ -391,8 +389,7 @@
         "07-20",
         "07-21",
         "07-22",
-        "07-23",
-        "07-24"
+        "07-23"
       ]
     }
   },
@@ -433,35 +430,35 @@
     {
       "symbol": "AAPL",
       "name": "Apple",
-      "price": 333.02,
-      "ma5": 326.98,
-      "ma20": 314.39,
-      "ma60": 302.47,
-      "rsi": 67.7,
-      "signal": "bull",
-      "signalText": "多頭排列 ↑"
+      "price": NaN,
+      "ma5": NaN,
+      "ma20": NaN,
+      "ma60": NaN,
+      "rsi": 59.7,
+      "signal": "neutral",
+      "signalText": "整理中 ↔"
     },
     {
       "symbol": "NVDA",
       "name": "NVIDIA",
-      "price": 206.84,
-      "ma5": 207.65,
-      "ma20": 203.33,
-      "ma60": 208.83,
-      "rsi": 59.6,
+      "price": NaN,
+      "ma5": NaN,
+      "ma20": NaN,
+      "ma60": NaN,
+      "rsi": 61.6,
       "signal": "neutral",
       "signalText": "整理中 ↔"
     },
     {
       "symbol": "TSLA",
       "name": "Tesla",
-      "price": 313.03,
-      "ma5": 351.05,
-      "ma20": 388.72,
-      "ma60": 402.87,
-      "rsi": 15.7,
-      "signal": "bear",
-      "signalText": "空頭排列 ↓"
+      "price": NaN,
+      "ma5": NaN,
+      "ma20": NaN,
+      "ma60": NaN,
+      "rsi": 16.4,
+      "signal": "neutral",
+      "signalText": "整理中 ↔"
     }
   ],
   "risks": [
@@ -469,33 +466,33 @@
       "symbol": "DX-Y.NYB",
       "name": "美元指數 DXY",
       "icon": "💵",
-      "price": 101.46,
-      "change": 0.03,
-      "pct": 0.03
+      "price": 101.43,
+      "change": 0.29,
+      "pct": 0.29
     },
     {
       "symbol": "^TNX",
       "name": "美國10年期公債",
       "icon": "🏦",
-      "price": 4.68,
-      "change": -0.02,
-      "pct": -0.49
+      "price": 4.7,
+      "change": 0.04,
+      "pct": 0.92
     },
     {
       "symbol": "GC=F",
       "name": "黃金 Gold",
       "icon": "🥇",
-      "price": 4055.7,
-      "change": 9.1,
-      "pct": 0.22
+      "price": 4067.6,
+      "change": 21.0,
+      "pct": 0.52
     },
     {
       "symbol": "CL=F",
       "name": "原油 WTI",
       "icon": "🛢️",
-      "price": 90.47,
-      "change": -1.72,
-      "pct": -1.87
+      "price": 89.31,
+      "change": -2.88,
+      "pct": -3.12
     }
   ],
   "sectors": [
