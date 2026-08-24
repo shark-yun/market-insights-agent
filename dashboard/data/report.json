@@ -1,19 +1,16 @@
 {
-  "generatedAt": "2026-08-24T06:17:28.426154+08:00",
+  "generatedAt": "2026-08-24T18:36:59.661221+08:00",
   "date": "2026-08-24",
   "indices": {
     "TWII": {
       "label": "台灣加權指數",
       "market": "tw",
-      "price": 45224.29,
-      "change": 290.55,
-      "pct": 0.65,
-      "high": 45254.84,
-      "low": 44583.87,
+      "price": 44762.32,
+      "change": -461.97,
+      "pct": -1.02,
+      "high": 45362.3,
+      "low": 44761.88,
       "sparkline": [
-        44232.87,
-        44825.78,
-        44850.81,
         43654.84,
         43634.19,
         41603.36,
@@ -34,12 +31,10 @@
         45308.68,
         44719.35,
         44933.74,
-        45224.29
+        45224.29,
+        44762.32
       ],
       "volume_sparkline": [
-        4764300,
-        5389000,
-        5159100,
         4337700,
         4260000,
         4492500,
@@ -60,12 +55,10 @@
         4575200,
         4290600,
         4170000,
-        3779900
+        3779900,
+        0
       ],
       "dates": [
-        "07-21",
-        "07-22",
-        "07-23",
         "07-24",
         "07-27",
         "07-28",
@@ -86,7 +79,8 @@
         "08-18",
         "08-19",
         "08-20",
-        "08-21"
+        "08-21",
+        "08-24"
       ]
     },
     "GSPC": {
@@ -344,15 +338,12 @@
     "VIX": {
       "label": "VIX",
       "market": "us",
-      "price": 15.13,
-      "change": -0.88,
-      "pct": -5.5,
-      "high": 15.88,
-      "low": 15.08,
+      "price": 15.93,
+      "change": 0.8,
+      "pct": 5.29,
+      "high": 15.96,
+      "low": 15.86,
       "sparkline": [
-        17.05,
-        16.64,
-        18.7,
         18.58,
         18.67,
         18.21,
@@ -373,11 +364,10 @@
         15.84,
         14.89,
         16.01,
-        15.13
+        15.13,
+        15.93
       ],
       "volume_sparkline": [
-        0,
-        0,
         0,
         0,
         0,
@@ -402,9 +392,6 @@
         0
       ],
       "dates": [
-        "07-21",
-        "07-22",
-        "07-23",
         "07-24",
         "07-27",
         "07-28",
@@ -425,7 +412,8 @@
         "08-18",
         "08-19",
         "08-20",
-        "08-21"
+        "08-21",
+        "08-24"
       ]
     }
   },
@@ -433,33 +421,33 @@
     {
       "symbol": "TWII",
       "name": "台股加權",
-      "price": 45224.29,
-      "ma5": 45208.67,
-      "ma20": 44087.72,
-      "ma60": 44851.56,
-      "rsi": 67.2,
+      "price": 44762.32,
+      "ma5": 44989.68,
+      "ma20": 44144.13,
+      "ma60": 44870.33,
+      "rsi": 62.1,
       "signal": "neutral",
       "signalText": "整理中 ↔"
     },
     {
       "symbol": "2330",
       "name": "台積電",
-      "price": 2410.0,
-      "ma5": 2383.0,
-      "ma20": 2361.25,
-      "ma60": 2381.23,
-      "rsi": 55.0,
+      "price": 2375.0,
+      "ma5": 2378.0,
+      "ma20": 2362.5,
+      "ma60": 2381.67,
+      "rsi": 57.1,
       "signal": "neutral",
       "signalText": "整理中 ↔"
     },
     {
       "symbol": "2317",
       "name": "鴻海",
-      "price": 245.5,
-      "ma5": 248.2,
-      "ma20": 252.7,
-      "ma60": 253.11,
-      "rsi": 44.0,
+      "price": 243.5,
+      "ma5": 245.9,
+      "ma20": 252.22,
+      "ma60": 252.5,
+      "rsi": 44.7,
       "signal": "bear",
       "signalText": "空頭排列 ↓"
     },
@@ -502,9 +490,9 @@
       "symbol": "DX-Y.NYB",
       "name": "美元指數 DXY",
       "icon": "💵",
-      "price": 98.85,
-      "change": 0.05,
-      "pct": 0.05
+      "price": 98.97,
+      "change": 0.17,
+      "pct": 0.17
     },
     {
       "symbol": "^TNX",
@@ -518,32 +506,4159 @@
       "symbol": "GC=F",
       "name": "黃金 Gold",
       "icon": "🥇",
-      "price": 4680.6,
-      "change": 56.5,
-      "pct": 1.22
+      "price": 4700.5,
+      "change": 76.4,
+      "pct": 1.65
     },
     {
       "symbol": "CL=F",
       "name": "原油 WTI",
       "icon": "🛢️",
-      "price": 87.06,
-      "change": 0.0,
-      "pct": 0.0
+      "price": 85.07,
+      "change": -1.99,
+      "pct": -2.29
     }
   ],
-  "sectors": [],
+  "sectors": [
+    {
+      "name": "水泥窯製",
+      "fullName": "水泥窯製類指數",
+      "pct": 0.2,
+      "close": "625.34"
+    },
+    {
+      "name": "塑膠化工",
+      "fullName": "塑膠化工類指數",
+      "pct": 2.28,
+      "close": "1076.79"
+    },
+    {
+      "name": "機電",
+      "fullName": "機電類指數",
+      "pct": 0.34,
+      "close": "15806.65"
+    },
+    {
+      "name": "水泥",
+      "fullName": "水泥類指數",
+      "pct": 0.41,
+      "close": "123.36"
+    },
+    {
+      "name": "食品",
+      "fullName": "食品類指數",
+      "pct": -0.15,
+      "close": "1960.23"
+    },
+    {
+      "name": "塑膠",
+      "fullName": "塑膠類指數",
+      "pct": 3.08,
+      "close": "329.68"
+    },
+    {
+      "name": "紡織纖維",
+      "fullName": "紡織纖維類指數",
+      "pct": 1.95,
+      "close": "492.42"
+    },
+    {
+      "name": "電機",
+      "fullName": "電機機械類指數",
+      "pct": -2.07,
+      "close": "539.95"
+    },
+    {
+      "name": "電器電纜",
+      "fullName": "電器電纜類指數",
+      "pct": 0.84,
+      "close": "107.20"
+    },
+    {
+      "name": "化學生技醫療",
+      "fullName": "化學生技醫療類指數",
+      "pct": 1.41,
+      "close": "175.54"
+    },
+    {
+      "name": "化學",
+      "fullName": "化學類指數",
+      "pct": 1.49,
+      "close": "192.21"
+    },
+    {
+      "name": "生技醫療",
+      "fullName": "生技醫療類指數",
+      "pct": 1.38,
+      "close": "101.85"
+    },
+    {
+      "name": "玻璃陶瓷",
+      "fullName": "玻璃陶瓷類指數",
+      "pct": -0.19,
+      "close": "136.95"
+    },
+    {
+      "name": "造紙",
+      "fullName": "造紙類指數",
+      "pct": 1.37,
+      "close": "291.86"
+    },
+    {
+      "name": "鋼鐵",
+      "fullName": "鋼鐵類指數",
+      "pct": 0.32,
+      "close": "123.21"
+    },
+    {
+      "name": "橡膠",
+      "fullName": "橡膠類指數",
+      "pct": 1.09,
+      "close": "199.50"
+    },
+    {
+      "name": "汽車",
+      "fullName": "汽車類指數",
+      "pct": 0.75,
+      "close": "295.76"
+    },
+    {
+      "name": "電子工業",
+      "fullName": "電子工業類指數",
+      "pct": 0.37,
+      "close": "2872.09"
+    },
+    {
+      "name": "半導體",
+      "fullName": "半導體類指數",
+      "pct": 1.32,
+      "close": "1526.32"
+    },
+    {
+      "name": "電腦及週邊設備",
+      "fullName": "電腦及週邊設備類指數",
+      "pct": -1.65,
+      "close": "437.97"
+    },
+    {
+      "name": "光電",
+      "fullName": "光電類指數",
+      "pct": 0.8,
+      "close": "67.04"
+    },
+    {
+      "name": "通信網路",
+      "fullName": "通信網路類指數",
+      "pct": -1.16,
+      "close": "230.76"
+    },
+    {
+      "name": "電子零組件",
+      "fullName": "電子零組件類指數",
+      "pct": -2.65,
+      "close": "908.79"
+    },
+    {
+      "name": "電子通路",
+      "fullName": "電子通路類指數",
+      "pct": 0.98,
+      "close": "361.33"
+    },
+    {
+      "name": "資訊服務",
+      "fullName": "資訊服務類指數",
+      "pct": -0.23,
+      "close": "228.75"
+    },
+    {
+      "name": "其他電子",
+      "fullName": "其他電子類指數",
+      "pct": -0.66,
+      "close": "271.81"
+    },
+    {
+      "name": "建材營造",
+      "fullName": "建材營造類指數",
+      "pct": 0.81,
+      "close": "469.75"
+    },
+    {
+      "name": "航運",
+      "fullName": "航運類指數",
+      "pct": 3.37,
+      "close": "220.64"
+    },
+    {
+      "name": "觀光餐旅",
+      "fullName": "觀光餐旅類指數",
+      "pct": 1.71,
+      "close": "103.28"
+    },
+    {
+      "name": "金融保險",
+      "fullName": "金融保險類指數",
+      "pct": 2.53,
+      "close": "3203.49"
+    },
+    {
+      "name": "貿易百貨",
+      "fullName": "貿易百貨類指數",
+      "pct": 0.96,
+      "close": "243.95"
+    },
+    {
+      "name": "油電燃氣",
+      "fullName": "油電燃氣類指數",
+      "pct": 3.42,
+      "close": "102.60"
+    },
+    {
+      "name": "綠能環保",
+      "fullName": "綠能環保類指數",
+      "pct": 2.37,
+      "close": "132.25"
+    },
+    {
+      "name": "數位雲端",
+      "fullName": "數位雲端類指數",
+      "pct": -0.52,
+      "close": "40.41"
+    },
+    {
+      "name": "運動休閒",
+      "fullName": "運動休閒類指數",
+      "pct": 0.07,
+      "close": "59.38"
+    },
+    {
+      "name": "居家生活",
+      "fullName": "居家生活類指數",
+      "pct": -0.52,
+      "close": "101.08"
+    },
+    {
+      "name": "其他",
+      "fullName": "其他類指數",
+      "pct": 1.1,
+      "close": "283.64"
+    }
+  ],
   "institutional": {
-    "date": "",
-    "topBuy": [],
-    "topSell": [],
-    "sectorDetails": {}
+    "date": "20260824",
+    "topBuy": [
+      {
+        "code": "6770",
+        "name": "力積電",
+        "net_lots": 40104,
+        "foreign_lots": 38096,
+        "trust_lots": 0,
+        "dealer_lots": 2008
+      },
+      {
+        "code": "2324",
+        "name": "仁寶",
+        "net_lots": 29472,
+        "foreign_lots": 28427,
+        "trust_lots": 958,
+        "dealer_lots": 87
+      },
+      {
+        "code": "2609",
+        "name": "陽明",
+        "net_lots": 29205,
+        "foreign_lots": 30651,
+        "trust_lots": 27,
+        "dealer_lots": -1474
+      },
+      {
+        "code": "2303",
+        "name": "聯電",
+        "net_lots": 19101,
+        "foreign_lots": 2257,
+        "trust_lots": 14763,
+        "dealer_lots": 2081
+      },
+      {
+        "code": "2426",
+        "name": "鼎元",
+        "net_lots": 13788,
+        "foreign_lots": 13703,
+        "trust_lots": 0,
+        "dealer_lots": 85
+      },
+      {
+        "code": "6116",
+        "name": "彩晶",
+        "net_lots": 11549,
+        "foreign_lots": 11124,
+        "trust_lots": 0,
+        "dealer_lots": 424
+      },
+      {
+        "code": "2615",
+        "name": "萬海",
+        "net_lots": 11049,
+        "foreign_lots": 11518,
+        "trust_lots": 12,
+        "dealer_lots": -482
+      },
+      {
+        "code": "2603",
+        "name": "長榮",
+        "net_lots": 9807,
+        "foreign_lots": 9343,
+        "trust_lots": 13,
+        "dealer_lots": 451
+      },
+      {
+        "code": "2301",
+        "name": "光寶科",
+        "net_lots": 9593,
+        "foreign_lots": 8748,
+        "trust_lots": 112,
+        "dealer_lots": 733
+      },
+      {
+        "code": "2886",
+        "name": "兆豐金",
+        "net_lots": 9256,
+        "foreign_lots": 12920,
+        "trust_lots": -3622,
+        "dealer_lots": -42
+      }
+    ],
+    "topSell": [
+      {
+        "code": "1303",
+        "name": "南亞",
+        "net_lots": -29075,
+        "foreign_lots": -28430,
+        "trust_lots": 72,
+        "dealer_lots": -718
+      },
+      {
+        "code": "3481",
+        "name": "群創",
+        "net_lots": -23188,
+        "foreign_lots": -23066,
+        "trust_lots": -6,
+        "dealer_lots": -116
+      },
+      {
+        "code": "1301",
+        "name": "台塑",
+        "net_lots": -22084,
+        "foreign_lots": -21392,
+        "trust_lots": 0,
+        "dealer_lots": -692
+      },
+      {
+        "code": "6505",
+        "name": "台塑化",
+        "net_lots": -19403,
+        "foreign_lots": -19168,
+        "trust_lots": 0,
+        "dealer_lots": -235
+      },
+      {
+        "code": "1326",
+        "name": "台化",
+        "net_lots": -18994,
+        "foreign_lots": -18205,
+        "trust_lots": 500,
+        "dealer_lots": -1289
+      },
+      {
+        "code": "2834",
+        "name": "臺企銀",
+        "net_lots": -14548,
+        "foreign_lots": -14496,
+        "trust_lots": -13,
+        "dealer_lots": -39
+      },
+      {
+        "code": "1314",
+        "name": "中石化",
+        "net_lots": -14007,
+        "foreign_lots": -13733,
+        "trust_lots": 0,
+        "dealer_lots": -274
+      },
+      {
+        "code": "2887",
+        "name": "台新新光金",
+        "net_lots": -13702,
+        "foreign_lots": -13424,
+        "trust_lots": -723,
+        "dealer_lots": 445
+      },
+      {
+        "code": "2408",
+        "name": "南亞科",
+        "net_lots": -11150,
+        "foreign_lots": -11489,
+        "trust_lots": 888,
+        "dealer_lots": -549
+      },
+      {
+        "code": "2885",
+        "name": "元大金",
+        "net_lots": -10170,
+        "foreign_lots": -9455,
+        "trust_lots": -728,
+        "dealer_lots": 13
+      }
+    ],
+    "sectorDetails": {
+      "半導體": {
+        "topBuy": [
+          {
+            "code": "6770",
+            "name": "力積電",
+            "net_lots": 40104,
+            "foreign_lots": 38096,
+            "trust_lots": 0,
+            "dealer_lots": 2008,
+            "price": 68.4,
+            "change": 1.1,
+            "pct": 1.63
+          },
+          {
+            "code": "2303",
+            "name": "聯電",
+            "net_lots": 19101,
+            "foreign_lots": 2257,
+            "trust_lots": 14763,
+            "dealer_lots": 2081,
+            "price": 116.5,
+            "change": 1.0,
+            "pct": 0.87
+          },
+          {
+            "code": "2337",
+            "name": "旺宏",
+            "net_lots": 8247,
+            "foreign_lots": 7831,
+            "trust_lots": 0,
+            "dealer_lots": 416,
+            "price": 122.5,
+            "change": 0.5,
+            "pct": 0.41
+          },
+          {
+            "code": "3006",
+            "name": "晶豪科",
+            "net_lots": 3883,
+            "foreign_lots": 3789,
+            "trust_lots": 0,
+            "dealer_lots": 93,
+            "price": 256.5,
+            "change": 6.0,
+            "pct": 2.4
+          },
+          {
+            "code": "2449",
+            "name": "京元電子",
+            "net_lots": 3011,
+            "foreign_lots": 3723,
+            "trust_lots": -683,
+            "dealer_lots": -28,
+            "price": 232.0,
+            "change": -3.0,
+            "pct": -1.28
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2408",
+            "name": "南亞科",
+            "net_lots": -11150,
+            "foreign_lots": -11489,
+            "trust_lots": 888,
+            "dealer_lots": -549,
+            "price": 528.0,
+            "change": 11.0,
+            "pct": 2.13
+          },
+          {
+            "code": "2344",
+            "name": "華邦電",
+            "net_lots": -4791,
+            "foreign_lots": -4146,
+            "trust_lots": 17,
+            "dealer_lots": -663,
+            "price": 181.0,
+            "change": 4.5,
+            "pct": 2.55
+          },
+          {
+            "code": "3189",
+            "name": "景碩",
+            "net_lots": -2707,
+            "foreign_lots": -2392,
+            "trust_lots": -246,
+            "dealer_lots": -69,
+            "price": 811.0,
+            "change": -40.0,
+            "pct": -4.7
+          },
+          {
+            "code": "2330",
+            "name": "台積電",
+            "net_lots": -1487,
+            "foreign_lots": -1621,
+            "trust_lots": 157,
+            "dealer_lots": -23,
+            "price": 2410.0,
+            "change": 35.0,
+            "pct": 1.47
+          },
+          {
+            "code": "3450",
+            "name": "聯鈞",
+            "net_lots": -1227,
+            "foreign_lots": -765,
+            "trust_lots": -306,
+            "dealer_lots": -156,
+            "price": 551.0,
+            "change": -2.0,
+            "pct": -0.36
+          }
+        ]
+      },
+      "電腦及週邊設備": {
+        "topBuy": [
+          {
+            "code": "2324",
+            "name": "仁寶",
+            "net_lots": 29472,
+            "foreign_lots": 28427,
+            "trust_lots": 958,
+            "dealer_lots": 87,
+            "price": 38.95,
+            "change": 0.45,
+            "pct": 1.17
+          },
+          {
+            "code": "2301",
+            "name": "光寶科",
+            "net_lots": 9593,
+            "foreign_lots": 8748,
+            "trust_lots": 112,
+            "dealer_lots": 733,
+            "price": 261.0,
+            "change": -6.0,
+            "pct": -2.25
+          },
+          {
+            "code": "2353",
+            "name": "宏碁",
+            "net_lots": 7562,
+            "foreign_lots": 7346,
+            "trust_lots": 22,
+            "dealer_lots": 194,
+            "price": 30.7,
+            "change": -0.3,
+            "pct": -0.97
+          },
+          {
+            "code": "3706",
+            "name": "神達",
+            "net_lots": 4582,
+            "foreign_lots": 3242,
+            "trust_lots": 1197,
+            "dealer_lots": 143,
+            "price": 90.0,
+            "change": -0.1,
+            "pct": -0.11
+          },
+          {
+            "code": "2377",
+            "name": "微星",
+            "net_lots": 2035,
+            "foreign_lots": 1955,
+            "trust_lots": -53,
+            "dealer_lots": 134,
+            "price": 141.5,
+            "change": 1.5,
+            "pct": 1.07
+          }
+        ],
+        "topSell": [
+          {
+            "code": "3231",
+            "name": "緯創",
+            "net_lots": -4077,
+            "foreign_lots": -4108,
+            "trust_lots": 23,
+            "dealer_lots": 7,
+            "price": 175.5,
+            "change": -4.5,
+            "pct": -2.5
+          },
+          {
+            "code": "2376",
+            "name": "技嘉",
+            "net_lots": -512,
+            "foreign_lots": -454,
+            "trust_lots": 0,
+            "dealer_lots": -58,
+            "price": 339.5,
+            "change": -4.5,
+            "pct": -1.31
+          },
+          {
+            "code": "3005",
+            "name": "神基",
+            "net_lots": -333,
+            "foreign_lots": -317,
+            "trust_lots": 0,
+            "dealer_lots": -16,
+            "price": 117.0,
+            "change": -0.5,
+            "pct": -0.43
+          },
+          {
+            "code": "2352",
+            "name": "佳世達",
+            "net_lots": -302,
+            "foreign_lots": -301,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 28.8,
+            "change": -0.45,
+            "pct": -1.54
+          },
+          {
+            "code": "2365",
+            "name": "昆盈",
+            "net_lots": -299,
+            "foreign_lots": -297,
+            "trust_lots": 0,
+            "dealer_lots": -2,
+            "price": 30.6,
+            "change": 0.05,
+            "pct": 0.16
+          }
+        ]
+      },
+      "航運": {
+        "topBuy": [
+          {
+            "code": "2609",
+            "name": "陽明",
+            "net_lots": 29205,
+            "foreign_lots": 30651,
+            "trust_lots": 27,
+            "dealer_lots": -1474,
+            "price": 64.0,
+            "change": 3.7,
+            "pct": 6.14
+          },
+          {
+            "code": "2615",
+            "name": "萬海",
+            "net_lots": 11049,
+            "foreign_lots": 11518,
+            "trust_lots": 12,
+            "dealer_lots": -482,
+            "price": 124.5,
+            "change": 11.0,
+            "pct": 9.69
+          },
+          {
+            "code": "2603",
+            "name": "長榮",
+            "net_lots": 9807,
+            "foreign_lots": 9343,
+            "trust_lots": 13,
+            "dealer_lots": 451,
+            "price": 251.5,
+            "change": 5.5,
+            "pct": 2.24
+          },
+          {
+            "code": "2610",
+            "name": "華航",
+            "net_lots": 9155,
+            "foreign_lots": 8380,
+            "trust_lots": 190,
+            "dealer_lots": 585,
+            "price": 20.4,
+            "change": 0.4,
+            "pct": 2.0
+          },
+          {
+            "code": "2618",
+            "name": "長榮航",
+            "net_lots": 6556,
+            "foreign_lots": 6463,
+            "trust_lots": -112,
+            "dealer_lots": 205,
+            "price": 42.6,
+            "change": 0.35,
+            "pct": 0.83
+          }
+        ],
+        "topSell": [
+          {
+            "code": "5608",
+            "name": "四維航",
+            "net_lots": -2917,
+            "foreign_lots": -2899,
+            "trust_lots": 0,
+            "dealer_lots": -18,
+            "price": 18.75,
+            "change": 1.7,
+            "pct": 9.97
+          },
+          {
+            "code": "2613",
+            "name": "中櫃",
+            "net_lots": -1180,
+            "foreign_lots": -1166,
+            "trust_lots": 0,
+            "dealer_lots": -14,
+            "price": 24.9,
+            "change": 2.25,
+            "pct": 9.93
+          },
+          {
+            "code": "2645",
+            "name": "長榮航太",
+            "net_lots": -1124,
+            "foreign_lots": -1104,
+            "trust_lots": -2,
+            "dealer_lots": -18,
+            "price": 177.0,
+            "change": -2.0,
+            "pct": -1.12
+          },
+          {
+            "code": "2601",
+            "name": "益航",
+            "net_lots": -926,
+            "foreign_lots": -867,
+            "trust_lots": 0,
+            "dealer_lots": -59,
+            "price": 7.39,
+            "change": 0.67,
+            "pct": 9.97
+          },
+          {
+            "code": "2636",
+            "name": "台驊控股",
+            "net_lots": -803,
+            "foreign_lots": -801,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 73.3,
+            "change": 2.1,
+            "pct": 2.95
+          }
+        ]
+      },
+      "光電": {
+        "topBuy": [
+          {
+            "code": "2426",
+            "name": "鼎元",
+            "net_lots": 13788,
+            "foreign_lots": 13703,
+            "trust_lots": 0,
+            "dealer_lots": 85,
+            "price": 82.2,
+            "change": 7.4,
+            "pct": 9.89
+          },
+          {
+            "code": "6116",
+            "name": "彩晶",
+            "net_lots": 11549,
+            "foreign_lots": 11124,
+            "trust_lots": 0,
+            "dealer_lots": 424,
+            "price": 13.8,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "6226",
+            "name": "光鼎",
+            "net_lots": 2910,
+            "foreign_lots": 2920,
+            "trust_lots": 0,
+            "dealer_lots": -10,
+            "price": 21.2,
+            "change": -0.8,
+            "pct": -3.64
+          },
+          {
+            "code": "3024",
+            "name": "憶聲",
+            "net_lots": 411,
+            "foreign_lots": 414,
+            "trust_lots": 0,
+            "dealer_lots": -3,
+            "price": 13.85,
+            "change": 0.15,
+            "pct": 1.09
+          },
+          {
+            "code": "2393",
+            "name": "億光",
+            "net_lots": 218,
+            "foreign_lots": 751,
+            "trust_lots": -369,
+            "dealer_lots": -165,
+            "price": 64.7,
+            "change": -1.6,
+            "pct": -2.41
+          }
+        ],
+        "topSell": [
+          {
+            "code": "3481",
+            "name": "群創",
+            "net_lots": -23188,
+            "foreign_lots": -23066,
+            "trust_lots": -6,
+            "dealer_lots": -116,
+            "price": 46.05,
+            "change": 0.05,
+            "pct": 0.11
+          },
+          {
+            "code": "2409",
+            "name": "友達",
+            "net_lots": -9190,
+            "foreign_lots": -9051,
+            "trust_lots": 0,
+            "dealer_lots": -139,
+            "price": 25.6,
+            "change": -0.2,
+            "pct": -0.78
+          },
+          {
+            "code": "2489",
+            "name": "瑞軒",
+            "net_lots": -2851,
+            "foreign_lots": -3485,
+            "trust_lots": 272,
+            "dealer_lots": 363,
+            "price": 35.65,
+            "change": 3.2,
+            "pct": 9.86
+          },
+          {
+            "code": "6278",
+            "name": "台表科",
+            "net_lots": -2561,
+            "foreign_lots": -2963,
+            "trust_lots": 456,
+            "dealer_lots": -54,
+            "price": 187.0,
+            "change": 7.0,
+            "pct": 3.89
+          },
+          {
+            "code": "3673",
+            "name": "TPK-KY",
+            "net_lots": -1900,
+            "foreign_lots": -1804,
+            "trust_lots": 0,
+            "dealer_lots": -96,
+            "price": 63.3,
+            "change": -1.8,
+            "pct": -2.76
+          }
+        ]
+      },
+      "金融": {
+        "topBuy": [
+          {
+            "code": "2886",
+            "name": "兆豐金",
+            "net_lots": 9256,
+            "foreign_lots": 12920,
+            "trust_lots": -3622,
+            "dealer_lots": -42,
+            "price": 46.95,
+            "change": 0.55,
+            "pct": 1.19
+          },
+          {
+            "code": "2892",
+            "name": "第一金",
+            "net_lots": 8307,
+            "foreign_lots": 12784,
+            "trust_lots": -4483,
+            "dealer_lots": 6,
+            "price": 33.65,
+            "change": 0.35,
+            "pct": 1.05
+          },
+          {
+            "code": "2812",
+            "name": "台中銀",
+            "net_lots": 7121,
+            "foreign_lots": 7127,
+            "trust_lots": -6,
+            "dealer_lots": 0,
+            "price": 18.85,
+            "change": 0.05,
+            "pct": 0.27
+          },
+          {
+            "code": "5880",
+            "name": "合庫金",
+            "net_lots": 1754,
+            "foreign_lots": 1710,
+            "trust_lots": -13,
+            "dealer_lots": 57,
+            "price": 25.05,
+            "change": 0.25,
+            "pct": 1.01
+          },
+          {
+            "code": "2897",
+            "name": "王道銀行",
+            "net_lots": 642,
+            "foreign_lots": 642,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 10.25,
+            "change": 0.0,
+            "pct": 0.0
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2834",
+            "name": "臺企銀",
+            "net_lots": -14548,
+            "foreign_lots": -14496,
+            "trust_lots": -13,
+            "dealer_lots": -39,
+            "price": 16.55,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "2887",
+            "name": "台新新光金",
+            "net_lots": -13702,
+            "foreign_lots": -13424,
+            "trust_lots": -723,
+            "dealer_lots": 445,
+            "price": 37.25,
+            "change": 1.3,
+            "pct": 3.62
+          },
+          {
+            "code": "2885",
+            "name": "元大金",
+            "net_lots": -10170,
+            "foreign_lots": -9455,
+            "trust_lots": -728,
+            "dealer_lots": 13,
+            "price": 64.0,
+            "change": 1.9,
+            "pct": 3.06
+          },
+          {
+            "code": "2890",
+            "name": "永豐金",
+            "net_lots": -8662,
+            "foreign_lots": -7556,
+            "trust_lots": -1126,
+            "dealer_lots": 20,
+            "price": 39.6,
+            "change": 0.25,
+            "pct": 0.64
+          },
+          {
+            "code": "2891",
+            "name": "中信金",
+            "net_lots": -8073,
+            "foreign_lots": -8108,
+            "trust_lots": -73,
+            "dealer_lots": 108,
+            "price": 65.0,
+            "change": 1.6,
+            "pct": 2.52
+          }
+        ]
+      },
+      "電子通路": {
+        "topBuy": [
+          {
+            "code": "8112",
+            "name": "至上",
+            "net_lots": 7759,
+            "foreign_lots": 7548,
+            "trust_lots": 0,
+            "dealer_lots": 211,
+            "price": 93.5,
+            "change": -0.2,
+            "pct": -0.21
+          },
+          {
+            "code": "3033",
+            "name": "威健",
+            "net_lots": 1679,
+            "foreign_lots": 2082,
+            "trust_lots": 0,
+            "dealer_lots": -403,
+            "price": 45.45,
+            "change": 0.1,
+            "pct": 0.22
+          },
+          {
+            "code": "3702",
+            "name": "大聯大",
+            "net_lots": 456,
+            "foreign_lots": -1034,
+            "trust_lots": 1280,
+            "dealer_lots": 210,
+            "price": 111.0,
+            "change": 6.5,
+            "pct": 6.22
+          },
+          {
+            "code": "8070",
+            "name": "長華*",
+            "net_lots": 437,
+            "foreign_lots": 443,
+            "trust_lots": 0,
+            "dealer_lots": -6,
+            "price": 48.8,
+            "change": -1.4,
+            "pct": -2.79
+          },
+          {
+            "code": "6189",
+            "name": "豐藝",
+            "net_lots": 376,
+            "foreign_lots": 375,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 48.1,
+            "change": -0.05,
+            "pct": -0.1
+          }
+        ],
+        "topSell": [
+          {
+            "code": "3036",
+            "name": "文曄",
+            "net_lots": -1887,
+            "foreign_lots": -1879,
+            "trust_lots": -26,
+            "dealer_lots": 18,
+            "price": 206.0,
+            "change": 0.5,
+            "pct": 0.24
+          },
+          {
+            "code": "2414",
+            "name": "精技",
+            "net_lots": -122,
+            "foreign_lots": -111,
+            "trust_lots": 0,
+            "dealer_lots": -11,
+            "price": 52.3,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "3312",
+            "name": "弘憶股",
+            "net_lots": -58,
+            "foreign_lots": -56,
+            "trust_lots": 0,
+            "dealer_lots": -2,
+            "price": 51.3,
+            "change": -0.1,
+            "pct": -0.19
+          },
+          {
+            "code": "3048",
+            "name": "益登",
+            "net_lots": -25,
+            "foreign_lots": 127,
+            "trust_lots": 0,
+            "dealer_lots": -152,
+            "price": 56.0,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "3528",
+            "name": "安馳",
+            "net_lots": -22,
+            "foreign_lots": -23,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 83.6,
+            "change": -0.9,
+            "pct": -1.07
+          }
+        ]
+      },
+      "通信網路": {
+        "topBuy": [
+          {
+            "code": "3045",
+            "name": "台灣大",
+            "net_lots": 5735,
+            "foreign_lots": 5735,
+            "trust_lots": 13,
+            "dealer_lots": -13,
+            "price": 115.0,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "4904",
+            "name": "遠傳",
+            "net_lots": 615,
+            "foreign_lots": 1223,
+            "trust_lots": -613,
+            "dealer_lots": 6,
+            "price": 102.5,
+            "change": 0.5,
+            "pct": 0.49
+          },
+          {
+            "code": "2455",
+            "name": "全新",
+            "net_lots": 504,
+            "foreign_lots": 107,
+            "trust_lots": -5,
+            "dealer_lots": 401,
+            "price": 406.0,
+            "change": -6.0,
+            "pct": -1.46
+          },
+          {
+            "code": "6442",
+            "name": "光聖",
+            "net_lots": 100,
+            "foreign_lots": 113,
+            "trust_lots": 0,
+            "dealer_lots": -12,
+            "price": 1525.0,
+            "change": -30.0,
+            "pct": -1.93
+          },
+          {
+            "code": "2439",
+            "name": "美律",
+            "net_lots": 95,
+            "foreign_lots": 107,
+            "trust_lots": 0,
+            "dealer_lots": -13,
+            "price": 82.5,
+            "change": 0.5,
+            "pct": 0.61
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2412",
+            "name": "中華電",
+            "net_lots": -1484,
+            "foreign_lots": -1511,
+            "trust_lots": -1,
+            "dealer_lots": 28,
+            "price": 136.5,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "5388",
+            "name": "中磊",
+            "net_lots": -1034,
+            "foreign_lots": -1035,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 77.6,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "2498",
+            "name": "宏達電",
+            "net_lots": -707,
+            "foreign_lots": -654,
+            "trust_lots": 0,
+            "dealer_lots": -53,
+            "price": 40.95,
+            "change": 0.95,
+            "pct": 2.38
+          },
+          {
+            "code": "4906",
+            "name": "正文",
+            "net_lots": -515,
+            "foreign_lots": -470,
+            "trust_lots": 0,
+            "dealer_lots": -45,
+            "price": 34.6,
+            "change": 0.3,
+            "pct": 0.87
+          },
+          {
+            "code": "3596",
+            "name": "智易",
+            "net_lots": -382,
+            "foreign_lots": -382,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 161.0,
+            "change": -1.5,
+            "pct": -0.92
+          }
+        ]
+      },
+      "電器電纜": {
+        "topBuy": [
+          {
+            "code": "1605",
+            "name": "華新",
+            "net_lots": 5464,
+            "foreign_lots": 4881,
+            "trust_lots": 0,
+            "dealer_lots": 583,
+            "price": 37.3,
+            "change": 0.45,
+            "pct": 1.22
+          },
+          {
+            "code": "1608",
+            "name": "華榮",
+            "net_lots": 1659,
+            "foreign_lots": 1636,
+            "trust_lots": 0,
+            "dealer_lots": 23,
+            "price": 35.85,
+            "change": 0.35,
+            "pct": 0.99
+          },
+          {
+            "code": "1609",
+            "name": "大亞",
+            "net_lots": 348,
+            "foreign_lots": 335,
+            "trust_lots": 0,
+            "dealer_lots": 14,
+            "price": 37.05,
+            "change": 0.15,
+            "pct": 0.41
+          },
+          {
+            "code": "1612",
+            "name": "宏泰",
+            "net_lots": 223,
+            "foreign_lots": 223,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 34.65,
+            "change": 0.1,
+            "pct": 0.29
+          },
+          {
+            "code": "1616",
+            "name": "億泰",
+            "net_lots": 185,
+            "foreign_lots": 185,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 19.4,
+            "change": 0.15,
+            "pct": 0.78
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1611",
+            "name": "中電",
+            "net_lots": -147,
+            "foreign_lots": -147,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 12.3,
+            "change": 0.1,
+            "pct": 0.82
+          },
+          {
+            "code": "1623",
+            "name": "大東電",
+            "net_lots": -38,
+            "foreign_lots": -38,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 201.0,
+            "change": -1.5,
+            "pct": -0.74
+          },
+          {
+            "code": "1604",
+            "name": "聲寶",
+            "net_lots": -38,
+            "foreign_lots": -13,
+            "trust_lots": 0,
+            "dealer_lots": -25,
+            "price": 23.3,
+            "change": 0.05,
+            "pct": 0.22
+          },
+          {
+            "code": "4930",
+            "name": "燦星網",
+            "net_lots": -16,
+            "foreign_lots": -14,
+            "trust_lots": 0,
+            "dealer_lots": -2,
+            "price": 16.15,
+            "change": -0.05,
+            "pct": -0.31
+          },
+          {
+            "code": "1626",
+            "name": "艾美特-KY",
+            "net_lots": -7,
+            "foreign_lots": -7,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 9.6,
+            "change": 0.1,
+            "pct": 1.05
+          }
+        ]
+      },
+      "食品": {
+        "topBuy": [
+          {
+            "code": "1216",
+            "name": "統一",
+            "net_lots": 4675,
+            "foreign_lots": 4808,
+            "trust_lots": -99,
+            "dealer_lots": -34,
+            "price": 77.5,
+            "change": -0.7,
+            "pct": -0.9
+          },
+          {
+            "code": "1229",
+            "name": "聯華",
+            "net_lots": 310,
+            "foreign_lots": 311,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 42.4,
+            "change": 0.35,
+            "pct": 0.83
+          },
+          {
+            "code": "1217",
+            "name": "愛之味",
+            "net_lots": 175,
+            "foreign_lots": 175,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 10.05,
+            "change": 0.05,
+            "pct": 0.5
+          },
+          {
+            "code": "1218",
+            "name": "泰山",
+            "net_lots": 90,
+            "foreign_lots": 97,
+            "trust_lots": 0,
+            "dealer_lots": -7,
+            "price": 14.7,
+            "change": -0.2,
+            "pct": -1.34
+          },
+          {
+            "code": "1702",
+            "name": "南僑",
+            "net_lots": 24,
+            "foreign_lots": 24,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 33.05,
+            "change": 0.3,
+            "pct": 0.92
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1215",
+            "name": "卜蜂",
+            "net_lots": -529,
+            "foreign_lots": -572,
+            "trust_lots": 43,
+            "dealer_lots": 0,
+            "price": 112.0,
+            "change": 1.5,
+            "pct": 1.36
+          },
+          {
+            "code": "7780",
+            "name": "大研生醫*",
+            "net_lots": -382,
+            "foreign_lots": -377,
+            "trust_lots": 0,
+            "dealer_lots": -5,
+            "price": 17.1,
+            "change": 0.25,
+            "pct": 1.48
+          },
+          {
+            "code": "1737",
+            "name": "臺鹽",
+            "net_lots": -335,
+            "foreign_lots": -335,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 32.5,
+            "change": 0.1,
+            "pct": 0.31
+          },
+          {
+            "code": "1210",
+            "name": "大成",
+            "net_lots": -261,
+            "foreign_lots": 292,
+            "trust_lots": -328,
+            "dealer_lots": -225,
+            "price": 53.1,
+            "change": 0.5,
+            "pct": 0.95
+          },
+          {
+            "code": "1231",
+            "name": "聯華食",
+            "net_lots": -118,
+            "foreign_lots": -118,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 82.4,
+            "change": 0.0,
+            "pct": 0.0
+          }
+        ]
+      },
+      "其他電子": {
+        "topBuy": [
+          {
+            "code": "2312",
+            "name": "金寶",
+            "net_lots": 3910,
+            "foreign_lots": 3669,
+            "trust_lots": 0,
+            "dealer_lots": 240,
+            "price": 31.05,
+            "change": -0.3,
+            "pct": -0.96
+          },
+          {
+            "code": "2464",
+            "name": "盟立",
+            "net_lots": 1728,
+            "foreign_lots": 1337,
+            "trust_lots": 180,
+            "dealer_lots": 211,
+            "price": 179.0,
+            "change": -1.5,
+            "pct": -0.83
+          },
+          {
+            "code": "2354",
+            "name": "鴻準",
+            "net_lots": 436,
+            "foreign_lots": 403,
+            "trust_lots": -1,
+            "dealer_lots": 35,
+            "price": 60.2,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "2474",
+            "name": "可成",
+            "net_lots": 199,
+            "foreign_lots": 231,
+            "trust_lots": 7,
+            "dealer_lots": -39,
+            "price": 203.5,
+            "change": -0.5,
+            "pct": -0.25
+          },
+          {
+            "code": "6196",
+            "name": "帆宣",
+            "net_lots": 118,
+            "foreign_lots": 130,
+            "trust_lots": 0,
+            "dealer_lots": -12,
+            "price": 490.5,
+            "change": -5.5,
+            "pct": -1.11
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2317",
+            "name": "鴻海",
+            "net_lots": -7633,
+            "foreign_lots": -7545,
+            "trust_lots": 20,
+            "dealer_lots": -108,
+            "price": 245.5,
+            "change": -1.0,
+            "pct": -0.41
+          },
+          {
+            "code": "3665",
+            "name": "貿聯-KY",
+            "net_lots": -1978,
+            "foreign_lots": -1582,
+            "trust_lots": -456,
+            "dealer_lots": 61,
+            "price": 2275.0,
+            "change": 25.0,
+            "pct": 1.11
+          },
+          {
+            "code": "6830",
+            "name": "汎銓",
+            "net_lots": -934,
+            "foreign_lots": -1075,
+            "trust_lots": 130,
+            "dealer_lots": 12,
+            "price": 462.0,
+            "change": 42.0,
+            "pct": 10.0
+          },
+          {
+            "code": "8021",
+            "name": "尖點",
+            "net_lots": -502,
+            "foreign_lots": -500,
+            "trust_lots": 0,
+            "dealer_lots": -2,
+            "price": 397.0,
+            "change": -11.5,
+            "pct": -2.82
+          },
+          {
+            "code": "2359",
+            "name": "所羅門",
+            "net_lots": -454,
+            "foreign_lots": -383,
+            "trust_lots": 0,
+            "dealer_lots": -71,
+            "price": 150.0,
+            "change": -8.0,
+            "pct": -5.06
+          }
+        ]
+      },
+      "建材營造": {
+        "topBuy": [
+          {
+            "code": "2515",
+            "name": "中工",
+            "net_lots": 3575,
+            "foreign_lots": 3522,
+            "trust_lots": 0,
+            "dealer_lots": 53,
+            "price": 12.0,
+            "change": 0.05,
+            "pct": 0.42
+          },
+          {
+            "code": "2504",
+            "name": "國產",
+            "net_lots": 811,
+            "foreign_lots": 801,
+            "trust_lots": 0,
+            "dealer_lots": 10,
+            "price": 31.3,
+            "change": 0.2,
+            "pct": 0.64
+          },
+          {
+            "code": "3703",
+            "name": "欣陸",
+            "net_lots": 312,
+            "foreign_lots": 311,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 19.85,
+            "change": -0.05,
+            "pct": -0.25
+          },
+          {
+            "code": "5521",
+            "name": "工信",
+            "net_lots": 199,
+            "foreign_lots": 199,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 10.95,
+            "change": 0.25,
+            "pct": 2.34
+          },
+          {
+            "code": "3052",
+            "name": "夆典",
+            "net_lots": 164,
+            "foreign_lots": 162,
+            "trust_lots": 0,
+            "dealer_lots": 2,
+            "price": 11.15,
+            "change": -0.05,
+            "pct": -0.45
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1316",
+            "name": "上曜",
+            "net_lots": -2155,
+            "foreign_lots": -2155,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 11.2,
+            "change": 0.55,
+            "pct": 5.16
+          },
+          {
+            "code": "1808",
+            "name": "潤隆",
+            "net_lots": -1545,
+            "foreign_lots": -1522,
+            "trust_lots": 0,
+            "dealer_lots": -22,
+            "price": 37.0,
+            "change": 2.5,
+            "pct": 7.25
+          },
+          {
+            "code": "2442",
+            "name": "新美齊",
+            "net_lots": -1237,
+            "foreign_lots": -1237,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 19.9,
+            "change": 0.4,
+            "pct": 2.05
+          },
+          {
+            "code": "2542",
+            "name": "興富發",
+            "net_lots": -818,
+            "foreign_lots": -899,
+            "trust_lots": 111,
+            "dealer_lots": -30,
+            "price": 48.8,
+            "change": 0.5,
+            "pct": 1.04
+          },
+          {
+            "code": "2539",
+            "name": "櫻花建",
+            "net_lots": -721,
+            "foreign_lots": -714,
+            "trust_lots": -1,
+            "dealer_lots": -6,
+            "price": 36.1,
+            "change": 0.6,
+            "pct": 1.69
+          }
+        ]
+      },
+      "鋼鐵": {
+        "topBuy": [
+          {
+            "code": "2009",
+            "name": "第一銅",
+            "net_lots": 3116,
+            "foreign_lots": 3108,
+            "trust_lots": 0,
+            "dealer_lots": 8,
+            "price": 39.8,
+            "change": 0.6,
+            "pct": 1.53
+          },
+          {
+            "code": "2027",
+            "name": "大成鋼",
+            "net_lots": 2018,
+            "foreign_lots": 1865,
+            "trust_lots": -3,
+            "dealer_lots": 155,
+            "price": 50.3,
+            "change": -0.2,
+            "pct": -0.4
+          },
+          {
+            "code": "2030",
+            "name": "彰源",
+            "net_lots": 1509,
+            "foreign_lots": 1500,
+            "trust_lots": 0,
+            "dealer_lots": 9,
+            "price": 22.3,
+            "change": 0.45,
+            "pct": 2.06
+          },
+          {
+            "code": "2034",
+            "name": "允強",
+            "net_lots": 542,
+            "foreign_lots": 548,
+            "trust_lots": 0,
+            "dealer_lots": -6,
+            "price": 20.45,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "2029",
+            "name": "盛餘",
+            "net_lots": 342,
+            "foreign_lots": 297,
+            "trust_lots": 0,
+            "dealer_lots": 45,
+            "price": 22.2,
+            "change": 0.25,
+            "pct": 1.14
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2002",
+            "name": "中鋼",
+            "net_lots": -2284,
+            "foreign_lots": -210,
+            "trust_lots": -15,
+            "dealer_lots": -2059,
+            "price": 19.45,
+            "change": 0.1,
+            "pct": 0.52
+          },
+          {
+            "code": "9958",
+            "name": "世紀鋼",
+            "net_lots": -1478,
+            "foreign_lots": -1361,
+            "trust_lots": -201,
+            "dealer_lots": 84,
+            "price": 102.0,
+            "change": 1.0,
+            "pct": 0.99
+          },
+          {
+            "code": "2006",
+            "name": "東和鋼鐵",
+            "net_lots": -578,
+            "foreign_lots": -651,
+            "trust_lots": 0,
+            "dealer_lots": 74,
+            "price": 81.6,
+            "change": -0.4,
+            "pct": -0.49
+          },
+          {
+            "code": "2023",
+            "name": "燁輝",
+            "net_lots": -157,
+            "foreign_lots": -157,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 13.95,
+            "change": -0.05,
+            "pct": -0.36
+          },
+          {
+            "code": "2025",
+            "name": "千興",
+            "net_lots": -120,
+            "foreign_lots": -119,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 12.9,
+            "change": 0.35,
+            "pct": 2.79
+          }
+        ]
+      },
+      "綠能環保": {
+        "topBuy": [
+          {
+            "code": "8422",
+            "name": "可寧衛*",
+            "net_lots": 2410,
+            "foreign_lots": 2411,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 26.85,
+            "change": -0.25,
+            "pct": -0.92
+          },
+          {
+            "code": "9941",
+            "name": "裕融",
+            "net_lots": 291,
+            "foreign_lots": 119,
+            "trust_lots": 101,
+            "dealer_lots": 71,
+            "price": 85.4,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "6873",
+            "name": "泓德能源",
+            "net_lots": 130,
+            "foreign_lots": 122,
+            "trust_lots": 0,
+            "dealer_lots": 8,
+            "price": 69.0,
+            "change": -0.5,
+            "pct": -0.72
+          },
+          {
+            "code": "6443",
+            "name": "元晶",
+            "net_lots": 128,
+            "foreign_lots": 123,
+            "trust_lots": 0,
+            "dealer_lots": 5,
+            "price": 25.95,
+            "change": -0.15,
+            "pct": -0.57
+          },
+          {
+            "code": "8476",
+            "name": "台境*",
+            "net_lots": 46,
+            "foreign_lots": 46,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 20.05,
+            "change": 0.05,
+            "pct": 0.25
+          }
+        ],
+        "topSell": [
+          {
+            "code": "8473",
+            "name": "山林水",
+            "net_lots": -435,
+            "foreign_lots": -435,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 46.35,
+            "change": 1.1,
+            "pct": 2.43
+          },
+          {
+            "code": "1513",
+            "name": "中興電",
+            "net_lots": -351,
+            "foreign_lots": -227,
+            "trust_lots": -71,
+            "dealer_lots": -53,
+            "price": 166.0,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "2072",
+            "name": "世紀風電",
+            "net_lots": -223,
+            "foreign_lots": -222,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 155.0,
+            "change": 4.0,
+            "pct": 2.65
+          },
+          {
+            "code": "5292",
+            "name": "華懋",
+            "net_lots": -200,
+            "foreign_lots": -228,
+            "trust_lots": 0,
+            "dealer_lots": 28,
+            "price": 218.0,
+            "change": 4.0,
+            "pct": 1.87
+          },
+          {
+            "code": "6477",
+            "name": "安集",
+            "net_lots": -164,
+            "foreign_lots": -165,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 37.0,
+            "change": -1.15,
+            "pct": -3.01
+          }
+        ]
+      },
+      "其他": {
+        "topBuy": [
+          {
+            "code": "5871",
+            "name": "中租-KY",
+            "net_lots": 2275,
+            "foreign_lots": 2386,
+            "trust_lots": 8,
+            "dealer_lots": -119,
+            "price": 115.5,
+            "change": 4.0,
+            "pct": 3.59
+          },
+          {
+            "code": "9941",
+            "name": "裕融",
+            "net_lots": 291,
+            "foreign_lots": 119,
+            "trust_lots": 101,
+            "dealer_lots": 71,
+            "price": 85.4,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "9907",
+            "name": "統一實",
+            "net_lots": 253,
+            "foreign_lots": 253,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 15.3,
+            "change": 0.1,
+            "pct": 0.66
+          },
+          {
+            "code": "9919",
+            "name": "康那香",
+            "net_lots": 85,
+            "foreign_lots": 85,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 14.0,
+            "change": 0.1,
+            "pct": 0.72
+          },
+          {
+            "code": "8442",
+            "name": "威宏-KY",
+            "net_lots": 84,
+            "foreign_lots": 84,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 46.85,
+            "change": 0.95,
+            "pct": 2.07
+          }
+        ],
+        "topSell": [
+          {
+            "code": "6901",
+            "name": "鑽石投資",
+            "net_lots": -1067,
+            "foreign_lots": -1067,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 17.3,
+            "change": 0.5,
+            "pct": 2.98
+          },
+          {
+            "code": "9933",
+            "name": "中鼎",
+            "net_lots": -503,
+            "foreign_lots": -503,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 42.15,
+            "change": -0.35,
+            "pct": -0.82
+          },
+          {
+            "code": "9945",
+            "name": "潤泰新",
+            "net_lots": -428,
+            "foreign_lots": 817,
+            "trust_lots": -1189,
+            "dealer_lots": -55,
+            "price": 29.4,
+            "change": -0.45,
+            "pct": -1.51
+          },
+          {
+            "code": "2614",
+            "name": "東森",
+            "net_lots": -235,
+            "foreign_lots": -235,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 18.8,
+            "change": 0.5,
+            "pct": 2.73
+          },
+          {
+            "code": "6585",
+            "name": "鼎基",
+            "net_lots": -114,
+            "foreign_lots": -115,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 116.5,
+            "change": 0.5,
+            "pct": 0.43
+          }
+        ]
+      },
+      "電子零組件": {
+        "topBuy": [
+          {
+            "code": "2392",
+            "name": "正崴",
+            "net_lots": 1804,
+            "foreign_lots": 1365,
+            "trust_lots": 0,
+            "dealer_lots": 439,
+            "price": 41.6,
+            "change": 1.0,
+            "pct": 2.46
+          },
+          {
+            "code": "3026",
+            "name": "禾伸堂",
+            "net_lots": 1454,
+            "foreign_lots": -236,
+            "trust_lots": 1665,
+            "dealer_lots": 25,
+            "price": 639.0,
+            "change": -71.0,
+            "pct": -10.0
+          },
+          {
+            "code": "6213",
+            "name": "聯茂",
+            "net_lots": 1417,
+            "foreign_lots": 2203,
+            "trust_lots": -840,
+            "dealer_lots": 54,
+            "price": 513.0,
+            "change": 3.0,
+            "pct": 0.59
+          },
+          {
+            "code": "3653",
+            "name": "健策",
+            "net_lots": 641,
+            "foreign_lots": 557,
+            "trust_lots": 81,
+            "dealer_lots": 4,
+            "price": 5395.0,
+            "change": -205.0,
+            "pct": -3.66
+          },
+          {
+            "code": "3376",
+            "name": "新日興",
+            "net_lots": 517,
+            "foreign_lots": 368,
+            "trust_lots": 0,
+            "dealer_lots": 148,
+            "price": 183.0,
+            "change": -5.5,
+            "pct": -2.92
+          }
+        ],
+        "topSell": [
+          {
+            "code": "8039",
+            "name": "台虹",
+            "net_lots": -5731,
+            "foreign_lots": -5417,
+            "trust_lots": 0,
+            "dealer_lots": -314,
+            "price": 282.0,
+            "change": -1.0,
+            "pct": -0.35
+          },
+          {
+            "code": "2484",
+            "name": "希華",
+            "net_lots": -3887,
+            "foreign_lots": -3770,
+            "trust_lots": 0,
+            "dealer_lots": -117,
+            "price": 76.5,
+            "change": 5.4,
+            "pct": 7.59
+          },
+          {
+            "code": "3042",
+            "name": "晶技",
+            "net_lots": -3739,
+            "foreign_lots": -3514,
+            "trust_lots": 0,
+            "dealer_lots": -225,
+            "price": 190.0,
+            "change": 1.5,
+            "pct": 0.8
+          },
+          {
+            "code": "3605",
+            "name": "宏致",
+            "net_lots": -1603,
+            "foreign_lots": -2948,
+            "trust_lots": 1128,
+            "dealer_lots": 217,
+            "price": 108.5,
+            "change": -1.5,
+            "pct": -1.36
+          },
+          {
+            "code": "2313",
+            "name": "華通",
+            "net_lots": -1019,
+            "foreign_lots": -903,
+            "trust_lots": 6,
+            "dealer_lots": -122,
+            "price": 213.5,
+            "change": -4.0,
+            "pct": -1.84
+          }
+        ]
+      },
+      "AI概念股": {
+        "topBuy": [
+          {
+            "code": "2356",
+            "name": "英業達",
+            "net_lots": 1800,
+            "foreign_lots": 1703,
+            "trust_lots": -115,
+            "dealer_lots": 212,
+            "price": 65.7,
+            "change": 1.2,
+            "pct": 1.86
+          },
+          {
+            "code": "2382",
+            "name": "廣達",
+            "net_lots": 1360,
+            "foreign_lots": 1179,
+            "trust_lots": 107,
+            "dealer_lots": 74,
+            "price": 321.5,
+            "change": -5.5,
+            "pct": -1.68
+          },
+          {
+            "code": "3515",
+            "name": "華擎",
+            "net_lots": 113,
+            "foreign_lots": 115,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 218.5,
+            "change": 1.5,
+            "pct": 0.69
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2317",
+            "name": "鴻海",
+            "net_lots": -7633,
+            "foreign_lots": -7545,
+            "trust_lots": 20,
+            "dealer_lots": -108,
+            "price": 245.5,
+            "change": -1.0,
+            "pct": -0.41
+          },
+          {
+            "code": "3231",
+            "name": "緯創",
+            "net_lots": -4077,
+            "foreign_lots": -4108,
+            "trust_lots": 23,
+            "dealer_lots": 7,
+            "price": 175.5,
+            "change": -4.5,
+            "pct": -2.5
+          },
+          {
+            "code": "2330",
+            "name": "台積電",
+            "net_lots": -1487,
+            "foreign_lots": -1621,
+            "trust_lots": 157,
+            "dealer_lots": -23,
+            "price": 2410.0,
+            "change": 35.0,
+            "pct": 1.47
+          },
+          {
+            "code": "2376",
+            "name": "技嘉",
+            "net_lots": -512,
+            "foreign_lots": -454,
+            "trust_lots": 0,
+            "dealer_lots": -58,
+            "price": 339.5,
+            "change": -4.5,
+            "pct": -1.31
+          },
+          {
+            "code": "6669",
+            "name": "緯穎",
+            "net_lots": -28,
+            "foreign_lots": -148,
+            "trust_lots": 59,
+            "dealer_lots": 60,
+            "price": 6255.0,
+            "change": -70.0,
+            "pct": -1.11
+          }
+        ]
+      },
+      "重電概念": {
+        "topBuy": [
+          {
+            "code": "1608",
+            "name": "華榮",
+            "net_lots": 1659,
+            "foreign_lots": 1636,
+            "trust_lots": 0,
+            "dealer_lots": 23,
+            "price": 35.85,
+            "change": 0.35,
+            "pct": 0.99
+          },
+          {
+            "code": "1609",
+            "name": "大亞",
+            "net_lots": 348,
+            "foreign_lots": 335,
+            "trust_lots": 0,
+            "dealer_lots": 14,
+            "price": 37.05,
+            "change": 0.15,
+            "pct": 0.41
+          },
+          {
+            "code": "1503",
+            "name": "士電",
+            "net_lots": 17,
+            "foreign_lots": 32,
+            "trust_lots": 0,
+            "dealer_lots": -15,
+            "price": 202.0,
+            "change": 0.5,
+            "pct": 0.25
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1504",
+            "name": "東元",
+            "net_lots": -2511,
+            "foreign_lots": -2355,
+            "trust_lots": 0,
+            "dealer_lots": -156,
+            "price": 72.1,
+            "change": -1.0,
+            "pct": -1.37
+          },
+          {
+            "code": "1519",
+            "name": "華城",
+            "net_lots": -520,
+            "foreign_lots": -511,
+            "trust_lots": 0,
+            "dealer_lots": -8,
+            "price": 723.0,
+            "change": -4.0,
+            "pct": -0.55
+          },
+          {
+            "code": "1513",
+            "name": "中興電",
+            "net_lots": -351,
+            "foreign_lots": -227,
+            "trust_lots": -71,
+            "dealer_lots": -53,
+            "price": 166.0,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "1514",
+            "name": "亞力",
+            "net_lots": -161,
+            "foreign_lots": -149,
+            "trust_lots": 0,
+            "dealer_lots": -12,
+            "price": 102.5,
+            "change": 1.5,
+            "pct": 1.49
+          }
+        ]
+      },
+      "橡膠": {
+        "topBuy": [
+          {
+            "code": "2101",
+            "name": "南港",
+            "net_lots": 684,
+            "foreign_lots": 688,
+            "trust_lots": 0,
+            "dealer_lots": -4,
+            "price": 33.25,
+            "change": 0.4,
+            "pct": 1.22
+          },
+          {
+            "code": "2105",
+            "name": "正新",
+            "net_lots": 270,
+            "foreign_lots": 299,
+            "trust_lots": 29,
+            "dealer_lots": -58,
+            "price": 31.55,
+            "change": 0.05,
+            "pct": 0.16
+          },
+          {
+            "code": "2107",
+            "name": "厚生",
+            "net_lots": 34,
+            "foreign_lots": 28,
+            "trust_lots": 0,
+            "dealer_lots": 6,
+            "price": 26.75,
+            "change": 0.65,
+            "pct": 2.49
+          },
+          {
+            "code": "2109",
+            "name": "華豐",
+            "net_lots": 7,
+            "foreign_lots": 7,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 14.85,
+            "change": 0.05,
+            "pct": 0.34
+          },
+          {
+            "code": "2114",
+            "name": "鑫永銓",
+            "net_lots": 4,
+            "foreign_lots": 4,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 88.6,
+            "change": 0.1,
+            "pct": 0.11
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2104",
+            "name": "國際中橡",
+            "net_lots": -1033,
+            "foreign_lots": -962,
+            "trust_lots": 0,
+            "dealer_lots": -71,
+            "price": 10.65,
+            "change": 0.2,
+            "pct": 1.91
+          },
+          {
+            "code": "2108",
+            "name": "南帝",
+            "net_lots": -534,
+            "foreign_lots": -409,
+            "trust_lots": 0,
+            "dealer_lots": -125,
+            "price": 31.4,
+            "change": 1.9,
+            "pct": 6.44
+          },
+          {
+            "code": "2106",
+            "name": "建大",
+            "net_lots": -402,
+            "foreign_lots": -402,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 17.65,
+            "change": 0.1,
+            "pct": 0.57
+          },
+          {
+            "code": "2103",
+            "name": "台橡",
+            "net_lots": -344,
+            "foreign_lots": -299,
+            "trust_lots": 0,
+            "dealer_lots": -45,
+            "price": 28.4,
+            "change": 0.55,
+            "pct": 1.97
+          },
+          {
+            "code": "2102",
+            "name": "泰豐",
+            "net_lots": -82,
+            "foreign_lots": -82,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 18.9,
+            "change": 0.0,
+            "pct": 0.0
+          }
+        ]
+      },
+      "紡織纖維": {
+        "topBuy": [
+          {
+            "code": "1434",
+            "name": "福懋",
+            "net_lots": 675,
+            "foreign_lots": 693,
+            "trust_lots": 0,
+            "dealer_lots": -18,
+            "price": 18.1,
+            "change": 0.4,
+            "pct": 2.26
+          },
+          {
+            "code": "1409",
+            "name": "新纖",
+            "net_lots": 248,
+            "foreign_lots": 231,
+            "trust_lots": 0,
+            "dealer_lots": 17,
+            "price": 24.5,
+            "change": 0.1,
+            "pct": 0.41
+          },
+          {
+            "code": "1449",
+            "name": "佳和",
+            "net_lots": 162,
+            "foreign_lots": 162,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 12.3,
+            "change": 0.1,
+            "pct": 0.82
+          },
+          {
+            "code": "1414",
+            "name": "東和",
+            "net_lots": 62,
+            "foreign_lots": 62,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 20.5,
+            "change": 0.25,
+            "pct": 1.23
+          },
+          {
+            "code": "4414",
+            "name": "如興",
+            "net_lots": 30,
+            "foreign_lots": 25,
+            "trust_lots": 0,
+            "dealer_lots": 5,
+            "price": 8.48,
+            "change": 0.13,
+            "pct": 1.56
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1444",
+            "name": "力麗",
+            "net_lots": -1105,
+            "foreign_lots": -1105,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 7.52,
+            "change": 0.16,
+            "pct": 2.17
+          },
+          {
+            "code": "1440",
+            "name": "南紡",
+            "net_lots": -758,
+            "foreign_lots": -601,
+            "trust_lots": 0,
+            "dealer_lots": -156,
+            "price": 14.0,
+            "change": 0.45,
+            "pct": 3.32
+          },
+          {
+            "code": "1447",
+            "name": "力鵬",
+            "net_lots": -484,
+            "foreign_lots": -484,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 7.18,
+            "change": 0.2,
+            "pct": 2.87
+          },
+          {
+            "code": "1477",
+            "name": "聚陽",
+            "net_lots": -144,
+            "foreign_lots": -125,
+            "trust_lots": 3,
+            "dealer_lots": -23,
+            "price": 203.0,
+            "change": 2.0,
+            "pct": 1.0
+          },
+          {
+            "code": "1402",
+            "name": "遠東新",
+            "net_lots": -99,
+            "foreign_lots": -8519,
+            "trust_lots": 9128,
+            "dealer_lots": -708,
+            "price": 30.35,
+            "change": 1.15,
+            "pct": 3.94
+          }
+        ]
+      },
+      "貿易百貨": {
+        "topBuy": [
+          {
+            "code": "2903",
+            "name": "遠百",
+            "net_lots": 641,
+            "foreign_lots": 641,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 22.8,
+            "change": 0.05,
+            "pct": 0.22
+          },
+          {
+            "code": "2913",
+            "name": "農林",
+            "net_lots": 356,
+            "foreign_lots": 354,
+            "trust_lots": 0,
+            "dealer_lots": 2,
+            "price": 11.3,
+            "change": 0.05,
+            "pct": 0.44
+          },
+          {
+            "code": "2912",
+            "name": "統一超",
+            "net_lots": 142,
+            "foreign_lots": 207,
+            "trust_lots": -5,
+            "dealer_lots": -60,
+            "price": 223.5,
+            "change": 3.5,
+            "pct": 1.59
+          },
+          {
+            "code": "2915",
+            "name": "潤泰全",
+            "net_lots": 122,
+            "foreign_lots": 114,
+            "trust_lots": -1,
+            "dealer_lots": 9,
+            "price": 61.1,
+            "change": -0.5,
+            "pct": -0.81
+          },
+          {
+            "code": "2908",
+            "name": "特力",
+            "net_lots": 36,
+            "foreign_lots": 36,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 21.95,
+            "change": 0.1,
+            "pct": 0.46
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2905",
+            "name": "三商",
+            "net_lots": -184,
+            "foreign_lots": -187,
+            "trust_lots": 0,
+            "dealer_lots": 3,
+            "price": 17.65,
+            "change": 0.25,
+            "pct": 1.44
+          },
+          {
+            "code": "2906",
+            "name": "高林",
+            "net_lots": -33,
+            "foreign_lots": -33,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 13.95,
+            "change": 0.3,
+            "pct": 2.2
+          },
+          {
+            "code": "4807",
+            "name": "日成-KY",
+            "net_lots": -23,
+            "foreign_lots": -23,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 30.85,
+            "change": -0.6,
+            "pct": -1.91
+          },
+          {
+            "code": "2929",
+            "name": "淘帝-KY",
+            "net_lots": -6,
+            "foreign_lots": -6,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 5.75,
+            "change": 0.04,
+            "pct": 0.7
+          },
+          {
+            "code": "2939",
+            "name": "永邑-KY",
+            "net_lots": -5,
+            "foreign_lots": -5,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 19.55,
+            "change": -0.05,
+            "pct": -0.26
+          }
+        ]
+      },
+      "資訊服務": {
+        "topBuy": [
+          {
+            "code": "6214",
+            "name": "精誠",
+            "net_lots": 624,
+            "foreign_lots": 642,
+            "trust_lots": 0,
+            "dealer_lots": -17,
+            "price": 179.5,
+            "change": -0.5,
+            "pct": -0.28
+          },
+          {
+            "code": "3029",
+            "name": "零壹",
+            "net_lots": 462,
+            "foreign_lots": 423,
+            "trust_lots": 0,
+            "dealer_lots": 39,
+            "price": 111.0,
+            "change": -0.5,
+            "pct": -0.45
+          },
+          {
+            "code": "2480",
+            "name": "敦陽科",
+            "net_lots": 70,
+            "foreign_lots": 71,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 160.0,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "2427",
+            "name": "三商電",
+            "net_lots": 50,
+            "foreign_lots": 50,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 22.3,
+            "change": 0.1,
+            "pct": 0.45
+          },
+          {
+            "code": "2471",
+            "name": "資通",
+            "net_lots": 16,
+            "foreign_lots": 16,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 48.9,
+            "change": 0.05,
+            "pct": 0.1
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2468",
+            "name": "華經",
+            "net_lots": -36,
+            "foreign_lots": -36,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 35.05,
+            "change": 0.1,
+            "pct": 0.29
+          },
+          {
+            "code": "2453",
+            "name": "凌群",
+            "net_lots": -18,
+            "foreign_lots": -18,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 52.1,
+            "change": 0.5,
+            "pct": 0.97
+          },
+          {
+            "code": "5203",
+            "name": "訊連",
+            "net_lots": -15,
+            "foreign_lots": -14,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 59.1,
+            "change": 0.4,
+            "pct": 0.68
+          },
+          {
+            "code": "4994",
+            "name": "傳奇",
+            "net_lots": -1,
+            "foreign_lots": -1,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 83.2,
+            "change": -2.8,
+            "pct": -3.26
+          }
+        ]
+      },
+      "運動休閒": {
+        "topBuy": [
+          {
+            "code": "9921",
+            "name": "巨大",
+            "net_lots": 499,
+            "foreign_lots": 607,
+            "trust_lots": 0,
+            "dealer_lots": -108,
+            "price": 107.5,
+            "change": 1.5,
+            "pct": 1.42
+          },
+          {
+            "code": "1598",
+            "name": "岱宇",
+            "net_lots": 383,
+            "foreign_lots": 385,
+            "trust_lots": 0,
+            "dealer_lots": -2,
+            "price": 20.3,
+            "change": 0.15,
+            "pct": 0.74
+          },
+          {
+            "code": "9910",
+            "name": "豐泰",
+            "net_lots": 382,
+            "foreign_lots": 365,
+            "trust_lots": 14,
+            "dealer_lots": 2,
+            "price": 70.4,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "6768",
+            "name": "志強-KY",
+            "net_lots": 171,
+            "foreign_lots": 171,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 65.2,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "9802",
+            "name": "鈺齊-KY",
+            "net_lots": 106,
+            "foreign_lots": 105,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 71.5,
+            "change": 0.2,
+            "pct": 0.28
+          }
+        ],
+        "topSell": [
+          {
+            "code": "9914",
+            "name": "美利達",
+            "net_lots": -702,
+            "foreign_lots": -682,
+            "trust_lots": 0,
+            "dealer_lots": -20,
+            "price": 87.8,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "9904",
+            "name": "寶成",
+            "net_lots": -189,
+            "foreign_lots": -118,
+            "trust_lots": -84,
+            "dealer_lots": 14,
+            "price": 25.0,
+            "change": -0.05,
+            "pct": -0.2
+          },
+          {
+            "code": "1736",
+            "name": "喬山",
+            "net_lots": -103,
+            "foreign_lots": -113,
+            "trust_lots": 0,
+            "dealer_lots": 10,
+            "price": 131.5,
+            "change": 1.0,
+            "pct": 0.77
+          },
+          {
+            "code": "5306",
+            "name": "桂盟",
+            "net_lots": -41,
+            "foreign_lots": -30,
+            "trust_lots": 0,
+            "dealer_lots": -11,
+            "price": 95.7,
+            "change": -0.5,
+            "pct": -0.52
+          },
+          {
+            "code": "6670",
+            "name": "復盛應用",
+            "net_lots": -24,
+            "foreign_lots": -24,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 268.5,
+            "change": 3.0,
+            "pct": 1.13
+          }
+        ]
+      },
+      "汽車": {
+        "topBuy": [
+          {
+            "code": "1319",
+            "name": "東陽",
+            "net_lots": 427,
+            "foreign_lots": 405,
+            "trust_lots": 0,
+            "dealer_lots": 22,
+            "price": 82.8,
+            "change": -0.2,
+            "pct": -0.24
+          },
+          {
+            "code": "2233",
+            "name": "宇隆",
+            "net_lots": 236,
+            "foreign_lots": 237,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 177.0,
+            "change": -6.5,
+            "pct": -3.54
+          },
+          {
+            "code": "1563",
+            "name": "巧新",
+            "net_lots": 226,
+            "foreign_lots": 227,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 63.5,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "1522",
+            "name": "堤維西",
+            "net_lots": 155,
+            "foreign_lots": 155,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 28.05,
+            "change": 0.2,
+            "pct": 0.72
+          },
+          {
+            "code": "1524",
+            "name": "耿鼎",
+            "net_lots": 91,
+            "foreign_lots": 91,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 27.45,
+            "change": 0.2,
+            "pct": 0.73
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2241",
+            "name": "艾姆勒",
+            "net_lots": -399,
+            "foreign_lots": -399,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 35.1,
+            "change": 1.55,
+            "pct": 4.62
+          },
+          {
+            "code": "2201",
+            "name": "裕隆",
+            "net_lots": -260,
+            "foreign_lots": -310,
+            "trust_lots": 0,
+            "dealer_lots": 50,
+            "price": 29.3,
+            "change": 0.1,
+            "pct": 0.34
+          },
+          {
+            "code": "3717",
+            "name": "聯嘉投控",
+            "net_lots": -193,
+            "foreign_lots": -215,
+            "trust_lots": 0,
+            "dealer_lots": 22,
+            "price": 22.25,
+            "change": 0.1,
+            "pct": 0.45
+          },
+          {
+            "code": "2204",
+            "name": "中華",
+            "net_lots": -179,
+            "foreign_lots": -174,
+            "trust_lots": 0,
+            "dealer_lots": -5,
+            "price": 55.1,
+            "change": 0.1,
+            "pct": 0.18
+          },
+          {
+            "code": "2258",
+            "name": "鴻華先進-創",
+            "net_lots": -142,
+            "foreign_lots": -148,
+            "trust_lots": 0,
+            "dealer_lots": 6,
+            "price": 32.0,
+            "change": -0.15,
+            "pct": -0.47
+          }
+        ]
+      },
+      "造紙": {
+        "topBuy": [
+          {
+            "code": "1904",
+            "name": "正隆",
+            "net_lots": 415,
+            "foreign_lots": 415,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 25.7,
+            "change": 0.2,
+            "pct": 0.78
+          },
+          {
+            "code": "1907",
+            "name": "永豐餘",
+            "net_lots": 171,
+            "foreign_lots": 135,
+            "trust_lots": 0,
+            "dealer_lots": 36,
+            "price": 31.2,
+            "change": 0.75,
+            "pct": 2.46
+          },
+          {
+            "code": "1906",
+            "name": "寶隆",
+            "net_lots": 9,
+            "foreign_lots": 9,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 11.5,
+            "change": 0.0,
+            "pct": 0.0
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1909",
+            "name": "榮成",
+            "net_lots": -1085,
+            "foreign_lots": -1078,
+            "trust_lots": 0,
+            "dealer_lots": -7,
+            "price": 11.2,
+            "change": 0.05,
+            "pct": 0.45
+          },
+          {
+            "code": "1905",
+            "name": "華紙",
+            "net_lots": -477,
+            "foreign_lots": -444,
+            "trust_lots": 0,
+            "dealer_lots": -33,
+            "price": 13.65,
+            "change": 0.15,
+            "pct": 1.11
+          },
+          {
+            "code": "1903",
+            "name": "士紙",
+            "net_lots": -28,
+            "foreign_lots": -27,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 49.05,
+            "change": 0.65,
+            "pct": 1.34
+          },
+          {
+            "code": "6790",
+            "name": "永豐實",
+            "net_lots": -17,
+            "foreign_lots": -17,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 38.35,
+            "change": -0.15,
+            "pct": -0.39
+          }
+        ]
+      },
+      "觀光餐旅": {
+        "topBuy": [
+          {
+            "code": "2723",
+            "name": "美食-KY",
+            "net_lots": 396,
+            "foreign_lots": 419,
+            "trust_lots": 0,
+            "dealer_lots": -23,
+            "price": 73.2,
+            "change": 6.6,
+            "pct": 9.91
+          },
+          {
+            "code": "2753",
+            "name": "八方雲集",
+            "net_lots": 104,
+            "foreign_lots": 104,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 188.0,
+            "change": 1.5,
+            "pct": 0.8
+          },
+          {
+            "code": "7705",
+            "name": "三商餐飲",
+            "net_lots": 15,
+            "foreign_lots": 8,
+            "trust_lots": 0,
+            "dealer_lots": 7,
+            "price": 30.95,
+            "change": 0.1,
+            "pct": 0.32
+          },
+          {
+            "code": "7760",
+            "name": "享溫馨",
+            "net_lots": 6,
+            "foreign_lots": 6,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 33.2,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "8940",
+            "name": "新天地",
+            "net_lots": 5,
+            "foreign_lots": 5,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 15.3,
+            "change": 0.05,
+            "pct": 0.33
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2704",
+            "name": "國賓",
+            "net_lots": -51,
+            "foreign_lots": -51,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 46.5,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "2707",
+            "name": "晶華",
+            "net_lots": -44,
+            "foreign_lots": -44,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 183.0,
+            "change": 3.0,
+            "pct": 1.67
+          },
+          {
+            "code": "2739",
+            "name": "寒舍",
+            "net_lots": -41,
+            "foreign_lots": -47,
+            "trust_lots": 0,
+            "dealer_lots": 6,
+            "price": 38.05,
+            "change": 2.15,
+            "pct": 5.99
+          },
+          {
+            "code": "2731",
+            "name": "雄獅",
+            "net_lots": -36,
+            "foreign_lots": -33,
+            "trust_lots": 0,
+            "dealer_lots": -3,
+            "price": 146.5,
+            "change": 1.5,
+            "pct": 1.03
+          },
+          {
+            "code": "5706",
+            "name": "鳳凰",
+            "net_lots": -25,
+            "foreign_lots": -24,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 45.6,
+            "change": 0.3,
+            "pct": 0.66
+          }
+        ]
+      },
+      "太空股": {
+        "topBuy": [
+          {
+            "code": "3037",
+            "name": "欣興",
+            "net_lots": 359,
+            "foreign_lots": 546,
+            "trust_lots": -172,
+            "dealer_lots": -15,
+            "price": 1085.0,
+            "change": -55.0,
+            "pct": -4.82
+          }
+        ],
+        "topSell": [
+          {
+            "code": "2313",
+            "name": "華通",
+            "net_lots": -1019,
+            "foreign_lots": -903,
+            "trust_lots": 6,
+            "dealer_lots": -122,
+            "price": 213.5,
+            "change": -4.0,
+            "pct": -1.84
+          },
+          {
+            "code": "2368",
+            "name": "金像電",
+            "net_lots": -470,
+            "foreign_lots": -229,
+            "trust_lots": -248,
+            "dealer_lots": 7,
+            "price": 965.0,
+            "change": -60.0,
+            "pct": -5.85
+          },
+          {
+            "code": "2314",
+            "name": "台揚",
+            "net_lots": -9,
+            "foreign_lots": -9,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 10.85,
+            "change": -0.25,
+            "pct": -2.25
+          }
+        ]
+      },
+      "水泥": {
+        "topBuy": [
+          {
+            "code": "1102",
+            "name": "亞泥",
+            "net_lots": 338,
+            "foreign_lots": 461,
+            "trust_lots": 31,
+            "dealer_lots": -154,
+            "price": 34.95,
+            "change": 0.25,
+            "pct": 0.72
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1101",
+            "name": "台泥",
+            "net_lots": -1958,
+            "foreign_lots": -1896,
+            "trust_lots": 0,
+            "dealer_lots": -62,
+            "price": 24.85,
+            "change": 0.05,
+            "pct": 0.2
+          },
+          {
+            "code": "1104",
+            "name": "環泥",
+            "net_lots": -231,
+            "foreign_lots": -232,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 26.85,
+            "change": 0.05,
+            "pct": 0.19
+          },
+          {
+            "code": "1103",
+            "name": "嘉泥",
+            "net_lots": -114,
+            "foreign_lots": -118,
+            "trust_lots": 0,
+            "dealer_lots": 4,
+            "price": 13.3,
+            "change": 0.1,
+            "pct": 0.76
+          },
+          {
+            "code": "1109",
+            "name": "信大",
+            "net_lots": -34,
+            "foreign_lots": -34,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 13.55,
+            "change": 0.05,
+            "pct": 0.37
+          },
+          {
+            "code": "1108",
+            "name": "幸福",
+            "net_lots": -8,
+            "foreign_lots": -8,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 11.8,
+            "change": 0.0,
+            "pct": 0.0
+          }
+        ]
+      },
+      "化學": {
+        "topBuy": [
+          {
+            "code": "1718",
+            "name": "中纖",
+            "net_lots": 326,
+            "foreign_lots": 192,
+            "trust_lots": 0,
+            "dealer_lots": 134,
+            "price": 10.7,
+            "change": 0.35,
+            "pct": 3.38
+          },
+          {
+            "code": "1712",
+            "name": "興農",
+            "net_lots": 124,
+            "foreign_lots": 124,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 39.55,
+            "change": 0.15,
+            "pct": 0.38
+          },
+          {
+            "code": "4766",
+            "name": "南寶",
+            "net_lots": 62,
+            "foreign_lots": 50,
+            "trust_lots": 0,
+            "dealer_lots": 12,
+            "price": 352.5,
+            "change": 5.0,
+            "pct": 1.44
+          },
+          {
+            "code": "1732",
+            "name": "毛寶",
+            "net_lots": 32,
+            "foreign_lots": 32,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 26.3,
+            "change": -0.1,
+            "pct": -0.38
+          },
+          {
+            "code": "1723",
+            "name": "中碳",
+            "net_lots": 27,
+            "foreign_lots": 39,
+            "trust_lots": 0,
+            "dealer_lots": -11,
+            "price": 88.3,
+            "change": 2.0,
+            "pct": 2.32
+          }
+        ],
+        "topSell": [
+          {
+            "code": "4763",
+            "name": "材料*-KY",
+            "net_lots": -4397,
+            "foreign_lots": -4154,
+            "trust_lots": 0,
+            "dealer_lots": -243,
+            "price": 49.65,
+            "change": -0.55,
+            "pct": -1.1
+          },
+          {
+            "code": "1710",
+            "name": "東聯",
+            "net_lots": -2457,
+            "foreign_lots": -2415,
+            "trust_lots": 0,
+            "dealer_lots": -42,
+            "price": 15.85,
+            "change": 0.65,
+            "pct": 4.28
+          },
+          {
+            "code": "1722",
+            "name": "台肥",
+            "net_lots": -1632,
+            "foreign_lots": -1621,
+            "trust_lots": 0,
+            "dealer_lots": -11,
+            "price": 46.55,
+            "change": 0.3,
+            "pct": 0.65
+          },
+          {
+            "code": "1709",
+            "name": "和益",
+            "net_lots": -1392,
+            "foreign_lots": -1412,
+            "trust_lots": 0,
+            "dealer_lots": 20,
+            "price": 33.3,
+            "change": 3.0,
+            "pct": 9.9
+          },
+          {
+            "code": "1708",
+            "name": "東鹼",
+            "net_lots": -1251,
+            "foreign_lots": -1251,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 51.4,
+            "change": 0.6,
+            "pct": 1.18
+          }
+        ]
+      },
+      "電機機械": {
+        "topBuy": [
+          {
+            "code": "4540",
+            "name": "全球傳動",
+            "net_lots": 185,
+            "foreign_lots": 186,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 57.8,
+            "change": -1.0,
+            "pct": -1.7
+          },
+          {
+            "code": "1590",
+            "name": "亞德客-KY",
+            "net_lots": 151,
+            "foreign_lots": 153,
+            "trust_lots": 0,
+            "dealer_lots": -2,
+            "price": 1435.0,
+            "change": 15.0,
+            "pct": 1.06
+          },
+          {
+            "code": "4562",
+            "name": "穎漢",
+            "net_lots": 39,
+            "foreign_lots": 39,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 31.15,
+            "change": -0.6,
+            "pct": -1.89
+          },
+          {
+            "code": "8374",
+            "name": "羅昇",
+            "net_lots": 29,
+            "foreign_lots": 33,
+            "trust_lots": 0,
+            "dealer_lots": -4,
+            "price": 80.8,
+            "change": -2.3,
+            "pct": -2.77
+          },
+          {
+            "code": "8222",
+            "name": "寶一",
+            "net_lots": 29,
+            "foreign_lots": 29,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 39.5,
+            "change": -0.1,
+            "pct": -0.25
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1504",
+            "name": "東元",
+            "net_lots": -2511,
+            "foreign_lots": -2355,
+            "trust_lots": 0,
+            "dealer_lots": -156,
+            "price": 72.1,
+            "change": -1.0,
+            "pct": -1.37
+          },
+          {
+            "code": "2371",
+            "name": "大同",
+            "net_lots": -851,
+            "foreign_lots": -866,
+            "trust_lots": 0,
+            "dealer_lots": 15,
+            "price": 27.6,
+            "change": 0.05,
+            "pct": 0.18
+          },
+          {
+            "code": "3167",
+            "name": "大量",
+            "net_lots": -616,
+            "foreign_lots": -612,
+            "trust_lots": 0,
+            "dealer_lots": -4,
+            "price": 725.0,
+            "change": -37.0,
+            "pct": -4.86
+          },
+          {
+            "code": "4566",
+            "name": "時碩工業",
+            "net_lots": -615,
+            "foreign_lots": -616,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 67.0,
+            "change": -1.3,
+            "pct": -1.9
+          },
+          {
+            "code": "1519",
+            "name": "華城",
+            "net_lots": -520,
+            "foreign_lots": -511,
+            "trust_lots": 0,
+            "dealer_lots": -8,
+            "price": 723.0,
+            "change": -4.0,
+            "pct": -0.55
+          }
+        ]
+      },
+      "生技醫療": {
+        "topBuy": [
+          {
+            "code": "6782",
+            "name": "視陽",
+            "net_lots": 139,
+            "foreign_lots": 92,
+            "trust_lots": 0,
+            "dealer_lots": 48,
+            "price": 202.0,
+            "change": -2.0,
+            "pct": -0.98
+          },
+          {
+            "code": "6446",
+            "name": "藥華藥",
+            "net_lots": 111,
+            "foreign_lots": 88,
+            "trust_lots": -1,
+            "dealer_lots": 24,
+            "price": 1400.0,
+            "change": 25.0,
+            "pct": 1.82
+          },
+          {
+            "code": "6949",
+            "name": "沛爾生醫-創",
+            "net_lots": 83,
+            "foreign_lots": 123,
+            "trust_lots": 0,
+            "dealer_lots": -40,
+            "price": 1155.0,
+            "change": 30.0,
+            "pct": 2.67
+          },
+          {
+            "code": "6861",
+            "name": "睿生光電",
+            "net_lots": 82,
+            "foreign_lots": 78,
+            "trust_lots": 0,
+            "dealer_lots": 4,
+            "price": 187.0,
+            "change": -9.5,
+            "pct": -4.83
+          },
+          {
+            "code": "1720",
+            "name": "生達",
+            "net_lots": 60,
+            "foreign_lots": 60,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 57.2,
+            "change": 0.1,
+            "pct": 0.18
+          }
+        ],
+        "topSell": [
+          {
+            "code": "6550",
+            "name": "北極星藥業-KY",
+            "net_lots": -2715,
+            "foreign_lots": -2719,
+            "trust_lots": 0,
+            "dealer_lots": 4,
+            "price": 12.25,
+            "change": 1.1,
+            "pct": 9.87
+          },
+          {
+            "code": "6919",
+            "name": "康霈*",
+            "net_lots": -1528,
+            "foreign_lots": -1500,
+            "trust_lots": 0,
+            "dealer_lots": -28,
+            "price": 113.5,
+            "change": 4.5,
+            "pct": 4.13
+          },
+          {
+            "code": "4746",
+            "name": "台耀",
+            "net_lots": -588,
+            "foreign_lots": -558,
+            "trust_lots": 0,
+            "dealer_lots": -30,
+            "price": 53.9,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "1795",
+            "name": "美時",
+            "net_lots": -366,
+            "foreign_lots": -343,
+            "trust_lots": 0,
+            "dealer_lots": -23,
+            "price": 196.5,
+            "change": 1.5,
+            "pct": 0.77
+          },
+          {
+            "code": "6472",
+            "name": "保瑞",
+            "net_lots": -362,
+            "foreign_lots": -606,
+            "trust_lots": 258,
+            "dealer_lots": -14,
+            "price": 455.0,
+            "change": 9.5,
+            "pct": 2.13
+          }
+        ]
+      },
+      "玻璃陶瓷": {
+        "topBuy": [
+          {
+            "code": "1802",
+            "name": "台玻",
+            "net_lots": 111,
+            "foreign_lots": 5,
+            "trust_lots": 0,
+            "dealer_lots": 105,
+            "price": 57.6,
+            "change": -0.1,
+            "pct": -0.17
+          },
+          {
+            "code": "1806",
+            "name": "冠軍",
+            "net_lots": 104,
+            "foreign_lots": 104,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 8.06,
+            "change": 0.04,
+            "pct": 0.5
+          },
+          {
+            "code": "1817",
+            "name": "凱撒衛",
+            "net_lots": 1,
+            "foreign_lots": 1,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 40.05,
+            "change": 0.0,
+            "pct": 0.0
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1810",
+            "name": "和成",
+            "net_lots": -266,
+            "foreign_lots": -268,
+            "trust_lots": 0,
+            "dealer_lots": 3,
+            "price": 25.55,
+            "change": -0.5,
+            "pct": -1.92
+          },
+          {
+            "code": "1809",
+            "name": "中釉",
+            "net_lots": -163,
+            "foreign_lots": -162,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 38.35,
+            "change": 0.4,
+            "pct": 1.05
+          }
+        ]
+      },
+      "居家生活": {
+        "topBuy": [
+          {
+            "code": "9935",
+            "name": "慶豐富",
+            "net_lots": 40,
+            "foreign_lots": 40,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 20.25,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "9924",
+            "name": "福興",
+            "net_lots": 30,
+            "foreign_lots": 30,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 38.45,
+            "change": -0.2,
+            "pct": -0.52
+          },
+          {
+            "code": "2062",
+            "name": "橋椿",
+            "net_lots": 29,
+            "foreign_lots": 28,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 19.15,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "6671",
+            "name": "三能-KY",
+            "net_lots": 1,
+            "foreign_lots": 1,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 23.05,
+            "change": -0.45,
+            "pct": -1.91
+          }
+        ],
+        "topSell": [
+          {
+            "code": "9934",
+            "name": "成霖",
+            "net_lots": -116,
+            "foreign_lots": -117,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 11.45,
+            "change": 0.05,
+            "pct": 0.44
+          },
+          {
+            "code": "8464",
+            "name": "億豐",
+            "net_lots": -65,
+            "foreign_lots": -64,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 371.5,
+            "change": -3.0,
+            "pct": -0.8
+          },
+          {
+            "code": "9911",
+            "name": "櫻花",
+            "net_lots": -9,
+            "foreign_lots": -9,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 83.0,
+            "change": -0.1,
+            "pct": -0.12
+          },
+          {
+            "code": "3557",
+            "name": "嘉威",
+            "net_lots": -8,
+            "foreign_lots": -8,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 24.5,
+            "change": 0.1,
+            "pct": 0.41
+          },
+          {
+            "code": "8482",
+            "name": "商億-KY",
+            "net_lots": -2,
+            "foreign_lots": -2,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 49.35,
+            "change": 0.65,
+            "pct": 1.33
+          }
+        ]
+      },
+      "數位雲端": {
+        "topBuy": [
+          {
+            "code": "6165",
+            "name": "浪凡",
+            "net_lots": 37,
+            "foreign_lots": 37,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 48.1,
+            "change": 0.75,
+            "pct": 1.58
+          },
+          {
+            "code": "8454",
+            "name": "富邦媒",
+            "net_lots": 25,
+            "foreign_lots": 27,
+            "trust_lots": 0,
+            "dealer_lots": -2,
+            "price": 250.5,
+            "change": -3.5,
+            "pct": -1.38
+          },
+          {
+            "code": "6906",
+            "name": "現觀科",
+            "net_lots": 8,
+            "foreign_lots": 8,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 70.9,
+            "change": -1.1,
+            "pct": -1.53
+          },
+          {
+            "code": "6902",
+            "name": "GOGOLOOK",
+            "net_lots": 1,
+            "foreign_lots": 1,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 126.5,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "8487",
+            "name": "愛爾達-創",
+            "net_lots": 1,
+            "foreign_lots": 1,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 70.9,
+            "change": 0.3,
+            "pct": 0.42
+          }
+        ],
+        "topSell": [
+          {
+            "code": "7721",
+            "name": "微程式",
+            "net_lots": -40,
+            "foreign_lots": -39,
+            "trust_lots": 0,
+            "dealer_lots": -1,
+            "price": 61.1,
+            "change": 0.0,
+            "pct": 0.0
+          },
+          {
+            "code": "6689",
+            "name": "伊雲谷",
+            "net_lots": -20,
+            "foreign_lots": -8,
+            "trust_lots": 0,
+            "dealer_lots": -12,
+            "price": 61.1,
+            "change": -0.1,
+            "pct": -0.16
+          },
+          {
+            "code": "7722",
+            "name": "LINEPAY",
+            "net_lots": -18,
+            "foreign_lots": -17,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 285.0,
+            "change": 3.5,
+            "pct": 1.24
+          },
+          {
+            "code": "3130",
+            "name": "一零四",
+            "net_lots": -7,
+            "foreign_lots": -7,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 213.5,
+            "change": 1.5,
+            "pct": 0.71
+          },
+          {
+            "code": "7835",
+            "name": "永悅健康-創",
+            "net_lots": -3,
+            "foreign_lots": -3,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 20.65,
+            "change": -0.05,
+            "pct": -0.24
+          }
+        ]
+      },
+      "塑膠": {
+        "topBuy": [
+          {
+            "code": "1337",
+            "name": "再生-KY",
+            "net_lots": 27,
+            "foreign_lots": 27,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 4.68,
+            "change": 0.11,
+            "pct": 2.41
+          },
+          {
+            "code": "1321",
+            "name": "大洋",
+            "net_lots": 25,
+            "foreign_lots": 25,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 32.3,
+            "change": -0.05,
+            "pct": -0.15
+          },
+          {
+            "code": "1340",
+            "name": "勝悅-KY",
+            "net_lots": 15,
+            "foreign_lots": 15,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 5.16,
+            "change": 0.06,
+            "pct": 1.18
+          }
+        ],
+        "topSell": [
+          {
+            "code": "1303",
+            "name": "南亞",
+            "net_lots": -29075,
+            "foreign_lots": -28430,
+            "trust_lots": 72,
+            "dealer_lots": -718,
+            "price": 192.0,
+            "change": 6.0,
+            "pct": 3.23
+          },
+          {
+            "code": "1301",
+            "name": "台塑",
+            "net_lots": -22084,
+            "foreign_lots": -21392,
+            "trust_lots": 0,
+            "dealer_lots": -692,
+            "price": 59.4,
+            "change": 1.6,
+            "pct": 2.77
+          },
+          {
+            "code": "1326",
+            "name": "台化",
+            "net_lots": -18994,
+            "foreign_lots": -18205,
+            "trust_lots": 500,
+            "dealer_lots": -1289,
+            "price": 60.1,
+            "change": 1.7,
+            "pct": 2.91
+          },
+          {
+            "code": "1314",
+            "name": "中石化",
+            "net_lots": -14007,
+            "foreign_lots": -13733,
+            "trust_lots": 0,
+            "dealer_lots": -274,
+            "price": 8.23,
+            "change": 0.41,
+            "pct": 5.24
+          },
+          {
+            "code": "1310",
+            "name": "台苯",
+            "net_lots": -2094,
+            "foreign_lots": -2094,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 8.21,
+            "change": 0.11,
+            "pct": 1.36
+          }
+        ]
+      },
+      "油電燃氣": {
+        "topBuy": [
+          {
+            "code": "9908",
+            "name": "大台北",
+            "net_lots": 14,
+            "foreign_lots": 14,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 29.2,
+            "change": 0.05,
+            "pct": 0.17
+          },
+          {
+            "code": "9931",
+            "name": "欣高",
+            "net_lots": 8,
+            "foreign_lots": 8,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 34.05,
+            "change": 0.05,
+            "pct": 0.15
+          },
+          {
+            "code": "9937",
+            "name": "全國",
+            "net_lots": 2,
+            "foreign_lots": 2,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 55.1,
+            "change": -0.1,
+            "pct": -0.18
+          }
+        ],
+        "topSell": [
+          {
+            "code": "6505",
+            "name": "台塑化",
+            "net_lots": -19403,
+            "foreign_lots": -19168,
+            "trust_lots": 0,
+            "dealer_lots": -235,
+            "price": 75.8,
+            "change": 2.8,
+            "pct": 3.84
+          },
+          {
+            "code": "8926",
+            "name": "台汽電",
+            "net_lots": -549,
+            "foreign_lots": -549,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 57.3,
+            "change": 0.5,
+            "pct": 0.88
+          },
+          {
+            "code": "2616",
+            "name": "山隆",
+            "net_lots": -5,
+            "foreign_lots": -6,
+            "trust_lots": 0,
+            "dealer_lots": 1,
+            "price": 13.55,
+            "change": 0.05,
+            "pct": 0.37
+          },
+          {
+            "code": "9926",
+            "name": "新海",
+            "net_lots": -2,
+            "foreign_lots": -2,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 49.3,
+            "change": 0.25,
+            "pct": 0.51
+          },
+          {
+            "code": "9918",
+            "name": "欣天然",
+            "net_lots": -1,
+            "foreign_lots": -1,
+            "trust_lots": 0,
+            "dealer_lots": 0,
+            "price": 43.3,
+            "change": 0.5,
+            "pct": 1.17
+          }
+        ]
+      }
+    }
   },
   "institutional_flow": {
-    "date": "20260821",
-    "foreign": 283.05,
-    "trust": 21.01,
-    "dealer": 29.23,
-    "total": 333.29
+    "date": "20260824",
+    "foreign": -157.51,
+    "trust": 37.05,
+    "dealer": -43.33,
+    "total": -163.79
   },
   "channels": []
 }
