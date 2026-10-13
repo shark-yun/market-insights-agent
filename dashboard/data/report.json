@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-10-13T03:39:01.295792+08:00",
+  "generatedAt": "2026-10-13T10:49:53.326877+08:00",
   "date": "2026-10-13",
   "indices": {
     "TWII": {
       "label": "台灣加權指數",
       "market": "tw",
-      "price": 49313.44,
-      "change": -492.93,
-      "pct": -0.99,
-      "high": 49783.06,
-      "low": 49189.77,
+      "price": 48306.54,
+      "change": -995.42,
+      "pct": -2.02,
+      "high": 49126.27,
+      "low": 48066.36,
       "sparkline": [
         45862.52,
         45511.49,
@@ -27,7 +27,9 @@
         49712.04,
         49822.55,
         49806.37,
-        49313.44
+        49313.44,
+        49301.96,
+        48306.54
       ],
       "volume_sparkline": [
         3400000,
@@ -46,7 +48,9 @@
         5839900,
         4582800,
         4441400,
-        4264800
+        4264800,
+        4501500,
+        0
       ],
       "dates": [
         "09-14",
@@ -65,15 +69,17 @@
         "10-05",
         "10-06",
         "10-07",
-        "10-08"
+        "10-08",
+        "10-12",
+        "10-13"
       ]
     },
     "GSPC": {
       "label": "S&P 500",
       "market": "us",
-      "price": 7804.76,
-      "change": -6.78,
-      "pct": -0.09,
+      "price": 7807.24,
+      "change": -4.3,
+      "pct": -0.06,
       "high": 7821.67,
       "low": 7796.94,
       "sparkline": [
@@ -97,7 +103,7 @@
         7801.77,
         7765.36,
         7811.54,
-        7804.76
+        7807.24
       ],
       "volume_sparkline": [
         4963750000,
@@ -120,7 +126,7 @@
         5111150000,
         6082070000,
         4782640000,
-        1517942000
+        2291949000
       ],
       "dates": [
         "09-14",
@@ -149,9 +155,9 @@
     "IXIC": {
       "label": "NASDAQ",
       "market": "us",
-      "price": 27254.24,
-      "change": -111.93,
-      "pct": -0.41,
+      "price": 27245.9,
+      "change": -120.27,
+      "pct": -0.44,
       "high": 27376.66,
       "low": 27219.42,
       "sparkline": [
@@ -175,7 +181,7 @@
         27538.69,
         27193.34,
         27366.17,
-        27254.24
+        27245.9
       ],
       "volume_sparkline": [
         7179780000,
@@ -198,7 +204,7 @@
         7315500000,
         8820120000,
         6845310000,
-        4475129000
+        5794275000
       ],
       "dates": [
         "09-14",
@@ -227,9 +233,9 @@
     "DJI": {
       "label": "DOW JONES",
       "market": "us",
-      "price": 51819.38,
-      "change": 164.43,
-      "pct": 0.32,
+      "price": 51850.55,
+      "change": 195.6,
+      "pct": 0.38,
       "high": 51928.1,
       "low": 51718.6,
       "sparkline": [
@@ -253,7 +259,7 @@
         51179.87,
         51231.64,
         51654.95,
-        51819.38
+        51850.55
       ],
       "volume_sparkline": [
         442650000,
@@ -276,7 +282,7 @@
         361940000,
         449590000,
         339470000,
-        207587489
+        307464899
       ],
       "dates": [
         "09-14",
@@ -305,9 +311,9 @@
     "VIX": {
       "label": "VIX",
       "market": "us",
-      "price": 15.33,
-      "change": 0.49,
-      "pct": 3.3,
+      "price": 15.21,
+      "change": 0.37,
+      "pct": 2.49,
       "high": 15.53,
       "low": 15.11,
       "sparkline": [
@@ -331,7 +337,7 @@
         15.08,
         15.41,
         14.84,
-        15.33
+        15.21
       ],
       "volume_sparkline": [
         0,
@@ -385,66 +391,66 @@
     {
       "symbol": "TWII",
       "name": "台股加權",
-      "price": 49313.44,
-      "ma5": 49426.03,
-      "ma20": 47687.85,
-      "ma60": 45726.78,
-      "rsi": 81.3,
+      "price": 48263.84,
+      "ma5": 49301.63,
+      "ma20": 47859.95,
+      "ma60": 45831.94,
+      "rsi": 60.3,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "2330",
       "name": "台積電",
-      "price": NaN,
-      "ma5": NaN,
-      "ma20": NaN,
-      "ma60": NaN,
-      "rsi": 70.5,
-      "signal": "neutral",
-      "signalText": "整理中 ↔"
+      "price": 2495.0,
+      "ma5": 2558.0,
+      "ma20": 2476.59,
+      "ma60": 2409.45,
+      "rsi": 59.7,
+      "signal": "bull",
+      "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "2317",
       "name": "鴻海",
-      "price": NaN,
-      "ma5": NaN,
-      "ma20": NaN,
-      "ma60": NaN,
-      "rsi": 47.5,
-      "signal": "neutral",
-      "signalText": "整理中 ↔"
+      "price": 240.5,
+      "ma5": 250.3,
+      "ma20": 250.55,
+      "ma60": 250.69,
+      "rsi": 37.2,
+      "signal": "bear",
+      "signalText": "空頭排列 ↓"
     },
     {
       "symbol": "AAPL",
       "name": "Apple",
-      "price": 340.85,
-      "ma5": 337.64,
+      "price": 340.97,
+      "ma5": 337.67,
       "ma20": 335.78,
-      "ma60": 323.99,
-      "rsi": 51.2,
+      "ma60": 324.0,
+      "rsi": 51.3,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "NVDA",
       "name": "NVIDIA",
-      "price": 226.76,
-      "ma5": 232.65,
-      "ma20": 227.52,
-      "ma60": 218.98,
-      "rsi": 47.0,
+      "price": 226.32,
+      "ma5": 232.56,
+      "ma20": 227.5,
+      "ma60": 218.97,
+      "rsi": 46.4,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     },
     {
       "symbol": "TSLA",
       "name": "Tesla",
-      "price": 378.12,
-      "ma5": 378.86,
-      "ma20": 369.62,
+      "price": 378.03,
+      "ma5": 378.84,
+      "ma20": 369.61,
       "ma60": 351.57,
-      "rsi": 49.5,
+      "rsi": 49.4,
       "signal": "bull",
       "signalText": "多頭排列 ↑"
     }
@@ -454,9 +460,9 @@
       "symbol": "DX-Y.NYB",
       "name": "美元指數 DXY",
       "icon": "💵",
-      "price": 102.58,
-      "change": 0.37,
-      "pct": 0.36
+      "price": 102.41,
+      "change": 0.2,
+      "pct": 0.2
     },
     {
       "symbol": "^TNX",
@@ -470,241 +476,241 @@
       "symbol": "GC=F",
       "name": "黃金 Gold",
       "icon": "🥇",
-      "price": 4189.4,
-      "change": -26.9,
-      "pct": -0.64
+      "price": 4197.6,
+      "change": -18.7,
+      "pct": -0.44
     },
     {
       "symbol": "CL=F",
       "name": "原油 WTI",
       "icon": "🛢️",
-      "price": 93.58,
-      "change": 1.73,
-      "pct": 1.88
+      "price": 92.62,
+      "change": 0.77,
+      "pct": 0.84
     }
   ],
   "sectors": [
     {
       "name": "水泥窯製",
       "fullName": "水泥窯製類指數",
-      "pct": -0.41,
-      "close": "658.11"
+      "pct": 1.68,
+      "close": "669.15"
     },
     {
       "name": "塑膠化工",
       "fullName": "塑膠化工類指數",
-      "pct": 0.35,
-      "close": "1334.85"
+      "pct": -1.25,
+      "close": "1318.12"
     },
     {
       "name": "機電",
       "fullName": "機電類指數",
-      "pct": -1.07,
-      "close": "17235.31"
+      "pct": -0.35,
+      "close": "17175.59"
     },
     {
       "name": "水泥",
       "fullName": "水泥類指數",
-      "pct": 0.83,
-      "close": "126.75"
+      "pct": 3.01,
+      "close": "130.57"
     },
     {
       "name": "食品",
       "fullName": "食品類指數",
       "pct": 0.32,
-      "close": "1896.11"
+      "close": "1902.27"
     },
     {
       "name": "塑膠",
       "fullName": "塑膠類指數",
-      "pct": 0.5,
-      "close": "492.89"
+      "pct": -1.75,
+      "close": "484.27"
     },
     {
       "name": "紡織纖維",
       "fullName": "紡織纖維類指數",
-      "pct": 0.82,
-      "close": "482.28"
+      "pct": 0.37,
+      "close": "484.05"
     },
     {
       "name": "電機",
       "fullName": "電機機械類指數",
-      "pct": -0.76,
-      "close": "557.30"
+      "pct": 0.98,
+      "close": "562.78"
     },
     {
       "name": "電器電纜",
       "fullName": "電器電纜類指數",
-      "pct": -1.26,
-      "close": "110.76"
+      "pct": 2.36,
+      "close": "113.37"
     },
     {
       "name": "化學生技醫療",
       "fullName": "化學生技醫療類指數",
-      "pct": 0.02,
-      "close": "166.36"
+      "pct": -0.46,
+      "close": "165.60"
     },
     {
       "name": "化學",
       "fullName": "化學類指數",
-      "pct": 0.33,
-      "close": "205.36"
+      "pct": -0.47,
+      "close": "204.40"
     },
     {
       "name": "生技醫療",
       "fullName": "生技醫療類指數",
-      "pct": -0.12,
-      "close": "91.66"
+      "pct": -0.45,
+      "close": "91.25"
     },
     {
       "name": "玻璃陶瓷",
       "fullName": "玻璃陶瓷類指數",
-      "pct": -2.55,
-      "close": "150.65"
+      "pct": -0.7,
+      "close": "149.59"
     },
     {
       "name": "造紙",
       "fullName": "造紙類指數",
-      "pct": -0.01,
-      "close": "273.63"
+      "pct": 0.27,
+      "close": "274.37"
     },
     {
       "name": "鋼鐵",
       "fullName": "鋼鐵類指數",
-      "pct": 0.07,
-      "close": "121.97"
+      "pct": 0.62,
+      "close": "122.73"
     },
     {
       "name": "橡膠",
       "fullName": "橡膠類指數",
-      "pct": 0.48,
-      "close": "193.39"
+      "pct": 0.34,
+      "close": "194.05"
     },
     {
       "name": "汽車",
       "fullName": "汽車類指數",
-      "pct": -0.79,
-      "close": "292.82"
+      "pct": 0.87,
+      "close": "295.38"
     },
     {
       "name": "電子工業",
       "fullName": "電子工業類指數",
-      "pct": -1.07,
-      "close": "3134.58"
+      "pct": -0.37,
+      "close": "3122.93"
     },
     {
       "name": "半導體",
       "fullName": "半導體類指數",
-      "pct": -1.18,
-      "close": "1658.10"
+      "pct": -0.35,
+      "close": "1652.27"
     },
     {
       "name": "電腦及週邊設備",
       "fullName": "電腦及週邊設備類指數",
-      "pct": -0.95,
-      "close": "469.59"
+      "pct": -0.29,
+      "close": "468.21"
     },
     {
       "name": "光電",
       "fullName": "光電類指數",
-      "pct": -2.02,
-      "close": "79.65"
+      "pct": 3.49,
+      "close": "82.43"
     },
     {
       "name": "通信網路",
       "fullName": "通信網路類指數",
-      "pct": 1.02,
-      "close": "244.50"
+      "pct": 0.63,
+      "close": "246.04"
     },
     {
       "name": "電子零組件",
       "fullName": "電子零組件類指數",
-      "pct": -0.9,
-      "close": "1035.10"
+      "pct": -1.04,
+      "close": "1024.33"
     },
     {
       "name": "電子通路",
       "fullName": "電子通路類指數",
-      "pct": -0.56,
-      "close": "384.41"
+      "pct": 0.1,
+      "close": "384.78"
     },
     {
       "name": "資訊服務",
       "fullName": "資訊服務類指數",
-      "pct": 0.07,
-      "close": "237.45"
+      "pct": 2.07,
+      "close": "242.36"
     },
     {
       "name": "其他電子",
       "fullName": "其他電子類指數",
-      "pct": -1.13,
-      "close": "285.26"
+      "pct": -1.12,
+      "close": "282.07"
     },
     {
       "name": "建材營造",
       "fullName": "建材營造類指數",
-      "pct": 0.28,
-      "close": "442.62"
+      "pct": 1.03,
+      "close": "447.17"
     },
     {
       "name": "航運",
       "fullName": "航運類指數",
-      "pct": -0.05,
-      "close": "207.83"
+      "pct": 5.12,
+      "close": "218.48"
     },
     {
       "name": "觀光餐旅",
       "fullName": "觀光餐旅類指數",
-      "pct": 0.54,
-      "close": "102.23"
+      "pct": 0.94,
+      "close": "103.19"
     },
     {
       "name": "金融保險",
       "fullName": "金融保險類指數",
-      "pct": -1.68,
-      "close": "3535.27"
+      "pct": 2.87,
+      "close": "3636.61"
     },
     {
       "name": "貿易百貨",
       "fullName": "貿易百貨類指數",
-      "pct": 0.12,
-      "close": "234.99"
+      "pct": 0.79,
+      "close": "236.84"
     },
     {
       "name": "油電燃氣",
       "fullName": "油電燃氣類指數",
-      "pct": 3.04,
-      "close": "144.10"
+      "pct": -1.75,
+      "close": "141.58"
     },
     {
       "name": "綠能環保",
       "fullName": "綠能環保類指數",
-      "pct": -2.57,
-      "close": "133.71"
+      "pct": -1.56,
+      "close": "131.63"
     },
     {
       "name": "數位雲端",
       "fullName": "數位雲端類指數",
-      "pct": -1.08,
-      "close": "39.28"
+      "pct": 0.59,
+      "close": "39.51"
     },
     {
       "name": "運動休閒",
       "fullName": "運動休閒類指數",
-      "pct": 0.22,
-      "close": "55.83"
+      "pct": 0.56,
+      "close": "56.14"
     },
     {
       "name": "居家生活",
       "fullName": "居家生活類指數",
-      "pct": 0.45,
-      "close": "98.90"
+      "pct": 1.19,
+      "close": "100.08"
     },
     {
       "name": "其他",
       "fullName": "其他類指數",
-      "pct": 0.04,
-      "close": "275.26"
+      "pct": 0.01,
+      "close": "275.29"
     }
   ],
   "institutional": {
@@ -883,9 +889,9 @@
             "foreign_lots": 36209,
             "trust_lots": 1490,
             "dealer_lots": 3457,
-            "price": 25.7,
-            "change": 0.2,
-            "pct": 0.78
+            "price": 27.0,
+            "change": 1.3,
+            "pct": 5.06
           },
           {
             "code": "1102",
@@ -894,9 +900,9 @@
             "foreign_lots": 1575,
             "trust_lots": -136,
             "dealer_lots": 137,
-            "price": 36.35,
-            "change": 0.45,
-            "pct": 1.25
+            "price": 36.65,
+            "change": 0.3,
+            "pct": 0.83
           },
           {
             "code": "1104",
@@ -905,9 +911,9 @@
             "foreign_lots": 276,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 26.85,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 27.1,
+            "change": 0.25,
+            "pct": 0.93
           },
           {
             "code": "1103",
@@ -916,9 +922,9 @@
             "foreign_lots": 126,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 13.15,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 13.25,
+            "change": 0.1,
+            "pct": 0.76
           },
           {
             "code": "1108",
@@ -927,9 +933,9 @@
             "foreign_lots": 37,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 11.1,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 11.15,
+            "change": 0.05,
+            "pct": 0.45
           }
         ],
         "topSell": [
@@ -940,9 +946,9 @@
             "foreign_lots": -12,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 14.45,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 14.4,
+            "change": -0.05,
+            "pct": -0.35
           }
         ]
       },
@@ -955,9 +961,9 @@
             "foreign_lots": 37213,
             "trust_lots": 361,
             "dealer_lots": 2088,
-            "price": 41.0,
-            "change": -1.15,
-            "pct": -2.73
+            "price": 43.0,
+            "change": 2.0,
+            "pct": 4.88
           },
           {
             "code": "2883",
@@ -966,9 +972,9 @@
             "foreign_lots": 29422,
             "trust_lots": 311,
             "dealer_lots": 1631,
-            "price": 37.55,
-            "change": -0.95,
-            "pct": -2.47
+            "price": 38.8,
+            "change": 1.25,
+            "pct": 3.33
           },
           {
             "code": "2891",
@@ -977,9 +983,9 @@
             "foreign_lots": 12452,
             "trust_lots": 5980,
             "dealer_lots": 1245,
-            "price": 67.3,
-            "change": -1.4,
-            "pct": -2.04
+            "price": 69.8,
+            "change": 2.5,
+            "pct": 3.71
           },
           {
             "code": "2885",
@@ -988,9 +994,9 @@
             "foreign_lots": 12271,
             "trust_lots": 582,
             "dealer_lots": 911,
-            "price": 68.3,
-            "change": -1.7,
-            "pct": -2.43
+            "price": 70.1,
+            "change": 1.8,
+            "pct": 2.64
           },
           {
             "code": "2884",
@@ -999,9 +1005,9 @@
             "foreign_lots": 10116,
             "trust_lots": -96,
             "dealer_lots": 1145,
-            "price": 45.0,
-            "change": -0.75,
-            "pct": -1.64
+            "price": 46.0,
+            "change": 1.0,
+            "pct": 2.22
           }
         ],
         "topSell": [
@@ -1012,9 +1018,9 @@
             "foreign_lots": -11340,
             "trust_lots": 0,
             "dealer_lots": -37,
-            "price": 18.8,
-            "change": -0.05,
-            "pct": -0.27
+            "price": 18.6,
+            "change": -0.2,
+            "pct": -1.06
           },
           {
             "code": "2820",
@@ -1023,9 +1029,9 @@
             "foreign_lots": -1925,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 16.85,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 16.65,
+            "change": -0.2,
+            "pct": -1.19
           },
           {
             "code": "2889",
@@ -1034,9 +1040,9 @@
             "foreign_lots": -639,
             "trust_lots": 0,
             "dealer_lots": -4,
-            "price": 16.5,
-            "change": 0.2,
-            "pct": 1.23
+            "price": 16.55,
+            "change": 0.05,
+            "pct": 0.3
           },
           {
             "code": "2836",
@@ -1046,8 +1052,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 12.05,
-            "change": -0.05,
-            "pct": -0.41
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "2897",
@@ -1056,9 +1062,9 @@
             "foreign_lots": -215,
             "trust_lots": 0,
             "dealer_lots": 22,
-            "price": 10.7,
-            "change": 0.05,
-            "pct": 0.47
+            "price": 10.8,
+            "change": 0.1,
+            "pct": 0.93
           }
         ]
       },
@@ -1071,9 +1077,9 @@
             "foreign_lots": 29965,
             "trust_lots": -4,
             "dealer_lots": 668,
-            "price": 18.95,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 19.2,
+            "change": 0.25,
+            "pct": 1.32
           },
           {
             "code": "2009",
@@ -1082,9 +1088,9 @@
             "foreign_lots": 1472,
             "trust_lots": 0,
             "dealer_lots": 30,
-            "price": 39.6,
-            "change": -0.3,
-            "pct": -0.75
+            "price": 40.55,
+            "change": 0.95,
+            "pct": 2.4
           },
           {
             "code": "2023",
@@ -1093,9 +1099,9 @@
             "foreign_lots": 598,
             "trust_lots": 0,
             "dealer_lots": 126,
-            "price": 13.95,
-            "change": 0.05,
-            "pct": 0.36
+            "price": 14.05,
+            "change": 0.1,
+            "pct": 0.72
           },
           {
             "code": "9958",
@@ -1104,9 +1110,9 @@
             "foreign_lots": 395,
             "trust_lots": 0,
             "dealer_lots": 9,
-            "price": 89.1,
-            "change": 0.1,
-            "pct": 0.11
+            "price": 91.0,
+            "change": 1.9,
+            "pct": 2.13
           },
           {
             "code": "2030",
@@ -1115,9 +1121,9 @@
             "foreign_lots": 355,
             "trust_lots": 0,
             "dealer_lots": -12,
-            "price": 35.55,
-            "change": -1.2,
-            "pct": -3.27
+            "price": 32.0,
+            "change": -3.55,
+            "pct": -9.99
           }
         ],
         "topSell": [
@@ -1128,9 +1134,9 @@
             "foreign_lots": -373,
             "trust_lots": 0,
             "dealer_lots": 6,
-            "price": 22.7,
-            "change": 0.05,
-            "pct": 0.22
+            "price": 22.4,
+            "change": -0.3,
+            "pct": -1.32
           },
           {
             "code": "2033",
@@ -1139,9 +1145,9 @@
             "foreign_lots": -162,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 52.2,
-            "change": -1.0,
-            "pct": -1.88
+            "price": 49.5,
+            "change": -2.7,
+            "pct": -5.17
           },
           {
             "code": "2025",
@@ -1150,9 +1156,9 @@
             "foreign_lots": -143,
             "trust_lots": 0,
             "dealer_lots": 3,
-            "price": 13.6,
-            "change": 0.1,
-            "pct": 0.74
+            "price": 13.35,
+            "change": -0.25,
+            "pct": -1.84
           },
           {
             "code": "2032",
@@ -1161,9 +1167,9 @@
             "foreign_lots": -83,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 18.55,
-            "change": -0.15,
-            "pct": -0.8
+            "price": 18.2,
+            "change": -0.35,
+            "pct": -1.89
           },
           {
             "code": "2038",
@@ -1173,8 +1179,8 @@
             "trust_lots": 0,
             "dealer_lots": -1,
             "price": 12.5,
-            "change": -0.05,
-            "pct": -0.4
+            "change": 0.0,
+            "pct": 0.0
           }
         ]
       },
@@ -1187,9 +1193,9 @@
             "foreign_lots": 20078,
             "trust_lots": 4217,
             "dealer_lots": 1419,
-            "price": 59.7,
-            "change": 0.6,
-            "pct": 1.02
+            "price": 63.6,
+            "change": 3.9,
+            "pct": 6.53
           },
           {
             "code": "2603",
@@ -1198,9 +1204,9 @@
             "foreign_lots": 12029,
             "trust_lots": -30,
             "dealer_lots": 542,
-            "price": 232.5,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 255.5,
+            "change": 23.0,
+            "pct": 9.89
           },
           {
             "code": "2610",
@@ -1209,9 +1215,9 @@
             "foreign_lots": 10419,
             "trust_lots": -393,
             "dealer_lots": -153,
-            "price": 20.15,
-            "change": -0.2,
-            "pct": -0.98
+            "price": 20.4,
+            "change": 0.25,
+            "pct": 1.24
           },
           {
             "code": "2618",
@@ -1220,9 +1226,9 @@
             "foreign_lots": 6338,
             "trust_lots": -58,
             "dealer_lots": 418,
-            "price": 41.4,
-            "change": -0.55,
-            "pct": -1.31
+            "price": 42.0,
+            "change": 0.6,
+            "pct": 1.45
           },
           {
             "code": "2605",
@@ -1231,9 +1237,9 @@
             "foreign_lots": 3150,
             "trust_lots": 0,
             "dealer_lots": -28,
-            "price": 36.7,
-            "change": 0.1,
-            "pct": 0.27
+            "price": 37.3,
+            "change": 0.6,
+            "pct": 1.63
           }
         ],
         "topSell": [
@@ -1244,9 +1250,9 @@
             "foreign_lots": -2503,
             "trust_lots": 0,
             "dealer_lots": 499,
-            "price": 111.5,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 121.0,
+            "change": 9.5,
+            "pct": 8.52
           },
           {
             "code": "2634",
@@ -1255,9 +1261,9 @@
             "foreign_lots": -1083,
             "trust_lots": 0,
             "dealer_lots": -26,
-            "price": 63.2,
-            "change": -0.4,
-            "pct": -0.63
+            "price": 62.5,
+            "change": -0.7,
+            "pct": -1.11
           },
           {
             "code": "2601",
@@ -1266,9 +1272,9 @@
             "foreign_lots": -893,
             "trust_lots": 0,
             "dealer_lots": -10,
-            "price": 6.12,
-            "change": 0.04,
-            "pct": 0.66
+            "price": 6.15,
+            "change": 0.03,
+            "pct": 0.49
           },
           {
             "code": "2208",
@@ -1278,8 +1284,8 @@
             "trust_lots": 0,
             "dealer_lots": 37,
             "price": 18.55,
-            "change": 0.05,
-            "pct": 0.27
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "2645",
@@ -1288,9 +1294,9 @@
             "foreign_lots": -149,
             "trust_lots": 0,
             "dealer_lots": 13,
-            "price": 171.5,
-            "change": -2.0,
-            "pct": -1.15
+            "price": 171.0,
+            "change": -0.5,
+            "pct": -0.29
           }
         ]
       },
@@ -1303,9 +1309,9 @@
             "foreign_lots": 15850,
             "trust_lots": -3,
             "dealer_lots": 1602,
-            "price": 51.0,
-            "change": -1.5,
-            "pct": -2.86
+            "price": 51.3,
+            "change": 0.3,
+            "pct": 0.59
           },
           {
             "code": "6278",
@@ -1314,9 +1320,9 @@
             "foreign_lots": 5189,
             "trust_lots": 213,
             "dealer_lots": -228,
-            "price": 248.0,
-            "change": -2.5,
-            "pct": -1.0
+            "price": 272.5,
+            "change": 24.5,
+            "pct": 9.88
           },
           {
             "code": "4976",
@@ -1325,9 +1331,9 @@
             "foreign_lots": 3607,
             "trust_lots": 0,
             "dealer_lots": 19,
-            "price": 37.3,
-            "change": -0.3,
-            "pct": -0.8
+            "price": 41.0,
+            "change": 3.7,
+            "pct": 9.92
           },
           {
             "code": "6668",
@@ -1336,9 +1342,9 @@
             "foreign_lots": 1692,
             "trust_lots": 0,
             "dealer_lots": 2,
-            "price": 51.1,
-            "change": 0.9,
-            "pct": 1.79
+            "price": 55.0,
+            "change": 3.9,
+            "pct": 7.63
           },
           {
             "code": "6116",
@@ -1347,9 +1353,9 @@
             "foreign_lots": 1867,
             "trust_lots": 0,
             "dealer_lots": -754,
-            "price": 15.1,
-            "change": -0.4,
-            "pct": -2.58
+            "price": 15.2,
+            "change": 0.1,
+            "pct": 0.66
           }
         ],
         "topSell": [
@@ -1360,9 +1366,9 @@
             "foreign_lots": -26282,
             "trust_lots": -19,
             "dealer_lots": -2990,
-            "price": 36.6,
-            "change": -1.35,
-            "pct": -3.56
+            "price": 35.55,
+            "change": -1.05,
+            "pct": -2.87
           },
           {
             "code": "2323",
@@ -1371,7 +1377,7 @@
             "foreign_lots": -5534,
             "trust_lots": 0,
             "dealer_lots": -65,
-            "price": 0.0,
+            "price": 10.9,
             "change": 0.0,
             "pct": 0.0
           },
@@ -1382,9 +1388,9 @@
             "foreign_lots": -2723,
             "trust_lots": 0,
             "dealer_lots": -104,
-            "price": 103.0,
-            "change": -1.0,
-            "pct": -0.96
+            "price": 100.5,
+            "change": -2.5,
+            "pct": -2.43
           },
           {
             "code": "6209",
@@ -1393,9 +1399,9 @@
             "foreign_lots": -1351,
             "trust_lots": 0,
             "dealer_lots": 44,
-            "price": 90.1,
-            "change": -0.8,
-            "pct": -0.88
+            "price": 89.1,
+            "change": -1.0,
+            "pct": -1.11
           },
           {
             "code": "6120",
@@ -1404,9 +1410,9 @@
             "foreign_lots": -906,
             "trust_lots": 0,
             "dealer_lots": 19,
-            "price": 13.7,
-            "change": -0.3,
-            "pct": -2.14
+            "price": 13.45,
+            "change": -0.25,
+            "pct": -1.82
           }
         ]
       },
@@ -1419,9 +1425,9 @@
             "foreign_lots": 14784,
             "trust_lots": -440,
             "dealer_lots": 255,
-            "price": 89.7,
-            "change": -0.3,
-            "pct": -0.33
+            "price": 98.6,
+            "change": 8.9,
+            "pct": 9.92
           },
           {
             "code": "3706",
@@ -1430,9 +1436,9 @@
             "foreign_lots": 4683,
             "trust_lots": -94,
             "dealer_lots": 96,
-            "price": 80.6,
-            "change": -0.3,
-            "pct": -0.37
+            "price": 82.3,
+            "change": 1.7,
+            "pct": 2.11
           },
           {
             "code": "3231",
@@ -1441,9 +1447,9 @@
             "foreign_lots": 3858,
             "trust_lots": 29,
             "dealer_lots": 536,
-            "price": 188.5,
-            "change": 3.5,
-            "pct": 1.89
+            "price": 189.5,
+            "change": 1.0,
+            "pct": 0.53
           },
           {
             "code": "2324",
@@ -1452,9 +1458,9 @@
             "foreign_lots": 3070,
             "trust_lots": 6,
             "dealer_lots": 998,
-            "price": 35.5,
-            "change": -0.6,
-            "pct": -1.66
+            "price": 36.6,
+            "change": 1.1,
+            "pct": 3.1
           },
           {
             "code": "2352",
@@ -1463,9 +1469,9 @@
             "foreign_lots": 723,
             "trust_lots": 20,
             "dealer_lots": 145,
-            "price": 28.55,
-            "change": -0.35,
-            "pct": -1.21
+            "price": 29.0,
+            "change": 0.45,
+            "pct": 1.58
           }
         ],
         "topSell": [
@@ -1476,9 +1482,9 @@
             "foreign_lots": -6461,
             "trust_lots": -62,
             "dealer_lots": 85,
-            "price": 297.5,
-            "change": -2.5,
-            "pct": -0.83
+            "price": 288.0,
+            "change": -9.5,
+            "pct": -3.19
           },
           {
             "code": "2356",
@@ -1487,9 +1493,9 @@
             "foreign_lots": -4531,
             "trust_lots": 74,
             "dealer_lots": 187,
-            "price": 57.5,
-            "change": -0.6,
-            "pct": -1.03
+            "price": 58.1,
+            "change": 0.6,
+            "pct": 1.04
           },
           {
             "code": "2376",
@@ -1498,9 +1504,9 @@
             "foreign_lots": -3174,
             "trust_lots": 196,
             "dealer_lots": -43,
-            "price": 363.0,
-            "change": -2.5,
-            "pct": -0.68
+            "price": 356.0,
+            "change": -7.0,
+            "pct": -1.93
           },
           {
             "code": "2305",
@@ -1509,9 +1515,9 @@
             "foreign_lots": -1542,
             "trust_lots": 0,
             "dealer_lots": -36,
-            "price": 64.7,
-            "change": 5.8,
-            "pct": 9.85
+            "price": 71.1,
+            "change": 6.4,
+            "pct": 9.89
           },
           {
             "code": "2382",
@@ -1520,9 +1526,9 @@
             "foreign_lots": -1315,
             "trust_lots": 15,
             "dealer_lots": 102,
-            "price": 325.5,
-            "change": -9.5,
-            "pct": -2.84
+            "price": 322.0,
+            "change": -3.5,
+            "pct": -1.08
           }
         ]
       },
@@ -1535,9 +1541,9 @@
             "foreign_lots": 9231,
             "trust_lots": 921,
             "dealer_lots": 1022,
-            "price": 39.1,
-            "change": -0.8,
-            "pct": -2.01
+            "price": 40.15,
+            "change": 1.05,
+            "pct": 2.69
           },
           {
             "code": "1609",
@@ -1546,9 +1552,9 @@
             "foreign_lots": 2450,
             "trust_lots": 0,
             "dealer_lots": 66,
-            "price": 38.25,
-            "change": -0.75,
-            "pct": -1.92
+            "price": 39.3,
+            "change": 1.05,
+            "pct": 2.75
           },
           {
             "code": "1617",
@@ -1558,8 +1564,8 @@
             "trust_lots": 0,
             "dealer_lots": 3,
             "price": 24.1,
-            "change": 0.15,
-            "pct": 0.63
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "1608",
@@ -1568,9 +1574,9 @@
             "foreign_lots": 207,
             "trust_lots": 0,
             "dealer_lots": 9,
-            "price": 36.55,
-            "change": -0.5,
-            "pct": -1.35
+            "price": 37.15,
+            "change": 0.6,
+            "pct": 1.64
           },
           {
             "code": "1618",
@@ -1579,9 +1585,9 @@
             "foreign_lots": 213,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 38.1,
-            "change": -1.2,
-            "pct": -3.05
+            "price": 38.95,
+            "change": 0.85,
+            "pct": 2.23
           }
         ],
         "topSell": [
@@ -1592,9 +1598,9 @@
             "foreign_lots": -66,
             "trust_lots": 0,
             "dealer_lots": -166,
-            "price": 11.35,
-            "change": 0.05,
-            "pct": 0.44
+            "price": 11.3,
+            "change": -0.05,
+            "pct": -0.44
           },
           {
             "code": "1623",
@@ -1603,9 +1609,9 @@
             "foreign_lots": -8,
             "trust_lots": 0,
             "dealer_lots": -3,
-            "price": 194.0,
-            "change": -1.0,
-            "pct": -0.51
+            "price": 198.0,
+            "change": 4.0,
+            "pct": 2.06
           },
           {
             "code": "5283",
@@ -1615,8 +1621,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 51.8,
-            "change": 0.2,
-            "pct": 0.39
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "1616",
@@ -1626,8 +1632,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 18.7,
-            "change": 0.05,
-            "pct": 0.27
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "4930",
@@ -1637,8 +1643,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 15.7,
-            "change": -0.1,
-            "pct": -0.63
+            "change": 0.0,
+            "pct": 0.0
           }
         ]
       },
@@ -1651,9 +1657,9 @@
             "foreign_lots": 14930,
             "trust_lots": 0,
             "dealer_lots": -4284,
-            "price": 15.15,
-            "change": 0.1,
-            "pct": 0.66
+            "price": 16.05,
+            "change": 0.9,
+            "pct": 5.94
           },
           {
             "code": "1314",
@@ -1662,9 +1668,9 @@
             "foreign_lots": 2751,
             "trust_lots": 0,
             "dealer_lots": -107,
-            "price": 9.06,
-            "change": 0.15,
-            "pct": 1.68
+            "price": 9.04,
+            "change": -0.02,
+            "pct": -0.22
           },
           {
             "code": "1305",
@@ -1673,9 +1679,9 @@
             "foreign_lots": 583,
             "trust_lots": 0,
             "dealer_lots": 93,
-            "price": 13.0,
-            "change": 0.1,
-            "pct": 0.78
+            "price": 13.15,
+            "change": 0.15,
+            "pct": 1.15
           },
           {
             "code": "1313",
@@ -1685,8 +1691,8 @@
             "trust_lots": 0,
             "dealer_lots": 92,
             "price": 12.8,
-            "change": 0.2,
-            "pct": 1.59
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "1321",
@@ -1695,9 +1701,9 @@
             "foreign_lots": 44,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 32.65,
-            "change": 0.2,
-            "pct": 0.62
+            "price": 32.95,
+            "change": 0.3,
+            "pct": 0.92
           }
         ],
         "topSell": [
@@ -1708,9 +1714,9 @@
             "foreign_lots": -36881,
             "trust_lots": 19104,
             "dealer_lots": -887,
-            "price": 81.3,
-            "change": 5.9,
-            "pct": 7.82
+            "price": 80.7,
+            "change": -0.6,
+            "pct": -0.74
           },
           {
             "code": "1303",
@@ -1719,9 +1725,9 @@
             "foreign_lots": -8428,
             "trust_lots": -792,
             "dealer_lots": 492,
-            "price": 310.0,
-            "change": -4.0,
-            "pct": -1.27
+            "price": 303.0,
+            "change": -7.0,
+            "pct": -2.26
           },
           {
             "code": "1326",
@@ -1730,9 +1736,9 @@
             "foreign_lots": -5889,
             "trust_lots": 0,
             "dealer_lots": -560,
-            "price": 77.6,
-            "change": 1.8,
-            "pct": 2.37
+            "price": 76.8,
+            "change": -0.8,
+            "pct": -1.03
           },
           {
             "code": "1310",
@@ -1741,9 +1747,9 @@
             "foreign_lots": -616,
             "trust_lots": 0,
             "dealer_lots": 12,
-            "price": 10.05,
-            "change": 0.31,
-            "pct": 3.18
+            "price": 9.84,
+            "change": -0.21,
+            "pct": -2.09
           },
           {
             "code": "1325",
@@ -1752,9 +1758,9 @@
             "foreign_lots": -537,
             "trust_lots": 0,
             "dealer_lots": 8,
-            "price": 30.55,
-            "change": 2.75,
-            "pct": 9.89
+            "price": 31.0,
+            "change": 0.45,
+            "pct": 1.47
           }
         ]
       },
@@ -1767,9 +1773,9 @@
             "foreign_lots": 10293,
             "trust_lots": -75,
             "dealer_lots": 259,
-            "price": 25.05,
-            "change": 0.1,
-            "pct": 0.4
+            "price": 25.65,
+            "change": 0.6,
+            "pct": 2.4
           },
           {
             "code": "9910",
@@ -1778,9 +1784,9 @@
             "foreign_lots": 437,
             "trust_lots": -34,
             "dealer_lots": -17,
-            "price": 66.3,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 67.4,
+            "change": 1.1,
+            "pct": 1.66
           },
           {
             "code": "9914",
@@ -1789,9 +1795,9 @@
             "foreign_lots": 228,
             "trust_lots": 0,
             "dealer_lots": 32,
-            "price": 67.8,
-            "change": 0.4,
-            "pct": 0.59
+            "price": 68.8,
+            "change": 1.0,
+            "pct": 1.47
           },
           {
             "code": "9802",
@@ -1800,9 +1806,9 @@
             "foreign_lots": 177,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 65.9,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 66.4,
+            "change": 0.5,
+            "pct": 0.76
           },
           {
             "code": "9921",
@@ -1811,9 +1817,9 @@
             "foreign_lots": 173,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 92.8,
-            "change": 1.0,
-            "pct": 1.09
+            "price": 93.7,
+            "change": 0.9,
+            "pct": 0.97
           }
         ],
         "topSell": [
@@ -1824,9 +1830,9 @@
             "foreign_lots": -229,
             "trust_lots": 70,
             "dealer_lots": -2,
-            "price": 279.0,
-            "change": 5.0,
-            "pct": 1.82
+            "price": 272.0,
+            "change": -7.0,
+            "pct": -2.51
           },
           {
             "code": "1598",
@@ -1835,9 +1841,9 @@
             "foreign_lots": -119,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 20.1,
+            "price": 19.95,
             "change": -0.15,
-            "pct": -0.74
+            "pct": -0.75
           },
           {
             "code": "6890",
@@ -1847,8 +1853,8 @@
             "trust_lots": 0,
             "dealer_lots": -5,
             "price": 152.0,
-            "change": -4.0,
-            "pct": -2.56
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "8462",
@@ -1857,9 +1863,9 @@
             "foreign_lots": -38,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 156.0,
-            "change": -2.0,
-            "pct": -1.27
+            "price": 155.5,
+            "change": -0.5,
+            "pct": -0.32
           },
           {
             "code": "2762",
@@ -1868,9 +1874,9 @@
             "foreign_lots": -7,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 77.4,
-            "change": -0.3,
-            "pct": -0.39
+            "price": 77.7,
+            "change": 0.3,
+            "pct": 0.39
           }
         ]
       },
@@ -1883,9 +1889,9 @@
             "foreign_lots": 8819,
             "trust_lots": -508,
             "dealer_lots": 94,
-            "price": 39.05,
-            "change": 0.25,
-            "pct": 0.64
+            "price": 40.1,
+            "change": 1.05,
+            "pct": 2.69
           },
           {
             "code": "1808",
@@ -1894,9 +1900,9 @@
             "foreign_lots": 1794,
             "trust_lots": 0,
             "dealer_lots": 28,
-            "price": 32.55,
-            "change": 0.2,
-            "pct": 0.62
+            "price": 34.75,
+            "change": 2.2,
+            "pct": 6.76
           },
           {
             "code": "2520",
@@ -1905,9 +1911,9 @@
             "foreign_lots": 1112,
             "trust_lots": 0,
             "dealer_lots": 17,
-            "price": 37.35,
-            "change": 0.35,
-            "pct": 0.95
+            "price": 37.8,
+            "change": 0.45,
+            "pct": 1.2
           },
           {
             "code": "2515",
@@ -1916,9 +1922,9 @@
             "foreign_lots": 826,
             "trust_lots": 0,
             "dealer_lots": 162,
-            "price": 11.95,
-            "change": -0.2,
-            "pct": -1.65
+            "price": 12.0,
+            "change": 0.05,
+            "pct": 0.42
           },
           {
             "code": "2547",
@@ -1927,9 +1933,9 @@
             "foreign_lots": 823,
             "trust_lots": 0,
             "dealer_lots": -1,
-            "price": 9.74,
-            "change": 0.06,
-            "pct": 0.62
+            "price": 9.96,
+            "change": 0.22,
+            "pct": 2.26
           }
         ],
         "topSell": [
@@ -1940,9 +1946,9 @@
             "foreign_lots": -699,
             "trust_lots": 0,
             "dealer_lots": -1,
-            "price": 20.65,
-            "change": 0.05,
-            "pct": 0.24
+            "price": 20.5,
+            "change": -0.15,
+            "pct": -0.73
           },
           {
             "code": "2536",
@@ -1951,9 +1957,9 @@
             "foreign_lots": -246,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 18.7,
-            "change": 0.3,
-            "pct": 1.63
+            "price": 18.35,
+            "change": -0.35,
+            "pct": -1.87
           },
           {
             "code": "2537",
@@ -1962,9 +1968,9 @@
             "foreign_lots": -188,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 10.95,
+            "price": 10.9,
             "change": -0.05,
-            "pct": -0.45
+            "pct": -0.46
           },
           {
             "code": "5531",
@@ -1973,9 +1979,9 @@
             "foreign_lots": -179,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 6.97,
-            "change": -0.04,
-            "pct": -0.57
+            "price": 6.86,
+            "change": -0.11,
+            "pct": -1.58
           },
           {
             "code": "5534",
@@ -1984,9 +1990,9 @@
             "foreign_lots": 25,
             "trust_lots": -191,
             "dealer_lots": 0,
-            "price": 72.2,
-            "change": 0.6,
-            "pct": 0.84
+            "price": 71.3,
+            "change": -0.9,
+            "pct": -1.25
           }
         ]
       },
@@ -1999,9 +2005,9 @@
             "foreign_lots": 4154,
             "trust_lots": 2871,
             "dealer_lots": 299,
-            "price": 248.0,
-            "change": 2.0,
-            "pct": 0.81
+            "price": 252.0,
+            "change": 4.0,
+            "pct": 1.61
           },
           {
             "code": "3037",
@@ -2010,9 +2016,9 @@
             "foreign_lots": 1222,
             "trust_lots": -780,
             "dealer_lots": 34,
-            "price": 1270.0,
-            "change": -35.0,
-            "pct": -2.68
+            "price": 1255.0,
+            "change": -15.0,
+            "pct": -1.18
           }
         ],
         "topSell": [
@@ -2023,9 +2029,9 @@
             "foreign_lots": -2309,
             "trust_lots": 652,
             "dealer_lots": 34,
-            "price": 1285.0,
-            "change": 40.0,
-            "pct": 3.21
+            "price": 1235.0,
+            "change": -50.0,
+            "pct": -3.89
           }
         ]
       },
@@ -2038,9 +2044,9 @@
             "foreign_lots": 4154,
             "trust_lots": 2871,
             "dealer_lots": 299,
-            "price": 248.0,
-            "change": 2.0,
-            "pct": 0.81
+            "price": 252.0,
+            "change": 4.0,
+            "pct": 1.61
           },
           {
             "code": "3605",
@@ -2049,9 +2055,9 @@
             "foreign_lots": 5511,
             "trust_lots": 736,
             "dealer_lots": 295,
-            "price": 163.0,
-            "change": -4.0,
-            "pct": -2.4
+            "price": 179.0,
+            "change": 16.0,
+            "pct": 9.82
           },
           {
             "code": "6834",
@@ -2060,9 +2066,9 @@
             "foreign_lots": 1466,
             "trust_lots": 0,
             "dealer_lots": 74,
-            "price": 132.0,
-            "change": 7.0,
-            "pct": 5.6
+            "price": 145.0,
+            "change": 13.0,
+            "pct": 9.85
           },
           {
             "code": "5469",
@@ -2071,9 +2077,9 @@
             "foreign_lots": 1661,
             "trust_lots": -188,
             "dealer_lots": 38,
-            "price": 80.2,
-            "change": -0.3,
-            "pct": -0.37
+            "price": 83.5,
+            "change": 3.3,
+            "pct": 4.11
           },
           {
             "code": "6141",
@@ -2082,9 +2088,9 @@
             "foreign_lots": 1297,
             "trust_lots": 0,
             "dealer_lots": -1,
-            "price": 51.3,
-            "change": -2.1,
-            "pct": -3.93
+            "price": 54.7,
+            "change": 3.4,
+            "pct": 6.63
           }
         ],
         "topSell": [
@@ -2095,9 +2101,9 @@
             "foreign_lots": -4511,
             "trust_lots": 0,
             "dealer_lots": 186,
-            "price": 43.2,
-            "change": -0.85,
-            "pct": -1.93
+            "price": 45.7,
+            "change": 2.5,
+            "pct": 5.79
           },
           {
             "code": "4958",
@@ -2106,9 +2112,9 @@
             "foreign_lots": -3676,
             "trust_lots": 111,
             "dealer_lots": -195,
-            "price": 592.0,
-            "change": -3.0,
-            "pct": -0.5
+            "price": 581.0,
+            "change": -11.0,
+            "pct": -1.86
           },
           {
             "code": "2308",
@@ -2117,9 +2123,9 @@
             "foreign_lots": -1864,
             "trust_lots": -845,
             "dealer_lots": 6,
-            "price": 1965.0,
-            "change": -25.0,
-            "pct": -1.26
+            "price": 1900.0,
+            "change": -65.0,
+            "pct": -3.31
           },
           {
             "code": "3042",
@@ -2128,9 +2134,9 @@
             "foreign_lots": -1447,
             "trust_lots": -1,
             "dealer_lots": -763,
-            "price": 211.0,
-            "change": 0.5,
-            "pct": 0.24
+            "price": 204.5,
+            "change": -6.5,
+            "pct": -3.08
           },
           {
             "code": "3026",
@@ -2139,9 +2145,9 @@
             "foreign_lots": -1841,
             "trust_lots": -102,
             "dealer_lots": 3,
-            "price": 877.0,
-            "change": 38.0,
-            "pct": 4.53
+            "price": 840.0,
+            "change": -37.0,
+            "pct": -4.22
           }
         ]
       },
@@ -2154,9 +2160,9 @@
             "foreign_lots": 3432,
             "trust_lots": 1705,
             "dealer_lots": 461,
-            "price": 75.6,
-            "change": 0.1,
-            "pct": 0.13
+            "price": 76.0,
+            "change": 0.4,
+            "pct": 0.53
           },
           {
             "code": "1229",
@@ -2165,9 +2171,9 @@
             "foreign_lots": 746,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 39.95,
-            "change": 0.3,
-            "pct": 0.76
+            "price": 40.05,
+            "change": 0.1,
+            "pct": 0.25
           },
           {
             "code": "1215",
@@ -2177,8 +2183,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 106.5,
-            "change": 1.5,
-            "pct": 1.43
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "1217",
@@ -2187,9 +2193,9 @@
             "foreign_lots": 72,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 9.95,
-            "change": 0.06,
-            "pct": 0.61
+            "price": 9.97,
+            "change": 0.02,
+            "pct": 0.2
           },
           {
             "code": "1227",
@@ -2198,9 +2204,9 @@
             "foreign_lots": 66,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 27.8,
-            "change": 0.1,
-            "pct": 0.36
+            "price": 28.0,
+            "change": 0.2,
+            "pct": 0.72
           }
         ],
         "topSell": [
@@ -2211,9 +2217,9 @@
             "foreign_lots": -831,
             "trust_lots": 0,
             "dealer_lots": 2,
-            "price": 16.55,
-            "change": 0.4,
-            "pct": 2.48
+            "price": 16.25,
+            "change": -0.3,
+            "pct": -1.81
           },
           {
             "code": "1210",
@@ -2233,9 +2239,9 @@
             "foreign_lots": -135,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 14.65,
-            "change": 0.2,
-            "pct": 1.38
+            "price": 14.55,
+            "change": -0.1,
+            "pct": -0.68
           },
           {
             "code": "1231",
@@ -2244,9 +2250,9 @@
             "foreign_lots": -87,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 77.9,
-            "change": -0.1,
-            "pct": -0.13
+            "price": 77.5,
+            "change": -0.4,
+            "pct": -0.51
           },
           {
             "code": "1737",
@@ -2256,8 +2262,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 30.0,
-            "change": 0.05,
-            "pct": 0.17
+            "change": 0.0,
+            "pct": 0.0
           }
         ]
       },
@@ -2270,9 +2276,9 @@
             "foreign_lots": 3858,
             "trust_lots": 29,
             "dealer_lots": 536,
-            "price": 188.5,
-            "change": 3.5,
-            "pct": 1.89
+            "price": 189.5,
+            "change": 1.0,
+            "pct": 0.53
           },
           {
             "code": "3515",
@@ -2281,9 +2287,9 @@
             "foreign_lots": 410,
             "trust_lots": 8,
             "dealer_lots": -24,
-            "price": 218.5,
-            "change": -0.5,
-            "pct": -0.23
+            "price": 225.5,
+            "change": 7.0,
+            "pct": 3.2
           }
         ],
         "topSell": [
@@ -2294,9 +2300,9 @@
             "foreign_lots": -25348,
             "trust_lots": 78,
             "dealer_lots": 29,
-            "price": 249.0,
-            "change": -3.0,
-            "pct": -1.19
+            "price": 244.5,
+            "change": -4.5,
+            "pct": -1.81
           },
           {
             "code": "2330",
@@ -2305,9 +2311,9 @@
             "foreign_lots": -9423,
             "trust_lots": 588,
             "dealer_lots": 1371,
-            "price": 2550.0,
-            "change": -35.0,
-            "pct": -1.35
+            "price": 2540.0,
+            "change": -10.0,
+            "pct": -0.39
           },
           {
             "code": "2356",
@@ -2316,9 +2322,9 @@
             "foreign_lots": -4531,
             "trust_lots": 74,
             "dealer_lots": 187,
-            "price": 57.5,
-            "change": -0.6,
-            "pct": -1.03
+            "price": 58.1,
+            "change": 0.6,
+            "pct": 1.04
           },
           {
             "code": "2376",
@@ -2327,9 +2333,9 @@
             "foreign_lots": -3174,
             "trust_lots": 196,
             "dealer_lots": -43,
-            "price": 363.0,
-            "change": -2.5,
-            "pct": -0.68
+            "price": 356.0,
+            "change": -7.0,
+            "pct": -1.93
           },
           {
             "code": "2382",
@@ -2338,9 +2344,9 @@
             "foreign_lots": -1315,
             "trust_lots": 15,
             "dealer_lots": 102,
-            "price": 325.5,
-            "change": -9.5,
-            "pct": -2.84
+            "price": 322.0,
+            "change": -3.5,
+            "pct": -1.08
           }
         ]
       },
@@ -2353,9 +2359,9 @@
             "foreign_lots": 2159,
             "trust_lots": 814,
             "dealer_lots": 250,
-            "price": 744.0,
-            "change": 12.0,
-            "pct": 1.64
+            "price": 762.0,
+            "change": 18.0,
+            "pct": 2.42
           },
           {
             "code": "7769",
@@ -2364,9 +2370,9 @@
             "foreign_lots": 451,
             "trust_lots": 130,
             "dealer_lots": 4,
-            "price": 5925.0,
-            "change": 40.0,
-            "pct": 0.68
+            "price": 6490.0,
+            "change": 565.0,
+            "pct": 9.54
           },
           {
             "code": "8110",
@@ -2375,9 +2381,9 @@
             "foreign_lots": 711,
             "trust_lots": 0,
             "dealer_lots": -148,
-            "price": 49.25,
-            "change": -0.25,
-            "pct": -0.51
+            "price": 49.55,
+            "change": 0.3,
+            "pct": 0.61
           },
           {
             "code": "2451",
@@ -2386,9 +2392,9 @@
             "foreign_lots": 262,
             "trust_lots": 210,
             "dealer_lots": -3,
-            "price": 284.5,
-            "change": -2.5,
-            "pct": -0.87
+            "price": 286.5,
+            "change": 2.0,
+            "pct": 0.7
           },
           {
             "code": "2351",
@@ -2397,9 +2403,9 @@
             "foreign_lots": 515,
             "trust_lots": 0,
             "dealer_lots": -74,
-            "price": 216.0,
-            "change": -2.0,
-            "pct": -0.92
+            "price": 212.5,
+            "change": -3.5,
+            "pct": -1.62
           }
         ],
         "topSell": [
@@ -2410,9 +2416,9 @@
             "foreign_lots": -22577,
             "trust_lots": 58,
             "dealer_lots": -704,
-            "price": 72.2,
-            "change": -0.4,
-            "pct": -0.55
+            "price": 71.4,
+            "change": -0.8,
+            "pct": -1.11
           },
           {
             "code": "2303",
@@ -2421,9 +2427,9 @@
             "foreign_lots": -13540,
             "trust_lots": 656,
             "dealer_lots": -1978,
-            "price": 147.5,
-            "change": -1.0,
-            "pct": -0.67
+            "price": 145.5,
+            "change": -2.0,
+            "pct": -1.36
           },
           {
             "code": "2330",
@@ -2432,9 +2438,9 @@
             "foreign_lots": -9423,
             "trust_lots": 588,
             "dealer_lots": 1371,
-            "price": 2550.0,
-            "change": -35.0,
-            "pct": -1.35
+            "price": 2540.0,
+            "change": -10.0,
+            "pct": -0.39
           },
           {
             "code": "2340",
@@ -2443,9 +2449,9 @@
             "foreign_lots": -5244,
             "trust_lots": 0,
             "dealer_lots": -1601,
-            "price": 52.9,
-            "change": 4.75,
-            "pct": 9.87
+            "price": 51.4,
+            "change": -1.5,
+            "pct": -2.84
           },
           {
             "code": "8150",
@@ -2454,9 +2460,9 @@
             "foreign_lots": -6567,
             "trust_lots": 74,
             "dealer_lots": -62,
-            "price": 128.0,
-            "change": -0.5,
-            "pct": -0.39
+            "price": 123.0,
+            "change": -5.0,
+            "pct": -3.91
           }
         ]
       },
@@ -2469,9 +2475,9 @@
             "foreign_lots": 2748,
             "trust_lots": 50,
             "dealer_lots": 265,
-            "price": 30.65,
-            "change": -0.4,
-            "pct": -1.29
+            "price": 31.45,
+            "change": 0.8,
+            "pct": 2.61
           },
           {
             "code": "2464",
@@ -2480,9 +2486,9 @@
             "foreign_lots": 1446,
             "trust_lots": 0,
             "dealer_lots": 150,
-            "price": 187.0,
-            "change": -6.0,
-            "pct": -3.11
+            "price": 191.5,
+            "change": 4.5,
+            "pct": 2.41
           },
           {
             "code": "2354",
@@ -2491,9 +2497,9 @@
             "foreign_lots": 1231,
             "trust_lots": 0,
             "dealer_lots": 98,
-            "price": 62.0,
-            "change": -0.1,
-            "pct": -0.16
+            "price": 63.2,
+            "change": 1.2,
+            "pct": 1.94
           },
           {
             "code": "6438",
@@ -2502,9 +2508,9 @@
             "foreign_lots": 830,
             "trust_lots": -3,
             "dealer_lots": 41,
-            "price": 164.5,
-            "change": -1.0,
-            "pct": -0.6
+            "price": 174.0,
+            "change": 9.5,
+            "pct": 5.78
           },
           {
             "code": "3617",
@@ -2513,9 +2519,9 @@
             "foreign_lots": 276,
             "trust_lots": 6,
             "dealer_lots": 28,
-            "price": 241.5,
-            "change": -4.0,
-            "pct": -1.63
+            "price": 258.5,
+            "change": 17.0,
+            "pct": 7.04
           }
         ],
         "topSell": [
@@ -2526,9 +2532,9 @@
             "foreign_lots": -25348,
             "trust_lots": 78,
             "dealer_lots": 29,
-            "price": 249.0,
-            "change": -3.0,
-            "pct": -1.19
+            "price": 244.5,
+            "change": -4.5,
+            "pct": -1.81
           },
           {
             "code": "6139",
@@ -2537,9 +2543,9 @@
             "foreign_lots": -1038,
             "trust_lots": 42,
             "dealer_lots": -90,
-            "price": 778.0,
-            "change": -9.0,
-            "pct": -1.14
+            "price": 750.0,
+            "change": -28.0,
+            "pct": -3.6
           },
           {
             "code": "2359",
@@ -2548,9 +2554,9 @@
             "foreign_lots": -835,
             "trust_lots": 0,
             "dealer_lots": 5,
-            "price": 127.0,
-            "change": -0.5,
-            "pct": -0.39
+            "price": 127.5,
+            "change": 0.5,
+            "pct": 0.39
           },
           {
             "code": "6743",
@@ -2559,9 +2565,9 @@
             "foreign_lots": -505,
             "trust_lots": 0,
             "dealer_lots": 2,
-            "price": 35.5,
-            "change": -0.25,
-            "pct": -0.7
+            "price": 32.35,
+            "change": -3.15,
+            "pct": -8.87
           },
           {
             "code": "2404",
@@ -2570,9 +2576,9 @@
             "foreign_lots": -432,
             "trust_lots": 50,
             "dealer_lots": -37,
-            "price": 1305.0,
-            "change": -25.0,
-            "pct": -1.88
+            "price": 1235.0,
+            "change": -70.0,
+            "pct": -5.36
           }
         ]
       },
@@ -2585,9 +2591,9 @@
             "foreign_lots": 2450,
             "trust_lots": 0,
             "dealer_lots": 66,
-            "price": 38.25,
-            "change": -0.75,
-            "pct": -1.92
+            "price": 39.3,
+            "change": 1.05,
+            "pct": 2.75
           },
           {
             "code": "1519",
@@ -2596,9 +2602,9 @@
             "foreign_lots": 1277,
             "trust_lots": 10,
             "dealer_lots": 261,
-            "price": 692.0,
-            "change": -10.0,
-            "pct": -1.42
+            "price": 724.0,
+            "change": 32.0,
+            "pct": 4.62
           },
           {
             "code": "1513",
@@ -2607,9 +2613,9 @@
             "foreign_lots": 1022,
             "trust_lots": 20,
             "dealer_lots": 169,
-            "price": 167.0,
-            "change": -1.0,
-            "pct": -0.6
+            "price": 169.0,
+            "change": 2.0,
+            "pct": 1.2
           },
           {
             "code": "1503",
@@ -2618,9 +2624,9 @@
             "foreign_lots": 820,
             "trust_lots": 29,
             "dealer_lots": 210,
-            "price": 197.0,
-            "change": -2.5,
-            "pct": -1.25
+            "price": 204.0,
+            "change": 7.0,
+            "pct": 3.55
           },
           {
             "code": "1608",
@@ -2629,9 +2635,9 @@
             "foreign_lots": 207,
             "trust_lots": 0,
             "dealer_lots": 9,
-            "price": 36.55,
-            "change": -0.5,
-            "pct": -1.35
+            "price": 37.15,
+            "change": 0.6,
+            "pct": 1.64
           }
         ],
         "topSell": [
@@ -2642,9 +2648,9 @@
             "foreign_lots": -221,
             "trust_lots": -111,
             "dealer_lots": 21,
-            "price": 102.5,
-            "change": -1.0,
-            "pct": -0.97
+            "price": 105.0,
+            "change": 2.5,
+            "pct": 2.44
           },
           {
             "code": "1504",
@@ -2654,8 +2660,8 @@
             "trust_lots": 93,
             "dealer_lots": 46,
             "price": 71.7,
-            "change": -1.6,
-            "pct": -2.18
+            "change": 0.0,
+            "pct": 0.0
           }
         ]
       },
@@ -2669,8 +2675,8 @@
             "trust_lots": 119,
             "dealer_lots": -483,
             "price": 146.5,
-            "change": 1.0,
-            "pct": 0.69
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "2332",
@@ -2679,9 +2685,9 @@
             "foreign_lots": 1974,
             "trust_lots": 0,
             "dealer_lots": -1,
-            "price": 20.8,
-            "change": -0.3,
-            "pct": -1.42
+            "price": 20.9,
+            "change": 0.1,
+            "pct": 0.48
           },
           {
             "code": "4906",
@@ -2690,9 +2696,9 @@
             "foreign_lots": 606,
             "trust_lots": 0,
             "dealer_lots": 196,
-            "price": 41.8,
-            "change": -0.4,
-            "pct": -0.95
+            "price": 42.2,
+            "change": 0.4,
+            "pct": 0.96
           },
           {
             "code": "5388",
@@ -2701,9 +2707,9 @@
             "foreign_lots": 485,
             "trust_lots": 16,
             "dealer_lots": 11,
-            "price": 73.0,
-            "change": -1.0,
-            "pct": -1.35
+            "price": 74.1,
+            "change": 1.1,
+            "pct": 1.51
           },
           {
             "code": "2455",
@@ -2712,9 +2718,9 @@
             "foreign_lots": 1013,
             "trust_lots": -304,
             "dealer_lots": -236,
-            "price": 558.0,
-            "change": -1.0,
-            "pct": -0.18
+            "price": 564.0,
+            "change": 6.0,
+            "pct": 1.08
           }
         ],
         "topSell": [
@@ -2725,9 +2731,9 @@
             "foreign_lots": -3919,
             "trust_lots": 0,
             "dealer_lots": -24,
-            "price": 21.0,
-            "change": 1.2,
-            "pct": 6.06
+            "price": 20.2,
+            "change": -0.8,
+            "pct": -3.81
           },
           {
             "code": "6285",
@@ -2736,9 +2742,9 @@
             "foreign_lots": -2000,
             "trust_lots": 10,
             "dealer_lots": 163,
-            "price": 256.5,
-            "change": -1.0,
-            "pct": -0.39
+            "price": 263.5,
+            "change": 7.0,
+            "pct": 2.73
           },
           {
             "code": "6442",
@@ -2747,9 +2753,9 @@
             "foreign_lots": -853,
             "trust_lots": 104,
             "dealer_lots": 12,
-            "price": 1785.0,
-            "change": -30.0,
-            "pct": -1.65
+            "price": 1725.0,
+            "change": -60.0,
+            "pct": -3.36
           },
           {
             "code": "3045",
@@ -2758,9 +2764,9 @@
             "foreign_lots": -865,
             "trust_lots": -9,
             "dealer_lots": 304,
-            "price": 124.0,
-            "change": 1.5,
-            "pct": 1.22
+            "price": 121.5,
+            "change": -2.5,
+            "pct": -2.02
           },
           {
             "code": "2345",
@@ -2769,9 +2775,9 @@
             "foreign_lots": -627,
             "trust_lots": 122,
             "dealer_lots": 15,
-            "price": 2070.0,
-            "change": 55.0,
-            "pct": 2.73
+            "price": 2130.0,
+            "change": 60.0,
+            "pct": 2.9
           }
         ]
       },
@@ -2784,9 +2790,9 @@
             "foreign_lots": 1913,
             "trust_lots": 0,
             "dealer_lots": -101,
-            "price": 61.0,
-            "change": 0.8,
-            "pct": 1.33
+            "price": 58.6,
+            "change": -2.4,
+            "pct": -3.93
           },
           {
             "code": "4763",
@@ -2795,9 +2801,9 @@
             "foreign_lots": 822,
             "trust_lots": 48,
             "dealer_lots": 27,
-            "price": 46.65,
-            "change": 0.3,
-            "pct": 0.65
+            "price": 46.85,
+            "change": 0.2,
+            "pct": 0.43
           },
           {
             "code": "1717",
@@ -2806,9 +2812,9 @@
             "foreign_lots": 943,
             "trust_lots": 1,
             "dealer_lots": -55,
-            "price": 74.4,
-            "change": -1.2,
-            "pct": -1.59
+            "price": 74.7,
+            "change": 0.3,
+            "pct": 0.4
           },
           {
             "code": "1722",
@@ -2817,9 +2823,9 @@
             "foreign_lots": 533,
             "trust_lots": 0,
             "dealer_lots": 2,
-            "price": 41.45,
-            "change": 0.15,
-            "pct": 0.36
+            "price": 42.0,
+            "change": 0.55,
+            "pct": 1.33
           },
           {
             "code": "4764",
@@ -2828,9 +2834,9 @@
             "foreign_lots": 330,
             "trust_lots": 0,
             "dealer_lots": 24,
-            "price": 199.0,
-            "change": -7.5,
-            "pct": -3.63
+            "price": 206.0,
+            "change": 7.0,
+            "pct": 3.52
           }
         ],
         "topSell": [
@@ -2841,9 +2847,9 @@
             "foreign_lots": -10565,
             "trust_lots": 0,
             "dealer_lots": -292,
-            "price": 12.2,
-            "change": 0.9,
-            "pct": 7.96
+            "price": 12.1,
+            "change": -0.1,
+            "pct": -0.82
           },
           {
             "code": "4720",
@@ -2852,9 +2858,9 @@
             "foreign_lots": -2620,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 25.55,
-            "change": 2.3,
-            "pct": 9.89
+            "price": 24.6,
+            "change": -0.95,
+            "pct": -3.72
           },
           {
             "code": "1711",
@@ -2863,9 +2869,9 @@
             "foreign_lots": -2220,
             "trust_lots": 0,
             "dealer_lots": 11,
-            "price": 46.25,
-            "change": 0.8,
-            "pct": 1.76
+            "price": 44.95,
+            "change": -1.3,
+            "pct": -2.81
           },
           {
             "code": "1714",
@@ -2874,9 +2880,9 @@
             "foreign_lots": -1981,
             "trust_lots": 0,
             "dealer_lots": 72,
-            "price": 19.95,
-            "change": 0.3,
-            "pct": 1.53
+            "price": 20.2,
+            "change": 0.25,
+            "pct": 1.25
           },
           {
             "code": "1710",
@@ -2885,9 +2891,9 @@
             "foreign_lots": -1203,
             "trust_lots": 0,
             "dealer_lots": -161,
-            "price": 18.1,
-            "change": 0.5,
-            "pct": 2.84
+            "price": 18.05,
+            "change": -0.05,
+            "pct": -0.28
           }
         ]
       },
@@ -2900,9 +2906,9 @@
             "foreign_lots": 1277,
             "trust_lots": 10,
             "dealer_lots": 261,
-            "price": 692.0,
-            "change": -10.0,
-            "pct": -1.42
+            "price": 724.0,
+            "change": 32.0,
+            "pct": 4.62
           },
           {
             "code": "1513",
@@ -2911,9 +2917,9 @@
             "foreign_lots": 1022,
             "trust_lots": 20,
             "dealer_lots": 169,
-            "price": 167.0,
-            "change": -1.0,
-            "pct": -0.6
+            "price": 169.0,
+            "change": 2.0,
+            "pct": 1.2
           },
           {
             "code": "4540",
@@ -2922,9 +2928,9 @@
             "foreign_lots": 1101,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 57.5,
-            "change": -1.4,
-            "pct": -2.38
+            "price": 61.7,
+            "change": 4.2,
+            "pct": 7.3
           },
           {
             "code": "1503",
@@ -2933,9 +2939,9 @@
             "foreign_lots": 820,
             "trust_lots": 29,
             "dealer_lots": 210,
-            "price": 197.0,
-            "change": -2.5,
-            "pct": -1.25
+            "price": 204.0,
+            "change": 7.0,
+            "pct": 3.55
           },
           {
             "code": "2049",
@@ -2944,9 +2950,9 @@
             "foreign_lots": 518,
             "trust_lots": 0,
             "dealer_lots": 16,
-            "price": 332.5,
-            "change": -10.0,
-            "pct": -2.92
+            "price": 338.0,
+            "change": 5.5,
+            "pct": 1.65
           }
         ],
         "topSell": [
@@ -2957,9 +2963,9 @@
             "foreign_lots": -2524,
             "trust_lots": 0,
             "dealer_lots": 32,
-            "price": 30.4,
-            "change": -0.2,
-            "pct": -0.65
+            "price": 30.0,
+            "change": -0.4,
+            "pct": -1.32
           },
           {
             "code": "1514",
@@ -2968,9 +2974,9 @@
             "foreign_lots": -221,
             "trust_lots": -111,
             "dealer_lots": 21,
-            "price": 102.5,
-            "change": -1.0,
-            "pct": -0.97
+            "price": 105.0,
+            "change": 2.5,
+            "pct": 2.44
           },
           {
             "code": "1590",
@@ -2979,9 +2985,9 @@
             "foreign_lots": -200,
             "trust_lots": 3,
             "dealer_lots": 3,
-            "price": 1205.0,
-            "change": -25.0,
-            "pct": -2.03
+            "price": 1210.0,
+            "change": 5.0,
+            "pct": 0.41
           },
           {
             "code": "4590",
@@ -2990,9 +2996,9 @@
             "foreign_lots": -128,
             "trust_lots": 0,
             "dealer_lots": -6,
-            "price": 88.9,
-            "change": -0.5,
-            "pct": -0.56
+            "price": 87.0,
+            "change": -1.9,
+            "pct": -2.14
           },
           {
             "code": "5288",
@@ -3001,9 +3007,9 @@
             "foreign_lots": -129,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 188.5,
-            "change": -0.5,
-            "pct": -0.26
+            "price": 183.0,
+            "change": -5.5,
+            "pct": -2.92
           }
         ]
       },
@@ -3016,9 +3022,9 @@
             "foreign_lots": 1520,
             "trust_lots": 0,
             "dealer_lots": -13,
-            "price": 27.75,
-            "change": 0.3,
-            "pct": 1.09
+            "price": 28.95,
+            "change": 1.2,
+            "pct": 4.32
           },
           {
             "code": "1563",
@@ -3027,9 +3033,9 @@
             "foreign_lots": 811,
             "trust_lots": 0,
             "dealer_lots": 42,
-            "price": 79.3,
-            "change": -1.3,
-            "pct": -1.61
+            "price": 87.2,
+            "change": 7.9,
+            "pct": 9.96
           },
           {
             "code": "2254",
@@ -3038,9 +3044,9 @@
             "foreign_lots": 415,
             "trust_lots": 0,
             "dealer_lots": -3,
-            "price": 92.3,
-            "change": 0.9,
-            "pct": 0.98
+            "price": 94.4,
+            "change": 2.1,
+            "pct": 2.28
           },
           {
             "code": "1319",
@@ -3049,9 +3055,9 @@
             "foreign_lots": 284,
             "trust_lots": 0,
             "dealer_lots": 61,
-            "price": 80.8,
-            "change": 0.8,
-            "pct": 1.0
+            "price": 81.7,
+            "change": 0.9,
+            "pct": 1.11
           },
           {
             "code": "2206",
@@ -3060,9 +3066,9 @@
             "foreign_lots": 288,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 63.6,
-            "change": 0.5,
-            "pct": 0.79
+            "price": 64.0,
+            "change": 0.4,
+            "pct": 0.63
           }
         ],
         "topSell": [
@@ -3073,9 +3079,9 @@
             "foreign_lots": -791,
             "trust_lots": 0,
             "dealer_lots": -31,
-            "price": 50.5,
-            "change": -1.5,
-            "pct": -2.88
+            "price": 51.5,
+            "change": 1.0,
+            "pct": 1.98
           },
           {
             "code": "1536",
@@ -3084,9 +3090,9 @@
             "foreign_lots": -781,
             "trust_lots": 0,
             "dealer_lots": -21,
-            "price": 46.4,
-            "change": -0.15,
-            "pct": -0.32
+            "price": 45.55,
+            "change": -0.85,
+            "pct": -1.83
           },
           {
             "code": "2258",
@@ -3095,9 +3101,9 @@
             "foreign_lots": -152,
             "trust_lots": 0,
             "dealer_lots": 3,
-            "price": 30.55,
-            "change": -0.35,
-            "pct": -1.13
+            "price": 30.15,
+            "change": -0.4,
+            "pct": -1.31
           },
           {
             "code": "6605",
@@ -3106,9 +3112,9 @@
             "foreign_lots": -116,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 136.5,
-            "change": -1.0,
-            "pct": -0.73
+            "price": 135.0,
+            "change": -1.5,
+            "pct": -1.1
           },
           {
             "code": "1524",
@@ -3117,9 +3123,9 @@
             "foreign_lots": -115,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 26.95,
-            "change": 0.85,
-            "pct": 3.26
+            "price": 27.0,
+            "change": 0.05,
+            "pct": 0.19
           }
         ]
       },
@@ -3132,9 +3138,9 @@
             "foreign_lots": 1166,
             "trust_lots": 173,
             "dealer_lots": 107,
-            "price": 117.5,
-            "change": -2.5,
-            "pct": -2.08
+            "price": 116.0,
+            "change": -1.5,
+            "pct": -1.28
           },
           {
             "code": "2347",
@@ -3143,9 +3149,9 @@
             "foreign_lots": 1056,
             "trust_lots": -200,
             "dealer_lots": 56,
-            "price": 96.4,
-            "change": -0.4,
-            "pct": -0.41
+            "price": 98.9,
+            "change": 2.5,
+            "pct": 2.59
           },
           {
             "code": "8070",
@@ -3154,9 +3160,9 @@
             "foreign_lots": 385,
             "trust_lots": 23,
             "dealer_lots": 79,
-            "price": 50.5,
-            "change": -1.0,
-            "pct": -1.94
+            "price": 52.2,
+            "change": 1.7,
+            "pct": 3.37
           },
           {
             "code": "3033",
@@ -3165,9 +3171,9 @@
             "foreign_lots": 206,
             "trust_lots": 27,
             "dealer_lots": -95,
-            "price": 41.55,
-            "change": -0.15,
-            "pct": -0.36
+            "price": 42.05,
+            "change": 0.5,
+            "pct": 1.2
           },
           {
             "code": "8112",
@@ -3176,9 +3182,9 @@
             "foreign_lots": 126,
             "trust_lots": -6,
             "dealer_lots": -34,
-            "price": 85.1,
-            "change": 1.4,
-            "pct": 1.67
+            "price": 85.6,
+            "change": 0.5,
+            "pct": 0.59
           }
         ],
         "topSell": [
@@ -3189,9 +3195,9 @@
             "foreign_lots": -1415,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 57.0,
-            "change": 3.6,
-            "pct": 6.74
+            "price": 55.7,
+            "change": -1.3,
+            "pct": -2.28
           },
           {
             "code": "3036",
@@ -3200,9 +3206,9 @@
             "foreign_lots": -2566,
             "trust_lots": 1800,
             "dealer_lots": -165,
-            "price": 215.5,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 216.5,
+            "change": 1.0,
+            "pct": 0.46
           },
           {
             "code": "2414",
@@ -3211,9 +3217,9 @@
             "foreign_lots": -172,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 53.9,
-            "change": -0.1,
-            "pct": -0.19
+            "price": 52.2,
+            "change": -1.7,
+            "pct": -3.15
           },
           {
             "code": "3028",
@@ -3222,9 +3228,9 @@
             "foreign_lots": -182,
             "trust_lots": 17,
             "dealer_lots": 3,
-            "price": 63.6,
-            "change": 0.5,
-            "pct": 0.79
+            "price": 62.9,
+            "change": -0.7,
+            "pct": -1.1
           },
           {
             "code": "5434",
@@ -3233,9 +3239,9 @@
             "foreign_lots": -85,
             "trust_lots": 1,
             "dealer_lots": -8,
-            "price": 596.0,
-            "change": -9.0,
-            "pct": -1.49
+            "price": 593.0,
+            "change": -3.0,
+            "pct": -0.5
           }
         ]
       },
@@ -3248,9 +3254,9 @@
             "foreign_lots": 1347,
             "trust_lots": 12,
             "dealer_lots": -6,
-            "price": 213.0,
-            "change": -0.5,
-            "pct": -0.23
+            "price": 216.0,
+            "change": 3.0,
+            "pct": 1.41
           },
           {
             "code": "2903",
@@ -3259,9 +3265,9 @@
             "foreign_lots": 845,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 22.15,
+            "price": 22.35,
             "change": 0.2,
-            "pct": 0.91
+            "pct": 0.9
           },
           {
             "code": "2905",
@@ -3270,9 +3276,9 @@
             "foreign_lots": 0,
             "trust_lots": 0,
             "dealer_lots": 34,
-            "price": 17.65,
-            "change": -0.05,
-            "pct": -0.28
+            "price": 17.75,
+            "change": 0.1,
+            "pct": 0.57
           },
           {
             "code": "2929",
@@ -3281,7 +3287,7 @@
             "foreign_lots": 8,
             "trust_lots": 0,
             "dealer_lots": 8,
-            "price": 5.76,
+            "price": 5.79,
             "change": 0.03,
             "pct": 0.52
           },
@@ -3292,9 +3298,9 @@
             "foreign_lots": 8,
             "trust_lots": 0,
             "dealer_lots": 5,
-            "price": 22.0,
-            "change": -0.05,
-            "pct": -0.23
+            "price": 21.9,
+            "change": -0.1,
+            "pct": -0.45
           }
         ],
         "topSell": [
@@ -3305,9 +3311,9 @@
             "foreign_lots": -558,
             "trust_lots": 0,
             "dealer_lots": 70,
-            "price": 58.9,
-            "change": 0.4,
-            "pct": 0.68
+            "price": 58.4,
+            "change": -0.5,
+            "pct": -0.85
           },
           {
             "code": "2906",
@@ -3316,9 +3322,9 @@
             "foreign_lots": -86,
             "trust_lots": 0,
             "dealer_lots": -2,
-            "price": 14.1,
-            "change": 0.8,
-            "pct": 6.02
+            "price": 14.05,
+            "change": -0.05,
+            "pct": -0.35
           },
           {
             "code": "4807",
@@ -3327,9 +3333,9 @@
             "foreign_lots": -72,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 34.25,
-            "change": 2.65,
-            "pct": 8.39
+            "price": 33.25,
+            "change": -1.0,
+            "pct": -2.92
           },
           {
             "code": "2913",
@@ -3339,8 +3345,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 10.95,
-            "change": 0.05,
-            "pct": 0.46
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "5907",
@@ -3349,9 +3355,9 @@
             "foreign_lots": -5,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 4.68,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 4.67,
+            "change": -0.01,
+            "pct": -0.21
           }
         ]
       },
@@ -3364,9 +3370,9 @@
             "foreign_lots": 1274,
             "trust_lots": 0,
             "dealer_lots": 3,
-            "price": 40.65,
-            "change": -1.2,
-            "pct": -2.87
+            "price": 44.7,
+            "change": 4.05,
+            "pct": 9.96
           },
           {
             "code": "3029",
@@ -3375,9 +3381,9 @@
             "foreign_lots": 1075,
             "trust_lots": 13,
             "dealer_lots": 20,
-            "price": 114.5,
-            "change": -1.0,
-            "pct": -0.87
+            "price": 119.5,
+            "change": 5.0,
+            "pct": 4.37
           },
           {
             "code": "2480",
@@ -3386,9 +3392,9 @@
             "foreign_lots": 758,
             "trust_lots": 9,
             "dealer_lots": 28,
-            "price": 165.0,
-            "change": -2.5,
-            "pct": -1.49
+            "price": 176.5,
+            "change": 11.5,
+            "pct": 6.97
           },
           {
             "code": "6112",
@@ -3397,9 +3403,9 @@
             "foreign_lots": 368,
             "trust_lots": 0,
             "dealer_lots": 2,
-            "price": 45.05,
-            "change": 0.3,
-            "pct": 0.67
+            "price": 46.45,
+            "change": 1.4,
+            "pct": 3.11
           },
           {
             "code": "2453",
@@ -3408,9 +3414,9 @@
             "foreign_lots": 46,
             "trust_lots": 0,
             "dealer_lots": -7,
-            "price": 53.1,
-            "change": -0.2,
-            "pct": -0.38
+            "price": 53.0,
+            "change": -0.1,
+            "pct": -0.19
           }
         ],
         "topSell": [
@@ -3421,9 +3427,9 @@
             "foreign_lots": -169,
             "trust_lots": 12,
             "dealer_lots": 1,
-            "price": 192.0,
-            "change": 2.5,
-            "pct": 1.32
+            "price": 193.0,
+            "change": 1.0,
+            "pct": 0.52
           },
           {
             "code": "2427",
@@ -3432,9 +3438,9 @@
             "foreign_lots": -16,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 22.9,
-            "change": -0.05,
-            "pct": -0.22
+            "price": 22.35,
+            "change": -0.55,
+            "pct": -2.4
           },
           {
             "code": "2471",
@@ -3443,9 +3449,9 @@
             "foreign_lots": -2,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 51.0,
-            "change": -0.2,
-            "pct": -0.39
+            "price": 51.3,
+            "change": 0.3,
+            "pct": 0.59
           }
         ]
       },
@@ -3458,9 +3464,9 @@
             "foreign_lots": 1022,
             "trust_lots": 20,
             "dealer_lots": 169,
-            "price": 167.0,
-            "change": -1.0,
-            "pct": -0.6
+            "price": 169.0,
+            "change": 2.0,
+            "pct": 1.2
           },
           {
             "code": "9941",
@@ -3469,9 +3475,9 @@
             "foreign_lots": 413,
             "trust_lots": -156,
             "dealer_lots": -4,
-            "price": 76.6,
-            "change": 0.3,
-            "pct": 0.39
+            "price": 77.3,
+            "change": 0.7,
+            "pct": 0.91
           },
           {
             "code": "3708",
@@ -3480,9 +3486,9 @@
             "foreign_lots": 159,
             "trust_lots": 0,
             "dealer_lots": 5,
-            "price": 94.1,
-            "change": -2.1,
-            "pct": -2.18
+            "price": 97.6,
+            "change": 3.5,
+            "pct": 3.72
           },
           {
             "code": "3708",
@@ -3491,9 +3497,9 @@
             "foreign_lots": 159,
             "trust_lots": 0,
             "dealer_lots": 5,
-            "price": 94.1,
-            "change": -2.1,
-            "pct": -2.18
+            "price": 97.6,
+            "change": 3.5,
+            "pct": 3.72
           },
           {
             "code": "9930",
@@ -3502,9 +3508,9 @@
             "foreign_lots": 57,
             "trust_lots": 0,
             "dealer_lots": 5,
-            "price": 58.4,
-            "change": -0.3,
-            "pct": -0.51
+            "price": 59.0,
+            "change": 0.6,
+            "pct": 1.03
           }
         ],
         "topSell": [
@@ -3515,9 +3521,9 @@
             "foreign_lots": -527,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 27.0,
-            "change": -0.6,
-            "pct": -2.17
+            "price": 26.55,
+            "change": -0.45,
+            "pct": -1.67
           },
           {
             "code": "8422",
@@ -3526,9 +3532,9 @@
             "foreign_lots": -175,
             "trust_lots": 0,
             "dealer_lots": -284,
-            "price": 25.55,
-            "change": -0.05,
-            "pct": -0.2
+            "price": 25.4,
+            "change": -0.15,
+            "pct": -0.59
           },
           {
             "code": "6477",
@@ -3537,9 +3543,9 @@
             "foreign_lots": -129,
             "trust_lots": 0,
             "dealer_lots": -1,
-            "price": 33.7,
-            "change": -0.15,
-            "pct": -0.44
+            "price": 33.25,
+            "change": -0.45,
+            "pct": -1.34
           },
           {
             "code": "6944",
@@ -3548,9 +3554,9 @@
             "foreign_lots": -126,
             "trust_lots": 0,
             "dealer_lots": 4,
-            "price": 860.0,
-            "change": -48.0,
-            "pct": -5.29
+            "price": 837.0,
+            "change": -23.0,
+            "pct": -2.67
           },
           {
             "code": "8476",
@@ -3560,8 +3566,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 21.4,
-            "change": 0.5,
-            "pct": 2.39
+            "change": 0.0,
+            "pct": 0.0
           }
         ]
       },
@@ -3574,9 +3580,9 @@
             "foreign_lots": 1102,
             "trust_lots": -139,
             "dealer_lots": 81,
-            "price": 28.4,
-            "change": -0.2,
-            "pct": -0.7
+            "price": 28.7,
+            "change": 0.3,
+            "pct": 1.06
           },
           {
             "code": "1440",
@@ -3585,9 +3591,9 @@
             "foreign_lots": 571,
             "trust_lots": 0,
             "dealer_lots": 89,
-            "price": 14.35,
-            "change": 0.4,
-            "pct": 2.87
+            "price": 14.15,
+            "change": -0.2,
+            "pct": -1.39
           },
           {
             "code": "1434",
@@ -3597,8 +3603,8 @@
             "trust_lots": 0,
             "dealer_lots": -18,
             "price": 19.45,
-            "change": 0.5,
-            "pct": 2.64
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "1409",
@@ -3607,9 +3613,9 @@
             "foreign_lots": 209,
             "trust_lots": 0,
             "dealer_lots": 7,
-            "price": 26.05,
-            "change": -0.1,
-            "pct": -0.38
+            "price": 26.1,
+            "change": 0.05,
+            "pct": 0.19
           },
           {
             "code": "1477",
@@ -3618,7 +3624,7 @@
             "foreign_lots": 117,
             "trust_lots": 68,
             "dealer_lots": 5,
-            "price": 204.0,
+            "price": 205.5,
             "change": 1.5,
             "pct": 0.74
           }
@@ -3631,9 +3637,9 @@
             "foreign_lots": -197,
             "trust_lots": 0,
             "dealer_lots": 18,
-            "price": 13.2,
-            "change": 0.4,
-            "pct": 3.13
+            "price": 12.8,
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "1476",
@@ -3642,9 +3648,9 @@
             "foreign_lots": -131,
             "trust_lots": 0,
             "dealer_lots": -24,
-            "price": 310.0,
-            "change": 13.0,
-            "pct": 4.38
+            "price": 312.0,
+            "change": 2.0,
+            "pct": 0.65
           },
           {
             "code": "1455",
@@ -3653,9 +3659,9 @@
             "foreign_lots": -64,
             "trust_lots": 0,
             "dealer_lots": -35,
-            "price": 10.25,
-            "change": -0.55,
-            "pct": -5.09
+            "price": 10.2,
+            "change": -0.05,
+            "pct": -0.49
           },
           {
             "code": "1447",
@@ -3664,9 +3670,9 @@
             "foreign_lots": -82,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 6.6,
-            "change": -0.02,
-            "pct": -0.3
+            "price": 6.57,
+            "change": -0.03,
+            "pct": -0.45
           },
           {
             "code": "4441",
@@ -3675,9 +3681,9 @@
             "foreign_lots": -71,
             "trust_lots": 0,
             "dealer_lots": -9,
-            "price": 171.5,
-            "change": 0.5,
-            "pct": 0.29
+            "price": 167.5,
+            "change": -4.0,
+            "pct": -2.33
           }
         ]
       },
@@ -3690,9 +3696,9 @@
             "foreign_lots": 608,
             "trust_lots": 0,
             "dealer_lots": -26,
-            "price": 30.0,
-            "change": 0.25,
-            "pct": 0.84
+            "price": 30.45,
+            "change": 0.45,
+            "pct": 1.5
           },
           {
             "code": "2105",
@@ -3701,9 +3707,9 @@
             "foreign_lots": 692,
             "trust_lots": -140,
             "dealer_lots": 18,
-            "price": 30.35,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 30.55,
+            "change": 0.2,
+            "pct": 0.66
           },
           {
             "code": "2108",
@@ -3712,9 +3718,9 @@
             "foreign_lots": 206,
             "trust_lots": 0,
             "dealer_lots": -7,
-            "price": 30.2,
-            "change": 0.45,
-            "pct": 1.51
+            "price": 30.0,
+            "change": -0.2,
+            "pct": -0.66
           },
           {
             "code": "2114",
@@ -3723,9 +3729,9 @@
             "foreign_lots": 6,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 90.1,
-            "change": 0.1,
-            "pct": 0.11
+            "price": 90.4,
+            "change": 0.3,
+            "pct": 0.33
           },
           {
             "code": "2109",
@@ -3734,9 +3740,9 @@
             "foreign_lots": 2,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 14.3,
-            "change": -0.05,
-            "pct": -0.35
+            "price": 14.35,
+            "change": 0.05,
+            "pct": 0.35
           }
         ],
         "topSell": [
@@ -3747,9 +3753,9 @@
             "foreign_lots": -841,
             "trust_lots": 0,
             "dealer_lots": -44,
-            "price": 29.2,
-            "change": 0.2,
-            "pct": 0.69
+            "price": 29.15,
+            "change": -0.05,
+            "pct": -0.17
           },
           {
             "code": "2104",
@@ -3758,9 +3764,9 @@
             "foreign_lots": -190,
             "trust_lots": 0,
             "dealer_lots": 42,
-            "price": 11.6,
-            "change": 0.3,
-            "pct": 2.65
+            "price": 11.65,
+            "change": 0.05,
+            "pct": 0.43
           },
           {
             "code": "2107",
@@ -3769,9 +3775,9 @@
             "foreign_lots": -123,
             "trust_lots": 0,
             "dealer_lots": 16,
-            "price": 28.5,
-            "change": 0.35,
-            "pct": 1.24
+            "price": 28.1,
+            "change": -0.4,
+            "pct": -1.4
           },
           {
             "code": "2102",
@@ -3780,9 +3786,9 @@
             "foreign_lots": -66,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 16.4,
-            "change": -0.15,
-            "pct": -0.91
+            "price": 16.35,
+            "change": -0.05,
+            "pct": -0.3
           },
           {
             "code": "2106",
@@ -3791,9 +3797,9 @@
             "foreign_lots": -11,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 16.8,
-            "change": 0.1,
-            "pct": 0.6
+            "price": 16.75,
+            "change": -0.05,
+            "pct": -0.3
           }
         ]
       },
@@ -3806,9 +3812,9 @@
             "foreign_lots": 507,
             "trust_lots": 0,
             "dealer_lots": -10,
-            "price": 45.45,
-            "change": -1.05,
-            "pct": -2.26
+            "price": 43.8,
+            "change": -1.65,
+            "pct": -3.63
           },
           {
             "code": "1810",
@@ -3817,9 +3823,9 @@
             "foreign_lots": 118,
             "trust_lots": 0,
             "dealer_lots": 6,
-            "price": 23.4,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 23.35,
+            "change": -0.05,
+            "pct": -0.21
           },
           {
             "code": "1806",
@@ -3828,9 +3834,9 @@
             "foreign_lots": 7,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 7.92,
+            "price": 7.88,
             "change": -0.04,
-            "pct": -0.5
+            "pct": -0.51
           },
           {
             "code": "1817",
@@ -3839,9 +3845,9 @@
             "foreign_lots": 2,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 39.7,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 40.0,
+            "change": 0.3,
+            "pct": 0.76
           }
         ],
         "topSell": [
@@ -3852,9 +3858,9 @@
             "foreign_lots": -8119,
             "trust_lots": 0,
             "dealer_lots": 373,
-            "price": 63.9,
-            "change": -1.8,
-            "pct": -2.74
+            "price": 63.5,
+            "change": -0.4,
+            "pct": -0.63
           }
         ]
       },
@@ -3867,9 +3873,9 @@
             "foreign_lots": 478,
             "trust_lots": 0,
             "dealer_lots": 6,
-            "price": 12.0,
-            "change": 0.15,
-            "pct": 1.27
+            "price": 12.65,
+            "change": 0.65,
+            "pct": 5.42
           },
           {
             "code": "9917",
@@ -3878,9 +3884,9 @@
             "foreign_lots": 339,
             "trust_lots": 0,
             "dealer_lots": 15,
-            "price": 106.5,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 107.5,
+            "change": 1.0,
+            "pct": 0.94
           },
           {
             "code": "9941",
@@ -3889,9 +3895,9 @@
             "foreign_lots": 413,
             "trust_lots": -156,
             "dealer_lots": -4,
-            "price": 76.6,
-            "change": 0.3,
-            "pct": 0.39
+            "price": 77.3,
+            "change": 0.7,
+            "pct": 0.91
           },
           {
             "code": "9919",
@@ -3900,9 +3906,9 @@
             "foreign_lots": 169,
             "trust_lots": 0,
             "dealer_lots": 2,
-            "price": 16.1,
-            "change": 1.45,
-            "pct": 9.9
+            "price": 16.7,
+            "change": 0.6,
+            "pct": 3.73
           },
           {
             "code": "9907",
@@ -3911,9 +3917,9 @@
             "foreign_lots": 149,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 14.8,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 14.9,
+            "change": 0.1,
+            "pct": 0.68
           }
         ],
         "topSell": [
@@ -3924,7 +3930,7 @@
             "foreign_lots": -2067,
             "trust_lots": -56,
             "dealer_lots": -37,
-            "price": 105.5,
+            "price": 105.0,
             "change": -0.5,
             "pct": -0.47
           },
@@ -3935,9 +3941,9 @@
             "foreign_lots": -678,
             "trust_lots": 33,
             "dealer_lots": -122,
-            "price": 29.8,
-            "change": 0.5,
-            "pct": 1.71
+            "price": 29.95,
+            "change": 0.15,
+            "pct": 0.5
           },
           {
             "code": "9933",
@@ -3946,9 +3952,9 @@
             "foreign_lots": -547,
             "trust_lots": 0,
             "dealer_lots": 36,
-            "price": 43.1,
-            "change": -0.45,
-            "pct": -1.03
+            "price": 42.7,
+            "change": -0.4,
+            "pct": -0.93
           },
           {
             "code": "2614",
@@ -3957,7 +3963,7 @@
             "foreign_lots": -383,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 15.35,
+            "price": 15.25,
             "change": -0.1,
             "pct": -0.65
           },
@@ -3968,9 +3974,9 @@
             "foreign_lots": -205,
             "trust_lots": 0,
             "dealer_lots": 31,
-            "price": 128.0,
-            "change": 0.5,
-            "pct": 0.39
+            "price": 125.0,
+            "change": -3.0,
+            "pct": -2.34
           }
         ]
       },
@@ -3983,9 +3989,9 @@
             "foreign_lots": 347,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 237.5,
-            "change": 4.0,
-            "pct": 1.71
+            "price": 240.0,
+            "change": 2.5,
+            "pct": 1.05
           },
           {
             "code": "2723",
@@ -3994,9 +4000,9 @@
             "foreign_lots": 312,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 79.8,
-            "change": -0.3,
-            "pct": -0.37
+            "price": 85.0,
+            "change": 5.2,
+            "pct": 6.52
           },
           {
             "code": "2731",
@@ -4005,9 +4011,9 @@
             "foreign_lots": 120,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 145.0,
-            "change": 1.0,
-            "pct": 0.69
+            "price": 145.5,
+            "change": 0.5,
+            "pct": 0.34
           },
           {
             "code": "2753",
@@ -4016,9 +4022,9 @@
             "foreign_lots": 60,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 185.0,
-            "change": 1.0,
-            "pct": 0.54
+            "price": 185.5,
+            "change": 0.5,
+            "pct": 0.27
           },
           {
             "code": "5706",
@@ -4027,9 +4033,9 @@
             "foreign_lots": 43,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 44.2,
-            "change": -0.3,
-            "pct": -0.67
+            "price": 44.35,
+            "change": 0.15,
+            "pct": 0.34
           }
         ],
         "topSell": [
@@ -4040,9 +4046,9 @@
             "foreign_lots": -18,
             "trust_lots": 0,
             "dealer_lots": -1,
-            "price": 36.05,
-            "change": -0.15,
-            "pct": -0.41
+            "price": 36.1,
+            "change": 0.05,
+            "pct": 0.14
           },
           {
             "code": "2722",
@@ -4051,9 +4057,9 @@
             "foreign_lots": -12,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 21.5,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 21.0,
+            "change": -0.5,
+            "pct": -2.33
           },
           {
             "code": "7760",
@@ -4062,9 +4068,9 @@
             "foreign_lots": -11,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 33.0,
-            "change": 0.45,
-            "pct": 1.38
+            "price": 32.8,
+            "change": -0.2,
+            "pct": -0.61
           },
           {
             "code": "2748",
@@ -4073,9 +4079,9 @@
             "foreign_lots": -7,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 38.9,
-            "change": 0.25,
-            "pct": 0.65
+            "price": 38.65,
+            "change": -0.25,
+            "pct": -0.64
           },
           {
             "code": "7705",
@@ -4084,9 +4090,9 @@
             "foreign_lots": -4,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 29.7,
-            "change": -0.05,
-            "pct": -0.17
+            "price": 29.55,
+            "change": -0.15,
+            "pct": -0.51
           }
         ]
       },
@@ -4099,9 +4105,9 @@
             "foreign_lots": -15328,
             "trust_lots": 15550,
             "dealer_lots": 103,
-            "price": 110.5,
-            "change": 3.5,
-            "pct": 3.27
+            "price": 108.5,
+            "change": -2.0,
+            "pct": -1.81
           },
           {
             "code": "9908",
@@ -4110,9 +4116,9 @@
             "foreign_lots": 63,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 28.95,
-            "change": -0.1,
-            "pct": -0.34
+            "price": 29.0,
+            "change": 0.05,
+            "pct": 0.17
           },
           {
             "code": "9937",
@@ -4121,9 +4127,9 @@
             "foreign_lots": 4,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 55.2,
-            "change": 0.7,
-            "pct": 1.28
+            "price": 54.5,
+            "change": -0.7,
+            "pct": -1.27
           },
           {
             "code": "9926",
@@ -4133,8 +4139,8 @@
             "trust_lots": 0,
             "dealer_lots": 0,
             "price": 49.05,
-            "change": 0.05,
-            "pct": 0.1
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "9918",
@@ -4143,9 +4149,9 @@
             "foreign_lots": 1,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 42.9,
-            "change": -0.1,
-            "pct": -0.23
+            "price": 43.25,
+            "change": 0.35,
+            "pct": 0.82
           }
         ],
         "topSell": [
@@ -4156,9 +4162,9 @@
             "foreign_lots": -335,
             "trust_lots": 0,
             "dealer_lots": -10,
-            "price": 61.1,
-            "change": 0.8,
-            "pct": 1.33
+            "price": 59.8,
+            "change": -1.3,
+            "pct": -2.13
           }
         ]
       },
@@ -4171,9 +4177,9 @@
             "foreign_lots": 325,
             "trust_lots": 0,
             "dealer_lots": -40,
-            "price": 25.0,
-            "change": -0.25,
-            "pct": -0.99
+            "price": 25.25,
+            "change": 0.25,
+            "pct": 1.0
           },
           {
             "code": "1903",
@@ -4182,9 +4188,9 @@
             "foreign_lots": 75,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 47.45,
-            "change": 0.2,
-            "pct": 0.42
+            "price": 47.55,
+            "change": 0.1,
+            "pct": 0.21
           },
           {
             "code": "1906",
@@ -4193,9 +4199,9 @@
             "foreign_lots": 2,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 10.75,
-            "change": 0.05,
-            "pct": 0.47
+            "price": 10.85,
+            "change": 0.1,
+            "pct": 0.93
           }
         ],
         "topSell": [
@@ -4207,8 +4213,8 @@
             "trust_lots": 0,
             "dealer_lots": -14,
             "price": 12.8,
-            "change": -0.1,
-            "pct": -0.78
+            "change": 0.0,
+            "pct": 0.0
           },
           {
             "code": "1909",
@@ -4217,7 +4223,7 @@
             "foreign_lots": -37,
             "trust_lots": 0,
             "dealer_lots": -180,
-            "price": 10.2,
+            "price": 10.25,
             "change": 0.05,
             "pct": 0.49
           },
@@ -4228,9 +4234,9 @@
             "foreign_lots": -41,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 28.45,
-            "change": 0.15,
-            "pct": 0.53
+            "price": 28.4,
+            "change": -0.05,
+            "pct": -0.18
           },
           {
             "code": "6790",
@@ -4239,9 +4245,9 @@
             "foreign_lots": -20,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 37.25,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 37.4,
+            "change": 0.15,
+            "pct": 0.4
           }
         ]
       },
@@ -4254,9 +4260,9 @@
             "foreign_lots": 136,
             "trust_lots": 0,
             "dealer_lots": 20,
-            "price": 180.5,
-            "change": -2.0,
-            "pct": -1.1
+            "price": 183.5,
+            "change": 3.0,
+            "pct": 1.66
           },
           {
             "code": "1789",
@@ -4265,9 +4271,9 @@
             "foreign_lots": 134,
             "trust_lots": 0,
             "dealer_lots": 4,
-            "price": 19.1,
-            "change": 0.15,
-            "pct": 0.79
+            "price": 19.6,
+            "change": 0.5,
+            "pct": 2.62
           },
           {
             "code": "6782",
@@ -4276,9 +4282,9 @@
             "foreign_lots": 82,
             "trust_lots": -10,
             "dealer_lots": 9,
-            "price": 230.0,
-            "change": -2.5,
-            "pct": -1.08
+            "price": 247.0,
+            "change": 17.0,
+            "pct": 7.39
           },
           {
             "code": "4164",
@@ -4287,9 +4293,9 @@
             "foreign_lots": 83,
             "trust_lots": 0,
             "dealer_lots": -8,
-            "price": 28.0,
-            "change": -0.2,
-            "pct": -0.71
+            "price": 28.45,
+            "change": 0.45,
+            "pct": 1.61
           },
           {
             "code": "4104",
@@ -4298,9 +4304,9 @@
             "foreign_lots": 74,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 72.0,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 73.0,
+            "change": 1.0,
+            "pct": 1.39
           }
         ],
         "topSell": [
@@ -4311,9 +4317,9 @@
             "foreign_lots": -470,
             "trust_lots": 0,
             "dealer_lots": -1,
-            "price": 19.2,
-            "change": 0.65,
-            "pct": 3.5
+            "price": 18.75,
+            "change": -0.45,
+            "pct": -2.34
           },
           {
             "code": "4746",
@@ -4322,9 +4328,9 @@
             "foreign_lots": -52,
             "trust_lots": -246,
             "dealer_lots": 0,
-            "price": 48.95,
-            "change": 0.9,
-            "pct": 1.87
+            "price": 48.15,
+            "change": -0.8,
+            "pct": -1.63
           },
           {
             "code": "6949",
@@ -4333,9 +4339,9 @@
             "foreign_lots": -311,
             "trust_lots": 0,
             "dealer_lots": 45,
-            "price": 46.85,
-            "change": 1.55,
-            "pct": 3.42
+            "price": 46.7,
+            "change": -0.15,
+            "pct": -0.32
           },
           {
             "code": "6919",
@@ -4344,9 +4350,9 @@
             "foreign_lots": -208,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 77.5,
-            "change": -0.6,
-            "pct": -0.77
+            "price": 77.2,
+            "change": -0.3,
+            "pct": -0.39
           },
           {
             "code": "1720",
@@ -4355,9 +4361,9 @@
             "foreign_lots": -193,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 56.9,
-            "change": 0.8,
-            "pct": 1.43
+            "price": 57.5,
+            "change": 0.6,
+            "pct": 1.05
           }
         ]
       },
@@ -4370,9 +4376,9 @@
             "foreign_lots": 116,
             "trust_lots": 4,
             "dealer_lots": 1,
-            "price": 366.5,
-            "change": 1.0,
-            "pct": 0.27
+            "price": 372.5,
+            "change": 6.0,
+            "pct": 1.64
           },
           {
             "code": "9924",
@@ -4381,9 +4387,9 @@
             "foreign_lots": 31,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 37.95,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 38.0,
+            "change": 0.05,
+            "pct": 0.13
           },
           {
             "code": "3557",
@@ -4392,9 +4398,9 @@
             "foreign_lots": 8,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 24.0,
-            "change": 0.35,
-            "pct": 1.48
+            "price": 24.05,
+            "change": 0.05,
+            "pct": 0.21
           },
           {
             "code": "6754",
@@ -4403,9 +4409,9 @@
             "foreign_lots": -1,
             "trust_lots": 0,
             "dealer_lots": 2,
-            "price": 41.5,
-            "change": 1.0,
-            "pct": 2.47
+            "price": 42.0,
+            "change": 0.5,
+            "pct": 1.2
           },
           {
             "code": "8482",
@@ -4414,9 +4420,9 @@
             "foreign_lots": 1,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 50.1,
-            "change": 2.1,
-            "pct": 4.38
+            "price": 50.5,
+            "change": 0.4,
+            "pct": 0.8
           }
         ],
         "topSell": [
@@ -4427,9 +4433,9 @@
             "foreign_lots": -144,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 9.83,
-            "change": 0.01,
-            "pct": 0.1
+            "price": 9.86,
+            "change": 0.03,
+            "pct": 0.31
           },
           {
             "code": "9935",
@@ -4438,7 +4444,7 @@
             "foreign_lots": -27,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 18.15,
+            "price": 18.05,
             "change": -0.1,
             "pct": -0.55
           },
@@ -4449,9 +4455,9 @@
             "foreign_lots": -5,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 81.3,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 81.5,
+            "change": 0.2,
+            "pct": 0.25
           },
           {
             "code": "2062",
@@ -4460,9 +4466,9 @@
             "foreign_lots": -4,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 18.0,
-            "change": 0.15,
-            "pct": 0.84
+            "price": 18.05,
+            "change": 0.05,
+            "pct": 0.28
           },
           {
             "code": "6671",
@@ -4471,9 +4477,9 @@
             "foreign_lots": -2,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 23.05,
-            "change": 0.0,
-            "pct": 0.0
+            "price": 22.9,
+            "change": -0.15,
+            "pct": -0.65
           }
         ]
       },
@@ -4486,9 +4492,9 @@
             "foreign_lots": 83,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 62.6,
-            "change": -0.1,
-            "pct": -0.16
+            "price": 64.2,
+            "change": 1.6,
+            "pct": 2.56
           },
           {
             "code": "6165",
@@ -4497,9 +4503,9 @@
             "foreign_lots": 68,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 47.9,
-            "change": 0.15,
-            "pct": 0.31
+            "price": 48.6,
+            "change": 0.7,
+            "pct": 1.46
           },
           {
             "code": "8454",
@@ -4508,9 +4514,9 @@
             "foreign_lots": 69,
             "trust_lots": 0,
             "dealer_lots": -2,
-            "price": 241.0,
-            "change": -3.5,
-            "pct": -1.43
+            "price": 243.0,
+            "change": 2.0,
+            "pct": 0.83
           },
           {
             "code": "6906",
@@ -4519,9 +4525,9 @@
             "foreign_lots": 4,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 78.9,
-            "change": -0.4,
-            "pct": -0.5
+            "price": 79.0,
+            "change": 0.1,
+            "pct": 0.13
           },
           {
             "code": "6614",
@@ -4530,9 +4536,9 @@
             "foreign_lots": 3,
             "trust_lots": 0,
             "dealer_lots": 0,
-            "price": 35.25,
-            "change": -0.25,
-            "pct": -0.7
+            "price": 35.15,
+            "change": -0.1,
+            "pct": -0.28
           }
         ],
         "topSell": [
@@ -4543,9 +4549,9 @@
             "foreign_lots": -37,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 136.5,
-            "change": -1.5,
-            "pct": -1.09
+            "price": 136.0,
+            "change": -0.5,
+            "pct": -0.37
           },
           {
             "code": "7765",
@@ -4554,9 +4560,9 @@
             "foreign_lots": -16,
             "trust_lots": 0,
             "dealer_lots": 1,
-            "price": 236.0,
+            "price": 237.0,
             "change": 1.0,
-            "pct": 0.43
+            "pct": 0.42
           },
           {
             "code": "7823",
@@ -4565,9 +4571,9 @@
             "foreign_lots": -3,
             "trust_lots": 0,
             "dealer_lots": -5,
-            "price": 79.9,
-            "change": 1.2,
-            "pct": 1.52
+            "price": 79.3,
+            "change": -0.6,
+            "pct": -0.75
           },
           {
             "code": "7721",
@@ -4576,9 +4582,9 @@
             "foreign_lots": -14,
             "trust_lots": 0,
             "dealer_lots": 6,
-            "price": 61.1,
-            "change": -0.3,
-            "pct": -0.49
+            "price": 60.7,
+            "change": -0.4,
+            "pct": -0.65
           },
           {
             "code": "7835",
@@ -4587,9 +4593,9 @@
             "foreign_lots": -3,
             "trust_lots": 0,
             "dealer_lots": -2,
-            "price": 19.6,
-            "change": -0.2,
-            "pct": -1.01
+            "price": 19.65,
+            "change": 0.05,
+            "pct": 0.26
           }
         ]
       }
