@@ -4486,5 +4486,114 @@
     "dealer": -590.54,
     "total": -1479.01
   },
-  "channels": []
+  "channels": [],
+  "strategy": {
+    "agents": {
+      "fundamental": {
+        "status": "pending",
+        "reason": "not_run",
+        "score": null,
+        "metrics": [
+          {
+            "label": "TAIEX",
+            "value": "43,154.78"
+          },
+          {
+            "label": "漲跌幅",
+            "value": "-3.93%"
+          },
+          {
+            "label": "有效技術指標",
+            "value": "3 / 6"
+          }
+        ],
+        "dataSummary": "行情與技術指標已整理；尚未接入 EPS、營收成長與毛利率，不能視為完整基本面分析。",
+        "sources": [
+          {
+            "title": "Yahoo Finance · TAIEX",
+            "url": "https://finance.yahoo.com/quote/%5ETWII/"
+          },
+          {
+            "title": "TWSE",
+            "url": "https://www.twse.com.tw/"
+          }
+        ],
+        "scope": "台美股資料快照",
+        "horizon": "資料快照；非預測",
+        "asOf": "2026-11-04T09:52:24.529754+08:00",
+        "comment": "",
+        "recommendation": "",
+        "rationale": ""
+      },
+      "expert": {
+        "status": "pending",
+        "reason": "missing_sources",
+        "score": null,
+        "metrics": [
+          {
+            "label": "已完成頻道分析",
+            "value": "0"
+          },
+          {
+            "label": "待分析頻道",
+            "value": "0"
+          }
+        ],
+        "dataSummary": "僅納入已成功分析的頻道；舊結果的時間以原始頻道日期為準。Podcast 尚未接通。",
+        "sources": [],
+        "scope": "頻道觀點",
+        "horizon": "資料快照；非預測",
+        "asOf": "2026-11-04T09:52:24.529754+08:00",
+        "comment": "",
+        "recommendation": "",
+        "rationale": ""
+      },
+      "sentiment": {
+        "status": "pending",
+        "reason": "missing_sources",
+        "score": null,
+        "metrics": [
+          {
+            "label": "VIX（市場指標）",
+            "value": "20.83"
+          },
+          {
+            "label": "新聞／社群來源",
+            "value": "0"
+          }
+        ],
+        "dataSummary": "VIX 僅作市場波動參考；目前未接入新聞與社群來源，不能替代情緒分析。",
+        "sources": [],
+        "scope": "新聞／社群（尚未接通）",
+        "horizon": "資料快照；非預測",
+        "asOf": "2026-11-04T09:52:24.529754+08:00",
+        "comment": "",
+        "recommendation": "",
+        "rationale": ""
+      }
+    },
+    "fusion": {
+      "status": "pending",
+      "reason": "missing_sources",
+      "score": null,
+      "metrics": [
+        {
+          "label": "有資料的研究角色",
+          "value": "1 / 3"
+        },
+        {
+          "label": "已有 AI 評語",
+          "value": "0 / 3"
+        }
+      ],
+      "dataSummary": "先保留各角色的資料與缺口；不以缺失資料當成中性分數，也不直接平均不同期間的觀點。",
+      "sources": [],
+      "scope": "跨來源整合",
+      "horizon": "資料快照；非預測",
+      "asOf": "2026-11-04T09:52:24.529754+08:00",
+      "comment": "",
+      "recommendation": "",
+      "rationale": ""
+    }
+  }
 }

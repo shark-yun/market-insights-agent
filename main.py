@@ -1,6 +1,7 @@
 import os
 import json
 import math
+from strategy import build_strategy
 import requests
 import xml.etree.ElementTree as ET
 import google.generativeai as genai
@@ -15,12 +16,17 @@ GEMINI_KEY = os.getenv("GEMINI_API_KEY")
 TG_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TG_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
-if not GEMINI_KEY:
-    raise ValueError("錯誤: 請設定 GEMINI_API_KEY 環境變數")
+# Market data remains available without model credentials.
+model = None
+if GEMINI_KEY:
+    genai.configure(api_key=GEMINI_KEY)
+    model = genai.GenerativeModel(os.getenv('GEMINI_MODEL', 'gemini-flash-latest'))
 
-# 2. 設定 Gemini
-genai.configure(api_key=GEMINI_KEY)
-model = genai.GenerativeModel('gemini-2.0-flash')
+
+def generate_strategy(prompt):
+    response = model.generate_content(prompt, generation_config={"response_mime_type":"application/json", "max_output_tokens":4096}, request_options={"timeout":60})
+    return response.text
+
 
 
 
@@ -588,18 +594,19 @@ def get_latest_video_id(channel_id):
 def get_transcript(video_id):
     try:
         # 優先嘗試繁體中文，其次簡體與英文
-        srt = YouTubeTranscriptApi.get_transcript(video_id, languages=['zh-TW', 'zh-HK', 'zh-Hans', 'en'])
-        return " ".join([i['text'] for i in srt])
+        srt = YouTubeTranscriptApi().fetch(video_id, languages=['zh-TW', 'zh-HK', 'zh-Hans', 'en'])
+        return " ".join(i.text for i in srt)
     except Exception as e:
         return f"(系統提示: 無法取得此影片字幕 - {str(e)})"
 
 def analyze_finance(title, transcript):
     """分析影片內容，回傳結構化 JSON"""
     # 如果沒字幕，就只針對標題分析，或者回報資訊不足
-    if "無法取得字幕" in transcript:
+    if model is None or "無法取得此影片字幕" in transcript:
         return {
             "stance": "neutral",
-            "stanceText": "無法判斷",
+            "analysisStatus": "pending",
+            "stanceText": "待分析",
             "summary": "此影片未提供字幕，無法進行深度分析。",
             "keyPoints": [],
             "mentionedStocks": []
@@ -627,7 +634,11 @@ def analyze_finance(title, transcript):
         if text.endswith("```"):
             text = text[:-3]
         text = text.strip()
-        return json.loads(text)
+        analysis = json.loads(text)
+        if not isinstance(analysis, dict) or not isinstance(analysis.get('summary'), str) or analysis.get('stance') not in ('bull', 'bear', 'neutral'):
+            raise ValueError('Invalid analysis')
+        analysis['analysisStatus'] = 'complete'
+        return analysis
     except json.JSONDecodeError as e:
         print(f"⚠️ JSON 解析失敗，使用原始文字: {e}")
         return {
@@ -712,6 +723,7 @@ def main():
 
             # 建構 Dashboard 用的頻道資料
             channel_data = {
+                "analysisStatus": analysis.get("analysisStatus", "pending"),
                 "name": channel['name'],
                 "avatar": channel['name'][0],  # 取第一個字作為頭像文字
                 "date": today,
@@ -739,7 +751,8 @@ def main():
             full_report += "\n━━━━━━━━━━━━━━━━\n\n"
 
             # 加入歷史紀錄
-            history.append(video_id)
+            if analysis.get('analysisStatus') == 'complete':
+                history.append(video_id)
     else:
         # YouTube analysis disabled; keep report empty
         new_videos_found = False
@@ -809,6 +822,9 @@ def main():
         "institutional_flow": institutional_flow,
         "channels": final_channels
     }
+
+    report_data = sanitize_report(report_data)
+    report_data['strategy'] = build_strategy(report_data, generate_strategy if model and config.get('enable_strategy_analysis', True) else None, 'disabled' if not config.get('enable_strategy_analysis', True) else 'no_key')
 
     with open(report_path, 'w', encoding='utf-8') as f:
         json.dump(sanitize_report(report_data), f, ensure_ascii=False, indent=2, allow_nan=False)

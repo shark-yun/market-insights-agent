@@ -488,7 +488,7 @@ function renderMarketIndices(indices) {
 
   // 1. Taiwan TAIEX (Main Banner)
   const tw = indices.TWII;
-  if (tw) {
+  if (tw && ['price','change','pct'].every(key => Number.isFinite(tw[key]))) {
     const priceEl = document.getElementById('tw-index-price');
     const changeEl = document.getElementById('tw-index-change');
     if (priceEl) priceEl.textContent = tw.price.toLocaleString();
@@ -559,7 +559,12 @@ function renderMarketIndices(indices) {
   for (const [sym, id] of Object.entries(usMap)) {
     const data = indices[sym];
     const card = document.getElementById(id);
-    if (!data || !card) continue;
+    if (!card) continue;
+    if (!data || !['price','change','pct'].every(key => Number.isFinite(data[key]))) {
+      card.querySelector('.idx-price').textContent = '—';
+      card.querySelector('.idx-change').textContent = currentLang === 'en' ? 'Unavailable' : '資料不足';
+      continue;
+    }
 
     const pEl = card.querySelector('.idx-price');
     const cEl = card.querySelector('.idx-change');
@@ -828,7 +833,9 @@ function renderChannelList(channels, containerId) {
 // ── Technical Indicators Rendering ──
 function renderTechnicals(technicals) {
   const grid = document.getElementById('tech-indicators-grid');
-  if (!grid || !technicals || technicals.length === 0) return;
+  if (!grid) return;
+  technicals = Array.isArray(technicals) ? technicals : [];
+  const missing = technicals.filter(t => !['price','ma5','ma20','ma60','rsi'].every(key => Number.isFinite(t[key]))).length;
   const isEn = currentLang === 'en';
   grid.innerHTML = technicals.filter(t => ['price','ma5','ma20','ma60','rsi'].every(key => Number.isFinite(t[key]))).map(t => {
     const sigColor = t.signal === 'bull' ? 'var(--green)' : t.signal === 'bear' ? 'var(--red)' : 'var(--amber)';
@@ -867,6 +874,11 @@ function renderTechnicals(technicals) {
       </div>
     </div>`;
   }).join('');
+  if (missing || !technicals.length) {
+    const notice = document.createElement('p');
+    notice.textContent = isEn ? `${missing} unavailable technical records; waiting for source data.` : `${missing} 筆技術指標資料不足，等待來源更新。`;
+    grid.appendChild(notice);
+  }
 }
 
 // ── Risk Dashboard Rendering ──
@@ -972,7 +984,7 @@ function renderMarketFreshness() {
     (en ? 'Report: ' : '報告更新：') + time + (validTime ? ' (UTC+8)' : '')];
   if (tw?.marketDate) lines.push((en ? 'Price date: ' : '行情日期：') + tw.marketDate);
   if (stale) lines.push(en ? 'Report is over 24 hours old' : '報告已超過 24 小時未更新');
-  if (!tw) {
+  if (!tw || !['price','change','pct'].every(key => Number.isFinite(tw[key]))) {
     lines.push(en ? 'TAIEX data unavailable' : '尚無 TAIEX 資料');
     for (const id of ['tw-index-price','tw-index-change','tw-volume','tw-high','tw-low']) document.getElementById(id).textContent = '—';
     const canvas = document.getElementById('tw-index-chart');

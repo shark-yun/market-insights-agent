@@ -14,3 +14,9 @@ Each result accepts:
 - `sources`: array of `{title, url}`; only HTTP(S) links render.
 
 Fusion should be generated from compatible scopes and horizons with evidence and disagreements preserved, not an automatic arithmetic average. Missing scores must remain null. Backend producers should validate these fields and persist each run before publishing. The frontend does not run agents or call an LLM.
+
+## Data-first UI and scheduled generation
+
+`strategy.py` builds metrics and dataSummary without API access. Each result includes a reason (no_key, disabled, missing_sources, quota, model_unavailable, invalid_response, partial_sources, or not_run). The frontend shows metrics first; View AI analysis reveals the score and commentary. It never invokes a model from the public browser. Open panels persist across refresh and language changes.
+
+Scheduled runs use one bounded model request for roles with evidence. Missing news/social sources keep Sentiment and Fusion pending. Model configuration uses GEMINI_MODEL (default gemini-flash-latest); enable_strategy_analysis can disable calls. No key or quota failure leaves market updates operational. Scores are model outputs, never invented as fallback.
