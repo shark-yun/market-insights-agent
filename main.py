@@ -1,5 +1,6 @@
 import os
 import json
+import math
 import requests
 import xml.etree.ElementTree as ET
 import google.generativeai as genai
@@ -51,6 +52,17 @@ model = genai.GenerativeModel('gemini-2.0-flash')
 
 
 import yt_dlp
+
+
+def sanitize_report(value):
+    """Keep external missing numeric values out of JSON's nonstandard NaN syntax."""
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, dict):
+        return {key: sanitize_report(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [sanitize_report(item) for item in value]
+    return value
 
 
 def fetch_market_indices():
@@ -119,6 +131,7 @@ def fetch_market_indices():
                 volume_sparkline[-1] = latest_vol
 
             indices[meta['key']] = {
+                'marketDate': hist5.index[-1].strftime('%Y-%m-%d'),
                 'label':     meta['label'],
                 'market':    meta['market'],
                 'price':     price,
@@ -798,7 +811,7 @@ def main():
     }
 
     with open(report_path, 'w', encoding='utf-8') as f:
-        json.dump(report_data, f, ensure_ascii=False, indent=2)
+        json.dump(sanitize_report(report_data), f, ensure_ascii=False, indent=2, allow_nan=False)
     print(f"✅ Dashboard 報告已更新: {report_path}")
 
     # 如果有新影片，才推送 Telegram

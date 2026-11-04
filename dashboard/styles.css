@@ -338,3 +338,24 @@ a.disc-video:hover{color:var(--blue);text-decoration:underline}
   background: rgba(255, 255, 255, 0.12);
 }
 
+
+/* AI Strategy Room */
+.strategy-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:8px 0 16px}
+.strategy-eyebrow{color:var(--blue);font-size:.7rem;letter-spacing:.16em;margin-bottom:10px}
+.strategy-heading h2{font-size:1.6rem;margin:0 0 10px}.strategy-heading p,.strategy-note{color:var(--text2);font-size:.85rem;line-height:1.7}
+.strategy-note{padding:12px 16px;background:var(--bg3);border-radius:10px;margin-bottom:20px}
+.agent-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.agent-card{min-width:0;padding:24px}.agent-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:20px}
+.agent-number{color:var(--blue);font-size:.9rem;font-weight:700}.agent-status{color:var(--text2);background:var(--bg3);padding:6px 10px;border-radius:20px;font-size:.73rem;white-space:nowrap}
+.agent-card h3{font-size:1rem;margin-bottom:8px}.agent-description{color:var(--text3);font-size:.78rem;line-height:1.6}
+.agent-score{display:flex;align-items:baseline;gap:12px;margin:22px 0 10px}.agent-score strong{font-size:2.6rem;line-height:1}.agent-score span{font-size:.78rem;color:var(--text2)}
+.agent-score.bull{color:var(--green)}.agent-score.bear{color:var(--red)}.agent-score.neutral{color:var(--amber)}.agent-score.pending{color:var(--text3)}
+.agent-meter{height:4px;background:var(--bg3);border-radius:4px;margin-bottom:24px;overflow:hidden}.agent-meter span{display:block;height:100%;background:var(--blue)}
+.agent-meter .bull{background:var(--green)}.agent-meter .bear{background:var(--red)}
+.agent-card dt{font-size:.76rem;color:var(--blue);margin:16px 0 7px}.agent-card dd{margin:0;font-size:.86rem;line-height:1.8;overflow-wrap:anywhere}
+.agent-meta{border-top:1px solid var(--glass-border);margin-top:22px;padding-top:16px;color:var(--text3);font-size:.72rem;line-height:1.9}
+.agent-card details{font-size:.8rem;line-height:1.8;margin-top:16px;color:var(--text2)}.agent-card summary{cursor:pointer;color:var(--blue)}.agent-card details p{margin-top:10px}.agent-card details ul{padding-left:20px}.agent-card a{color:var(--blue);overflow-wrap:anywhere}
+.agent-connector{text-align:center;color:var(--text3);font-size:.78rem;padding:20px}.agent-fusion{border-color:rgba(96,165,250,.35)}
+@media(max-width:1000px){.agent-grid{grid-template-columns:1fr}.strategy-heading{align-items:flex-start}.strategy-heading h2{font-size:1.3rem}}
+
+.market-freshness{white-space:pre-line;font-size:.72rem;line-height:1.8;color:var(--text3);margin-top:12px;max-width:440px}.market-freshness.is-stale{color:#fbbf24}

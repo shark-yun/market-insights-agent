@@ -84,7 +84,7 @@ function applyTranslations() {
     `;
   }
   const twHeatmapBadge = document.querySelector('#panel-tw .glass-card:nth-child(3) .card-badge');
-  if (twHeatmapBadge) twHeatmapBadge.textContent = isEn ? 'Live' : '即時';
+  if (twHeatmapBadge) twHeatmapBadge.textContent = isEn ? 'Scheduled' : '定時更新';
 
   // Capital flow card title
   const twFlowTitle = document.querySelector('#panel-tw .glass-card:nth-child(4) .card-title');
@@ -280,7 +280,7 @@ function applyTranslations() {
   }
 
   // Technical Indicators Title
-  const techTitle = document.querySelector('#panel-overview .glass-card:nth-child(3) .card-title');
+  const techTitle = document.querySelector('#tech-indicators-grid').parentElement.querySelector('.card-title');
   if (techTitle) {
     techTitle.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -291,7 +291,7 @@ function applyTranslations() {
   }
 
   // Risk Radar Title
-  const riskTitle = document.querySelector('#panel-overview .glass-card:nth-child(4) .card-title');
+  const riskTitle = document.querySelector('#risk-dashboard').parentElement.querySelector('.card-title');
   if (riskTitle) {
     riskTitle.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -392,8 +392,6 @@ function updateClock() {
   const locale = currentLang === 'en' ? 'en-US' : 'zh-TW';
   document.getElementById('clock-time').textContent =
     now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  document.getElementById('last-update').textContent =
-    now.toLocaleDateString(locale) + ' ' + now.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
 }
 setInterval(updateClock, 1000);
 updateClock();
@@ -832,7 +830,7 @@ function renderTechnicals(technicals) {
   const grid = document.getElementById('tech-indicators-grid');
   if (!grid || !technicals || technicals.length === 0) return;
   const isEn = currentLang === 'en';
-  grid.innerHTML = technicals.map(t => {
+  grid.innerHTML = technicals.filter(t => ['price','ma5','ma20','ma60','rsi'].every(key => Number.isFinite(t[key]))).map(t => {
     const sigColor = t.signal === 'bull' ? 'var(--green)' : t.signal === 'bear' ? 'var(--red)' : 'var(--amber)';
     const sigBg = t.signal === 'bull' ? 'rgba(52,211,153,.1)' : t.signal === 'bear' ? 'rgba(248,113,113,.1)' : 'rgba(251,191,36,.1)';
     const rsiColor = t.rsi > 70 ? 'var(--red)' : t.rsi < 30 ? 'var(--green)' : 'var(--text)';
@@ -876,7 +874,7 @@ function renderRisks(risks) {
   const grid = document.getElementById('risk-dashboard');
   if (!grid || !risks || risks.length === 0) return;
   const isEn = currentLang === 'en';
-  grid.innerHTML = risks.map(r => {
+  grid.innerHTML = risks.filter(r => ['price','change','pct'].every(key => Number.isFinite(r[key]))).map(r => {
     const isPos = r.change >= 0;
     const color = isPos ? 'var(--green)' : 'var(--red)';
     const displayName = isEn ? (window.RISK_EN[r.name] || r.name) : r.name;
@@ -955,19 +953,61 @@ function renderAllDynamic() {
   renderTrumpPosts();
   renderConsensus();
   renderKeyThemes();
+  renderStrategyRoom(data, currentLang);
+  renderMarketFreshness();
 }
 
-// Fetch report.json on page load
-fetch('data/report.json?t=' + Date.now())
-  .then(r => { if (!r.ok) throw new Error('no report'); return r.json(); })
-  .then(data => {
+// Report polling refreshes published snapshots, not live exchange prices.
+let reportLoading = false;
+let reportLoadFailed = false;
+function renderMarketFreshness() {
+  const en = currentLang === 'en';
+  const el = document.getElementById('tw-data-status');
+  const tw = loadedData?.indices?.TWII;
+  const timestamp = Date.parse(loadedData?.generatedAt);
+  const validTime = Number.isFinite(timestamp);
+  const time = validTime ? new Date(timestamp).toLocaleString(en ? 'en-GB' : 'zh-TW', {timeZone: 'Asia/Taipei', hour12: false}) : '—';
+  const stale = validTime && Date.now() - timestamp > 24 * 60 * 60 * 1000;
+  const lines = [en ? 'Scheduled updates · Not live quotes' : '定時更新 · 非即時行情',
+    (en ? 'Report: ' : '報告更新：') + time + (validTime ? ' (UTC+8)' : '')];
+  if (tw?.marketDate) lines.push((en ? 'Price date: ' : '行情日期：') + tw.marketDate);
+  if (stale) lines.push(en ? 'Report is over 24 hours old' : '報告已超過 24 小時未更新');
+  if (!tw) {
+    lines.push(en ? 'TAIEX data unavailable' : '尚無 TAIEX 資料');
+    for (const id of ['tw-index-price','tw-index-change','tw-volume','tw-high','tw-low']) document.getElementById(id).textContent = '—';
+    const canvas = document.getElementById('tw-index-chart');
+    canvas?.getContext('2d')?.clearRect(0, 0, canvas.width, canvas.height);
+    document.getElementById('btn-show-volume').onclick = null;
+  }
+  if (reportLoadFailed) lines.push(en ? 'Refresh failed; showing last loaded report' : '刷新失敗；保留上次成功載入的報告');
+  lines.push(en ? 'Checks every 5 min · Schedule 06:00 / 18:00 UTC+8, subject to delays' : '每 5 分鐘檢查新報告 · 排程 06:00／18:00，執行可能延遲');
+  if (el) { el.textContent = lines.join('\n'); el.classList.toggle('is-stale', stale || reportLoadFailed || !tw); }
+  if (!validTime) document.getElementById('last-update').textContent = '—';
+}
+async function refreshReport() {
+  if (reportLoading) return;
+  reportLoading = true;
+  const btn = document.getElementById('btn-refresh');
+  if (btn) btn.disabled = true;
+  try {
+    const response = await fetch('data/report.json?t=' + Date.now(), {cache: 'no-store', signal: AbortSignal.timeout(20000)});
+    if (!response.ok) throw new Error('Report fetch failed');
+    const data = await response.json();
+    if (!data || typeof data !== 'object' || !data.indices || !Number.isFinite(Date.parse(data.generatedAt))) throw new Error('Invalid report');
     loadedData = data;
+    reportLoadFailed = false;
+  } catch (error) {
+    reportLoadFailed = true;
+    console.warn('Report refresh failed:', error);
+  } finally {
+    reportLoading = false;
+    if (btn) btn.disabled = false;
     renderAllDynamic();
-  })
-  .catch(() => {
-    console.log('ℹ️ report.json 不存在，使用 demo 資料。請執行 python main.py 產生。');
-    renderAllDynamic();
-  });
+  }
+}
+refreshReport();
+setInterval(() => { if (!document.hidden) refreshReport(); }, 5 * 60 * 1000);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshReport(); });
 
 // ── US Sectors ──
 const usSectors = [
@@ -1144,6 +1184,7 @@ function updateSentimentGauge(value) {
 
 // ── Refresh Button ──
 document.getElementById('btn-refresh')?.addEventListener('click', () => {
+  refreshReport();
   const btn = document.getElementById('btn-refresh');
   btn.style.transform = 'rotate(360deg)';
   setTimeout(() => btn.style.transform = '', 500);
