@@ -2,6 +2,7 @@ import os
 import json
 import math
 from strategy import build_strategy
+from market_volume import fetch_market_volume
 import requests
 import xml.etree.ElementTree as ET
 import google.generativeai as genai
@@ -125,18 +126,19 @@ def fetch_market_indices():
                 vol_col = vol_col.iloc[:, 0]
             
             sparkline = [round(float(v), 2) for v in spark_col.tolist()]
-            volume_sparkline = [int(v) for v in vol_col.tolist()]
+            volume_sparkline = [int(v) if math.isfinite(float(v)) and v > 0 else None for v in vol_col.tolist()]
             dates = [d.strftime('%m-%d') for d in hist30.index.tolist()]
 
-            # 修正最後一筆 Volume：1mo 日線最後一筆常為 0（當天未收盤），用 5d 數據補正
-            vol5_col = hist5['Volume']
-            if hasattr(vol5_col, 'columns'):
-                vol5_col = vol5_col.iloc[:, 0]
-            latest_vol = int(vol5_col.iloc[-1])
-            if len(volume_sparkline) > 0:
-                volume_sparkline[-1] = latest_vol
+            date_keys = [d.strftime('%Y-%m-%d') for d in hist30.index.tolist()]
+            volume_meta = {}
+            if symbol == '^TWII':
+                volume_sparkline = fetch_market_volume(date_keys)
+                volume_meta = {'volumeUnit': 'shares', 'volumeSource': 'TWSE FMTQIK',
+                               'volumeSourceUrl': 'https://www.twse.com.tw/zh/trading/historical/fmtqik.html'}
 
             indices[meta['key']] = {
+                **volume_meta,
+                'dateKeys': date_keys,
                 'marketDate': hist5.index[-1].strftime('%Y-%m-%d'),
                 'label':     meta['label'],
                 'market':    meta['market'],

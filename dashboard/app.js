@@ -304,7 +304,7 @@ function applyTranslations() {
 
   // Volume Modal Header
   const volModalTitle = document.querySelector('#volume-modal .stock-name');
-  if (volModalTitle) volModalTitle.textContent = isEn ? 'Historical Volume (TAIEX)' : '歷史成交量 (大盤)';
+  if (volModalTitle) volModalTitle.textContent = isEn ? 'TWSE Market Volume · 1 lot = 1,000 shares' : '證交所市場成交量 · 1 張 = 1,000 股';
   const volThs = document.querySelectorAll('#volume-modal th');
   if (volThs && volThs.length >= 3) {
     volThs[0].textContent = isEn ? 'Date' : '日期';
@@ -510,16 +510,15 @@ function renderMarketIndices(indices) {
     const highEl = document.getElementById('tw-high');
     const lowEl = document.getElementById('tw-low');
     
-    // 單位換算工具：將 Yahoo Finance 的成交量數字轉為 萬張 / 億
+    // TWSE reports shares: 1 lot = 1,000 shares; 10,000 lots = 10,000,000 shares.
     const formatVol = (v) => {
-      if (v >= 100000000) return (v / 100000000).toFixed(2) + ' 億';
-      if (v >= 10000) return (v / 10000).toFixed(2) + ' 萬張';
-      return v.toLocaleString();
+      if (tw.volumeUnit !== 'shares' || !Number.isFinite(v) || v <= 0) return currentLang === 'en' ? 'Pending update' : '待更新';
+      return (v / 10000000).toLocaleString(currentLang === 'en' ? 'en-US' : 'zh-TW', {minimumFractionDigits:2, maximumFractionDigits:2}) + (currentLang === 'en' ? ' ×10k lots' : ' 萬張');
     };
-
-    if (volEl && tw.volume_sparkline && tw.volume_sparkline.length > 0) {
-      const latestVol = tw.volume_sparkline[tw.volume_sparkline.length - 1];
-      volEl.textContent = formatVol(latestVol);
+    const latestIndex = tw.dateKeys?.indexOf(tw.marketDate) ?? -1;
+    if (volEl) {
+      volEl.textContent = formatVol(latestIndex >= 0 ? tw.volume_sparkline?.[latestIndex] : null);
+      volEl.title = currentLang === 'en' ? 'TWSE market turnover · 1 lot = 1,000 shares' : '證交所市場成交股數換算；1 張 = 1,000 股';
     }
     if (highEl && tw.high) highEl.textContent = tw.high.toLocaleString();
     if (lowEl && tw.low) lowEl.textContent = tw.low.toLocaleString();
@@ -531,13 +530,13 @@ function renderMarketIndices(indices) {
         let html = '';
         // show last 30 days reversed (latest first)
         for (let i = tw.dates.length - 1; i >= Math.max(0, tw.dates.length - 30); i--) {
-          const d = tw.dates[i];
+          const d = tw.dateKeys?.[i] || tw.dates[i];
           const v = tw.volume_sparkline[i];
           const p = tw.sparkline[i];
           html += `
             <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
               <td style="padding:8px; text-align:left;">${d}</td>
-              <td style="padding:8px; font-weight:600;">${p.toLocaleString()}</td>
+              <td style="padding:8px; font-weight:600;">${Number.isFinite(p) ? p.toLocaleString() : '—'}</td>
               <td style="padding:8px;">${formatVol(v)}</td>
             </tr>
           `;
