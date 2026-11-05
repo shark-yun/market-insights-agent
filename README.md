@@ -56,7 +56,7 @@ node --check dashboard/demo-stocks.js
 
 Python 以 Black 統一排版，Ruff 檢查基本錯誤（設定於 pyproject.toml）。需要使用時先執行 `pip install -r requirements-dev.txt`。
 
-測試使用離線 fixture，涵蓋缺值、日期對齊、新聞過濾、規則判讀、模型格式與額度失敗。CI 不需要 API key，也不發送通知。
+測試使用離線 fixture 與本機 Git 倉庫，涵蓋缺值、日期對齊、新聞過濾、規則判讀、模型格式、額度失敗與同時發布報告的衝突。CI 不需要 API key，也不發送通知。
 
 ## 排程與部署
 

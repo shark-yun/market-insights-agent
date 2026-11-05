@@ -54,3 +54,7 @@ flowchart LR
 ## 本次整理
 
 移除根目錄未生效的舊 daily_report.yml、重複 README 敘述、註解掉的 Whisper 草稿、重複 import，以及已移除畫面的固定情緒／假貼文與舊策略室渲染程式。正式 workflow 與資料快照保留。
+
+## 產出物發布競爭
+
+`scripts/publish-report.sh` 只提交 report.json 與 history.json。遇到遠端更新時，以 rebase 保留遠端程式並採用本次生成的報告，影片歷史則合併去重；push 最多重試三次。此策略適用於可重建的資料快照，不適用於手寫程式碼的衝突解決。離線 integration test 以兩個 Git clone 模擬同時寫入，確認遠端程式不被覆蓋、資料採最新快照且歷史保留。
