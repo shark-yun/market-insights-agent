@@ -42,22 +42,6 @@ python -m http.server 8000
 
 `config.json` 的 `enable_strategy_analysis` 控制排程是否呼叫策略模型，`enable_youtube_analysis` 控制頻道分析。瀏覽器「查看 AI 分析」只展開報告，不會即時派工。
 
-## 驗證
-
-```bash
-python -m unittest discover -s tests -v
-python -m compileall -q main.py market_insights
-node --check dashboard/app.js
-node --check dashboard/us-panel.js
-node --check dashboard/strategy-room.js
-node --check dashboard/stock-search.js
-node --check dashboard/demo-stocks.js
-```
-
-Python 以 Black 統一排版，Ruff 檢查基本錯誤（設定於 pyproject.toml）。需要使用時先執行 `pip install -r requirements-dev.txt`。
-
-測試使用離線 fixture 與本機 Git 倉庫，涵蓋缺值、日期對齊、新聞過濾、規則判讀、模型格式、額度失敗與同時發布報告的衝突。CI 不需要 API key，也不發送通知。
-
 ## 排程與部署
 
 唯一正式排程為 `.github/workflows/daily_analysis.yml`：台灣時間 06:00、18:00，也可手動觸發。GitHub Actions 可能延遲，並非即時報價。排程提交 `dashboard/data/report.json` 與影片去重紀錄 `history.json`，GitHub Pages 隨後部署。
