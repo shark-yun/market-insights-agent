@@ -37,24 +37,3 @@ flowchart LR
 ![使用者原始設計圖](../dashboard/assets/stock-market-agents-architecture.png)
 
 這是目標架構。當前 agent 卡是獨立研究視角與結構化結果，尚非各自常駐、互相派工的服務。完整財報、Podcast、社群情緒與 Fusion 模型仍待接入。
-
-## Reviewer 應注意的邊界
-
-- 資料規則摘要不需 token；AI 分數只有有效模型回應才會出現。模型失敗保留摘要與待分析原因。
-- 沒有數值用 null／待更新表示，JSON 不允許 NaN；缺值不能轉成中性分數。
-- TWSE volume 是市場成交股數，不等同 Yahoo 指數成交量。萬張 = 股數 / 10,000,000。
-- 美股每筆日線以 America/New_York 日期標示；尚未保證盤中數字是最終收盤。
-- 產業 ETF 是代理指標；新聞只有標題與原文連結，未聲稱完成逐篇情緒分析。
-- 規則摘要會讀取目前快照，資料過期時摘要也會過期；它不是回測過的交易策略。
-- 台／港個股與比較仍使用示範 fixture，已集中檔案並於畫面標示。美股個股改用真實快照，不提供模擬比較圖。
-- 可選模型請求最多等待 45 秒且不自動重試；模型失敗交由下次排程再試，整體 job 上限 10 分鐘。
-- Google 舊版 SDK 仍保留在獨立 adapter，後續可單獨遷移；目前失敗會降級。
-- Taiwan collectors 仍較集中，可在確認資料格式後再細拆；本次先維持演算法行為，避免 review 同時承受大幅重寫。
-
-## 本次整理
-
-移除根目錄未生效的舊 daily_report.yml、重複 README 敘述、註解掉的 Whisper 草稿、重複 import，以及已移除畫面的固定情緒／假貼文與舊策略室渲染程式。正式 workflow 與資料快照保留。
-
-## 產出物發布競爭
-
-`scripts/publish-report.sh` 只提交 report.json 與 history.json。遇到遠端更新時，以 rebase 保留遠端程式並採用本次生成的報告，影片歷史則合併去重；push 最多重試三次。此策略適用於可重建的資料快照，不適用於手寫程式碼的衝突解決。離線 integration test 以兩個 Git clone 模擬同時寫入，確認遠端程式不被覆蓋、資料採最新快照且歷史保留。
