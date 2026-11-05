@@ -4,7 +4,7 @@ set -euo pipefail
 
 git config user.name 'github-actions[bot]'
 git config user.email 'github-actions[bot]@users.noreply.github.com'
-git add dashboard/data/report.json history.json
+git add dashboard/data/report.json data/history.json
 if git diff --cached --quiet; then
   exit 0
 fi
@@ -19,12 +19,12 @@ import json
 import subprocess
 from pathlib import Path
 
-path = Path('history.json')
-remote = json.loads(subprocess.check_output(['git', 'show', 'origin/main:history.json']))
+path = Path('data/history.json')
+remote = json.loads(subprocess.check_output(['git', 'show', 'origin/main:data/history.json']))
 local = json.loads(path.read_text())
 path.write_text(json.dumps(list(dict.fromkeys(remote + local))[-100:], ensure_ascii=False))
 PY
-  git add history.json
+  git add data/history.json
   if ! git diff --cached --quiet; then
     git commit --amend --no-edit
   fi

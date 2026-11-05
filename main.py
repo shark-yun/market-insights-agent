@@ -33,7 +33,7 @@ def main():
 
     # 讀取路徑相對於執行路徑，GitHub Actions 執行時會在根目錄
     base_dir = os.path.dirname(__file__)
-    config_path = os.path.join(base_dir, "config.json")
+    config_path = os.path.join(base_dir, "config", "settings.json")
     with open(config_path, "r", encoding="utf-8") as f:
         config = json.load(f)
 
@@ -42,7 +42,7 @@ def main():
     today = datetime.now(tw_tz).strftime("%Y-%m-%d")
 
     # 載入歷史紀錄 (避免重複發送相同的影片)
-    history_path = os.path.join(base_dir, "history.json")
+    history_path = os.path.join(base_dir, "data", "history.json")
     history = []
     if os.path.exists(history_path):
         try:
@@ -102,6 +102,7 @@ def main():
     # 如果有新影片，保存歷史紀錄
     if new_videos_found:
         print(f"✨ 發現 {len(dashboard_channels)} 部新影片，保存歷史紀錄並準備發送 Telegram 通知。")
+        os.makedirs(os.path.dirname(history_path), exist_ok=True)
         with open(history_path, "w", encoding="utf-8") as f:
             json.dump(history[-100:], f, ensure_ascii=False)
     else:

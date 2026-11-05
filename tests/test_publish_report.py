@@ -26,8 +26,9 @@ class PublishReportTests(unittest.TestCase):
             git(author, "config", "user.name", "Test")
             git(author, "config", "user.email", "test@example.invalid")
             (author / "dashboard/data").mkdir(parents=True)
+            (author / "data").mkdir()
             (author / "dashboard/data/report.json").write_text('{"version":0}')
-            (author / "history.json").write_text('["base"]')
+            (author / "data/history.json").write_text('["base"]')
             (author / "source.py").write_text("old source")
             git(author, "add", ".")
             git(author, "commit", "-m", "base")
@@ -35,13 +36,13 @@ class PublishReportTests(unittest.TestCase):
             git(root, "clone", str(remote), str(runner))
 
             (author / "dashboard/data/report.json").write_text('{"version":1}')
-            (author / "history.json").write_text('["base","remote-video"]')
+            (author / "data/history.json").write_text('["base","remote-video"]')
             (author / "source.py").write_text("new source")
             git(author, "add", ".")
             git(author, "commit", "-m", "upstream change")
             git(author, "push", "origin", "main")
             (runner / "dashboard/data/report.json").write_text('{"version":2}')
-            (runner / "history.json").write_text('["base","local-video"]')
+            (runner / "data/history.json").write_text('["base","local-video"]')
             subprocess.run(
                 ["bash", str(SCRIPT)],
                 cwd=runner,
@@ -55,6 +56,6 @@ class PublishReportTests(unittest.TestCase):
             )
             self.assertEqual(git(remote, "show", "main:source.py"), "new source")
             self.assertEqual(
-                set(json.loads(git(remote, "show", "main:history.json"))),
+                set(json.loads(git(remote, "show", "main:data/history.json"))),
                 {"base", "remote-video", "local-video"},
             )

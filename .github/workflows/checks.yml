@@ -3,7 +3,7 @@ on:
   push:
     paths-ignore:
       - 'dashboard/data/report.json'
-      - 'history.json'
+      - 'data/history.json'
   pull_request:
   workflow_dispatch:
 jobs:
@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: pip install requests defusedxml -r requirements-dev.txt
+      - run: pip install requests defusedxml -r requirements/dev.txt
       - run: ruff check main.py market_insights tests
       - run: black --check main.py market_insights tests
       - run: python -m unittest discover -s tests -v
