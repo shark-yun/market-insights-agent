@@ -30,10 +30,11 @@ function renderStrategyRoom(report, lang) {
       try { const url = new URL(source.url); if (!['https:','http:'].includes(url.protocol)) return ''; return `<li><a href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(source.title || url.hostname)}</a></li>`; } catch { return ''; }
     }).join('');
     return `<article class="glass-card agent-card ${fusion ? 'agent-fusion' : ''}">
-      <div class="agent-heading"><span class="agent-number">${number}</span><span class="agent-status">${statuses[status]}${stale ? ' · '+t('資料已過期','Stale') : ''}</span></div>
+      <div class="agent-heading"><span class="agent-number">${number}</span><span class="agent-status">${result.observation && status === 'pending' ? t('摘要就緒 · AI 待分析','Summary ready · AI pending') : statuses[status]}${stale ? ' · '+t('資料已過期','Stale') : ''}</span></div>
       <h3>${name}</h3><p class="agent-description">${description}</p>
       <div class="agent-metrics">${(Array.isArray(result.metrics) ? result.metrics : []).map(m => `<div><span>${esc(m.label)}</span><strong>${esc(m.value)}</strong></div>`).join('') || `<p>${t('正在等待數據摘要','Waiting for data summary')}</p>`}</div>
       <p class="agent-data-summary">${text(result.dataSummary,t('尚無來源資料。','No source data yet.'))}</p>
+      ${result.observation ? `<div class="agent-observation"><strong>${t('資料判讀 · 規則摘要','Data interpretation · Rule summary')}</strong><p>${esc(result.observation)}</p><strong>${t('接下來觀察','Watch next')}</strong><p>${esc(result.watchpoints || '')}</p></div>` : ''}
       <button type="button" class="agent-analysis-toggle" data-agent-toggle="${id}" aria-controls="agent-analysis-${id}" aria-expanded="${openPanels.has(id)}">${openPanels.has(id) ? t('收合 AI 分析','Hide AI analysis') : t('查看 AI 分析','View AI analysis')}</button>
       <div id="agent-analysis-${id}" data-agent-panel="${id}" ${openPanels.has(id) ? '' : 'hidden'}>
       <p class="agent-analysis-state">${statuses[status]} · ${reasons[result.reason] || t('尚未產生模型結果','No model result yet')}</p>
@@ -47,7 +48,7 @@ function renderStrategyRoom(report, lang) {
       <details><summary>${t('查看依據與來源','Evidence & sources')} (${sources.length})</summary><p>${text(result.rationale,t('尚無評分依據。','No scoring rationale yet.'))}</p>${sourceHTML ? `<ul>${sourceHTML}</ul>` : `<p>${t('尚無可查證的來源連結。','No verifiable source links yet.')}</p>`}</details>
     </article>`;
   }
-  root.innerHTML = `<header class="strategy-heading"><div><div class="strategy-eyebrow">AGENT RESEARCH DESK</div><h2>${t('三種視角，一份綜合判斷','Three perspectives. One synthesis.')}</h2><p>${t('分別檢視每位 agent 的評語、分數與建議，再追溯最終結論。','Inspect each agent’s assessment, score and recommendation before reviewing the synthesis.')}</p></div><span class="agent-status">${roles.filter(([id]) => ['complete','partial'].includes(strategy.agents?.[id]?.status)).length} / 3 ${t('已有分析','analyzed')}</span></header>
+  root.innerHTML = `<header class="strategy-heading"><div><div class="strategy-eyebrow">AGENT RESEARCH DESK</div><h2>${t('三種視角，一份綜合判斷','Three perspectives. One synthesis.')}</h2><p>${t('分別檢視每位 agent 的評語、分數與建議，再追溯最終結論。','Inspect each agent’s assessment, score and recommendation before reviewing the synthesis.')}</p></div><span class="agent-status">${roles.filter(([id]) => strategy.agents?.[id]?.observation).length} / 3 ${t('資料摘要就緒','summaries ready')}</span></header>
     <p class="strategy-note">${t('方向分數：0 偏空 → 50 中性 → 100 偏多；不代表勝率或信心。缺少分析以 — 顯示，超過 48 小時標示過期。','Direction score: 0 bearish → 50 neutral → 100 bullish; not probability or confidence. Missing scores show —; results older than 48 hours are marked stale.')}</p>
     <div class="agent-grid">${roles.map(role => card(...role)).join('')}</div>
     <div class="agent-connector">↓ ${t('比較證據 · 辨識分歧 · 綜合研判','Compare evidence · Identify disagreement · Synthesize')}</div>

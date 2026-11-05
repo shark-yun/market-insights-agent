@@ -1,88 +1,65 @@
-# 📈 Market Insights Agent
+# Market Insights Agent
 
-Market Insights Agent 是一個基於 LLM 的自動化財經資訊管道與視覺化儀表板。它能每天定時監控指定的 YouTube 財經頻道，提取逐字稿並利用 Google Gemini 進行深度市場分析，最後將結構化的精簡報告推送到你的 Telegram，同時在專屬的 Web Dashboard 上呈現。
+台美股市場資料與研究摘要 Dashboard。Python 排程收集行情、證交所成交量及市場新聞，輸出靜態 JSON；前端呈現資料快照、規則摘要，以及可選的 Gemini 分析。
 
-##  🌟 核心功能
+**[線上 Dashboard](https://shark-yun.github.io/market-insights-agent/dashboard/)** · [架構與 Review 導覽](docs/architecture.md) · [分析資料格式](docs/strategy-data.md)
 
-* **自動化監控**：利用 GitHub Actions 達成無伺服器 (Serverless) 定時排程。
-* **高效摘要**：採用 Gemini 模型處理長文本，精準捕捉多空觀點、關鍵數據與提及個股。
-* **YouTube 影片分析**：自動抓取指定財經頻道影片，解析字幕並生成市場洞見。當 Gemini Token 不足時會自動退回簡易摘要或切換至較低成本模型。
-* **特朗普貼文分析**：爬取並分析 Donald Trump 社群平台最新貼文，提供情緒與關鍵議題摘要。
-* **AI 洞見 (AI Insight)**：結合多來源金融新聞與模型推論，產出每日 AI 投資洞見與策略建議。
-* **視覺化儀表板 (Dashboard)**：
-  * **雙市場分析**：分拆台股與美股板塊輪動及頻道觀點。
-  * **個股搜尋與比較**：即時查詢個股詳細資訊，並支援跨市場個股疊加比較（標準化 100 基準線）。
-  * **動態數據對接**：前端直接讀取 Python 後端產生的 `report.json`，自動渲染 YouTube 分析結果。
-* **多通路推播**：同時更新 Dashboard 數據並推播至 Telegram Bot。
-* **視覺化儀表板 (Dashboard)**：
-  * **雙市場分析**：分拆台股與美股板塊輪動及頻道觀點。
-  * **個股搜尋與比較**：即時查詢個股詳細資訊，並支援跨市場個股疊加比較（標準化 100 基準線）。
-  * **動態數據對接**：前端直接讀取 Python 後端產生的 `report.json`，自動渲染 YouTube 分析結果。
-* **多通路推播**：同時更新 Dashboard 數據並推播至 Telegram Bot。
+## 目前功能
 
-## 🚀 快速開始
+| 功能 | 狀態與來源 |
+| --- | --- |
+| 台股指數、技術指標、法人與板塊 | Yahoo Finance／TWSE 資料快照 |
+| 台股市場成交量 | TWSE FMTQIK，按完整日期對齊；股數換算萬張 |
+| 美股指數、產業 ETF、追蹤個股 | Yahoo Finance 日線快照，附紐約交易日 |
+| 市場新聞 | WSJ 公開 RSS 標題、發布時間與原文連結 |
+| 基本面／技術、情緒摘要 | 無需模型的規則判讀與觀察重點；規則與 AI 評語分開顯示 |
+| Gemini 分析 | 可選；金鑰、額度或模型不可用時顯示待分析，行情仍可更新 |
+| YouTube 專家觀點 | 程式已備妥，目前在 config.json 關閉 |
+| Podcast、財報、社群與完整 Fusion | 尚待接通，不產生假評分 |
+| 台股／港股個股搜尋及比較 | 明確標示的示範資料，集中於 demo-stocks.js |
 
-#### 1. 取得必要憑證
-* **Gemini API Key**: 前往 Google AI Studio 申請免費 Key。
-* **Telegram Bot**:
-  1. 在 Telegram 搜尋 `@BotFather` 並發送 `/newbot` 取得 Token。
-  2. 發送訊息給你的 Bot 後，訪問 `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates` 找到你的 `chat_id`。
+原始架構圖是設計藍圖，已放在 AI 策略室；不代表圖中全部來源都已實作。
 
-#### 2. 設定 GitHub Secrets
-將以下變數新增至你的 Repo > Settings > Secrets and variables > Actions:
-* `GEMINI_API_KEY`: 你的 Google AI API Key。
-* `TELEGRAM_TOKEN`: Telegram 機器人 Token。
-* `TELEGRAM_CHAT_ID`: 接收通知的 Chat ID。
+## 本地執行
 
-#### 3. 配置監控清單
-編輯 `config.json` 加入你想追蹤的頻道（支援 `@頻道名` 或頻道 ID），並加上市場標籤：
-
-```json
-{
-  "channels": [
-    { "name": "財女珍妮", "id": "@jennymarket", "market": "tw" },
-    { "name": "Graham Stephan", "id": "@GrahamStephan", "market": "us" }
-  ]
-}
-```
-
-#### 4. 本地測試與開啟 Dashboard
-如果你想在本地環境執行與瀏覽：
+Python 3.10+；Node.js 只用於 JavaScript 語法檢查，前端無建置流程。
 
 ```bash
-git clone https://github.com/你的帳號/market-insights-agent.git
-cd market-insights-agent
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env
 
-# 1. 設定環境變數 (可建立 .env 檔案)
-# 2. 執行主程式抓取資料與分析，這會產生 dashboard/data/report.json
+# 抓取實際資料（會連線；模型／Telegram 若已設定則可能使用）
 python main.py
 
-# 3. 啟動本地靜態伺服器來瀏覽 Dashboard
-cd dashboard
+# 僅瀏覽已提交的報告，不呼叫模型或推播
 python -m http.server 8000
-# 打開瀏覽器訪問 http://localhost:8000
+# http://localhost:8000/dashboard/
 ```
 
-## 🌍 如何免費發布上線 (Hosting Online)
-因為我們的架構是純前端加上 GitHub Actions 產生的靜態 JSON，**完全不需要租用伺服器**！最推薦的方法是使用 **GitHub Pages**：
+環境變數皆可留空。`GEMINI_API_KEY` 啟用模型，`GEMINI_MODEL` 可切換模型；Telegram 需要同時設定 `TELEGRAM_TOKEN` 與 `TELEGRAM_CHAT_ID`。憑證只放 `.env` 或 GitHub Secrets。
 
-1. **上傳專案**：將這個專案 Push 到你的 GitHub Repository。
-2. **開啟 Pages 功能**：
-   * 在你的 GitHub Repo 頁面，點擊上方的 **Settings**。
-   * 點選左側選單的 **Pages**。
-   * 在 "Build and deployment" 區塊，**Source** 選擇 `Deploy from a branch`。
-   * 在 **Branch** 選擇 `main`，資料夾選擇 `/ (root)`，然後點擊 **Save**。
-3. **完成上線**：
-   * 等待大約 1~2 分鐘，你的網站就會上線了！
-   * 網址會是：`https://<你的GitHub帳號>.github.io/<專案名稱>/dashboard/`
-4. **自動更新機制**：
-   * 由於我們已經寫好了 `.github/workflows/daily_analysis.yml` 排程，每天 10:00 和 20:00 執行完分析後，它會自動把最新的 `report.json` 推回 GitHub。
-   * GitHub Pages 偵測到檔案變更，就會**自動重新部署**，你的網頁資料永遠是最新的！
+`config.json` 的 `enable_strategy_analysis` 控制排程是否呼叫策略模型，`enable_youtube_analysis` 控制頻道分析。瀏覽器「查看 AI 分析」只展開報告，不會即時派工。
 
-### 🛠️ 技術棧
-* **後端與爬蟲**: Python 3.10+, `yt-dlp`, `youtube-transcript-api`
-* **AI 模型**: Google Gemini (透過 `google-genai` SDK)
-* **前端儀表板**: Vanilla HTML/CSS/JS (Glassmorphism 現代設計, Canvas 繪圖)
-* **自動化與部署**: GitHub Actions (CI/CD) & GitHub Pages
-* **通知**: Telegram Bot API
+## 驗證
+
+```bash
+python -m unittest discover -s tests -v
+python -m compileall -q main.py market_insights
+node --check dashboard/app.js
+node --check dashboard/us-panel.js
+node --check dashboard/strategy-room.js
+node --check dashboard/stock-search.js
+node --check dashboard/demo-stocks.js
+```
+
+Python 以 Black 統一排版，Ruff 檢查基本錯誤（設定於 pyproject.toml）。需要使用時先執行 `pip install -r requirements-dev.txt`。
+
+測試使用離線 fixture，涵蓋缺值、日期對齊、新聞過濾、規則判讀、模型格式與額度失敗。CI 不需要 API key，也不發送通知。
+
+## 排程與部署
+
+唯一正式排程為 `.github/workflows/daily_analysis.yml`：台灣時間 06:00、18:00，也可手動觸發。GitHub Actions 可能延遲，並非即時報價。排程提交 `dashboard/data/report.json` 與影片去重紀錄 `history.json`，GitHub Pages 隨後部署。
+
+前端每五分鐘或回到分頁時重新讀取已發布 JSON。行情各自標示交易日，新聞保留發布時間；報告產生時間不等於每個來源的更新時間。

@@ -29,7 +29,7 @@ const US_SECTOR_ZH = {
   'Technology': '科技', 'Healthcare': '醫療保健', 'Financials': '金融',
   'Energy': '能源', 'Consumer': '消費品', 'Industrials': '工業',
   'Materials': '材料', 'Real Estate': '房地產', 'Utilities': '公用事業',
-  'Comm Svc': '通訊服務'
+  'Comm Svc': '通訊服務', 'Consumer Staples': '必需消費'
 };
 
 function applyTranslations() {
@@ -73,7 +73,7 @@ function applyTranslations() {
   if (usSearch) usSearch.placeholder = isEn ? 'Search US stock (e.g., AAPL, NVDA, TSLA)' : 'Search stock (e.g. AAPL, NVDA, TSLA)';
 
   // Heatmap card title
-  const twHeatmapTitle = document.querySelector('#panel-tw .glass-card:nth-child(3) .card-title');
+  const twHeatmapTitle = document.getElementById('tw-heatmap').closest('.glass-card').querySelector('.card-title');
   if (twHeatmapTitle) {
     twHeatmapTitle.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -83,11 +83,11 @@ function applyTranslations() {
       ${isEn ? 'Sector Rotation' : '產業板塊輪動'}
     `;
   }
-  const twHeatmapBadge = document.querySelector('#panel-tw .glass-card:nth-child(3) .card-badge');
+  const twHeatmapBadge = document.getElementById('tw-heatmap').closest('.glass-card').querySelector('.card-badge');
   if (twHeatmapBadge) twHeatmapBadge.textContent = isEn ? 'Scheduled' : '定時更新';
 
   // Capital flow card title
-  const twFlowTitle = document.querySelector('#panel-tw .glass-card:nth-child(4) .card-title');
+  const twFlowTitle = document.getElementById('tw-flow-bars').closest('.glass-card').querySelector('.card-title');
   if (twFlowTitle) {
     twFlowTitle.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -104,7 +104,7 @@ function applyTranslations() {
   }
 
   // Hot topics card title
-  const twTopicsTitle = document.querySelector('#panel-tw .glass-card:nth-child(5) .card-title');
+  const twTopicsTitle = document.getElementById('tw-topics').closest('.glass-card').querySelector('.card-title');
   if (twTopicsTitle) {
     twTopicsTitle.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -115,7 +115,7 @@ function applyTranslations() {
   }
 
   // Top 10 Card Title
-  const twInstTitle = document.querySelector('#panel-tw .glass-card:nth-child(6) .card-title');
+  const twInstTitle = document.getElementById('btn-inst-buy').closest('.glass-card').querySelector('.card-title');
   if (twInstTitle) {
     twInstTitle.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -152,132 +152,7 @@ function applyTranslations() {
     `;
   }
   const twChannelBadge = document.querySelector('#panel-tw .channel-panel .card-badge');
-  if (twChannelBadge) twChannelBadge.textContent = isEn ? 'Updated' : '已更新';
-
-  // US Panel Sector Performance
-  const usSectorsTitle = document.querySelector('#panel-us .glass-card:nth-child(3) .card-title');
-  if (usSectorsTitle) {
-    usSectorsTitle.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" />
-      </svg>
-      ${isEn ? 'Sector Performance' : '產業表現'}
-    `;
-  }
-
-  // US Panel Sentiment
-  const usSentimentTitle = document.querySelector('#panel-us .glass-card:nth-child(4) .card-title');
-  if (usSentimentTitle) {
-    usSentimentTitle.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
-      </svg>
-      ${isEn ? 'Market Sentiment Index' : '市場情緒指數'}
-    `;
-  }
-  const gaugeScale = document.querySelector('.gauge-scale');
-  if (gaugeScale) {
-    gaugeScale.innerHTML = isEn ? `
-      <span>Extreme Fear</span><span>Fear</span><span>Neutral</span><span>Greed</span><span>Extreme Greed</span>
-    ` : `
-      <span>極度恐慌</span><span>恐慌</span><span>中立</span><span>貪婪</span><span>極度貪婪</span>
-    `;
-  }
-
-  // US Trump Posts
-  const trumpTitle = document.querySelector('#panel-us .glass-card:nth-child(5) .card-title');
-  if (trumpTitle) {
-    trumpTitle.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
-        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-      </svg>
-      ${isEn ? 'Trump Social Viewpoints Analysis' : '川普社群觀點分析 (Trump Posts)'}
-    `;
-  }
-
-  // US Events Calendar
-  const usEventsTitle = document.querySelector('#panel-us .col-right .glass-card:nth-child(1) .card-title');
-  if (usEventsTitle) {
-    usEventsTitle.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" />
-        <line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
-      </svg>
-      ${isEn ? 'Earnings & Key Events Calendar' : '重要財報 / 事件行事曆'}
-    `;
-  }
-
-  // US Channels
-  const usChannelsTitle = document.querySelector('#panel-us .channel-panel .card-title');
-  if (usChannelsTitle) {
-    usChannelsTitle.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-      </svg>
-      ${isEn ? 'US Channel Analysis' : '美股頻道分析'}
-    `;
-  }
-  const usChannelBadge = document.querySelector('#panel-us .channel-panel .card-badge');
-  if (usChannelBadge) usChannelBadge.textContent = isEn ? 'Updated' : '已更新';
-
-  // Overview Tab Signal Cards
-  const scoreHeader = document.querySelector('.score-header');
-  if (scoreHeader) scoreHeader.textContent = isEn ? 'Daily Market Health Score' : '今日綜合市場評分';
-  const scoreDesc = document.querySelector('.score-desc');
-  if (scoreDesc) scoreDesc.textContent = isEn ? 'Combines TW & US market metrics, capital flows, sentiment indicators, and channel consensus' : '綜合台美股市場數據、資金流向、情緒指標與頻道觀點';
-  
-  const twSignalTitle = document.querySelector('.overview-signals .signal-card:nth-child(1) .signal-title');
-  if (twSignalTitle) twSignalTitle.textContent = isEn ? 'TW Stock Trend' : '台股趨勢';
-  const usSignalTitle = document.querySelector('.overview-signals .signal-card:nth-child(2) .signal-title');
-  if (usSignalTitle) usSignalTitle.textContent = isEn ? 'US Stock Trend' : '美股趨勢';
-  const fundSignalTitle = document.querySelector('.overview-signals .signal-card:nth-child(3) .signal-title');
-  if (fundSignalTitle) fundSignalTitle.textContent = isEn ? 'Capital Flows' : '資金動能';
-  const moodSignalTitle = document.querySelector('.overview-signals .signal-card:nth-child(4) .signal-title');
-  if (moodSignalTitle) moodSignalTitle.textContent = isEn ? 'Market Sentiment' : '市場情緒';
-
-  // AI Verdict Card Title
-  const aiVerdictTitle = document.querySelector('#panel-overview .col-left .glass-card .card-title');
-  if (aiVerdictTitle) {
-    aiVerdictTitle.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" /><path d="M12 16v-4" /><path d="M12 8h.01" />
-      </svg>
-      ${isEn ? 'AI Comprehensive Analysis' : 'AI 綜合研判'}
-    `;
-  }
-  const aiVerdictBadge = document.querySelector('#panel-overview .col-left .glass-card .card-badge');
-  if (aiVerdictBadge) aiVerdictBadge.textContent = isEn ? 'Gemini AI' : 'Gemini 分析';
-
-  // Expert Consensus Card Title
-  const consensusTitle = document.querySelector('#panel-overview .col-right .glass-card:nth-child(1) .card-title');
-  if (consensusTitle) {
-    consensusTitle.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-      ${isEn ? 'Expert Consensus Across Channels' : '各頻道觀點共識'}
-    `;
-  }
-  
-  // Consensus labels
-  const consensusLabels = document.querySelectorAll('.consensus-bar-wrap .consensus-label');
-  if (consensusLabels && consensusLabels.length >= 3) {
-    consensusLabels[0].textContent = isEn ? 'Bullish' : '看多';
-    consensusLabels[1].textContent = isEn ? 'Neutral' : '中立';
-    consensusLabels[2].textContent = isEn ? 'Bearish' : '看空';
-  }
-
-  // Cross-market Themes Card Title
-  const themesTitle = document.querySelector('#panel-overview .col-right .glass-card:nth-child(2) .card-title');
-  if (themesTitle) {
-    themesTitle.innerHTML = `
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-      </svg>
-      ${isEn ? 'Key Themes Across Markets' : '跨市場關鍵主題'}
-    `;
-  }
+  if (twChannelBadge) twChannelBadge.textContent = twChannels.length ? (isEn ? 'Updated' : '已更新') : (isEn ? 'Pending' : '待分析');
 
   // Technical Indicators Title
   const techTitle = document.querySelector('#tech-indicators-grid').parentElement.querySelector('.card-title');
@@ -331,37 +206,6 @@ function applyTranslations() {
   // Toggle button content
   const btnLang = document.getElementById('btn-lang');
   if (btnLang) btnLang.textContent = isEn ? '🌐 中文' : '🌐 EN';
-}
-
-function translateSignals() {
-  const isEn = currentLang === 'en';
-  const signals = [
-    { id: 'ov-tw-signal', zh: '偏多', en: 'Bullish' },
-    { id: 'ov-us-signal', zh: '偏多', en: 'Bullish' },
-    { id: 'ov-fund-signal', zh: '中性', en: 'Neutral' },
-    { id: 'ov-mood-signal', zh: '樂觀', en: 'Optimistic' }
-  ];
-  signals.forEach(s => {
-    const el = document.getElementById(s.id);
-    if (el) {
-      const currentText = el.textContent.trim();
-      if (currentText === '偏多' || currentText === 'Bullish' || currentText === '看多') el.textContent = isEn ? 'Bullish' : '偏多';
-      if (currentText === '偏空' || currentText === 'Bearish' || currentText === '看空') el.textContent = isEn ? 'Bearish' : '偏空';
-      if (currentText === '中性' || currentText === 'Neutral') el.textContent = isEn ? 'Neutral' : '中性';
-      if (currentText === '樂觀' || currentText === 'Optimistic') el.textContent = isEn ? 'Optimistic' : '樂觀';
-    }
-  });
-}
-
-function translateAIAnalysisHeaders() {
-  const isEn = currentLang === 'en';
-  const headers = document.querySelectorAll('#ov-analysis h3');
-  if (headers && headers.length >= 4) {
-    headers[0].textContent = isEn ? '🎯 Core Outlook' : '🎯 核心觀點';
-    headers[1].textContent = isEn ? '📊 Key Data' : '📊 關鍵數據';
-    headers[2].textContent = isEn ? '⚡ Actionable Advice' : '⚡ 操作建議';
-    headers[3].textContent = isEn ? '⚠️ Risk Warnings' : '⚠️ 風險提示';
-  }
 }
 
 // ── Tab Navigation ──
@@ -803,15 +647,16 @@ function renderHotTopics(inst) {
 }
 
 // ── TW Channel Summaries (loaded from main.py output) ──
-const twChannelsFallback = [
-  { name: '財女珍妮', avatar: '珍', date: '(demo)', videoTitle: '尚未執行 main.py 產生報告', videoUrl: 'https://www.youtube.com/@jennymarket', stance: 'neutral', stanceText: '待分析', summary: '請先執行 python main.py 產生 dashboard/data/report.json，頻道分析資料將自動載入。' },
-];
+const twChannelsFallback = [];
 
 function renderChannelList(channels, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
   container.innerHTML = '';
   const isEn = currentLang === 'en';
+  if (!channels.length) {
+    container.textContent = isEn ? 'Channel analysis is pending; market data and rule summaries are available.' : '頻道分析尚未啟用；可先查看市場數據與策略室規則摘要。';
+  }
   channels.forEach(c => {
     const item = document.createElement('div');
     item.className = 'channel-item';
@@ -923,7 +768,7 @@ function renderAllDynamic() {
     }
   } else {
     renderChannelList(twChannelsFallback, 'tw-channels');
-    renderChannelList(usChannels, 'us-channels');
+
   }
   
   if (data && data.technicals) {
@@ -953,17 +798,10 @@ function renderAllDynamic() {
 
   // App UI labels
   applyTranslations();
-  translateSignals();
-  translateAIAnalysisHeaders();
   updateClock();
-  updateSentimentGauge(65);
   
-  // Render static datasets
-  renderUSSectors();
-  renderUSEvents();
-  renderTrumpPosts();
-  renderConsensus();
-  renderKeyThemes();
+  renderUSPanel(data, currentLang);
+  // Render agent research
   renderStrategyRoom(data, currentLang);
   renderMarketFreshness();
 }
@@ -1019,179 +857,6 @@ async function refreshReport() {
 refreshReport();
 setInterval(() => { if (!document.hidden) refreshReport(); }, 5 * 60 * 1000);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshReport(); });
-
-// ── US Sectors ──
-const usSectors = [
-  { name: 'Technology', pct: 1.85 },
-  { name: 'Healthcare', pct: 0.62 },
-  { name: 'Financials', pct: -0.34 },
-  { name: 'Energy', pct: -1.12 },
-  { name: 'Consumer', pct: 0.95 },
-  { name: 'Industrials', pct: 0.41 },
-  { name: 'Materials', pct: -0.28 },
-  { name: 'Real Estate', pct: -0.73 },
-  { name: 'Utilities', pct: 0.15 },
-  { name: 'Comm Svc', pct: 1.22 },
-];
-
-function renderUSSectors() {
-  const sectorContainer = document.getElementById('us-sectors');
-  if (!sectorContainer) return;
-  sectorContainer.innerHTML = '';
-  
-  const isEn = currentLang === 'en';
-  const maxSector = Math.max(...usSectors.map(s => Math.abs(s.pct)));
-  const sorted = [...usSectors].sort((a, b) => b.pct - a.pct);
-  sorted.forEach(s => {
-    const isPos = s.pct >= 0;
-    const pct = (Math.abs(s.pct) / maxSector) * 80;
-    const displayName = isEn ? s.name : (US_SECTOR_ZH[s.name] || s.name);
-    const row = document.createElement('div');
-    row.className = 'sector-row';
-    row.innerHTML = `
-      <div class="sector-name">${displayName}</div>
-      <div class="sector-bar-track">
-        <div class="sector-bar-fill ${isPos ? 'pos' : 'neg'}" style="width:${pct}%">${s.pct > 0 ? '+' : ''}${s.pct.toFixed(2)}%</div>
-      </div>`;
-    sectorContainer.appendChild(row);
-  });
-}
-
-// ── US Events ──
-const events = [
-  { day: '5', month: 'MAY', title: 'Apple (AAPL) 財報', titleEn: 'Apple (AAPL) Earnings', desc: 'Q2 財報公佈，關注 iPhone 銷售及 AI 策略', descEn: 'Q2 earnings release, focusing on iPhone sales & AI strategy', tag: 'earnings' },
-  { day: '7', month: 'MAY', title: 'FOMC 會議紀要', titleEn: 'FOMC Minutes', desc: '市場密切關注降息路徑與縮表計畫', descEn: 'Markets closely watch the rate cut path and balance sheet reduction plan', tag: 'fed' },
-  { day: '10', month: 'MAY', title: 'CPI 數據公佈', titleEn: 'CPI Data Release', desc: '核心 CPI 預期 +3.2%，影響降息時程判斷', descEn: 'Core CPI expected +3.2%, impacting the timing of rate cuts', tag: 'data' },
-  { day: '12', month: 'MAY', title: 'NVIDIA 財報', titleEn: 'NVIDIA Earnings', desc: 'AI 晶片需求指標，Blackwell 出貨進度更新', descEn: 'AI chip demand indicator, Blackwell shipment progress update', tag: 'earnings' },
-  { day: '15', month: 'MAY', title: '零售銷售數據', titleEn: 'Retail Sales Data', desc: '消費者支出動能觀察，經濟軟著陸風向球', descEn: 'Consumer spending momentum observation, economic soft landing indicator', tag: 'data' },
-];
-
-function renderUSEvents() {
-  const eventsContainer = document.getElementById('us-events');
-  if (!eventsContainer) return;
-  eventsContainer.innerHTML = '';
-  const isEn = currentLang === 'en';
-  events.forEach(e => {
-    const displayTitle = isEn ? e.titleEn : e.title;
-    const displayDesc = isEn ? e.descEn : e.desc;
-    const displayTag = isEn ? (e.tag === 'earnings' ? '📊 Earnings' : e.tag === 'fed' ? '🏛️ Fed' : '📈 Econ Data') : (e.tag === 'earnings' ? '📊 財報' : e.tag === 'fed' ? '🏛️ 聯準會' : '📈 經濟數據');
-    const item = document.createElement('div');
-    item.className = 'event-item';
-    item.innerHTML = `
-      <div class="event-date"><div class="event-day">${e.day}</div><div class="event-month">${e.month}</div></div>
-      <div class="event-body">
-        <div class="event-title">${displayTitle}</div>
-        <div class="event-desc">${displayDesc}</div>
-        <span class="event-tag ${e.tag}">${displayTag}</span>
-      </div>`;
-    eventsContainer.appendChild(item);
-  });
-}
-
-// ── US Channels ──
-const usChannels = [
-  { name: 'Graham Stephan', avatar: 'GS', date: '2026-05-03', videoTitle: 'The Fed Just Changed Everything — Here\'s What To Do', videoUrl: 'https://www.youtube.com/@GrahamStephan', stance: 'bull', stanceText: 'Bullish', summary: 'Believes the rate pause is positive for equities. Recommends DCA into broad index funds with a focus on tech.' },
-  { name: 'Meet Kevin', avatar: 'MK', date: '2026-05-02', videoTitle: 'NVIDIA Earnings Preview: AI Bubble or Real Growth?', videoUrl: 'https://www.youtube.com/@MeetKevin', stance: 'bull', stanceText: 'Bullish', summary: 'Expects blowout numbers from NVIDIA. Highlights data center revenue as the key metric to watch.' },
-  { name: 'Andrei Jikh', avatar: 'AJ', date: '2026-05-01', videoTitle: 'Is Real Estate About to Crash? The Data Says...', videoUrl: 'https://www.youtube.com/@AndreiJikh', stance: 'neutral', stanceText: 'Neutral', summary: 'Real estate showing mixed signals. Suggests staying diversified and not overweighting property.' },
-];
-
-// ── Trump Posts Data (Mock) ──
-const trumpPosts = [
-  { date: '2 小時前', dateEn: '2 hours ago', content: 'Our economy is doing TERRIBLE! The Fed needs to CUT RATES NOW. China is laughing at us. We will put massive tariffs on their EVs! MAKE AMERICA GREAT AGAIN!', url: 'https://truthsocial.com/@realDonaldTrump', sentiment: 'bear', impact: 'Negative for broad market, Positive for domestic EV makers', impactZh: '對大盤利空，對美國本土電動車商利多' },
-  { date: '昨天', dateEn: 'Yesterday', content: 'Big Tech is out of control. We need to look into their monopoly power immediately when I get back.', url: 'https://truthsocial.com/@realDonaldTrump', sentiment: 'bear', impact: 'Negative for Mega-cap Tech (AAPL, GOOGL)', impactZh: '對科技巨頭利空 (AAPL, GOOGL)' },
-  { date: '3 天前', dateEn: '3 days ago', content: 'Energy dominance! Drill, baby, drill! We will unleash American oil and gas like never before.', url: 'https://truthsocial.com/@realDonaldTrump', sentiment: 'bull', impact: 'Positive for Traditional Energy (XLE)', impactZh: '對傳統能源利多 (XLE)' }
-];
-
-function renderTrumpPosts() {
-  const trumpList = document.getElementById('trump-posts');
-  if (!trumpList) return;
-  trumpList.innerHTML = '';
-  const isEn = currentLang === 'en';
-  trumpList.innerHTML = trumpPosts.map(p => {
-    const stColor = p.sentiment === 'bull' ? 'color:var(--green)' : 'color:var(--red)';
-    const icon = isEn ? (p.sentiment === 'bull' ? '📈 Positive' : '📉 Negative') : (p.sentiment === 'bull' ? '📈 利多' : '📉 利空');
-    const displayDate = isEn ? p.dateEn : p.date;
-    const displayImpact = isEn ? p.impact : p.impactZh;
-    const clickText = isEn ? '🔗 Click to view original' : '🔗 點擊查看原文';
-    return `<div style="padding:12px 0; border-bottom:1px solid var(--glass-border);">
-      <div style="font-size:0.7rem; color:var(--text3); margin-bottom:4px;">${displayDate}</div>
-      <a href="${p.url}" target="_blank" rel="noopener" style="display:block; font-size:0.85rem; line-height:1.4; margin-bottom:6px; font-weight:500; color:var(--text); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--blue)'; this.style.textDecoration='underline'" onmouseout="this.style.color='var(--text)'; this.style.textDecoration='none'">"${p.content}" <span style="font-size:0.7rem; color:var(--blue); text-decoration:none;">${clickText}</span></a>
-      <div style="font-size:0.75rem; background:var(--bg3); padding:6px 10px; border-radius:6px; border-left:2px solid ${p.sentiment === 'bull' ? 'var(--green)' : 'var(--red)'};">
-        <span style="${stColor}; font-weight:600; margin-right:6px;">${icon}</span>
-        <span style="color:var(--text2)">${displayImpact}</span>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-// ── Overview Consensus Detail ──
-function renderConsensus() {
-  const consensusDetail = document.getElementById('ov-consensus-detail');
-  if (!consensusDetail) return;
-  consensusDetail.innerHTML = '';
-  const isEn = currentLang === 'en';
-  const allChannelsList = [...twChannels, ...usChannels.map(c => ({ ...c, name: c.name }))];
-  allChannelsList.forEach(c => {
-    const stanceText = isEn ? (c.stance === 'bull' ? 'Bullish' : c.stance === 'bear' ? 'Bearish' : 'Neutral') : c.stanceText;
-    const stanceClass = c.stance === 'bull' ? 'background:rgba(52,211,153,.12);color:#34d399' :
-      c.stance === 'bear' ? 'background:rgba(248,113,113,.12);color:#f87171' : 'background:rgba(251,191,36,.12);color:#fbbf24';
-    const item = document.createElement('div');
-    item.className = 'consensus-item';
-    item.innerHTML = `<span>${c.name}</span><span class="consensus-stance" style="${stanceClass}">${stanceText}</span>`;
-    consensusDetail.appendChild(item);
-  });
-}
-
-// ── Overview Key Themes ──
-const keyThemes = [
-  { icon: '🤖', name: 'AI 算力軍備競賽', nameEn: 'AI Computing Arms Race', desc: 'NVIDIA、台積電引領，CoWoS / HBM 供不應求，供應鏈受惠明確', descEn: 'Led by NVIDIA and TSMC. CoWoS & HBM in high demand, benefiting supply chains.', markets: ['台股', '美股'], marketsEn: ['TW', 'US'] },
-  { icon: '🏛️', name: '聯準會利率政策', nameEn: 'Fed Interest Rate Policy', desc: '暫停升息已確認，降息時程成焦點，債市殖利率走勢影響全球股市', descEn: 'Rate pause confirmed, rate cut timing is key. Bond yields impact global equities.', markets: ['美股', '全球'], marketsEn: ['US', 'Global'] },
-  { icon: '⚡', name: '電網基礎建設', nameEn: 'Grid Infrastructure Upgrade', desc: 'AI 資料中心用電暴增，重電、電網升級商機爆發', descEn: 'AI data center power consumption surges, triggering heavy electric & grid upgrade boom.', markets: ['台股'], marketsEn: ['TW'] },
-  { icon: '🌏', name: '地緣政治風險', nameEn: 'Geopolitical Risk', desc: '中東局勢與台海議題持續為潛在不確定因素', descEn: 'Middle East conflicts and Taiwan Strait tensions remain potential uncertainties.', markets: ['台股', '美股'], marketsEn: ['TW', 'US'] },
-];
-
-function renderKeyThemes() {
-  const themesContainer = document.getElementById('ov-themes');
-  if (!themesContainer) return;
-  themesContainer.innerHTML = '';
-  const isEn = currentLang === 'en';
-  keyThemes.forEach(t => {
-    const displayName = isEn ? t.nameEn : t.name;
-    const displayDesc = isEn ? t.descEn : t.desc;
-    const displayMarkets = isEn ? t.marketsEn : t.markets;
-    const item = document.createElement('div');
-    item.className = 'theme-item';
-    item.innerHTML = `
-      <div class="theme-icon">${t.icon}</div>
-      <div class="theme-body"><div class="theme-name">${displayName}</div><div class="theme-desc">${displayDesc}</div></div>
-      <div class="theme-markets">${displayMarkets.map(m => `<span class="theme-market-tag">${m}</span>`).join('')}</div>`;
-    themesContainer.appendChild(item);
-  });
-}
-
-// ── Gauge Needle Animation & Setup ──
-function setGaugeAngle(value) {
-  const angle = -90 + (value / 100) * 180;
-  const needle = document.getElementById('gauge-needle');
-  if (needle) needle.setAttribute('transform', `rotate(${angle}, 100, 100)`);
-}
-
-function updateSentimentGauge(value) {
-  const isEn = currentLang === 'en';
-  setGaugeAngle(value);
-  const valEl = document.getElementById('gauge-value');
-  const lblEl = document.getElementById('gauge-label');
-  if (valEl) valEl.textContent = value;
-  if (lblEl) {
-    let text = '';
-    if (value >= 75) text = isEn ? 'Extreme Greed' : '極度貪婪';
-    else if (value >= 55) text = isEn ? 'Greed' : '貪婪';
-    else if (value >= 45) text = isEn ? 'Neutral' : '中立';
-    else if (value >= 25) text = isEn ? 'Fear' : '恐慌';
-    else text = isEn ? 'Extreme Fear' : '極度恐慌';
-    lblEl.textContent = text;
-  }
-}
 
 // ── Refresh Button ──
 document.getElementById('btn-refresh')?.addEventListener('click', () => {

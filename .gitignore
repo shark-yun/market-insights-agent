@@ -1,9 +1,16 @@
-# 忽略環境變數檔案
+# Local credentials and environments
 .env
+.env.*
+!.env.example
+.venv/
+venv/
 
-# 忽略 Python 快取與虛擬環境
+# Python and editor artifacts
 __pycache__/
 *.py[cod]
-venv/
-.venv/
+.pytest_cache/
+.ruff_cache/
 .DS_Store
+
+# Local previews
+preview-*.png
