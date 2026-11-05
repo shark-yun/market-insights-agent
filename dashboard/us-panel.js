@@ -47,8 +47,8 @@ function renderUSPanel(report, lang) {
   context.append(paragraph(t('AP 收盤報導：S&P 500 約上漲 1.6%，道瓊約上漲 3%，Nasdaq 約上漲 1.4%。後續走勢以最新行情快照為準。','AP closing report: S&P 500 about +1.6%, Dow about +3%, Nasdaq about +1.4%. See the snapshots for subsequent market moves.')));
   context.append(link(t('AP：11/4 收盤報導','AP: Nov 4 closing report'),'https://apnews.com/article/c0be7ca45b5875abe758e0570cb9a265'));
   const channels = document.getElementById('us-channels');
-  const data = (report?.channels || []).filter(c=>c.market === 'us' && c.analysisStatus === 'complete');
-  if (data.length) renderChannelList(data,'us-channels');
+  const data = (report?.channels || []).filter(c=>c.market === 'us');
+  if (data.length) { renderChannelList(data,'us-channels'); title('us-channels-status',t('來源已載入','Sources loaded')); }
   else channels.replaceChildren(paragraph(t('頻道來源尚未接通。先參考市場數據與新聞，專家評語待分析。','Channel research is pending. Market data and publisher news are available above.')));
   const architecture = document.getElementById('architecture-title');
   if (architecture) architecture.textContent = t('系統架構 · 原始設計圖','System architecture · Original design');

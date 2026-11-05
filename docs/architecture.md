@@ -16,7 +16,7 @@
 | collectors.py | 台股指數、技術、風險與 TWSE 法人／板塊 |
 | market_volume.py | 官方成交股數解析、日期對齊與缺值 |
 | us_market.py | 美股日線、產業 ETF、追蹤個股及 WSJ RSS |
-| channels.py | YouTube 影片與字幕、可選影片摘要 |
+| channels.py | YouTube 官方 RSS、台灣日期篩選、字幕與可選影片摘要 |
 | llm.py | Gemini 金鑰初始化與一次有限時的策略請求 |
 | strategy.py | 證據快照、規則判讀、可選模型結果與待分析原因 |
 | reporting.py | 嚴格 JSON 缺值清理、可選 Telegram |

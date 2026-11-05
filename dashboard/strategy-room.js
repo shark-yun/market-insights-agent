@@ -34,6 +34,12 @@ function renderStrategyRoom(report, lang) {
       <h3>${name}</h3><p class="agent-description">${description}</p>
       <div class="agent-metrics">${(Array.isArray(result.metrics) ? result.metrics : []).map(m => `<div><span>${esc(m.label)}</span><strong>${esc(m.value)}</strong></div>`).join('') || `<p>${t('正在等待數據摘要','Waiting for data summary')}</p>`}</div>
       <p class="agent-data-summary">${text(result.dataSummary,t('尚無來源資料。','No source data yet.'))}</p>
+      ${(result.episodes || []).map(episode => {
+        let href = '';
+        try { const url = new URL(episode.videoUrl); if (url.protocol === 'https:' && ['www.youtube.com','youtube.com','youtu.be'].includes(url.hostname)) href = url.href; } catch {}
+        return `<div class="expert-episode"><span>${esc(episode.name)} · ${esc(episode.date)}</span><a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(episode.videoTitle)}</a><small>${episode.analysisStatus === 'complete' ? t('逐字稿整理','Transcript review') : t('標題線索 · 逐字稿待分析','Title clues · Transcript analysis pending')}${episode.analysisProvider ? ' · ' + esc(episode.analysisProvider) : ''}</small><p>${esc(episode.summary)}</p>${episode.keyPoints?.length ? `<ul>${episode.keyPoints.map(point => `<li>${esc(point)}</li>`).join('')}</ul>` : ''}</div>`;
+      }).join('')}
+
       ${result.observation ? `<div class="agent-observation"><strong>${t('資料判讀 · 規則摘要','Data interpretation · Rule summary')}</strong><p>${esc(result.observation)}</p><strong>${t('接下來觀察','Watch next')}</strong><p>${esc(result.watchpoints || '')}</p></div>` : ''}
       <button type="button" class="agent-analysis-toggle" data-agent-toggle="${id}" aria-controls="agent-analysis-${id}" aria-expanded="${openPanels.has(id)}">${openPanels.has(id) ? t('收合 AI 分析','Hide AI analysis') : t('查看 AI 分析','View AI analysis')}</button>
       <div id="agent-analysis-${id}" data-agent-panel="${id}" ${openPanels.has(id) ? '' : 'hidden'}>

@@ -78,24 +78,42 @@ def build_strategy(report, generate=None, unavailable_reason="no_key"):
             "observation"
         ] = "已取得部分行情，但有效均線與 RSI 尚不足，先保留指數漲跌資訊，技術趨勢待補資料。"
         agents["fundamental"]["watchpoints"] = "等待足夠日線後，再比較指數、20 日均線與 RSI；財報指標仍待接入。"
-    channels = [
-        c for c in report.get("channels", []) if c.get("analysisStatus") == "complete"
+    episodes = [
+        c
+        for c in report.get("channels", [])
+        if c.get("videoId") and c.get("publishedAt")
     ]
+    channels = [c for c in episodes if c.get("analysisStatus") == "complete"]
     agents["expert"] = base(
         [
-            {"label": "已完成頻道分析", "value": str(len(channels))},
-            {
-                "label": "待分析頻道",
-                "value": str(len(report.get("channels", [])) - len(channels)),
-            },
+            {"label": "已載入節目", "value": str(len(episodes))},
+            {"label": "已完成逐字稿分析", "value": str(len(channels))},
+            {"label": "待分析節目", "value": str(len(episodes) - len(channels))},
         ],
-        "僅納入已成功分析的頻道；舊結果的時間以原始頻道日期為準。Podcast 尚未接通。",
+        "已載入官方頻道節目；標題線索與逐字稿分析分開標示，影片日期以發布時間為準。",
         [
-            {"title": c.get("name", "頻道"), "url": c.get("videoUrl", "")}
-            for c in channels
+            {
+                "title": c.get("name", "頻道") + " · " + c.get("videoTitle", ""),
+                "url": c.get("videoUrl", ""),
+            }
+            for c in episodes
         ],
-        "頻道觀點",
+        "專家節目來源與觀點",
     )
+    agents["expert"]["episodes"] = episodes
+    if episodes:
+        agents["expert"]["asOf"] = max(
+            c.get("loadedAt", c["publishedAt"]) for c in episodes
+        )
+        labels = [c.get("name", "頻道") + "（" + c.get("date", "") + "）" for c in episodes]
+        agents["expert"]["observation"] = (
+            "已載入："
+            + "、".join(labels)
+            + "。其中 "
+            + str(len(channels))
+            + " 則已完成逐字稿分析；其餘僅整理節目標題主題，不推定講者立場。"
+        )
+        agents["expert"]["watchpoints"] = "對照原始節目脈絡，追蹤資料中心政策、建設時程與實際訂單；講者觀點不等於本系統的交易訊號。"
     vix = report.get("indices", {}).get("VIX", {})
     agents["sentiment"] = base(
         [
@@ -161,7 +179,7 @@ def build_strategy(report, generate=None, unavailable_reason="no_key"):
         "跨來源整合",
     )
     fusion["reason"] = "missing_sources"
-    fusion["observation"] = "目前優先整合技術面與波動資料；專家與完整財報仍不足，最終投資結論保留待分析。"
+    fusion["observation"] = "目前保留技術、波動與專家節目的各自判讀；完整財報與跨來源風險校驗仍待接通，最終投資結論保留待分析。"
     fusion["watchpoints"] = "先比較各角色資料日期及市場範圍，再檢查技術面與波動風險是否一致。"
     eligible = {key: a for key, a in agents.items() if a["reason"] != "missing_sources"}
     if generate and eligible:

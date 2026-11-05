@@ -660,16 +660,21 @@ function renderChannelList(channels, containerId) {
   channels.forEach(c => {
     const item = document.createElement('div');
     item.className = 'channel-item';
-    const displayStanceText = isEn ? (c.stance === 'bull' ? 'Bullish' : c.stance === 'bear' ? 'Bearish' : 'Neutral') : c.stanceText;
+    const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const complete = c.analysisStatus === 'complete';
+    const stance = complete && ['bull','bear','neutral'].includes(c.stance) ? c.stance : 'neutral';
+    const displayStanceText = complete ? (isEn ? (stance === 'bull' ? 'Bullish' : stance === 'bear' ? 'Bearish' : 'Neutral') : c.stanceText) : (isEn ? 'Pending analysis' : '待分析');
+    let url = '';
+    try { const parsed = new URL(c.videoUrl); if (parsed.protocol === 'https:' && ['www.youtube.com','youtube.com','youtu.be'].includes(parsed.hostname)) url = parsed.href; } catch {}
     item.innerHTML = `
       <div class="channel-top">
-        <div class="channel-avatar">${c.avatar}</div>
-        <div class="channel-name">${c.name}</div>
-        <div class="channel-time">${c.date}</div>
+        <div class="channel-avatar">${escape(c.avatar)}</div>
+        <div class="channel-name">${escape(c.name)}</div>
+        <div class="channel-time">${escape(c.date)}</div>
       </div>
-      <a class="channel-video-title" href="${c.videoUrl}" target="_blank" rel="noopener">🎥 ${c.videoTitle}</a>
-      <div class="channel-stance ${c.stance}">${c.stance === 'bull' ? '📈' : c.stance === 'bear' ? '📉' : '⚖️'} ${displayStanceText}</div>
-      <div class="channel-summary">${c.summary}</div>`;
+      <a class="channel-video-title" href="${escape(url)}" target="_blank" rel="noopener">🎥 ${escape(c.videoTitle)}</a>
+      <div class="channel-stance ${stance}">${complete ? '📊' : '⏳'} ${escape(displayStanceText)}</div>
+      <div class="channel-summary">${escape(c.summary)}</div>`;
     container.appendChild(item);
   });
 }

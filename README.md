@@ -14,7 +14,7 @@
 | 市場新聞 | WSJ 公開 RSS 標題、發布時間與原文連結 |
 | 基本面／技術、情緒摘要 | 無需模型的規則判讀與觀察重點；規則與 AI 評語分開顯示 |
 | Gemini 分析 | 可選；金鑰、額度或模型不可用時顯示待分析，行情仍可更新 |
-| YouTube 專家觀點 | 程式已備妥，目前在 config.json 關閉 |
+| YouTube 專家觀點 | 官方 RSS／字幕已接通；目前啟用游庭皓與財女珍妮 |
 | Podcast、財報、社群與完整 Fusion | 尚待接通，不產生假評分 |
 | 台股／港股個股搜尋及比較 | 明確標示的示範資料，集中於 demo-stocks.js |
 
@@ -38,7 +38,7 @@ python -m http.server 8000
 # http://localhost:8000/dashboard/
 ```
 
-環境變數皆可留空。`GEMINI_API_KEY` 啟用模型，`GEMINI_MODEL` 可切換模型；Telegram 需要同時設定 `TELEGRAM_TOKEN` 與 `TELEGRAM_CHAT_ID`。憑證只放 `.env` 或 GitHub Secrets。
+環境變數皆可留空。`GEMINI_API_KEY` 啟用模型，`GEMINI_MODEL` 可切換模型；Telegram 需要同時設定 `TELEGRAM_TOKEN` 與 `TELEGRAM_CHAT_ID`，且在 config.json 啟用 `enable_telegram_notifications`（預設關閉）。憑證只放 `.env` 或 GitHub Secrets。
 
 `config.json` 的 `enable_strategy_analysis` 控制排程是否呼叫策略模型，`enable_youtube_analysis` 控制頻道分析。瀏覽器「查看 AI 分析」只展開報告，不會即時派工。
 

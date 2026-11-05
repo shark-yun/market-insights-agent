@@ -6,7 +6,8 @@ from functools import partial
 from dotenv import load_dotenv
 
 from market_insights.channels import (
-    get_latest_video_id,
+    get_today_video,
+    channel_report,
     get_transcript,
     analyze_finance,
 )
@@ -57,43 +58,23 @@ def main():
     # YouTube channel analysis (optional)
     if config.get("enable_youtube_analysis", True):
         for channel in config["channels"]:
+            if not channel.get("enabled", True):
+                continue
             print(f"正在檢查頻道: {channel['name']}")
-            video_id, title = get_latest_video_id(channel["id"])
-
-            if not video_id:
+            try:
+                video = get_today_video(channel["channel_id"], today)
+            except Exception as error:
+                print(f"頻道來源暫不可用: {channel['name']} ({type(error).__name__})")
                 continue
-
-            # 檢查是否已經處理過這部影片
+            if not video:
+                continue
+            video_id, title = video["videoId"], video["videoTitle"]
             if video_id in history:
-                print(f"⏩ 影片已分析過，跳過: {title}")
                 continue
-
             new_videos_found = True
-            print(f"✨ 發現新影片: {title}")
-
             transcript = get_transcript(video_id)
             analysis = analyze_finance(title, transcript, model)
-
-            video_url = f"https://www.youtube.com/watch?v={video_id}"
-
-            # 建構 Dashboard 用的頻道資料
-            channel_data = {
-                "analysisStatus": analysis.get("analysisStatus", "pending"),
-                "name": channel["name"],
-                "avatar": channel["name"][0],  # 取第一個字作為頭像文字
-                "date": today,
-                "videoTitle": title,
-                "videoUrl": video_url,
-                "videoId": video_id,
-                "stance": analysis.get("stance", "neutral"),
-                "stanceText": analysis.get("stanceText", "待分析"),
-                "summary": analysis.get("summary", ""),
-                "keyPoints": analysis.get("keyPoints", []),
-                "mentionedStocks": analysis.get("mentionedStocks", []),
-                "riskWarnings": analysis.get("riskWarnings", []),
-                "market": channel.get("market", "tw"),
-            }
-            dashboard_channels.append(channel_data)
+            dashboard_channels.append(channel_report(channel, video, analysis))
 
             # Telegram 報告文字
             stance_emoji = (
@@ -207,7 +188,7 @@ def main():
     print(f"✅ Dashboard 報告已更新: {report_path}")
 
     # 如果有新影片，才推送 Telegram
-    if new_videos_found:
+    if new_videos_found and config.get("enable_telegram_notifications", False):
         send_telegram_msg(
             full_report, os.getenv("TELEGRAM_TOKEN"), os.getenv("TELEGRAM_CHAT_ID")
         )

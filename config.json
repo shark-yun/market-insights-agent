@@ -1,31 +1,45 @@
 {
   "channels": [
     {
+      "name": "游庭皓的財經皓角",
+      "id": "@yutinghaofinance",
+      "channel_id": "UC0lbAQVpenvfA2QqzsRtL_g",
+      "market": "us",
+      "enabled": true
+    },
+    {
       "name": "財女珍妮",
-      "id": "@jennymarket",
-      "market": "tw"
+      "id": "@jcinsight",
+      "market": "us",
+      "enabled": true,
+      "channel_id": "UCdwPn2TO60Ec8QDIFRx50lQ"
     },
     {
       "name": "柴鼠兄弟",
       "id": "@chiratbros",
-      "market": "tw"
+      "market": "tw",
+      "enabled": false
     },
     {
       "name": "股癌",
       "id": "@gooaye",
-      "market": "tw"
+      "market": "tw",
+      "enabled": false
     },
     {
       "name": "投資嗨嗨",
       "id": "@investhi",
-      "market": "tw"
+      "market": "tw",
+      "enabled": false
     },
     {
       "name": "阿格力",
       "id": "@agreeliu",
-      "market": "tw"
+      "market": "tw",
+      "enabled": false
     }
   ],
-  "enable_youtube_analysis": false,
-  "enable_strategy_analysis": true
+  "enable_youtube_analysis": true,
+  "enable_strategy_analysis": true,
+  "enable_telegram_notifications": false
 }

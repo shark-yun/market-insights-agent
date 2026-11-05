@@ -22,3 +22,7 @@ Fusion should be generated from compatible scopes and horizons with evidence and
 Scheduled runs use one bounded model request for roles with evidence. Sentiment can use real VIX and publisher headlines, while missing evidence keeps a role pending. Fusion remains pending until a complete synthesis is implemented. Model configuration uses GEMINI_MODEL (default gemini-flash-latest); enable_strategy_analysis can disable calls. No key or quota failure leaves market updates operational. Scores are model outputs, never invented as fallback.
 
 `observation` and `watchpoints` are deterministic rule summaries shown before the AI panel; they are separate from model-generated `comment`, `recommendation` and `score`.
+
+## Expert episodes
+
+`episodes` contains verified `videoId`, `videoTitle`, `videoUrl`, `publishedAt`, Taipei `date`, and `loadedAt`. `summaryType` separates title_only from transcript_analysis; `analysisProvider` records the review provider and `transcriptLanguage` records a known subtitle language when available. Pending episodes remain visible as sources, but do not count as completed transcript analysis or imply a neutral investment view. Current subscriptions use official channel IDs and are selected by the Taipei publication date.
