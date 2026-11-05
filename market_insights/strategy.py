@@ -12,6 +12,12 @@ def finite(value):
 
 
 def build_strategy(report, generate=None, unavailable_reason="no_key"):
+    # 預期的角色分工與拆分方向（目前仍由本函式集中處理）：
+    # build_strategy()
+    # ├── FundamentalAgent：行情、財報、技術分析
+    # ├── ExpertAgent：影片字幕、專家觀點
+    # ├── SentimentAgent：新聞、社群、情緒分析
+    # └── Fusion：整合三份結果
     agents = {}
 
     def base(metrics, summary, sources, scope):
