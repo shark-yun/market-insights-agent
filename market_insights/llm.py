@@ -18,6 +18,6 @@ def generate_strategy(model, prompt):
             "response_mime_type": "application/json",
             "max_output_tokens": 4096,
         },
-        request_options={"timeout": 60},
+        request_options={"timeout": 45, "retry": None},
     )
     return response.text

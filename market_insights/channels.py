@@ -79,7 +79,9 @@ def analyze_finance(title, transcript, model=None):
   "riskWarnings": ["風險提示1", "風險提示2"]
 }}"""
     try:
-        response = model.generate_content(prompt, request_options={"timeout": 60})
+        response = model.generate_content(
+            prompt, request_options={"timeout": 45, "retry": None}
+        )
         text = response.text.strip()
         # 清理可能的 markdown code block 包裹
         if text.startswith("```"):
