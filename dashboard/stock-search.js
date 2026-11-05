@@ -74,6 +74,8 @@ function openStockModal(ticker, market) {
   const isEn = getLang() === 'en';
   document.getElementById('modal-ticker').textContent = stock.ticker;
   document.getElementById('modal-name').textContent = stock.name + (market === 'us' ? ` · ${stock.marketDate} USD` : (isEn ? ' · DEMO' : ' · 示範資料'));
+  const chartTitle = document.querySelector('#stock-modal .stock-chart-section .card-title');
+  if (chartTitle) chartTitle.textContent = market === 'us' ? (isEn ? 'Monthly closing trend · Daily data' : '近月收盤走勢 · 日線') : (isEn ? 'Demo chart' : '示範走勢');
   const marketLabels = { tw: 'TWSE', us: 'US', hk: 'HKEX' };
   document.getElementById('modal-market').textContent = marketLabels[market] || market.toUpperCase();
 
