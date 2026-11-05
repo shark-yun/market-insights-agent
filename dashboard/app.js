@@ -148,11 +148,14 @@ function applyTranslations() {
         <polygon points="23 7 16 12 23 17 23 7" />
         <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
       </svg>
-      ${isEn ? 'Channel Analysis Summary' : '頻道分析摘要'}
+      ${isEn ? 'Expert Channel Summaries' : '專家頻道摘要'}
     `;
   }
   const twChannelBadge = document.querySelector('#panel-tw .channel-panel .card-badge');
-  if (twChannelBadge) twChannelBadge.textContent = twChannels.length ? (isEn ? 'Updated' : '已更新') : (isEn ? 'Pending' : '待分析');
+  if (twChannelBadge) {
+    const complete = expertChannels.filter(c => c.analysisStatus === 'complete').length;
+    twChannelBadge.textContent = complete ? (isEn ? `${complete} summaries ready` : `${complete} 則摘要已更新`) : expertChannels.length ? (isEn ? 'Sources loaded · Analysis pending' : '來源已載入 · 待分析') : (isEn ? 'Awaiting sources' : '待更新');
+  }
 
   // Technical Indicators Title
   const techTitle = document.querySelector('#tech-indicators-grid').parentElement.querySelector('.card-title');
@@ -646,8 +649,7 @@ function renderHotTopics(inst) {
   });
 }
 
-// ── TW Channel Summaries (loaded from main.py output) ──
-const twChannelsFallback = [];
+// ── Shared expert channel summaries (cross-market research sources) ──
 
 function renderChannelList(channels, containerId) {
   const container = document.getElementById(containerId);
@@ -655,7 +657,7 @@ function renderChannelList(channels, containerId) {
   container.innerHTML = '';
   const isEn = currentLang === 'en';
   if (!channels.length) {
-    container.textContent = isEn ? 'Channel analysis is pending; market data and rule summaries are available.' : '頻道分析尚未啟用；可先查看市場數據與策略室規則摘要。';
+    container.textContent = isEn ? 'No channel sources loaded yet. Refresh after the next report update.' : '目前尚未載入頻道來源，請於報告更新後重新整理。';
   }
   channels.forEach(c => {
     const item = document.createElement('div');
@@ -750,7 +752,7 @@ function renderRisks(risks) {
 
 // ── Fetch & Global Render Orchestration ──
 let loadedData = null;
-let twChannels = twChannelsFallback;
+let expertChannels = [];
 
 function renderAllDynamic() {
   const data = loadedData;
@@ -760,22 +762,10 @@ function renderAllDynamic() {
     renderMarketIndices(data.indices);
   }
   
-  if (data && data.channels) {
-    twChannels = data.channels.filter(c => c.market === 'tw');
-    if (twChannels.length > 0) {
-      renderChannelList(twChannels, 'tw-channels');
-    } else {
-      renderChannelList(twChannelsFallback, 'tw-channels');
-    }
-    const usFromReport = data.channels.filter(c => c.market === 'us');
-    if (usFromReport.length > 0) {
-      renderChannelList(usFromReport, 'us-channels');
-    }
-  } else {
-    renderChannelList(twChannelsFallback, 'tw-channels');
+  // Expert discussions can span both markets; show loaded sources on the landing tab too.
+  expertChannels = Array.isArray(data?.channels) ? data.channels : [];
+  renderChannelList(expertChannels, 'tw-channels');
 
-  }
-  
   if (data && data.technicals) {
     renderTechnicals(data.technicals);
   }
