@@ -36,27 +36,47 @@
 
 原始架構圖是設計藍圖，已放在 AI 策略室；不代表圖中全部來源都已實作。
 
-## 本地執行
+## Fork 與 GitHub 部署
 
-Python 3.10+；Node.js 只用於 JavaScript 語法檢查，前端無建置流程。
+使用者可以直接在 GitHub 完成部署，不需在電腦安裝 Python 或啟動伺服器。
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements/runtime.txt
-cp config/.env.example .env
+### 1. Fork 專案
 
-# 抓取實際資料（會連線；模型／Telegram 若已設定則可能使用）
-python main.py
+點選本 Repo 右上角的 **Fork**，建立自己的副本。預設分支維持 `main`，後續設定與資料更新都在自己的 Repo 進行。
 
-# 僅瀏覽已提交的報告，不呼叫模型或推播
-python -m http.server 8000
-# http://localhost:8000/dashboard/
-```
+### 2. 啟用 GitHub Actions
 
-環境變數皆可留空。`GEMINI_API_KEY` 啟用模型，`GEMINI_MODEL` 可切換模型；Telegram 需要同時設定 `TELEGRAM_TOKEN` 與 `TELEGRAM_CHAT_ID`，且在 config/settings.json 啟用 `enable_telegram_notifications`（預設關閉）。憑證只放 `.env` 或 GitHub Secrets。
+進入 Fork 後的 Repo → **Actions**，允許執行 workflows，並啟用 **Daily Market Analysis**。Fork 的排程預設不會自動啟用，需要在自己的 Repo 開啟。[GitHub 說明](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/disable-and-enable-workflows)
 
-`config/settings.json` 的 `enable_strategy_analysis` 控制排程是否呼叫策略模型，`enable_youtube_analysis` 控制頻道分析。瀏覽器「查看 AI 分析」只展開報告，不會即時派工。
+### 3. 設定可選功能
+
+在 **Settings → Secrets and variables → Actions** 新增自己的 Repository secrets；原作者的 Secrets 不會隨 Fork 複製。
+
+| Secret | 用途 |
+| --- | --- |
+| `GEMINI_API_KEY` | 啟用 Gemini 影片與策略分析 |
+| `TELEGRAM_TOKEN` | 可選的 Telegram Bot Token |
+| `TELEGRAM_CHAT_ID` | 可選的 Telegram 接收對象 |
+
+未設定 Gemini 金鑰時，仍可更新行情、新聞、節目來源與規則摘要，模型評語會顯示待分析。Telegram 另需在 `config/settings.json` 將 `enable_telegram_notifications` 設為 `true`。
+
+編輯 `config/settings.json` 可調整追蹤頻道、`enable_youtube_analysis` 與 `enable_strategy_analysis`。
+
+### 4. 啟用 GitHub Pages
+
+進入 **Settings → Pages**，在 **Build and deployment** 設定：
+
+- **Source**：`Deploy from a branch`
+- **Branch**：`main`
+- **Folder**：`/ (root)`
+
+儲存後，等待 GitHub Pages 完成部署。[GitHub 說明](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+
+### 5. 手動執行第一次更新
+
+進入 **Actions → Daily Market Analysis → Run workflow**，選擇 `main` 執行。完成後可在 Repo 內查看更新的 `dashboard/data/report.json`。
+
+網站網址為 `https://<你的帳號>.github.io/<Repo名稱>/dashboard/`。之後由排程持續更新，不需要保持電腦開機。瀏覽器的「查看 AI 分析」按鈕用來展開已產生的結果。
 
 ## 排程與部署
 
