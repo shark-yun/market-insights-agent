@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-09T00:31:12.360696+08:00",
+  "generatedAt": "2026-11-09T09:24:44.665460+08:00",
   "date": "2026-11-09",
   "indices": {
     "TWII": {
@@ -7,9 +7,6 @@
       "volumeSource": "TWSE FMTQIK",
       "volumeSourceUrl": "https://www.twse.com.tw/zh/trading/historical/fmtqik.html",
       "dateKeys": [
-        "2026-10-06",
-        "2026-10-07",
-        "2026-10-08",
         "2026-10-12",
         "2026-10-13",
         "2026-10-14",
@@ -27,20 +24,18 @@
         "2026-11-03",
         "2026-11-04",
         "2026-11-05",
-        "2026-11-06"
+        "2026-11-06",
+        "2026-11-09"
       ],
-      "marketDate": "2026-11-06",
+      "marketDate": "2026-11-09",
       "label": "台灣加權指數",
       "market": "tw",
-      "price": 39701.64,
-      "change": -1873.08,
-      "pct": -4.51,
-      "high": 40435.83,
-      "low": 37837.05,
+      "price": 40793.31,
+      "change": 1091.67,
+      "pct": 2.75,
+      "high": 40806.44,
+      "low": 40347.28,
       "sparkline": [
-        49822.55,
-        49806.37,
-        49313.44,
         49301.96,
         48341.31,
         48625.83,
@@ -58,12 +53,10 @@
         43307.54,
         42948.91,
         41574.72,
-        39701.64
+        39701.64,
+        40793.31
       ],
       "volume_sparkline": [
-        10889677530,
-        10357959027,
-        10437288727,
         10868236326,
         14853895648,
         11376256711,
@@ -81,12 +74,10 @@
         15218510001,
         15601136570,
         14971065133,
-        19339729647
+        19339729647,
+        null
       ],
       "dates": [
-        "10-06",
-        "10-07",
-        "10-08",
         "10-12",
         "10-13",
         "10-14",
@@ -104,7 +95,8 @@
         "11-03",
         "11-04",
         "11-05",
-        "11-06"
+        "11-06",
+        "11-09"
       ]
     },
     "GSPC": {
@@ -1928,6 +1920,24 @@
     ],
     "news": [
       {
+        "title": "Nikkei Rises 1.7%, Led by Machinery, Financial Stocks",
+        "url": "https://www.wsj.com/finance/stocks/nikkei-rises-1-7-led-by-machinery-financial-stocks-45670eb5?mod=rss_markets_main",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-11-09T00:29:00+00:00"
+      },
+      {
+        "title": "Gold Edges Higher Amid Mixed Signals",
+        "url": "https://www.wsj.com/finance/commodities-futures/gold-edges-higher-amid-mixed-signals-00565ca1?mod=rss_markets_main",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-11-09T00:25:00+00:00"
+      },
+      {
+        "title": "A Popular New Bet Hailing From Cryptoland Sets Off a Wall Street Turf War",
+        "url": "https://www.wsj.com/finance/regulation/a-popular-new-bet-hailing-from-cryptoland-sets-off-a-wall-street-turf-war-70e37095?mod=rss_markets_main",
+        "source": "The Wall Street Journal",
+        "publishedAt": "2026-11-08T20:00:00+00:00"
+      },
+      {
         "title": "After a Tech Rout, Stock Funds Hold a 9.9% Gain for 2026",
         "url": "https://www.wsj.com/finance/investing/after-tech-rout-stock-funds-hold-9-9-gain-2026-9d6d9773?mod=rss_markets_main",
         "source": "The Wall Street Journal",
@@ -1956,60 +1966,42 @@
         "url": "https://www.wsj.com/business/how-a-talent-war-spelled-doom-for-the-traditional-law-firm-1cf2c279?mod=rss_markets_main",
         "source": "The Wall Street Journal",
         "publishedAt": "2026-11-08T01:00:00+00:00"
-      },
-      {
-        "title": "The Shadowy Crypto Services Helping the Binance Hackers Launder Stolen Billions",
-        "url": "https://www.wsj.com/finance/currencies/the-shadowy-crypto-services-helping-the-binance-hackers-launder-stolen-billions-28641737?mod=rss_markets_main",
-        "source": "The Wall Street Journal",
-        "publishedAt": "2026-11-07T17:00:00+00:00"
-      },
-      {
-        "title": "Berkshire Hathaway’s Quarterly Profit Falls After Investment Gains Shrink",
-        "url": "https://www.wsj.com/business/earnings/berkshire-hathaway-brkb-q3-earnings-report-2026-stock-02843721?mod=rss_markets_main",
-        "source": "The Wall Street Journal",
-        "publishedAt": "2026-11-07T15:14:00+00:00"
-      },
-      {
-        "title": "China Forex Reserves Edged Up in October",
-        "url": "https://www.wsj.com/economy/central-banking/china-forex-reserves-edged-up-in-october-89c34113?mod=rss_markets_main",
-        "source": "The Wall Street Journal",
-        "publishedAt": "2026-11-07T04:31:00+00:00"
       }
     ],
-    "fetchedAt": "2026-11-08T16:31:01.339720+00:00",
+    "fetchedAt": "2026-11-09T01:24:23.938564+00:00",
     "newsSourceUrl": "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain"
   },
   "technicals": [
     {
       "symbol": "TWII",
       "name": "台股加權",
-      "price": 39701.64,
-      "ma5": 42490.59,
-      "ma20": 46133.96,
-      "ma60": 46415.23,
-      "rsi": 16.1,
+      "price": 40779.31,
+      "ma5": 41662.42,
+      "ma20": 45682.61,
+      "ma60": 46346.07,
+      "rsi": 22.9,
       "signal": "bear",
       "signalText": "空頭排列 ↓"
     },
     {
       "symbol": "2330",
       "name": "台積電",
-      "price": 2135.0,
-      "ma5": 2252.0,
-      "ma20": 2390.75,
-      "ma60": 2419.1,
-      "rsi": 13.9,
+      "price": 2205.0,
+      "ma5": 2227.0,
+      "ma20": 2373.5,
+      "ma60": 2416.05,
+      "rsi": 26.9,
       "signal": "bear",
       "signalText": "空頭排列 ↓"
     },
     {
       "symbol": "2317",
       "name": "鴻海",
-      "price": 224.5,
-      "ma5": 239.2,
-      "ma20": 243.47,
-      "ma60": 249.07,
-      "rsi": 34.9,
+      "price": 231.0,
+      "ma5": 235.2,
+      "ma20": 242.57,
+      "ma60": 248.54,
+      "rsi": 43.6,
       "signal": "bear",
       "signalText": "空頭排列 ↓"
     },
@@ -2052,9 +2044,9 @@
       "symbol": "DX-Y.NYB",
       "name": "美元指數 DXY",
       "icon": "💵",
-      "price": 102.3,
-      "change": 0.75,
-      "pct": 0.74
+      "price": 102.17,
+      "change": -0.13,
+      "pct": -0.13
     },
     {
       "symbol": "^TNX",
@@ -2068,17 +2060,17 @@
       "symbol": "GC=F",
       "name": "黃金 Gold",
       "icon": "🥇",
-      "price": 4074.9,
-      "change": -38.6,
-      "pct": -0.94
+      "price": 4115.9,
+      "change": 41.0,
+      "pct": 1.01
     },
     {
       "symbol": "CL=F",
       "name": "原油 WTI",
       "icon": "🛢️",
-      "price": 90.83,
-      "change": 0.31,
-      "pct": 0.34
+      "price": 90.31,
+      "change": -0.52,
+      "pct": -0.57
     }
   ],
   "sectors": [
@@ -6283,11 +6275,11 @@
         "metrics": [
           {
             "label": "TAIEX",
-            "value": "39,701.64"
+            "value": "40,793.31"
           },
           {
             "label": "漲跌幅",
-            "value": "-4.51%"
+            "value": "+2.75%"
           },
           {
             "label": "有效技術指標",
@@ -6307,11 +6299,11 @@
         ],
         "scope": "台美股資料快照",
         "horizon": "資料快照；非預測",
-        "asOf": "2026-11-09T00:31:12.360696+08:00",
+        "asOf": "2026-11-09T09:24:44.665460+08:00",
         "comment": "",
         "recommendation": "",
         "rationale": "",
-        "observation": "加權指數位於 20 日均線下方 13.94%，RSI(14) 為 16.1，短線動能偏弱、接近超賣區。這是技術面快照；尚無 EPS、毛利率與營收成長資料，因此無法確認基本面估值。",
+        "observation": "加權指數位於 20 日均線下方 10.73%，RSI(14) 為 22.9，短線動能偏弱、接近超賣區。這是技術面快照；尚無 EPS、毛利率與營收成長資料，因此無法確認基本面估值。",
         "watchpoints": "觀察能否站回並守住 20 日均線，以及成交量是否同步增加；RSI 偏低本身不代表趨勢已反轉。"
       },
       "expert": {
@@ -6455,6 +6447,18 @@
         "dataSummary": "以 VIX 與近期新聞標題作觀察；尚未接通社群資料與逐篇情緒模型。",
         "sources": [
           {
+            "title": "Nikkei Rises 1.7%, Led by Machinery, Financial Stocks",
+            "url": "https://www.wsj.com/finance/stocks/nikkei-rises-1-7-led-by-machinery-financial-stocks-45670eb5?mod=rss_markets_main"
+          },
+          {
+            "title": "Gold Edges Higher Amid Mixed Signals",
+            "url": "https://www.wsj.com/finance/commodities-futures/gold-edges-higher-amid-mixed-signals-00565ca1?mod=rss_markets_main"
+          },
+          {
+            "title": "A Popular New Bet Hailing From Cryptoland Sets Off a Wall Street Turf War",
+            "url": "https://www.wsj.com/finance/regulation/a-popular-new-bet-hailing-from-cryptoland-sets-off-a-wall-street-turf-war-70e37095?mod=rss_markets_main"
+          },
+          {
             "title": "After a Tech Rout, Stock Funds Hold a 9.9% Gain for 2026",
             "url": "https://www.wsj.com/finance/investing/after-tech-rout-stock-funds-hold-9-9-gain-2026-9d6d9773?mod=rss_markets_main"
           },
@@ -6475,25 +6479,13 @@
             "url": "https://www.wsj.com/business/how-a-talent-war-spelled-doom-for-the-traditional-law-firm-1cf2c279?mod=rss_markets_main"
           },
           {
-            "title": "The Shadowy Crypto Services Helping the Binance Hackers Launder Stolen Billions",
-            "url": "https://www.wsj.com/finance/currencies/the-shadowy-crypto-services-helping-the-binance-hackers-launder-stolen-billions-28641737?mod=rss_markets_main"
-          },
-          {
-            "title": "Berkshire Hathaway’s Quarterly Profit Falls After Investment Gains Shrink",
-            "url": "https://www.wsj.com/business/earnings/berkshire-hathaway-brkb-q3-earnings-report-2026-stock-02843721?mod=rss_markets_main"
-          },
-          {
-            "title": "China Forex Reserves Edged Up in October",
-            "url": "https://www.wsj.com/economy/central-banking/china-forex-reserves-edged-up-in-october-89c34113?mod=rss_markets_main"
-          },
-          {
             "title": "Yahoo Finance · VIX",
             "url": "https://finance.yahoo.com/quote/%5EVIX/"
           }
         ],
         "scope": "美股波動與市場新聞",
         "horizon": "資料快照；非預測",
-        "asOf": "2026-11-08T16:31:01.339720+00:00",
+        "asOf": "2026-11-09T01:24:23.938564+00:00",
         "comment": "",
         "recommendation": "",
         "rationale": "",
@@ -6519,7 +6511,7 @@
       "sources": [],
       "scope": "跨來源整合",
       "horizon": "資料快照；非預測",
-      "asOf": "2026-11-09T00:31:12.360696+08:00",
+      "asOf": "2026-11-09T09:24:44.665460+08:00",
       "comment": "",
       "recommendation": "",
       "rationale": "",
